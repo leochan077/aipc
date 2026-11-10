@@ -91,7 +91,29 @@ b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:va
 /* ---------- nav / toast / overlay ---------- */
 #nav{position:absolute;right:18px;bottom:12px;display:flex;align-items:center;gap:8px;z-index:6}
 #nav .btn{font-size:14px;padding:5px 9px;box-shadow:0 3px 0 var(--edge)}
-#pg{font-family:var(--pix);font-size:11px;color:var(--mute);min-width:62px;text-align:center}
+#nav .btn.big{font-size:17px;padding:6px 14px;font-weight:800}
+#nav .btn.more{animation:nudge 1.4s steps(2) infinite}
+@keyframes nudge{50%{background:var(--gold);color:#1A1440}}
+#pg{font-family:var(--pix);font-size:11px;color:var(--ink);min-width:86px;text-align:center;cursor:pointer;background:#0C0A2A;border:3px solid var(--line);padding:6px 8px;line-height:1.3}
+#pg:hover{border-color:var(--gold);color:var(--gold)}
+#pg small{display:block;font-family:var(--zh);font-size:11px;font-weight:700;color:var(--mute);margin-top:1px}
+.edge{position:absolute;top:56px;bottom:64px;width:34px;z-index:4;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;color:transparent;background:transparent;border:0;padding:0;transition:background .15s,color .15s}
+.edge.l{left:0}.edge.r{right:0}
+.edge:hover{background:rgba(255,210,63,.18);color:var(--gold)}
+#jump{position:absolute;inset:0;background:rgba(6,5,24,.9);z-index:30;display:flex;align-items:center;justify-content:center}
+#jump[hidden]{display:none}
+#jump .px{width:1180px;max-height:660px;display:flex;flex-direction:column;gap:10px;padding:16px 20px}
+#jump .jh{display:flex;align-items:center;gap:14px}
+#jump .jh h3{margin:0;font-size:24px;color:var(--gold)}
+#jump .jh .inp{width:90px;font-size:18px;padding:5px 8px}
+#jumpGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;overflow:auto}
+.jp{display:flex;align-items:center;gap:8px;text-align:left;font:inherit;font-size:15px;font-weight:700;color:var(--ink);background:#14113F;border:3px solid var(--line);padding:6px 8px;cursor:pointer;min-height:54px}
+.jp:hover{border-color:var(--gold)}
+.jp.cur{border-color:var(--gold);background:#2A2160}
+.jp b{font-family:var(--pix);font-size:11px;color:var(--npu);flex:none;width:30px}
+.jp .jt{flex:1;line-height:1.25;font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.jp .jx{flex:none;font-size:12px;padding:1px 5px;border:2px solid #000}
+.jp .jx.y{background:var(--green);color:#05301C}.jp .jx.n{background:var(--red);color:#fff}
 #bar{position:absolute;left:0;bottom:0;height:6px;width:100%;background:#0C0A2A;z-index:6}
 #bar i{display:block;height:100%;width:0;background:var(--npu);transition:width .3s}
 #toast{position:absolute;left:50%;bottom:62px;transform:translateX(-50%);background:#000;border:3px solid var(--gold);padding:9px 16px;font-size:19px;font-weight:700;opacity:0;transition:opacity .2s;z-index:9;pointer-events:none;white-space:nowrap}
@@ -585,7 +607,7 @@ b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:va
 .inp{font:inherit;font-size:20px;padding:8px 10px;background:#000;color:var(--ink);border:3px solid var(--line);width:100%;box-sizing:border-box}
 .inp:focus{outline:none;border-color:var(--gold)}
 .err{color:var(--red);font-size:17px;font-weight:700;min-height:22px;margin:0}
-body.stu #bPick,body.stu #bNotes,body.stu #hookPick{display:none}
+body.stu #bPick,body.stu #bNotes,body.stu #hookPick,body.stu #bPgPrev,body.stu #bPgNext{display:none}
 .scard{width:760px;flex:none;display:flex;flex-direction:column;gap:12px;padding:18px 22px;border-width:6px}
 .scard .who{display:flex;gap:22px;align-items:baseline;font-size:24px;font-weight:800;border-bottom:3px dashed var(--line);padding-bottom:10px}
 .scard .who b{color:var(--gold)}
@@ -595,16 +617,19 @@ body.stu #bPick,body.stu #bNotes,body.stu #hookPick{display:none}
 .scard .big .v{font-family:var(--pix);font-size:40px;color:var(--gold)}
 .scard .big .v small{font-size:16px;color:var(--mute)}
 .sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 18px;margin-top:6px}
-.sgrp{display:flex;align-items:center;gap:8px}
-.sgrp .gl{width:126px;flex:none;font-size:16px;font-weight:700;color:var(--mute)}
+.sgrp{display:flex;align-items:center;gap:6px}
+.sgrp .gl{width:116px;flex:none;font-size:16px;font-weight:700;color:var(--mute)}
 .sgrp .gl b{font-family:var(--pix);font-size:11px;color:var(--npu);margin-right:6px}
-.sc{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;border:2px solid #000}
+.sc{width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;border:2px solid #000}
 .sc.y{background:var(--green);color:#05301C}.sc.n{background:var(--red);color:#fff}.sc.u{background:#2A2670;color:var(--dim)}
 .scard .bdgs{margin-top:auto;display:flex;gap:8px;align-items:center;font-size:15px;color:var(--mute)}
 .scard .bdgs .bdg{transform:scale(.7);margin:-6px}
 .shot{display:flex;flex-direction:column;gap:10px;padding:16px 18px}
 .shot .keys3 .kk{font-size:15px}
 .miss{color:var(--red);font-weight:800}
+.cw{display:flex;flex-direction:column;gap:8px;padding:14px 18px}
+.cwgo{font-size:22px;text-align:center;text-decoration:none;display:block}
+.cwurl{margin:0;text-align:center;font-family:var(--pix);font-size:12px;letter-spacing:.5px}
 </style>
 </head>
 <body>
@@ -1268,12 +1293,13 @@ body.stu #bPick,body.stu #bNotes,body.stu #hookPick{display:none}
         <div class="badges" id="sumBadges" style="gap:8px"></div>
         <div class="px boss-card">
           <h3>BOSS 戰：堂課 · 20 分鐘</h3>
-          <ol><li>關閉所有生成式 AI 工具</li><li id="bossGo">按 → 到最後一頁截圖，交練習成績</li><li>打開老師給的堂課網站作答</li><li>用自己電腦工作管理員的數字</li></ol>
+          <ol><li>關閉所有生成式 AI 工具</li><li id="bossGo">按 → 到最後一頁截圖，交練習成績</li><li>打開堂課網站作答：<b class="g" style="font-family:var(--zh)">school-file.com/classwork</b></li><li>用自己電腦工作管理員的數字</li></ol>
         </div>
       </div>
     </div>
   </section>
 
+  <button class="edge l" id="eL" aria-label="上一步" title="上一步">◀</button><button class="edge r" id="eR" aria-label="下一步" title="下一步">▶</button>
   <!-- ===== STUDENT: practice score card ===== -->
   <section class="slide" data-id="card" data-stage="6" data-hook="card">
     <h2 class="t"><span class="lvl boss">END</span>練習成績卡：截圖交給老師</h2>
@@ -1292,14 +1318,15 @@ body.stu #bPick,body.stu #bNotes,body.stu #hookPick{display:none}
           <p class="small">也可以按 PrtSc 鍵。截圖後按老師指示交出。</p>
         </div>
         <div class="px" id="scMissBox"><p class="body" style="font-size:18px" id="scMiss"></p></div>
-        <div class="px red"><p class="body" style="font-size:18px">截圖後，打開老師給的<b class="g">堂課網站</b>作答。</p></div>
+        <div class="px red cw"><p class="body" style="font-size:18px">截圖後，按下面的掣打開<b class="g">堂課網站</b>作答：</p><a class="btn on cwgo" href="https://school-file.com/classwork" target="_blank" rel="noopener">打開堂課網站 ▶</a><p class="small cwurl">school-file.com/classwork</p></div>
       </div>
     </div>
   </section>
 
-  <div id="nav"><button class="btn" id="bPrev" aria-label="上一步">◀</button><span id="pg">1 / 30</span><button class="btn" id="bNext" aria-label="下一步">▶</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
+  <div id="nav"><button class="btn" id="bPgPrev" title="上一頁">⏮</button><button class="btn big" id="bPrev" aria-label="上一步">◀ 上一步</button><button id="pg" title="跳到指定頁（G）">1 / 30</button><button class="btn big" id="bNext" aria-label="下一步">下一步 ▶</button><button class="btn" id="bPgNext" title="下一頁">⏭</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
   <div id="bar"><i></i></div>
   <div id="toast" role="status"></div>
+  <div id="jump" hidden><div class="px gold"><div class="jh"><h3>跳到指定頁</h3><label for="jumpNo" class="small">輸入頁數</label><input class="inp" id="jumpNo" inputmode="numeric" maxlength="2" autocomplete="off"><button class="btn sm on" id="jumpGo">前往</button><span class="small" id="jumpTip" style="margin-left:auto">按頁面或輸入頁數；按 Esc 關閉</span><button class="btn sm" id="jumpClose">✕ 關閉</button></div><div id="jumpGrid"></div></div></div>
   <div id="pop" hidden><div class="px gold popbox"><div id="popBody"></div><button class="btn on" id="popClose">明白了，關閉</button></div></div>
   <div id="picker" hidden><div class="px gold pk" id="pkBox"><span class="k">RANDOM PICK</span><span id="pkNum">--</span><span class="pkt">號同學</span><div class="row" style="gap:10px;align-items:center"><label for="pkMax" class="small">全班人數</label><input id="pkMax" type="number" min="2" max="60" value="26"><button class="btn sm" id="pkAgain">再抽</button><button class="btn sm" id="pkClose">關閉</button></div></div></div>
   <div id="unlock" hidden><div class="px gold"><span class="k">BADGE UNLOCKED</span><span class="bdg got" id="unlockIcon">1</span><span class="nm" id="unlockName"></span></div></div>
@@ -1669,7 +1696,7 @@ function render(prev){ const s=slides[cur];
   $$('.f',s).forEach(f=>f.classList.toggle('on',+f.dataset.f<=sx));
   const h=HOOKS[s.dataset.hook]; if(h&&h.step) h.step(Math.max(0,sx),prev<0?prev:prev-off);
   const st=STAGES[s.dataset.stage]; $('#hudStage').textContent=s.dataset.bonus?'BONUS':st[0]; $('#hudName').textContent=st[1]+(ROUTE[s.dataset.id]?'　›　'+ROUTE[s.dataset.id]:'');
-  $('#pg').textContent=(cur+1)+' / '+slides.length; $('#bar i').style.width=((cur+1)/slides.length*100)+'%';
+  $('#pg').innerHTML=`${cur+1} / ${slides.length}<small>${nsteps(cur)?'步驟 '+step+' / '+nsteps(cur):'☰ 選頁'}</small>`; $('#bNext').classList.toggle('more',step<nsteps(cur)); $('#bNext').disabled=$('#eR').disabled=(step>=nsteps(cur)&&cur>=slides.length-1); $('#bPrev').disabled=$('#eL').disabled=(step===0&&cur===0); $('#bar i').style.width=((cur+1)/slides.length*100)+'%';
   $('#notesBody').innerHTML=esc(NOTES[s.dataset.id]||'').replace(/【(.*?)】/g,'<b>【$1】</b>');
   try{ history.replaceState(null,'','#'+(cur+1)); }catch(e){} }
 function go(i,st){ i=Math.max(0,Math.min(slides.length-1,i)); const prevStep=step;
@@ -1678,11 +1705,25 @@ function go(i,st){ i=Math.max(0,Math.min(slides.length-1,i)); const prevStep=ste
   else { step=st; render(prevStep); } }
 function next(){ if(step<nsteps(cur)) go(cur,step+1); else if(cur<slides.length-1) go(cur+1,0); }
 function prev(){ if(step>0) go(cur,step-1); else if(cur>0) go(cur-1,nsteps(cur-1)); }
+const PG_STEP=i=>STUDENT?nsteps(i):0;   // student: show the whole page; teacher: start at step 0
+function pgPrev(){ if(cur>0) go(cur-1,PG_STEP(cur-1)); }
+function pgNext(){ if(cur<slides.length-1) go(cur+1,PG_STEP(cur+1)); }
+let JUMPINFO=()=>'';
+const ptitle=sl=>{ const h=sl.querySelector('h2.t,h1'); if(!h) return sl.dataset.id; const c=h.cloneNode(true); c.querySelectorAll('.lvl').forEach(x=>x.remove()); return c.textContent.trim().replace(/\s+/g,' '); };
+function openJump(){ $('#jumpGrid').innerHTML=slides.map((sl,i)=>`<button class="jp${i===cur?' cur':''}" data-i="${i}"><b>P${i+1}</b><span class="jt">${esc(ptitle(sl))}</span>${JUMPINFO(sl)}</button>`).join(''); $('#jumpNo').value=''; $('#jumpNo').max=slides.length; $('#jump').hidden=false; setTimeout(()=>$('#jumpNo').focus(),30); }
+function closeJump(){ $('#jump').hidden=true; }
+function jumpTo(i){ if(!(i>=0&&i<slides.length)){ $('#jumpTip').innerHTML='<b style="color:var(--red)">頁數要是 1 至 '+slides.length+'</b>'; return; } closeJump(); go(i,PG_STEP(i)); }
+$('#jumpGrid').addEventListener('click',e=>{ const b=e.target.closest('.jp'); if(b) jumpTo(+b.dataset.i); });
+$('#jumpGo').addEventListener('click',()=>jumpTo(parseInt($('#jumpNo').value,10)-1));
+$('#jumpNo').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); jumpTo(parseInt($('#jumpNo').value,10)-1); } else if(e.key==='Escape') closeJump(); });
+$('#jumpClose').addEventListener('click',closeJump);
+$('#jump').addEventListener('click',e=>{ if(e.target.id==='jump') closeJump(); });
 function toggleNotes(){ $('#notes').hidden=!$('#notes').hidden; $('#bNotes').classList.toggle('on',!$('#notes').hidden); fit(); }
 function toggleAdv(){ ADV=!ADV; $('#stage').classList.toggle('adv-on',ADV); $('#hudMode').textContent=ADV?'進階':'基礎'; $('#bAdv').classList.toggle('on',ADV); const h=HOOKS[slides[cur].dataset.hook]; if(h&&h.enter) h.enter(); if(h&&h.step) h.step(Math.max(0,step-OFF(cur)),Math.max(0,step-OFF(cur))); toast(ADV?'進階模式：顯示公式和細節':'基礎模式'); }
 function full(){ try{ if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}); else document.exitFullscreen().catch(()=>{}); }catch(e){} }
 document.addEventListener('keydown',e=>{ const tg=e.target.tagName;
   if(STUDENT && !$('#stuId').hidden) return;
+  if(!$('#jump').hidden){ if(e.key==='Escape') closeJump(); return; }
   if(tg==='INPUT'||tg==='SELECT'||tg==='TEXTAREA'){ if(e.key==='Escape') e.target.blur(); return; }
   if((e.key==='Enter'||e.key===' ')&&tg==='BUTTON') return;
   if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){ e.preventDefault(); next(); }
@@ -1694,9 +1735,10 @@ document.addEventListener('keydown',e=>{ const tg=e.target.tagName;
   else if(e.key==='Escape' && !$('#picker').hidden) closePicker();
   else if(e.key==='Escape' && !$('#pop').hidden) closePop();
   else if(e.key==='f'||e.key==='F') full();
+  else if(e.key==='g'||e.key==='G'){ e.preventDefault(); openJump(); }
   else if(e.key==='Home') go(0,0);
   else if(e.key==='End') go(slides.length-1,0); });
-$('#bPrev').onclick=prev; $('#bNext').onclick=next; $('#bNotes').onclick=toggleNotes; $('#notesClose').onclick=toggleNotes; $('#bAdv').onclick=toggleAdv; $('#bPick').onclick=()=>pickStudent(); $('#bFull').onclick=full;
+$('#bPrev').onclick=prev; $('#bNext').onclick=next; $('#eL').onclick=prev; $('#eR').onclick=next; $('#bPgPrev').onclick=pgPrev; $('#bPgNext').onclick=pgNext; $('#pg').onclick=openJump; $('#bNotes').onclick=toggleNotes; $('#notesClose').onclick=toggleNotes; $('#bAdv').onclick=toggleAdv; $('#bPick').onclick=()=>pickStudent(); $('#bFull').onclick=full;
 function fit(){ SCALE=Math.min(window.innerWidth/1280,Math.max(200,window.innerHeight-($('#notes').hidden?0:$('#notes').offsetHeight))/720); const nh=$('#notes').hidden?0:$('#notes').offsetHeight, H=Math.max(200,window.innerHeight-nh), k=Math.min(window.innerWidth/1280,H/720); const st=$('#stage'); st.style.top=(H/2)+'px'; st.style.transform=`translate(-50%,-50%) scale(${k})`; }
 window.addEventListener('resize',fit); fit(); hud();
 
@@ -1738,8 +1780,9 @@ function cardRender(){ if(!$('#scGrid')) return; const p=pracStats(), w=ST.who, 
   $('#scGrid').innerHTML=slides.map((sl,i)=>{ const cs=$$('.ch',sl); if(!cs.length) return ''; return `<div class="sgrp"><span class="gl"><b>P${i+1}</b>${GNAME[sl.dataset.id]||''}</span>`+cs.map(c=>{ const r=ST.prac[c.dataset.q]; return r?(r.ok?'<i class="sc y">✔</i>':'<i class="sc n">✘</i>'):'<i class="sc u">－</i>'; }).join('')+'</div>'; }).join('');
   $('#scBdg').innerHTML='徽章：'+BADGES.map((b,i)=>`<span class="bdg${got.has(b[0])?' got':''}">${i+1}</span>`).join('');
   const miss=PRAC_TOTAL-p.n;
-  $('#scMiss').innerHTML=miss?`<span class="miss">還有 ${miss} 題未答</span>（灰色「－」）。可以按 ◀ 返回補答，再回來截圖。`:'<b class="ok">全部練習題已作答。</b>可以截圖了。';
+  $('#scMiss').innerHTML=miss?`<span class="miss">還有 ${miss} 題未答</span>（灰色「－」）。按右下角<b>頁碼</b>，紅色「練習」的頁就是未做完，跳過去補答，再回來截圖。`:'<b class="ok">全部練習題已作答。</b>可以截圖了。';
   $('#scMissBox').className='px '+(miss?'red':'green'); }
+JUMPINFO=sl=>{ const cs=$$('.ch',sl); if(!cs.length) return ''; const n=cs.filter(c=>ST.prac[c.dataset.q]).length; return `<span class="jx ${n===cs.length?'y':'n'}">練習 ${n}/${cs.length}</span>`; };
 HOOKS.card={enter:()=>{ cardRender(); clearInterval(cardT); cardT=setInterval(cardRender,20000); }, leave:()=>clearInterval(cardT)};
 
 document.body.classList.add('stu');
