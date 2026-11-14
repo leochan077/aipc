@@ -94,6 +94,7 @@ h1{font-size:clamp(34px,6vw,58px);font-weight:900;margin:0;line-height:1.12;text
 
   <section class="tips" aria-label="使用提示">
     <div class="tip"><b>每次用同一部電腦、同一個瀏覽器。</b>答案會先存在這部電腦；換電腦、換瀏覽器或用無痕視窗，之前的紀錄會看不到。</div>
+    <div class="tip"><b>當日沒有上課？</b>可以在 2027 年 2 月 1 日（台灣時間）前補做，補做的<b>總分扣 50 分</b>。第 8 課：直接進入作答。第 9 課：老師結束堂課後，在堂課頁按「開始補做」。</div>
     <div class="tip"><b>每課最後一頁有堂課或成績卡。</b>老師要求時，按 Win + Shift + S 截圖交給老師。</div>
     <div class="tip"><b>老師的堂課網站：</b><a href="https://school-file.com/classwork" target="_blank" rel="noopener">school-file.com/classwork</a></div>
   </section>
@@ -106,7 +107,7 @@ h1{font-size:clamp(34px,6vw,58px);font-weight:900;margin:0;line-height:1.12;text
    open: true = 可以進入；false = 顯示「即將開放」 */
 const WORLDS=[
  {unit:'單元三',name:'AI 個人電腦',lessons:[
-   {no:8,title:'AI PC 本地推論與 40 TOPS',meta:'單元三 · 第 6 週',topics:['NPU','TOPS','記憶體','Copilot+ PC'],file:'ch8.html',open:true,rec:'aipc'}
+   {no:8,title:'AI PC 本地推論與 40 TOPS',meta:'單元三 · 第 6 週 · 補做開放至 2027 年 2 月 1 日',topics:['NPU','TOPS','記憶體','Copilot+ PC'],file:'ch8.html',open:true,rec:'aipc'}
  ]},
  {unit:'單元四',name:'感知與執行',lessons:[
    {no:9,title:'手機傳感器陣列',meta:'單元四 · 第 10 週 · 11 月 17 日',topics:['加速度計','陀螺儀','環境光','LiDAR'],file:'ch9.html',open:true,rec:'w10'},
@@ -119,8 +120,8 @@ const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').rep
 const z2=n=>String(n).padStart(2,'0');
 // progress saved by each lesson page on this computer
 const REC={
- aipc:()=>{ const w=get('aipc6.who'); if(!w) return ''; const r=get(`aipc6.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：練習已答 ${n} / 34 題`; },
- w10:()=>{ const w=get('u4.w10.who'); if(!w) return ''; const r=get(`u4.w10.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：練習已答 ${n} / 25 題 · ${r.sub?'堂課已交卷 ✔':'堂課未交卷'}`; }
+ aipc:()=>{ const w=get('aipc8mk.who'); if(!w) return ''; const r=get(`aipc8mk.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：補做練習已答 ${n} / 34 題`; },
+ w10:()=>{ const w=get('u4.w10.who'); if(!w) return ''; const r=get(`u4.w10.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：練習已答 ${n} / 25 題 · ${r.sub?(r.mk?'堂課已補做 ✔':'堂課已交卷 ✔'):'堂課未交卷'}`; }
 };
 document.getElementById('map').innerHTML=WORLDS.map(W=>`<section class="world"><h2><span class="w">${esc(W.unit)}</span>${esc(W.name)}</h2><div class="levels">${W.lessons.map(L=>{
   if(L.boss) return `<article class="lv boss"><div class="top"><span class="no">BOSS</span><span class="pill boss">測驗</span></div><h3>${esc(L.title)}</h3><p class="meta">${esc(L.meta)}</p><div class="topics">${L.topics.map(t=>`<span>${esc(t)}</span>`).join('')}</div><p class="rec none">${esc(L.note||'')}</p></article>`;

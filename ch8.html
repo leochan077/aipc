@@ -596,6 +596,9 @@ b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:va
 .fres{font-size:22px;font-weight:800;padding:12px 16px;border:4px solid var(--gold);color:var(--gold);min-height:58px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 
+#liveDot{font-size:14px;font-weight:800;padding:3px 9px;border:3px solid var(--dim);color:var(--dim);cursor:pointer;background:none;font-family:inherit}
+#liveDot.on{border-color:var(--green);color:var(--green)}
+#liveDot.err{border-color:var(--red);color:var(--red)}
 #hudHome{font-family:var(--zh);font-size:15px;font-weight:800;color:var(--ink);text-decoration:none;border:3px solid var(--line);padding:3px 10px;background:var(--bg3);white-space:nowrap}#hudHome:hover,#hudHome:focus-visible{border-color:var(--gold);outline:none}
 /* ---------- student version: identity + practice score card ---------- */
 #hudStu{font-size:15px;font-weight:700;color:var(--gold);border:3px solid var(--gold);padding:3px 10px;cursor:pointer;background:none;font-family:inherit}
@@ -1334,7 +1337,7 @@ body.stu #bPick,body.stu #bNotes,body.stu #hookPick,body.stu #bPgPrev,body.stu #
 
   <div id="stuId" hidden><div class="px gold">
     <h3>登入任務</h3>
-    <p class="small">輸入或確認你的班別、學號和姓名。每頁練習題只計第一次作答，最後一頁的成績卡會顯示這些資料。<br>如果顯示的不是你，請改成你自己的資料。</p>
+    <p class="small">第 8 課已經完結。現在作答會當作<b class="g">補做</b>：練習答案會交給老師，總分按百分制<b class="g">扣 50 分</b>計算。截止：2027 年 2 月 1 日（台灣時間）前。<br>輸入你的班別、學號和姓名。每題只計第一次作答。如果顯示的不是你，請改成你自己的資料。</p>
     <div class="fld"><label for="sCls">班別</label><input class="inp" id="sCls" maxlength="6" value="5A" autocomplete="off"></div>
     <div class="fld"><label for="sNo">學號</label><input class="inp" id="sNo" inputmode="numeric" maxlength="2" placeholder="例：12" autocomplete="off"></div>
     <div class="fld"><label for="sName">姓名</label><input class="inp" id="sName" maxlength="20" autocomplete="off"></div>
@@ -1747,7 +1750,7 @@ window.addEventListener('resize',fit); fit(); hud();
 const LS={ get(k){ try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } }, set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} } };
 const ST={ who:null, prac:{} };
 const PRAC_TOTAL=$$('.ch').length;
-const recKey=w=>'aipc6.'+w.cls+'.'+w.no;
+const recKey=w=>'aipc8mk.'+w.cls+'.'+w.no;
 function saveRec(){ if(ST.who) LS.set(recKey(ST.who),{prac:ST.prac,name:ST.who.name}); }
 function pracStats(){ let c=0,n=0; Object.keys(ST.prac).forEach(k=>{ n++; if(ST.prac[k].ok) c++; }); return {c,n,score:Math.round(c/PRAC_TOTAL*500)/10}; }
 
@@ -1758,14 +1761,14 @@ function idGo(){ const cls=$('#sCls').value.trim().toUpperCase().replace(/\s+/g,
   if(!/^[0-9A-Z]{1,6}$/.test(cls)){ $('#sErr').textContent='請輸入班別，例如 5A'; return; }
   if(!(no>=1&&no<=60)){ $('#sErr').textContent='學號要是 1 至 60 的數字'; return; }
   if(!name){ $('#sErr').textContent='請輸入姓名'; return; }
-  const w={cls,no,name}; LS.set('aipc6.who',w); loadWho(w); $('#stuId').hidden=true; toast('歡迎，'+name); }
+  const w={cls,no,name}; LS.set('aipc8mk.who',w); loadWho(w); $('#stuId').hidden=true; toast('歡迎，'+name); }
 $('#sGo').addEventListener('click',idGo);
 $$('#stuId .inp').forEach(i=>i.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); idGo(); } }));
 $('#hudStu').addEventListener('click',openId);
-function loadWho(w){ ST.who=w; const r=LS.get(recKey(w)); ST.prac=(r&&r.prac)||{}; saveRec(); restorePractice(); hudStu(); cardRender(); }
+function loadWho(w){ ST.who=w; const r=LS.get(recKey(w)); ST.prac=(r&&r.prac)||{}; saveRec(); restorePractice(); hudStu(); cardRender(); touch(); }
 
 // first answer only; the same answers stay shown after a reload
-REC=(ch,b,ok)=>{ if(!ST.who) return; const q=ch.dataset.q; if(!ST.prac[q]) ST.prac[q]={v:b.dataset.v,ok:!!ok}; if(ok) ST.prac[q].done=1; saveRec(); };
+REC=(ch,b,ok)=>{ if(!ST.who) return; const q=ch.dataset.q; if(!ST.prac[q]) ST.prac[q]={v:b.dataset.v,ok:!!ok,t:Date.now()}; if(ok) ST.prac[q].done=1; saveRec(); touch(); };
 function restorePractice(){ XP=0; got.clear();
   $$('.ch').forEach(ch=>{ const bs=$$('.opts .btn',ch), d=ch.querySelector('.detail'); ch.classList.remove('done','u-CPU','u-GPU','u-NPU'); bs.forEach(x=>x.classList.remove('ok','dim','no')); if(d) d.classList.remove('on');
     const r=ST.prac[ch.dataset.q]; if(!r||!r.done) return; const b=bs.find(x=>x.dataset.v===ch.dataset.ans); if(b){ b.classList.add('ok'); bs.forEach(x=>{ if(x!==b) x.classList.add('dim'); }); }
@@ -1776,18 +1779,67 @@ function restorePractice(){ XP=0; got.clear();
 const GNAME={review:'重溫',cloud:'雲端/本地',check2:'小測',cards:'練習卡',dispatch:'派工',ads:'廣告',judge:'四部電腦',terms:'術語'};
 let cardT=null;
 function cardRender(){ if(!$('#scGrid')) return; const p=pracStats(), w=ST.who, now=new Date(), z=n=>String(n).padStart(2,'0');
-  $('#scWho').innerHTML=w?`<span>班別 <b>${esc(w.cls)}</b></span><span>學號 <b>${w.no}</b></span><span>姓名 <b>${esc(w.name)}</b></span><span class="stime">${now.getFullYear()}-${z(now.getMonth()+1)}-${z(now.getDate())} ${z(now.getHours())}:${z(now.getMinutes())}</span>`:'<span class="miss">未登入：按右上角輸入資料</span>';
+  $('#scWho').innerHTML=w?`<span>班別 <b>${esc(w.cls)}</b></span><span>學號 <b>${w.no}</b></span><span>姓名 <b>${esc(w.name)}</b></span><span class="stime">補做 · ${now.getFullYear()}-${z(now.getMonth()+1)}-${z(now.getDate())} ${z(now.getHours())}:${z(now.getMinutes())}</span>`:'<span class="miss">未登入：按右上角輸入資料</span>';
   $('#scC').innerHTML=`${p.c}<small> / ${PRAC_TOTAL}</small>`; $('#scS').innerHTML=`${fmt(p.score)}<small> / 50</small>`; $('#scN').innerHTML=`${p.n}<small> / ${PRAC_TOTAL}</small>`;
   $('#scGrid').innerHTML=slides.map((sl,i)=>{ const cs=$$('.ch',sl); if(!cs.length) return ''; return `<div class="sgrp"><span class="gl"><b>P${i+1}</b>${GNAME[sl.dataset.id]||''}</span>`+cs.map(c=>{ const r=ST.prac[c.dataset.q]; return r?(r.ok?'<i class="sc y">✔</i>':'<i class="sc n">✘</i>'):'<i class="sc u">－</i>'; }).join('')+'</div>'; }).join('');
   $('#scBdg').innerHTML='徽章：'+BADGES.map((b,i)=>`<span class="bdg${got.has(b[0])?' got':''}">${i+1}</span>`).join('');
   const miss=PRAC_TOTAL-p.n;
   $('#scMiss').innerHTML=miss?`<span class="miss">還有 ${miss} 題未答</span>（灰色「－」）。按右下角<b>頁碼</b>，紅色「練習」的頁就是未做完，跳過去補答，再回來截圖。`:'<b class="ok">全部練習題已作答。</b>可以截圖了。';
+  $('#scMiss').insertAdjacentHTML('beforeend','<br>'+SYNC_MSG());
   $('#scMissBox').className='px '+(miss?'red':'green'); }
 JUMPINFO=sl=>{ const cs=$$('.ch',sl); if(!cs.length) return ''; const n=cs.filter(c=>ST.prac[c.dataset.q]).length; return `<span class="jx ${n===cs.length?'y':'n'}">練習 ${n}/${cs.length}</span>`; };
 HOOKS.card={enter:()=>{ cardRender(); clearInterval(cardT); cardT=setInterval(cardRender,20000); }, leave:()=>clearInterval(cardT)};
 
 document.body.classList.add('stu');
-(function(){ const w=LS.get('aipc6.who'); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); })();
+const STU_INIT=()=>{ const w=LS.get('aipc8mk.who'); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); };
+
+const LESSON="ch8";
+const FB_CFG={"apiKey": "AIzaSyACrOYiSzMt3rqknfvJ1Ehnm56cDpnoZ5Q", "databaseURL": "https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app"};
+/* =====================================================================
+   Live layer: Firebase Realtime Database over REST (no SDK).
+   Students: anonymous sign-in, PUT their own record, poll the control node.
+   Teacher: email/password sign-in, streams all records (Server-Sent Events).
+   ===================================================================== */
+const FB={key:FB_CFG.apiKey||'', db:(FB_CFG.databaseURL||'').replace(/\/+$/,''), idt:FB_CFG.idt||'https://identitytoolkit.googleapis.com', stk:FB_CFG.stk||'https://securetoken.googleapis.com'};
+const FB_ON=!!(FB.key&&FB.db);
+const LPATH='lessons/'+LESSON;
+const MK_DEADLINE=1801411200000;            // 2027-02-01 00:00 台灣時間（UTC+8）
+const MK_TEXT='2027 年 2 月 1 日（台灣時間）前';
+const mkOpen=()=>Date.now()<MK_DEADLINE;
+const ERRZH={INVALID_LOGIN_CREDENTIALS:'電郵或密碼不正確',INVALID_PASSWORD:'電郵或密碼不正確',EMAIL_NOT_FOUND:'電郵或密碼不正確',INVALID_EMAIL:'電郵格式不正確',USER_DISABLED:'這個帳號已停用',OPERATION_NOT_ALLOWED:'Firebase 未開啟這種登入方式（設定步驟 3）',ADMIN_ONLY_OPERATION:'Firebase 未開啟「匿名」登入（設定步驟 3）',TOO_MANY_ATTEMPTS_TRY_LATER:'嘗試次數太多，請稍後再試','Permission denied':'權限不足：檢查設定步驟 4 的規則和電郵'};
+const zhErr=e=>{ const m=String(e&&e.message||e); for(const k in ERRZH) if(m.indexOf(k)>=0) return ERRZH[k]; if(e&&e.name==='AbortError') return '連線逾時'; if(/Failed to fetch|NetworkError|Load failed/i.test(m)) return '連不上網絡或 Firebase'; return m; };
+async function fx(url,opt,ms){ const ac=new AbortController(), t=setTimeout(()=>ac.abort(),ms||9000);
+  try{ const r=await fetch(url,Object.assign({},opt||{},{signal:ac.signal})); const tx=await r.text(); let j=null; try{ j=tx?JSON.parse(tx):null; }catch(e){}
+    if(!r.ok){ const m=j&&j.error?(j.error.message||j.error):('HTTP '+r.status); const er=new Error(typeof m==='string'?m:JSON.stringify(m)); er.status=r.status; throw er; } return j; }
+  finally{ clearTimeout(t); } }
+function Auth(kind){ const key='u4auth.'+kind+'.'+(FB.db||'none'); let st=LS.get(key), pend=null; const save=()=>LS.set(key,st);
+  const take=(id,rt,exp,uid,email)=>{ st={uid,rt,it:id,exp:Date.now()+(+exp||3600)*1000,email:email||(st&&st.email)||''}; save(); };
+  async function refresh(){ const j=await fx(`${FB.stk}/v1/token?key=${FB.key}`,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=refresh_token&refresh_token='+encodeURIComponent(st.rt)}); take(j.id_token,j.refresh_token,j.expires_in,j.user_id); }
+  async function anon(){ const j=await fx(`${FB.idt}/v1/accounts:signUp?key=${FB.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({returnSecureToken:true})}); take(j.idToken,j.refreshToken,j.expiresIn,j.localId); }
+  return { get uid(){ return st&&st.uid; }, get email(){ return st&&st.email; }, has(){ return !!(st&&st.rt); },
+    token(force){ if(!force&&st&&st.it&&Date.now()<st.exp-120000) return Promise.resolve(st.it); if(pend) return pend;
+      pend=(async()=>{ try{ if(st&&st.rt){ try{ await refresh(); }catch(e){ if(kind==='stu'&&e.status===400){ st=null; await anon(); } else throw e; } } else if(kind==='stu') await anon(); else throw new Error('LOGIN'); return st.it; } finally{ pend=null; } })(); return pend; },
+    async login(email,pw){ const j=await fx(`${FB.idt}/v1/accounts:signInWithPassword?key=${FB.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pw,returnSecureToken:true})}); take(j.idToken,j.refreshToken,j.expiresIn,j.localId,j.email); },
+    logout(){ st=null; LS.del(key); } }; }
+async function dbReq(auth,method,path,body){ const run=async tok=>fx(`${FB.db}/${path}.json?auth=${encodeURIComponent(tok)}`,{method,headers:body!==undefined?{'Content-Type':'application/json'}:{},body:body!==undefined?JSON.stringify(body):undefined});
+  try{ return await run(await auth.token()); }catch(e){ if(e.status===401||e.status===403) return run(await auth.token(true)); throw e; } }
+
+
+
+/* ---------- 補做：把練習答案交到老師的 Firebase ---------- */
+const auth=FB_ON?Auth('stu'):null; let syncT=null, syncing=false, again=false, lastOk=0;
+$('#hudStu').insertAdjacentHTML('beforebegin','<button id="liveDot" title="交給老師">○ 未連線</button>');
+function liveDot(c,t){ const d=$('#liveDot'); d.className=c; d.textContent=t; }
+function touch(){ if(!FB_ON||!mkOpen()||!ST.who) return; clearTimeout(syncT); syncT=setTimeout(sync,600); }
+async function sync(){ if(!FB_ON||!ST.who||!mkOpen()) return; if(syncing){ again=true; return; } syncing=true;
+  try{ await auth.token(); const w=ST.who; await dbReq(auth,'PUT',`${LPATH}/students/${auth.uid}`,{cls:w.cls,no:w.no,name:w.name,ts:Date.now(),page:cur+1,prac:ST.prac,mk:1}); lastOk=Date.now(); liveDot('on','● 已交給老師'); }
+  catch(e){ liveDot('err','○ 離線：答案存在本機'); clearTimeout(syncT); syncT=setTimeout(sync,8000); }
+  finally{ syncing=false; if(again){ again=false; sync(); } if($('.slide.active[data-id="card"]')) cardRender(); } }
+setInterval(()=>{ if(ST.who&&FB_ON&&mkOpen()&&!document.hidden) sync(); },30000);
+function SYNC_MSG(){ if(!FB_ON) return ''; if(!mkOpen()) return '<b class="no">補做已截止</b>：答案不會再交給老師。'; return lastOk?'<b class="ok">補做答案已交給老師 ✔</b>（總分扣 50 分）':'<b class="no">未能連線</b>：請截圖這張卡交給老師。'; }
+$('#liveDot').addEventListener('click',()=>{ if(FB_ON&&mkOpen()) sync(); toast(!FB_ON?'本頁未設定連線':!mkOpen()?'補做已截止':lastOk?'答案已交給老師':'未能連線：答案先存在本機'); });
+if(!FB_ON) liveDot('','○ 本機模式'); else if(!mkOpen()) liveDot('err','○ 補做已截止');
+STU_INIT();
 
 const startAt=parseInt(location.hash.slice(1),10)-1;
 go(isNaN(startAt)?0:startAt,0);
