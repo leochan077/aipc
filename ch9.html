@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>學生版 · 手機傳感器陣列</title>
+<style>
+@font-face{font-family:"Press Start 2P";src:url(data:font/woff2;base64,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) format("woff2");font-display:swap}
+@font-face{font-family:"Silkscreen";font-weight:700;src:url(data:font/woff2;base64,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) format("woff2");font-display:swap}
+/* Layout: one 1280×720 arcade "game screen" scaled to the window; HUD strip on top, each slide is one level screen, nav at bottom-right. */
+:root{
+  --bg:#120F33; --bg2:#1D1A52; --bg3:#2A2670; --line:#4B44A8; --edge:#0A0826;
+  --ink:#F6F4FF; --mute:#BDB7EC; --dim:#8C85C9;
+  --gold:#FFD23F; --red:#FF4D5E; --green:#3BE08F;
+  --cpu:#FF9F43; --gpu:#E879F9; --npu:#38BDF8; --ram:#A78BFA;
+  --zh:"Microsoft JhengHei","微軟正黑體","PingFang TC","Noto Sans TC","Noto Sans CJK TC",sans-serif;
+  --pix:"Press Start 2P","Courier New",monospace;
+  --lab:"Silkscreen","Press Start 2P","Courier New",monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#0A0820;color:var(--ink);font-family:var(--zh)}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;overflow:hidden;transform-origin:center center;
+  background-color:var(--bg);
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:32px 32px}
+/* ---------- HUD ---------- */
+#hud{position:absolute;left:0;right:0;top:0;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#0C0A2A;border-bottom:4px solid var(--line);z-index:5}
+.hud-l,.hud-r{display:flex;align-items:center;gap:12px}
+#hudStage{font-family:var(--pix);font-size:12px;color:#1A1440;background:var(--gold);padding:7px 9px;box-shadow:3px 3px 0 #000}
+#hudName{font-size:18px;font-weight:700;color:var(--mute)}
+.xp-lbl{font-family:var(--pix);font-size:11px;color:var(--gold)}
+.xpbar{width:190px;height:16px;background:#000;border:3px solid var(--line)}
+.xpbar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--gold) 0 10px,#D9A916 10px 12px);transition:width .6s steps(10)}
+#xpNum{font-family:var(--pix);font-size:12px;color:var(--gold);min-width:44px}
+#hudBadges{font-size:16px;font-weight:700;color:var(--ink);background:var(--bg3);border:3px solid var(--line);padding:3px 10px}
+/* ---------- slides ---------- */
+.slide{position:absolute;left:0;right:0;top:48px;bottom:0;padding:20px 52px 62px;display:none;flex-direction:column;gap:14px}
+.slide.active{display:flex;animation:slideIn .28s steps(6)}
+@keyframes slideIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+h2.t{font-size:33px;font-weight:800;margin:0;display:flex;align-items:center;gap:16px;line-height:1.25;text-wrap:balance}
+.lvl{font-family:var(--pix);font-size:13px;color:#1A1440;background:var(--npu);padding:8px 10px;box-shadow:4px 4px 0 #000;flex:none;line-height:1}
+.lvl.bonus{background:var(--gold)}
+.lvl.boss{background:var(--red);color:#fff}
+.sub{margin:-4px 0 0;font-size:19px;color:var(--mute)}
+.row{display:flex;gap:22px;min-height:0}
+.col{display:flex;flex-direction:column;gap:12px;min-width:0}
+.grow{flex:1;min-width:0;min-height:0}
+.px{background:var(--bg2);border:4px solid var(--line);box-shadow:6px 6px 0 #00000088;padding:16px 18px}
+.px.gold{border-color:var(--gold)} .px.npu{border-color:var(--npu)} .px.ram{border-color:var(--ram)} .px.red{border-color:var(--red)} .px.green{border-color:var(--green)}
+.lead{font-size:23px;font-weight:700;margin:0;line-height:1.45}
+.body{font-size:20px;margin:0;line-height:1.55}
+.small{font-size:16px;color:var(--mute);margin:0;line-height:1.5}
+.foot{font-size:15px;color:var(--dim);margin:0;margin-top:auto}
+b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:var(--green)} b.no{color:var(--red)} b.c{color:var(--cpu)} b.gp{color:var(--gpu)}
+.f{opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;pointer-events:none}
+.f.on{opacity:1;transform:none;pointer-events:auto}
+.mono{font-family:var(--lab);letter-spacing:.5px}
+/* ---------- buttons ---------- */
+.btn{font-weight:700;font-size:19px;line-height:1.35;color:var(--ink);background:var(--bg3);border:3px solid var(--line);box-shadow:0 5px 0 var(--edge);padding:9px 14px;cursor:pointer;transition:transform .08s,background .15s,border-color .15s;text-align:center}
+.btn:hover{border-color:var(--gold)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--edge)}
+.btn:focus-visible,.flip:focus-visible,.tm-item:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn.on{background:var(--gold);color:#1A1440;border-color:var(--gold)}
+.btn.ok{background:var(--green);color:#05301C;border-color:var(--green)}
+.btn.no{background:var(--red);color:#fff;border-color:var(--red)}
+.btn.dim{opacity:.4}
+.btn.sm{font-size:16px;padding:6px 10px}
+.btn.cpu{border-color:var(--cpu)} .btn.gpu{border-color:var(--gpu)} .btn.npu{border-color:var(--npu)}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+#vote .btn{font-size:26px;padding:12px 26px}
+.reveal-a{display:none;color:var(--green);font-weight:700}
+.reveal-a.on{display:inline}
+/* ---------- quiz ---------- */
+.qgrid{display:grid;gap:18px;align-items:start}
+.qgrid.c3{grid-template-columns:repeat(3,1fr)} .qgrid.c2{grid-template-columns:repeat(2,1fr)}
+.q{display:flex;flex-direction:column;gap:10px}
+.qt{font-size:21px;font-weight:700;margin:0 0 4px;line-height:1.45}
+.opts{display:grid;gap:9px}
+.opts .btn{text-align:left}
+.seg.opts{display:flex}
+.seg.opts .btn{flex:1;text-align:center}
+.why{display:none;margin:4px 0 0;font-size:17px;line-height:1.5;color:var(--green)}
+.done>.why,.done .why{display:block}
+.shake{animation:shake .35s}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pop{animation:pop .4s steps(4)}
+@keyframes pop{0%{transform:scale(.9)}60%{transform:scale(1.06)}100%{transform:none}}
+/* ---------- nav / toast / overlay ---------- */
+#nav{position:absolute;right:18px;bottom:12px;display:flex;align-items:center;gap:8px;z-index:6}
+#nav .btn{font-size:14px;padding:5px 9px;box-shadow:0 3px 0 var(--edge)}
+#nav .btn.big{font-size:17px;padding:6px 14px;font-weight:800}
+#nav .btn.more{animation:nudge 1.4s steps(2) infinite}
+@keyframes nudge{50%{background:var(--gold);color:#1A1440}}
+#pg{font-family:var(--pix);font-size:11px;color:var(--ink);min-width:86px;text-align:center;cursor:pointer;background:#0C0A2A;border:3px solid var(--line);padding:6px 8px;line-height:1.3}
+#pg:hover{border-color:var(--gold);color:var(--gold)}
+#pg small{display:block;font-family:var(--zh);font-size:11px;font-weight:700;color:var(--mute);margin-top:1px}
+.edge{position:absolute;top:56px;bottom:64px;width:34px;z-index:4;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;color:transparent;background:transparent;border:0;padding:0;transition:background .15s,color .15s}
+.edge.l{left:0}.edge.r{right:0}
+.edge:hover{background:rgba(255,210,63,.18);color:var(--gold)}
+#jump{position:absolute;inset:0;background:rgba(6,5,24,.9);z-index:30;display:flex;align-items:center;justify-content:center}
+#jump[hidden]{display:none}
+#jump .px{width:1180px;max-height:660px;display:flex;flex-direction:column;gap:10px;padding:16px 20px}
+#jump .jh{display:flex;align-items:center;gap:14px}
+#jump .jh h3{margin:0;font-size:24px;color:var(--gold)}
+#jump .jh .inp{width:90px;font-size:18px;padding:5px 8px}
+#jumpGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;overflow:auto}
+.jp{display:flex;align-items:center;gap:8px;text-align:left;font:inherit;font-size:15px;font-weight:700;color:var(--ink);background:#14113F;border:3px solid var(--line);padding:6px 8px;cursor:pointer;min-height:54px}
+.jp:hover{border-color:var(--gold)}
+.jp.cur{border-color:var(--gold);background:#2A2160}
+.jp b{font-family:var(--pix);font-size:11px;color:var(--npu);flex:none;width:30px}
+.jp .jt{flex:1;line-height:1.25;font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.jp .jx{flex:none;font-size:12px;padding:1px 5px;border:2px solid #000}
+.jp .jx.y{background:var(--green);color:#05301C}.jp .jx.n{background:var(--red);color:#fff}
+#bar{position:absolute;left:0;bottom:0;height:6px;width:100%;background:#0C0A2A;z-index:6}
+#bar i{display:block;height:100%;width:0;background:var(--npu);transition:width .3s}
+#toast{position:absolute;left:50%;bottom:62px;transform:translateX(-50%);background:#000;border:3px solid var(--gold);padding:9px 16px;font-size:19px;font-weight:700;opacity:0;transition:opacity .2s;z-index:9;pointer-events:none;white-space:nowrap}
+#toast.on{opacity:1}
+#unlock{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,4,20,.72);z-index:10}
+#unlock .px{display:flex;flex-direction:column;align-items:center;gap:10px;padding:26px 44px;animation:pop .5s steps(5)}
+#unlock .k{font-family:var(--pix);font-size:14px;color:var(--gold)}
+#unlock .nm{font-size:34px;font-weight:800}
+#notes{position:fixed;left:0;right:0;bottom:0;height:36vh;display:flex;flex-direction:column;background:#FFFDF2;color:#1A1440;border-top:5px solid #FFD23F;z-index:20;font-family:var(--zh)}
+#notesHead{display:flex;justify-content:space-between;align-items:center;padding:6px 14px 6px 22px;background:#FFF3C4;border-bottom:1px solid #E8D58A;font-size:15px;font-weight:700;flex:none}
+#notesClose{font:inherit;font-size:16px;font-weight:800;color:#fff;background:#B0283A;border:0;padding:8px 16px;cursor:pointer}
+#notesClose:focus-visible{outline:3px solid #1A1440;outline-offset:2px}
+#notesBody{flex:1;overflow:auto;padding:10px 22px 16px;font-size:17px;line-height:1.65;white-space:pre-wrap}
+#notesBody b{color:#7A2E00}
+/* badge icon */
+.bdg{width:64px;height:64px;display:grid;place-items:center;background:#000;border:4px solid var(--dim);font-family:var(--pix);font-size:16px;color:var(--dim);box-shadow:4px 4px 0 #000}
+.bdg.got{border-color:var(--gold);color:var(--gold);background:#2B2200}
+/* ---------- cover ---------- */
+.cover{padding-top:26px}
+.cover-top{display:flex;gap:12px}
+.tag{font-size:17px;font-weight:700;background:var(--bg3);border:3px solid var(--line);padding:5px 12px}
+.cover-main{display:flex;align-items:center;justify-content:space-between;gap:30px;flex:1;min-height:0}
+.pre{font-family:var(--pix);font-size:16px;color:var(--npu);margin:0 0 18px}
+.cover h1{font-size:76px;font-weight:900;margin:0;line-height:1.1;text-shadow:6px 6px 0 #000}
+.cover .ques{font-size:40px;font-weight:800;margin:18px 0 0;color:var(--mute)}
+.cover .ques b{font-family:var(--pix);font-size:34px;color:var(--gold);text-shadow:4px 4px 0 #000}
+.mascot-wrap{position:relative;width:330px;flex:none;display:flex;flex-direction:column;align-items:center}
+.mascot-wrap svg{width:260px;height:260px;image-rendering:pixelated}
+.bubble{position:absolute;top:-14px;right:-6px;background:var(--ink);color:#1A1440;font-family:var(--pix);font-size:13px;padding:10px 12px;border:4px solid #000;box-shadow:4px 4px 0 #000}
+.chip-name{font-family:var(--pix);font-size:18px;color:var(--npu);margin-top:6px}
+#mEyes{animation:blink 4s steps(1) infinite;transform-origin:8px 7px}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}94%,97%{transform:scaleY(.15)}}
+.map{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;position:relative}
+.map::before{content:"";position:absolute;left:6%;right:6%;top:28px;border-top:4px dashed var(--line)}
+.map li{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.map .nd{width:56px;height:56px;display:grid;place-items:center;background:var(--bg2);border:4px solid var(--npu);font-family:var(--pix);font-size:16px;box-shadow:4px 4px 0 #000}
+.map .boss .nd{border-color:var(--red);font-size:11px;width:70px;color:var(--red)}
+.map .nm{font-size:18px;font-weight:700}
+.map .mn{font-size:15px;color:var(--mute)}
+.press{font-family:var(--pix);font-size:14px;color:var(--gold);text-align:center;margin:0;animation:blinkTxt 1.2s steps(1) infinite}
+@keyframes blinkTxt{50%{opacity:0}}
+/* ---------- stage intro, pop-up, hook card ---------- */
+.intro{position:absolute;left:0;right:0;top:0;bottom:0;z-index:3;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:30px 70px 70px;background-color:var(--bg);background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px}
+.intro.hide{display:none}
+.intro .stg{font-family:var(--pix);font-size:22px;color:#1A1440;background:var(--gold);padding:10px 14px;align-self:flex-start;box-shadow:5px 5px 0 #000;animation:pop .5s steps(5)}
+.intro h2{font-size:60px;font-weight:900;margin:0;line-height:1.15;text-shadow:5px 5px 0 #000}
+.intro .mission{display:flex;gap:16px;align-items:flex-start;border:4px solid var(--gold);background:var(--bg2);padding:16px 20px;box-shadow:6px 6px 0 #000}
+.intro .mission .lab{font-family:var(--pix);font-size:13px;color:var(--gold);flex:none;margin-top:8px}
+.intro .mission p{margin:0;font-size:27px;font-weight:700;line-height:1.5}
+.route{display:flex;flex-wrap:wrap;gap:10px;align-items:center;list-style:none;margin:0;padding:0}
+.route li{font-size:19px;font-weight:700;background:var(--bg3);border:3px solid var(--line);padding:6px 12px;opacity:0;animation:routeIn .3s steps(3) forwards}
+.route li::before{content:attr(data-n);font-family:var(--pix);font-size:11px;color:var(--npu);margin-right:8px}
+.route li.arrow{background:none;border:0;padding:0;color:var(--dim);font-family:var(--pix);font-size:14px}
+.route li.arrow::before{content:none}
+@keyframes routeIn{to{opacity:1}}
+.intro .press{margin-top:6px}
+#pop{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,4,20,.8);z-index:12}
+#pop .popbox{width:900px;max-width:92%;display:flex;flex-direction:column;gap:12px;padding:24px 30px;animation:pop .35s steps(4)}
+#pop h3{margin:0;font-size:32px;font-weight:900;color:var(--gold)}
+.popgrid{display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:start}
+.popgrid ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+.popgrid li{font-size:21px;line-height:1.5}
+/* ---------- feedback round: art, burst, picker, crew, slip ---------- */
+.art{height:86px;background:#0A0826;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.art svg{width:100%;height:100%;display:block}
+.art.sm{height:70px}
+.needle{transform-box:fill-box;transform-origin:50% 100%;animation:needle 2.2s ease-in-out infinite alternate}
+@keyframes needle{from{transform:rotate(-70deg)}to{transform:rotate(70deg)}}
+.blurbg{animation:blurbg 2.4s steps(4) infinite alternate}
+@keyframes blurbg{from{filter:blur(0)}to{filter:blur(4px)}}
+.orbit{animation:orbit 2s steps(8) infinite}
+@keyframes orbit{0%{transform:translate(0,0)}25%{transform:translate(40px,0)}50%{transform:translate(40px,14px)}75%{transform:translate(0,14px)}100%{transform:translate(0,0)}}
+.bounce{animation:bounceback 1.6s steps(8) infinite}
+@keyframes bounceback{0%,100%{transform:translateX(0)}50%{transform:translateX(34px)}}
+.fly{animation:fly 2.6s steps(10) infinite alternate}
+@keyframes fly{from{transform:translate(-14px,3px)}to{transform:translate(14px,-3px)}}
+.bob{animation:bob 1.2s steps(2) infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.blink{animation:blinkTxt .9s steps(1) infinite}
+.blink.d2{animation-delay:.3s}.blink.d3{animation-delay:.6s}
+.shake2{animation:shake2 1.4s steps(4) infinite}
+@keyframes shake2{0%,60%,100%{transform:translateX(0)}70%{transform:translateX(-5px)}80%{transform:translateX(5px)}90%{transform:translateX(-3px)}}
+.unroll{transform-box:fill-box;transform-origin:50% 0;animation:unroll 2.4s steps(8) infinite}
+@keyframes unroll{0%{transform:scaleY(.25)}70%,100%{transform:scaleY(1)}}
+.opts{position:relative}
+.burst{position:absolute;width:10px;height:10px;pointer-events:none;z-index:4;animation:burst .7s steps(7) forwards}
+@keyframes burst{from{transform:translate(0,0);opacity:1}to{transform:translate(var(--dx),var(--dy));opacity:0}}
+#picker{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,4,20,.78);z-index:11}
+#picker .pk{display:flex;flex-direction:column;align-items:center;gap:8px;padding:26px 50px}
+#picker .k{font-family:var(--pix);font-size:14px;color:var(--gold)}
+#pkNum{font-family:var(--pix);font-size:110px;line-height:1.1;color:var(--gold);text-shadow:6px 6px 0 #000}
+#picker .pkt{font-size:28px;font-weight:800}
+#pkMax{font:inherit;font-size:18px;width:70px;padding:4px 6px;background:#000;color:var(--gold);border:3px solid var(--line)}
+.chest{display:flex;align-items:center;gap:14px}
+.chest svg{width:120px;height:96px;flex:none}
+.crew{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin:6px 0}
+.crew svg{width:100%;height:30px;opacity:.35}
+.crew svg.work{opacity:1;animation:hop .18s steps(2) 3}
+@keyframes hop{50%{transform:translateY(-5px)}}
+.model-box{cursor:pointer}
+/* ---------- basic / advanced ---------- */
+.adv{display:none!important}
+#stage.adv-on .adv{display:block!important}
+#stage.adv-on span.adv,#stage.adv-on b.adv{display:inline!important}
+#stage.adv-on .seg > .btn.adv{display:inline-block!important}
+#stage.adv-on .det3 .px.adv{display:flex!important}
+#hudMode{font-size:16px;font-weight:700;color:#1A1440;background:var(--green);border:3px solid var(--green);padding:3px 10px}
+/* ================= unit 4 · week 10 ================= */
+b.a{color:#FF9F43} b.y{color:#E879F9} b.l{color:#FFD23F} b.d{color:#38BDF8} b.p{color:#3BE08F}
+.lvl.acc{background:#FF9F43}.lvl.gyr{background:#E879F9}.lvl.lux{background:#FFD23F}.lvl.lid{background:#38BDF8}
+.chipz{display:flex;flex-wrap:wrap;gap:8px}
+.chipz span{font-size:16px;font-weight:700;padding:4px 10px;border:3px solid var(--line);background:#0C0A2A}
+.chipz span.hi{border-color:var(--gold);color:var(--gold)}
+.chipz span.lit{background:var(--gold);color:#1A1440;border-color:var(--gold)}
+.k2{font-family:var(--pix);font-size:11px;color:var(--npu);letter-spacing:.5px}
+.big3{font-family:var(--pix);font-size:26px;color:var(--gold)}
+.note{font-size:15px;color:var(--dim);margin:0}
+.src{font-size:13px;color:var(--dim);margin:0}
+svg.px8{image-rendering:pixelated}
+/* senses */
+.senses{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.sense{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 10px;text-align:center}
+.sense svg{width:96px;height:72px}
+.sense .hm{font-size:20px;font-weight:800}
+.sense .ar{font-family:var(--pix);font-size:12px;color:var(--dim)}
+.sense .ph{font-size:18px;font-weight:800;color:var(--npu);line-height:1.3}
+.pipe{display:flex;align-items:stretch;gap:0}
+.pipe .pc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 6px;background:var(--bg2);border:4px solid var(--line);text-align:center;font-size:17px;font-weight:700;line-height:1.3}
+.pipe .pc .ic{font-family:var(--pix);font-size:14px;color:var(--gold)}
+.pipe .pa{width:46px;flex:none;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pipe .pa::before{content:"";position:absolute;left:4px;right:4px;top:50%;border-top:4px dashed var(--dim)}
+.pipe .pa i{position:absolute;top:calc(50% - 5px);left:0;width:10px;height:10px;background:var(--gold);animation:flowdot 1.2s linear infinite}
+@keyframes flowdot{from{left:0}to{left:36px}}
+/* sense-decide-act */
+.sda{display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;align-items:stretch}
+.sda .bx{display:flex;flex-direction:column;gap:8px;padding:14px 16px;border-width:5px}
+.sda .bx h3{margin:0;font-size:30px;font-weight:900;display:flex;align-items:center;gap:10px}
+.sda .bx h3 .k2{font-size:12px}
+.sda .bx .v{font-size:21px;font-weight:700;line-height:1.45;min-height:62px}
+.sda .bx.s{border-color:var(--npu)} .sda .bx.d{border-color:var(--gold)} .sda .bx.e{border-color:var(--green)}
+.sda .bx.s h3{color:var(--npu)} .sda .bx.d h3{color:var(--gold)} .sda .bx.e h3{color:var(--green)}
+.sda .arw{display:flex;align-items:center;justify-content:center;font-family:var(--pix);font-size:22px;color:var(--dim)}
+.sda .bx.flash{animation:pop .4s steps(4)}
+.ipo{display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;text-align:center}
+.ipo span{font-size:20px;font-weight:800;padding:8px;border:3px dashed var(--line);color:var(--mute)}
+.ipo i{font-style:normal;font-family:var(--pix);font-size:14px;color:var(--dim);display:flex;align-items:center;justify-content:center}
+.scr{width:150px;height:240px;flex:none;position:relative}
+.scr .glow{position:absolute;left:14px;top:22px;width:122px;height:196px;transition:background .4s}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sorter .px{display:flex;flex-direction:column;gap:10px;padding:14px 16px}
+.sorter h3{margin:0;font-size:22px;color:var(--gold)}
+.it{display:grid;grid-template-columns:1fr 268px;gap:10px;align-items:center;background:#14113F;border:3px solid var(--line);padding:8px 10px}
+.it .tt{font-size:18px;font-weight:700;line-height:1.4}
+.it .seg.opts .btn{font-size:16px;padding:6px 4px}
+.it.done{border-color:var(--green)}
+.it .why{grid-column:1/-1;font-size:15px;margin:0}
+/* phone array */
+.parr{display:grid;grid-template-columns:470px 1fr;gap:20px;flex:1;min-height:0}
+.phones{display:flex;gap:22px;justify-content:center;align-items:flex-start}
+.phones figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.phones figcaption{font-size:16px;font-weight:700;color:var(--mute)}
+.phones svg{width:200px;height:400px}
+.hs{cursor:pointer}
+.hs circle{fill:#0C0A2A;stroke:var(--line);stroke-width:2.5}
+.hs text{fill:var(--ink);font-family:"Press Start 2P",monospace;font-size:8px;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.hs.focus circle{stroke:var(--gold);fill:#3A2E00}
+.hs.on circle{fill:var(--gold);stroke:#000}
+.hs.on text{fill:#1A1440}
+.hs:focus{outline:none}.hs:focus-visible circle{stroke:#fff;stroke-width:3.5}
+.hs .ring{fill:none;stroke:var(--gold);stroke-width:2;opacity:0;animation:ring 1.6s steps(6) infinite}
+.hs.focus .ring{opacity:1}
+@keyframes ring{from{r:7;opacity:.9}to{r:14;opacity:0}}
+.sinfo{display:flex;flex-direction:column;gap:6px;padding:12px 16px;min-height:150px}
+.sinfo h3{margin:0;font-size:25px;font-weight:900;color:var(--gold)}
+.sinfo dl{margin:0;display:grid;grid-template-columns:60px 1fr;gap:4px 10px;font-size:18px;line-height:1.4}
+.sinfo dt{color:var(--mute);font-weight:700}
+.sinfo dd{margin:0;font-weight:700}
+/* self-check and short answer */
+.und{display:flex;align-items:center;gap:10px;padding:8px 12px;border-width:3px;flex:none;flex-wrap:wrap}
+.und .ul{font-size:17px;font-weight:800;color:var(--gold)}
+.und .btn{font-size:16px;padding:5px 12px}
+.und .btn.picked{background:var(--gold);color:#1A1440;border-color:var(--gold)}
+.und .ucnt{display:flex;gap:6px;align-items:center;font-size:15px;font-weight:700;flex-basis:100%}
+.und .ubar{display:flex;width:150px;height:16px;background:#000;border:2px solid var(--line)}
+.und .ubar i{display:block;height:100%}
+.und .ubar .g{background:var(--green)} .und .ubar .r{background:var(--red)}
+.sa{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-width:3px}
+.sa .qt{font-size:18px;margin:0}
+.sa .sarow{display:flex;gap:8px}
+.sa textarea,.ta{font:inherit;font-size:18px;padding:6px 8px;background:#000;color:var(--ink);border:3px solid var(--line);resize:none;width:100%;box-sizing:border-box}
+.sa textarea:focus,.ta:focus{outline:none;border-color:var(--gold)}
+.sa .sent{font-size:15px;color:var(--green);font-weight:700;margin:0;min-height:20px}
+.wall{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;overflow:auto}
+.wall .card{background:#F7F5FF;color:#1A1440;border:3px solid #000;padding:5px 10px;font-size:17px;font-weight:700;max-width:100%;animation:pop .35s steps(4)}
+.wall .card small{font-family:var(--pix);font-size:9px;color:#5B5591;margin-right:6px}
+.wall .empty{font-size:16px;color:var(--dim)}
+/* accelerometer */
+.bus{height:118px;position:relative;background:#0A0826;border:3px solid var(--line);overflow:hidden}
+.bus svg{width:100%;height:100%}
+.pax{transform-box:fill-box;transform-origin:50% 100%;transition:transform .35s steps(4)}
+.bus.brake .pax{transform:rotate(22deg)}
+.busbody{transition:transform .6s steps(6)}
+.bus.brake .busbody{transform:translateX(30px)}
+.mems{background:#0A0826;border:3px solid var(--line);height:230px;position:relative}
+.mems svg{width:100%;height:100%}
+#mMass{transition:transform .5s steps(5)}
+#mFrame{transition:transform .5s steps(5)}
+.meter{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700}
+.meter .mb{flex:1;height:18px;background:#000;border:3px solid var(--line);position:relative}
+.meter .mb i{position:absolute;top:0;bottom:0;left:50%;background:var(--cpu);transition:all .5s steps(5)}
+.meter .mb::after{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;border-left:2px solid var(--ink)}
+.axes{display:flex;flex-direction:column;gap:10px}
+.axis{display:grid;grid-template-columns:44px 1fr 120px;gap:10px;align-items:center;font-weight:800}
+.axis .an{font-family:var(--pix);font-size:16px}
+.axis .ab{height:22px;background:#000;border:3px solid var(--line)}
+.axis .ab i{display:block;height:100%;transition:width .4s steps(6)}
+.axis .av{font-family:var(--lab);font-size:15px;text-align:right;white-space:nowrap}
+.axis.x .an{color:#FF4D5E}.axis.x .ab i{background:#FF4D5E}
+.axis.y .an{color:#3BE08F}.axis.y .ab i{background:#3BE08F}
+.axis.z .an{color:#38BDF8}.axis.z .ab i{background:#38BDF8}
+.tilt{width:300px;height:300px;flex:none;position:relative;background:#0A0826;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;perspective:700px}
+.tilt .ph{transition:transform .5s steps(6);transform-style:preserve-3d}
+.tilt .gv{position:absolute;right:10px;top:10px;font-size:14px;color:var(--mute);text-align:center;line-height:1.3}
+.tilt .gv b{display:block;font-family:var(--pix);font-size:18px;color:var(--gold)}
+.ori{font-size:19px;font-weight:800}
+canvas.cv{display:block;width:100%;background:#0A0826;border:3px solid var(--line)}
+.sliderrow{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:700}
+.sliderrow input[type=range]{flex:1;accent-color:var(--gold);height:24px}
+.stat2{display:flex;gap:18px}
+.stat2 div{display:flex;flex-direction:column;font-size:15px;color:var(--mute);font-weight:700}
+.stat2 b{font-family:var(--pix);font-size:24px;color:var(--gold);margin-top:4px}
+/* gyroscope */
+.gyrobox{width:340px;height:300px;flex:none;background:#0A0826;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;perspective:700px;position:relative}
+.gyrobox .ph{transform-style:preserve-3d;transition:transform 1s linear}
+.gyrobox .axl{position:absolute;left:10px;bottom:8px;font-family:var(--pix);font-size:10px;color:var(--dim)}
+.gauge{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 16px}
+.gauge .gv{font-family:var(--pix);font-size:34px;color:var(--gpu)}
+.gauge .gu{font-size:16px;color:var(--mute);font-weight:700}
+.gauge .gt{font-size:18px;font-weight:800;min-height:26px;text-align:center}
+.cmp{width:100%;border-collapse:collapse;font-size:19px}
+.cmp th,.cmp td{border:3px solid var(--line);padding:8px 12px;text-align:left;line-height:1.35}
+.cmp th{background:#0C0A2A;color:var(--mute);font-size:17px}
+.cmp td:first-child{color:var(--mute);font-weight:700;width:150px}
+.cmp .ca{color:#FF9F43;font-weight:800}.cmp .cg{color:#E879F9;font-weight:800}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:15px;font-weight:700}
+.leg span::before{content:"";display:inline-block;width:14px;height:6px;margin-right:6px;vertical-align:middle;background:var(--c)}
+/* light */
+.luxscale{position:relative;height:74px;margin:0 6px}
+.luxscale .tick.lo{top:30px}
+.luxscale .tick.lo::before{height:40px;margin-top:-30px}
+.luxscale .tick{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;font-size:13px;font-weight:700;color:var(--mute);white-space:nowrap;line-height:1.25}
+.luxscale .tick::before{content:"";width:3px;height:10px;background:var(--dim);margin-bottom:3px}
+.luxval{font-family:var(--pix);font-size:28px;color:var(--gold)}
+.lightbox{display:flex;gap:16px;align-items:center}
+.room{width:260px;height:200px;flex:none;border:3px solid var(--line);position:relative;overflow:hidden;transition:background .4s}
+.room svg{width:100%;height:100%}
+.pd{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700}
+.pd>span:first-child{width:140px;flex:none}
+.pd .cur{flex:1;height:14px;background:#000;border:3px solid var(--line)}
+.pd .cur i{display:block;height:100%;background:var(--gold);transition:width .4s}
+.prox{background:#0A0826;border:3px solid var(--line);height:150px;position:relative;overflow:hidden}
+.prox svg{width:100%;height:100%}
+/* lidar */
+.tof{background:#0A0826;border:3px solid var(--line);height:190px;position:relative}
+.tof svg{width:100%;height:100%}
+.formula{font-size:26px;font-weight:900;text-align:center;padding:12px;border:4px solid var(--gold);background:#0C0A2A}
+.formula small{display:block;font-size:16px;color:var(--mute);font-weight:700;margin-top:4px}
+.steps3{display:flex;flex-direction:column;gap:10px}
+.steps3 .s3{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;background:var(--bg2);border:3px solid var(--line);padding:8px 12px;font-size:20px;font-weight:700;line-height:1.4}
+.steps3 .s3 .n{font-family:var(--pix);font-size:16px;color:var(--npu);text-align:center}
+.steps3 .s3.ans{border-color:var(--gold)}
+.depth{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.depth figure{margin:0;display:flex;flex-direction:column;gap:6px}
+.depth figcaption{font-size:16px;font-weight:800;color:var(--mute)}
+.depth svg{width:100%;height:210px;border:3px solid var(--line);background:#0A0826;display:block}
+.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.uses div{background:var(--bg2);border:3px solid var(--line);padding:8px 10px;font-size:16px;font-weight:700;line-height:1.35}
+.uses div b{display:block;font-size:18px;color:var(--npu)}
+/* cooperation */
+.coop{display:grid;grid-template-columns:300px 1fr;gap:18px}
+.coop .fn{display:flex;flex-direction:column;gap:10px}
+.coop .fn .btn{text-align:left;font-size:19px}
+.coop .why2{font-size:19px;line-height:1.55;margin:0;min-height:84px}
+.sumlist{display:flex;flex-direction:column;gap:12px}
+.sumlist .px{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:center;padding:12px 16px}
+.sumlist .px .n{font-family:var(--pix);font-size:22px;color:var(--gold);text-align:center}
+.sumlist .px p{margin:0;font-size:22px;font-weight:800;line-height:1.45}
+.bdgrow{display:flex;gap:14px;align-items:flex-end}
+.bdgrow figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:4px}
+.bdgrow figcaption{font-size:13px;color:var(--mute);font-weight:700}
+.bdgrow .bdg{width:52px;height:52px;font-size:14px}
+/* ---------- task (堂課) ---------- */
+.gate{display:grid;grid-template-columns:1fr 430px;gap:20px;flex:1;min-height:0}
+.gate ol{margin:0;padding-left:26px;display:flex;flex-direction:column;gap:8px;font-size:21px;font-weight:700;line-height:1.45}
+.gstat{display:flex;flex-direction:column;gap:12px;padding:18px 20px}
+.gstat .gs{font-size:26px;font-weight:900}
+.gstat .gs.lock{color:var(--red)} .gstat .gs.open{color:var(--green)}
+.codein{display:flex;gap:8px;align-items:center}
+.codein .inp{width:130px;font-size:22px;letter-spacing:4px;text-align:center}
+.tcode{font-family:var(--pix);font-size:40px;color:var(--gold);letter-spacing:6px}
+.tk{display:flex;flex-direction:column;gap:6px;background:#14113F;border:3px solid var(--line);padding:8px 10px}
+.tk .tq{font-size:18px;font-weight:700;line-height:1.4;display:flex;gap:8px}
+.tk .tq .no{font-family:var(--pix);font-size:11px;color:var(--npu);flex:none;margin-top:5px}
+.tk .tops{display:flex;gap:6px;flex-wrap:wrap}
+.tk .tops .btn{font-size:16px;padding:5px 8px;flex:1;min-width:0}
+.tk .tops .btn.sel{background:var(--gold);color:#1A1440;border-color:var(--gold)}
+.tk.ans{border-color:var(--npu)}
+#stage.show-live .tk .tops .btn.key{outline:3px solid var(--green);outline-offset:-6px}
+.tk .tops .btn .lc{display:none;font-family:var(--pix);font-size:10px;color:var(--gold);margin-left:4px}
+.tgrid{display:grid;gap:10px}
+.tgrid.c2{grid-template-columns:1fr 1fr}
+.tgrid.rowk .tk{flex-direction:row;align-items:center;gap:12px}
+.tgrid.rowk .tq{flex:1}
+.tgrid.rowk .tops{width:420px;flex:none}
+.tsec{font-size:15px;color:var(--mute);margin:0}
+.tlocked .tbody{filter:blur(7px);pointer-events:none;user-select:none}
+.lockmsg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;font-size:28px;font-weight:900;color:var(--red);background:#000;border:4px solid var(--red);padding:16px 24px;display:none}
+.tlocked .lockmsg{display:block}
+.tbody{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+.dbox{display:flex;flex-direction:column;gap:6px}
+.dbox label{font-size:17px;font-weight:800;color:var(--gold)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.cnt{font-size:13px;color:var(--dim);text-align:right;margin:0}
+.review{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.review .rv{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:700;background:#14113F;border:3px solid var(--line);padding:5px 8px}
+.review .rv b{font-family:var(--pix);font-size:10px;color:var(--npu)}
+.review .rv.miss{border-color:var(--red);color:var(--red)}
+.subcard{display:flex;flex-direction:column;gap:8px;padding:14px 18px;border-width:6px}
+.subcard .who{display:flex;gap:20px;font-size:22px;font-weight:800;border-bottom:3px dashed var(--line);padding-bottom:8px;align-items:baseline}
+.subcard .who b{color:var(--gold)}
+.subcard .who .stime{margin-left:auto;font-family:var(--pix);font-size:11px;color:var(--mute)}
+.subcard .ansl{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:15px;font-weight:700}
+.subcard .ansl span{background:#14113F;border:2px solid var(--line);padding:3px 6px}
+.subcard .ansl span b{font-family:var(--pix);font-size:9px;color:var(--npu);margin-right:4px}
+.subcard .dtx{font-size:15px;line-height:1.45;color:var(--ink);margin:0;max-height:120px;overflow:hidden}
+/* ---------- live (teacher + student) ---------- */
+#liveDot{font-size:14px;font-weight:800;padding:3px 9px;border:3px solid var(--dim);color:var(--dim);cursor:pointer;background:none;font-family:inherit}
+#liveDot.on{border-color:var(--green);color:var(--green)}
+#liveDot.err{border-color:var(--red);color:var(--red)}
+.opts .btn{position:relative;overflow:hidden}
+.opts .btn .lc{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:var(--pix);font-size:11px;color:var(--gold);background:#000;padding:3px 5px;display:none}
+.opts .btn .lf{position:absolute;left:0;top:0;bottom:0;background:rgba(56,189,248,.28);width:0;transition:width .4s;pointer-events:none;display:none}
+#stage.show-live .opts .btn .lc,#stage.show-live .opts .btn .lf{display:block}
+#stage.show-live .tk .tops .btn .lc{display:inline}
+.livebar{display:none;font-size:14px;font-weight:800;color:var(--npu);margin:0}
+#stage.show-live .livebar{display:block}
+#liveM{position:absolute;inset:0;background:rgba(6,5,24,.9);z-index:31;display:flex;align-items:center;justify-content:center}
+#liveM[hidden]{display:none}
+#liveM .px{width:620px;display:flex;flex-direction:column;gap:12px;padding:22px 26px}
+#liveM h3{margin:0;font-size:28px;color:var(--gold)}
+#liveM .fld{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center}
+#liveM label{font-size:19px;font-weight:700}
+.inp{font:inherit;font-size:19px;padding:7px 10px;background:#000;color:var(--ink);border:3px solid var(--line);width:100%;box-sizing:border-box}
+.inp:focus{outline:none;border-color:var(--gold)}
+.err{color:var(--red);font-size:16px;font-weight:700;min-height:20px;margin:0}
+.okmsg{color:var(--green);font-size:17px;font-weight:700;margin:0}
+#dash{position:absolute;inset:0;background:#0A0820;z-index:29;display:flex;flex-direction:column;padding:14px 20px 16px;gap:10px}
+#dash[hidden]{display:none}
+#dash .dh{display:flex;align-items:center;gap:14px}
+#dash .dh h3{margin:0;font-size:24px;color:var(--gold)}
+#dash .dtabs{display:flex;gap:6px}
+#dash .dtabs .btn{font-size:16px;padding:5px 12px}
+#dash .dsum{font-size:16px;font-weight:700;color:var(--mute)}
+#dash .dx{margin-left:auto;display:flex;gap:8px}
+#dash .dbody{flex:1;min-height:0;overflow:auto}
+.stiles{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.st{background:var(--bg2);border:3px solid var(--line);padding:6px 8px;display:flex;flex-direction:column;gap:3px;font-size:14px;font-weight:700;position:relative}
+.st .sn{font-size:17px;font-weight:900}
+.st .sn b{font-family:var(--pix);font-size:12px;color:var(--npu);margin-right:6px}
+.st .sl{color:var(--mute)}
+.st .on2{position:absolute;right:6px;top:7px;width:10px;height:10px;background:var(--dim)}
+.st.online .on2{background:var(--green)}
+.st.sub{border-color:var(--green)}
+.st .bar{height:6px;background:#000}
+.st .bar i{display:block;height:100%;background:var(--gold)}
+.qtab{width:100%;border-collapse:collapse;font-size:15px}
+.qtab th,.qtab td{border:2px solid var(--line);padding:5px 8px;text-align:left}
+.qtab th{background:#0C0A2A;color:var(--mute)}
+.qtab td.r{text-align:right;font-family:var(--lab)}
+.qtab tr.low td{background:#3A0F1A}
+.qtab .rate{display:inline-block;height:10px;background:var(--green);vertical-align:middle;margin-right:6px}
+.qtab a{color:var(--npu);cursor:pointer;text-decoration:underline}
+.dctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.danger{border-color:var(--red)!important;color:var(--red)}
+.tshow{display:none}
+#stage.teacher .tshow{display:flex}
+#stage.teacher .sonly{display:none!important}
+#stage:not(.teacher) .tonly{display:none!important}
+
+/* student identity */
+#hudStu{font-size:15px;font-weight:700;color:var(--gold);border:3px solid var(--gold);padding:3px 10px;cursor:pointer;background:none;font-family:inherit}
+#stuId{position:absolute;inset:0;background:rgba(6,5,24,.9);z-index:40;display:flex;align-items:center;justify-content:center}
+#stuId[hidden]{display:none}
+#stuId .px{width:600px;display:flex;flex-direction:column;gap:14px;padding:26px 30px}
+#stuId h3{margin:0;font-size:30px;color:var(--gold)}
+.fld{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center}
+.fld label{font-size:20px;font-weight:700}
+
+#navL{position:absolute;left:18px;bottom:12px;display:flex;align-items:center;gap:8px;z-index:6}
+#navL .btn{font-size:14px;padding:5px 9px;box-shadow:0 3px 0 var(--edge)}
+#navL .btn.on{background:var(--gold);color:#1A1440}
+.chipz.sm span{font-size:14px;padding:2px 8px}
+
+.qtab.tq th,.qtab.tq td{white-space:nowrap;padding:4px 6px;font-size:14px}
+.qtab.tq td.r{font-family:var(--zh);font-weight:700}
+.qtab.tq td.tx{white-space:normal;min-width:180px;max-width:240px}
+.qtab.tq td.tx div{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;line-height:1.35}
+.sa .sarow .btn{flex:none;white-space:nowrap}
+#hudHome{font-family:var(--zh);font-size:15px;font-weight:800;color:var(--ink);text-decoration:none;border:3px solid var(--line);padding:3px 10px;background:var(--bg3);white-space:nowrap}#hudHome:hover,#hudHome:focus-visible{border-color:var(--gold);outline:none}
+
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div id="hud">
+    <div class="hud-l"><a id="hudHome" href="./" title="返回課程主頁">⌂ 主頁</a><span id="hudStage">START</span><span id="hudName">手機傳感器陣列</span></div>
+    <div class="hud-r"><span class="xp-lbl">XP</span><div class="xpbar"><i id="xpFill"></i></div><span id="xpNum">0</span><span id="hudBadges">徽章 0/5</span><span id="hudMode">基礎</span></div>
+  </div>
+  <!-- P1 COVER -->
+  <section class="slide cover" data-id="cover" data-stage="0">
+    <div class="cover-top"><span class="tag">高二電腦 · 單元四 · 第十週</span><span class="tag">感知與執行</span><span class="tag">5 關任務 ＋ 堂課</span></div>
+    <div class="cover-main">
+      <div>
+        <p class="pre">NEW GAME</p>
+        <h1>手機傳感器陣列</h1>
+        <p class="ques">手機怎樣<b>感覺</b>到世界？</p>
+      </div>
+      <div class="mascot-wrap">
+        <span class="bubble">I CAN FEEL!</span>
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-label="手機角色">
+          <rect x="4" y="1" width="8" height="14" fill="#000"/><rect x="5" y="2" width="6" height="12" fill="#1A1440"/>
+          <rect x="5" y="3" width="6" height="9" fill="#38BDF8"/><rect x="5" y="3" width="6" height="1" fill="#8ADCFF"/>
+          <rect x="6" y="5" width="1" height="2" fill="#fff"/><rect x="9" y="5" width="1" height="2" fill="#fff"/>
+          <rect x="6" y="9" width="4" height="1" fill="#1A1440"/><rect x="6" y="8" width="1" height="1" fill="#1A1440"/><rect x="9" y="8" width="1" height="1" fill="#1A1440"/>
+          <rect x="7" y="2" width="1" height="1" fill="#FFD23F" class="blink"/><rect x="9" y="2" width="1" height="1" fill="#3BE08F" class="blink d2"/>
+          <rect x="7" y="13" width="2" height="1" fill="#4B44A8"/>
+          <rect x="1" y="4" width="2" height="1" fill="#FFD23F" class="blink d3"/><rect x="0" y="6" width="2" height="1" fill="#FFD23F" class="blink"/>
+          <rect x="13" y="4" width="2" height="1" fill="#E879F9" class="blink d2"/><rect x="14" y="6" width="2" height="1" fill="#E879F9" class="blink d3"/>
+        </svg>
+        <span class="chip-name">SENSORS</span>
+      </div>
+    </div>
+    <ol class="map">
+      <li><span class="nd">1</span><span class="nm">感知・決策・執行</span></li>
+      <li><span class="nd">2</span><span class="nm">加速度計</span></li>
+      <li><span class="nd">3</span><span class="nm">陀螺儀</span></li>
+      <li><span class="nd">4</span><span class="nm">環境光</span></li>
+      <li><span class="nd">5</span><span class="nm">LiDAR</span></li>
+      <li class="boss"><span class="nd">BOSS</span><span class="nm">堂課</span></li>
+    </ol>
+    <p class="press">PRESS → START</p>
+  </section>
+
+  <!-- P2 REVIEW -->
+  <section class="slide" data-id="review" data-intro="1" data-stage="1">
+    <div class="intro"><span class="stg">STAGE 1</span><h2>感知・決策・執行</h2><div class="mission"><span class="lab">MISSION</span><p>先熱身重溫上一課，再認識手機怎樣「感知」世界，以及信息系統「感知—決策—執行」的運作模式。</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">重溫上一課</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">人有五感</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">感知決策執行</li><li class="arrow">▶</li><li data-n="4" style="animation-delay:.51s">手機傳感器陣列</li></ol><p class="press">PRESS → START</p></div>
+    <h2 class="t"><span class="lvl">1-1</span>熱身：重溫上一課 AI PC</h2>
+    <p class="sub">每題只計第一次作答。老師畫面會即時看到全班的選擇。</p>
+    <div class="qgrid c3">
+      <div class="q px ch" data-ans="1">
+        <p class="qt">Copilot+ PC 對 NPU 的要求是多少？</p>
+        <div class="opts"><button class="btn">10+ TOPS</button><button class="btn">40+ TOPS</button><button class="btn">80+ TOPS</button><button class="btn">400+ TOPS</button></div>
+        <p class="why">Copilot+ PC 要求 NPU 達到 40+ TOPS（每秒 40 萬億次運算以上）。</p>
+      </div>
+      <div class="q px ch" data-ans="0">
+        <p class="qt">7B 模型用 4 bit 儲存，權重大約佔多少記憶體？</p>
+        <div class="opts"><button class="btn">約 3.5 GB</button><button class="btn">約 7 GB</button><button class="btn">約 14 GB</button><button class="btn">約 28 GB</button></div>
+        <p class="why">速算：4 bit → 參數數目 ÷ 2，7 ÷ 2 = 3.5 GB。</p>
+      </div>
+      <div class="q px ch" data-ans="2">
+        <p class="qt">本地 AI 逐字生成時，出字速度主要受甚麼限制？</p>
+        <div class="opts"><button class="btn">硬碟容量</button><button class="btn">螢幕大小</button><button class="btn">記憶體頻寬</button><button class="btn">網絡速度</button></div>
+        <p class="why">每出一個字都要讀一次全部權重，所以看記憶體「走廊」有多闊（頻寬）。</p>
+      </div>
+    </div>
+    <p class="foot">上一課：TOPS = Trillion Operations Per Second，每秒萬億次運算。</p>
+  </section>
+
+  <!-- P3 SENSES -->
+  <section class="slide" data-id="senses" data-stage="1" data-steps="2">
+    <h2 class="t"><span class="lvl">1-2</span>人有五感，手機有傳感器</h2>
+    <div class="senses">
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="16" height="6" fill="#F6F4FF"/><rect x="6" y="4" width="12" height="2" fill="#F6F4FF"/><rect x="6" y="12" width="12" height="2" fill="#F6F4FF"/><rect x="10" y="6" width="4" height="6" fill="#38BDF8"/><rect x="11" y="8" width="2" height="2" fill="#000"/></svg><span class="hm">眼睛</span><span class="ar">▼</span><span class="ph">鏡頭<br>環境光傳感器</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="9" y="2" width="6" height="2" fill="#FFD9B0"/><rect x="7" y="4" width="2" height="8" fill="#FFD9B0"/><rect x="15" y="4" width="2" height="6" fill="#FFD9B0"/><rect x="13" y="10" width="2" height="4" fill="#FFD9B0"/><rect x="9" y="12" width="4" height="2" fill="#FFD9B0"/><rect x="11" y="6" width="2" height="4" fill="#C9906A"/><rect x="18" y="5" width="1" height="1" fill="#FFD23F" class="blink"/><rect x="20" y="7" width="1" height="3" fill="#FFD23F" class="blink d2"/></svg><span class="hm">耳朵</span><span class="ar">▼</span><span class="ph">咪高峰</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><g class="shake2"><rect x="11" y="1" width="3" height="3" fill="#FFD9B0"/><rect x="10" y="4" width="5" height="6" fill="#E879F9"/><rect x="4" y="5" width="6" height="2" fill="#FFD9B0"/><rect x="15" y="5" width="6" height="2" fill="#FFD9B0"/><rect x="11" y="10" width="2" height="6" fill="#4B44A8"/><rect x="13" y="10" width="3" height="2" fill="#4B44A8"/></g><rect x="2" y="16" width="20" height="2" fill="#8C85C9"/></svg><span class="hm">內耳平衡</span><span class="ar">▼</span><span class="ph">加速度計<br>陀螺儀</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="8" y="2" width="2" height="8" fill="#FFD9B0"/><rect x="10" y="6" width="8" height="8" fill="#FFD9B0"/><rect x="8" y="10" width="2" height="4" fill="#FFD9B0"/><rect x="11" y="4" width="2" height="2" fill="#FFD9B0"/><rect x="14" y="4" width="2" height="2" fill="#FFD9B0"/><rect x="2" y="15" width="20" height="2" fill="#38BDF8"/><rect x="8" y="1" width="2" height="1" fill="#3BE08F" class="blink"/></svg><span class="hm">皮膚觸覺</span><span class="ar">▼</span><span class="ph">觸控屏<br>指紋傳感器</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><g class="fly"><rect x="9" y="6" width="5" height="5" fill="#8C85C9"/><rect x="3" y="5" width="6" height="2" fill="#8C85C9"/><rect x="14" y="5" width="6" height="2" fill="#8C85C9"/><rect x="2" y="7" width="3" height="2" fill="#8C85C9"/><rect x="18" y="7" width="3" height="2" fill="#8C85C9"/><rect x="10" y="7" width="1" height="1" fill="#FFD23F"/><rect x="12" y="7" width="1" height="1" fill="#FFD23F"/></g><rect x="1" y="14" width="2" height="2" fill="#38BDF8" class="blink"/><rect x="5" y="14" width="2" height="2" fill="#38BDF8" class="blink d2"/><rect x="9" y="14" width="2" height="2" fill="#38BDF8" class="blink d3"/></svg><span class="hm">蝙蝠回聲定位</span><span class="ar">▼</span><span class="ph">LiDAR<br>（用光，不用聲）</span></div>
+    </div>
+    <div class="px gold f" data-f="1"><p class="lead"><b class="g">傳感器（感測器）</b>：把光、動作、距離等<b class="g">物理量</b>，轉成<b class="g">電子訊號</b>，再變成電腦可以處理的<b class="g">數據</b>。</p></div>
+    <div class="pipe f" data-f="2">
+      <div class="pc"><span class="ic">LIGHT · MOVE</span>物理量<br>光、動作、距離</div><div class="pa"><i></i></div>
+      <div class="pc"><span class="ic">SENSOR</span>傳感器</div><div class="pa"><i></i></div>
+      <div class="pc"><span class="ic">~~~</span>電子訊號<br>（電壓、電流）</div><div class="pa"><i></i></div>
+      <div class="pc"><span class="ic">0101</span>轉成數字數據</div><div class="pa"><i></i></div>
+      <div class="pc"><span class="ic">CPU · APP</span>處理器和 App<br>使用數據</div>
+    </div>
+  </section>
+
+  <!-- P4 SENSE-DECIDE-ACT -->
+  <section class="slide" data-id="sda" data-stage="1" data-steps="2" data-hook="sda">
+    <h2 class="t"><span class="lvl">1-3</span>感知 → 決策 → 執行：自動調光</h2>
+    <div class="row grow" style="gap:20px;align-items:stretch">
+      <div class="col" style="width:190px;flex:none;align-items:center">
+        <div class="seg" id="sdaEnv" style="flex-direction:column;width:100%"><button class="btn" data-v="sun">☀ 陽光下</button><button class="btn on" data-v="room">課室</button><button class="btn" data-v="dark">黑房</button></div>
+        <div class="scr"><svg viewBox="0 0 150 240" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="4" width="138" height="232" fill="#1A1440" stroke="#000" stroke-width="6"/><rect x="58" y="10" width="34" height="5" fill="#000"/><rect x="40" y="10" width="6" height="5" fill="#FFD23F"/></svg><div class="glow" id="sdaGlow"></div></div>
+      </div>
+      <div class="col grow" style="gap:14px">
+        <div class="sda">
+          <div class="px bx s f" data-f="1"><h3>感知<span class="k2">SENSE</span></h3><p class="v" id="sdaS"></p></div><div class="arw f" data-f="1">▶</div>
+          <div class="px bx d f" data-f="1"><h3>決策<span class="k2">DECIDE</span></h3><p class="v" id="sdaD"></p></div><div class="arw f" data-f="1">▶</div>
+          <div class="px bx e f" data-f="1"><h3>執行<span class="k2">ACT</span></h3><p class="v" id="sdaE"></p></div>
+        </div>
+        <p class="body f" data-f="1">按左邊的掣，改變環境：手機<b class="g">不停重複</b>這三步，環境一變，結果就跟着變。</p>
+        <div class="px f" data-f="2" style="display:flex;flex-direction:column;gap:10px">
+          <p class="lead">信息系統的角度：這就是 <b class="g">輸入 → 處理 → 輸出</b></p>
+          <div class="ipo"><span>輸入（傳感器數據）</span><i>▶</i><span>處理（程式判斷）</span><i>▶</i><span>輸出（控制硬件）</span></div>
+          <p class="small">感知靠<b class="g">傳感器</b>，決策靠<b class="g">處理器和程式</b>，執行靠<b class="g">執行器</b>（例如螢幕背光、馬達、喇叭）。下一課會詳細講執行器。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P5 SDA PRACTICE -->
+  <section class="slide" data-id="sdaq" data-stage="1">
+    <h2 class="t"><span class="lvl">1-4</span>練習：這一步是感知、決策，還是執行？</h2>
+    <div class="sorter" data-badge="s1">
+      <div class="px">
+        <h3>情境 A：通話時，手機貼近耳邊自動熄屏</h3>
+        <div class="it ch" data-ans="感知"><span class="tt">距離傳感器發出紅外線，發現有物件很近</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">傳感器收集環境資料 → 感知。</p></div>
+        <div class="it ch" data-ans="決策"><span class="tt">系統判斷：正在通話，而且手機貼着面部</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">程式根據數據作判斷 → 決策。</p></div>
+        <div class="it ch" data-ans="執行"><span class="tt">關閉螢幕顯示和觸控，避免面部誤按</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">真正改變硬件狀態 → 執行。</p></div>
+      </div>
+      <div class="px">
+        <h3>情境 B：撞車偵測，自動致電求救</h3>
+        <div class="it ch" data-ans="決策"><span class="tt">系統確認是撞車，不是手機跌落地上</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">比較多個數據後作出判斷 → 決策。</p></div>
+        <div class="it ch" data-ans="執行"><span class="tt">自動撥打緊急電話，並發送所在位置</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">產生實際行動 → 執行。</p></div>
+        <div class="it ch" data-ans="感知"><span class="tt">加速度計量到極大的撞擊力</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">量度撞擊 → 感知。</p></div>
+      </div>
+    </div>
+    <p class="foot">情境 B 的次序故意打亂了：先想清楚哪一步先發生。</p>
+  </section>
+
+  <!-- P6 ARRAY -->
+  <section class="slide" data-id="array" data-stage="1" data-hook="array">
+    <h2 class="t"><span class="lvl">1-5</span>手機傳感器陣列：點擊每個號碼</h2>
+    <div class="parr">
+      <div class="phones">
+        <figure><svg viewBox="0 0 100 200" shape-rendering="crispEdges" aria-label="手機正面"><rect x="6" y="2" width="88" height="196" fill="#1A1440" stroke="#000" stroke-width="4"/><rect x="12" y="18" width="76" height="164" fill="#2A2670"/><rect x="12" y="18" width="76" height="6" fill="#4B44A8"/><rect x="40" y="8" width="20" height="3" fill="#000"/>
+          <g class="hs focus" data-k="1" tabindex="0" role="button" aria-label="1 環境光傳感器"><circle class="ring" cx="24" cy="10" r="7"/><circle cx="24" cy="10" r="7"/><text x="24" y="10.5">1</text></g>
+          <g class="hs" data-k="2" tabindex="0" role="button" aria-label="2 距離傳感器"><circle cx="76" cy="10" r="7"/><text x="76" y="10.5">2</text></g>
+          <g class="hs" data-k="3" tabindex="0" role="button" aria-label="3 前鏡頭"><circle cx="50" cy="30" r="7"/><text x="50" y="30.5">3</text></g>
+          <g class="hs" data-k="4" tabindex="0" role="button" aria-label="4 觸控屏"><circle cx="50" cy="110" r="7"/><text x="50" y="110.5">4</text></g>
+          <g class="hs" data-k="5" tabindex="0" role="button" aria-label="5 咪高峰"><circle cx="50" cy="190" r="7"/><text x="50" y="190.5">5</text></g>
+        </svg><figcaption>正面</figcaption></figure>
+        <figure><svg viewBox="0 0 100 200" shape-rendering="crispEdges" aria-label="手機背面和內部"><rect x="6" y="2" width="88" height="196" fill="#1A1440" stroke="#000" stroke-width="4"/><rect x="12" y="8" width="46" height="46" fill="#0C0A2A" stroke="#4B44A8" stroke-width="2"/><rect x="18" y="80" width="64" height="104" fill="none" stroke="#8C85C9" stroke-width="1.5" stroke-dasharray="3 3"/><text x="50" y="76" fill="#BDB7EC" font-size="7" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">機身內部</text>
+          <g class="hs" data-k="6" tabindex="0" role="button" aria-label="6 主鏡頭"><circle cx="24" cy="20" r="7"/><text x="24" y="20.5">6</text></g>
+          <g class="hs focus" data-k="7" tabindex="0" role="button" aria-label="7 LiDAR"><circle class="ring" cx="46" cy="42" r="7"/><circle cx="46" cy="42" r="7"/><text x="46" y="42.5">7</text></g>
+          <g class="hs focus" data-k="8" tabindex="0" role="button" aria-label="8 加速度計"><circle class="ring" cx="34" cy="98" r="7"/><circle cx="34" cy="98" r="7"/><text x="34" y="98.5">8</text></g>
+          <g class="hs focus" data-k="9" tabindex="0" role="button" aria-label="9 陀螺儀"><circle class="ring" cx="66" cy="98" r="7"/><circle cx="66" cy="98" r="7"/><text x="66" y="98.5">9</text></g>
+          <g class="hs" data-k="10" tabindex="0" role="button" aria-label="10 磁力計"><circle cx="34" cy="132" r="7"/><text x="34" y="132.5">10</text></g>
+          <g class="hs" data-k="11" tabindex="0" role="button" aria-label="11 氣壓計"><circle cx="66" cy="132" r="7"/><text x="66" y="132.5">11</text></g>
+          <g class="hs" data-k="12" tabindex="0" role="button" aria-label="12 定位接收器"><circle cx="50" cy="166" r="7"/><text x="50" y="166.5">12</text></g>
+        </svg><figcaption>背面和內部</figcaption></figure>
+      </div>
+      <div class="col" style="gap:10px;min-height:0">
+        <div class="px gold sinfo" id="sInfo"></div>
+        <p class="small">金色號碼 = 本課重點。很多傳感器放在一起、互相配合，就叫<b class="g">傳感器陣列</b>。例如 iPhone 17 Pro 官方規格列出：<span class="chipz sm" style="display:inline-flex;margin-top:4px"><span>Face ID</span><span>LiDAR 掃描儀</span><span>氣壓計</span><span>陀螺儀</span><span>高 g 加速度計</span><span>距離感應器</span><span>雙環境光感應器</span></span></p>
+        <div class="px sa" data-sa="fav"><p class="qt">寫出一個你每天都用、而且要靠傳感器的手機功能（10 字內）</p><div class="sarow"><textarea rows="1" maxlength="20" class="sonly"></textarea><button class="btn sm on sonly">提交</button></div><p class="sent sonly"></p><div class="wall tonly"></div></div>
+        <div class="px und" data-sec="1"><span class="ul">第 1 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P7 ACCELEROMETER PRINCIPLE -->
+  <section class="slide" data-id="acc" data-intro="1" data-stage="2" data-steps="1" data-hook="acc">
+    <div class="intro"><span class="stg">STAGE 2</span><h2>加速度計</h2><div class="mission"><span class="lab">MISSION</span><p>手機怎樣知道自己被推、被搖、跌落？又怎樣知道「哪一邊是下」？</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">巴士急剎</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">重力也有讀數</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">計步器</li></ol><p class="press">PRESS → START</p></div>
+    <h2 class="t"><span class="lvl acc">2-1</span>加速度計：手機怎樣感覺到「被推」？</h2>
+    <div class="row grow">
+      <div class="col" style="width:470px;flex:none">
+        <div class="px"><p class="lead">巴士突然起步，乘客會向<b class="a">後</b>傾；急剎時，乘客向<b class="a">前</b>傾。</p></div>
+        <div class="bus" id="bus"><svg viewBox="0 0 470 118" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="104" width="470" height="14" fill="#2B2B3A"/><g class="busbody"><rect x="90" y="24" width="250" height="74" fill="#FF9F43" stroke="#000" stroke-width="4"/><rect x="104" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="160" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="216" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="272" y="34" width="54" height="30" fill="#8ADCFF"/><g class="pax"><rect x="226" y="40" width="12" height="10" fill="#FFD9B0"/><rect x="224" y="50" width="16" height="14" fill="#E879F9"/></g><rect x="112" y="92" width="24" height="18" fill="#000"/><rect x="290" y="92" width="24" height="18" fill="#000"/></g></svg></div>
+        <div class="seg"><button class="btn" id="busGo">▶ 巴士急剎</button><button class="btn" id="busReset">重來</button></div>
+        <p class="body f" data-f="1">加速度計裏面也有一位「乘客」：一粒細小的<b class="a">質量塊</b>。手機加速時，質量塊會落後一點點，傳感器量度它移動了多少。</p>
+      </div>
+      <div class="col grow">
+        <div class="mems"><svg viewBox="0 0 560 230" aria-label="MEMS 加速度計結構示意">
+          <g id="mFrame"><rect x="20" y="16" width="520" height="198" fill="none" stroke="#8C85C9" stroke-width="4"/><text x="34" y="38" fill="#8C85C9" font-size="15" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">外框（固定在手機上）</text>
+            <g fill="#8C85C9"><rect x="150" y="60" width="10" height="110"/><rect x="400" y="60" width="10" height="110"/></g>
+            <g fill="#BDB7EC"><rect x="160" y="70" width="60" height="8"/><rect x="160" y="100" width="60" height="8"/><rect x="160" y="130" width="60" height="8"/><rect x="160" y="160" width="60" height="8"/><rect x="340" y="85" width="60" height="8"/><rect x="340" y="115" width="60" height="8"/><rect x="340" y="145" width="60" height="8"/></g>
+            <path d="M40 115 h20 l8 -12 l12 24 l12 -24 l12 24 l12 -24 l8 12 h10" fill="none" stroke="#3BE08F" stroke-width="4"/><path d="M520 115 h-20 l-8 -12 l-12 24 l-12 -24 l-12 24 l-12 -24 l-8 12 h-10" fill="none" stroke="#3BE08F" stroke-width="4"/>
+          </g>
+          <g id="mMass"><rect x="230" y="60" width="100" height="110" fill="#FF9F43" stroke="#000" stroke-width="3"/><g fill="#FF9F43"><rect x="190" y="85" width="40" height="8"/><rect x="190" y="115" width="40" height="8"/><rect x="190" y="145" width="40" height="8"/><rect x="330" y="70" width="40" height="8"/><rect x="330" y="100" width="40" height="8"/><rect x="330" y="130" width="40" height="8"/><rect x="330" y="160" width="40" height="8"/></g><text x="280" y="120" fill="#1A1440" font-size="17" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">質量塊</text></g>
+          <text x="280" y="206" fill="#3BE08F" font-size="15" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">綠色：像彈簧的支架　　梳齒間的距離改變 → 電容改變 → 電子訊號</text>
+        </svg></div>
+        <div class="seg" id="accBtns"><button class="btn" data-v="-1">◀ 向左加速</button><button class="btn on" data-v="0">靜止</button><button class="btn" data-v="1">向右加速 ▶</button></div>
+        <div class="meter"><span>讀數</span><div class="mb"><i id="accBar"></i></div><span class="mono" id="accVal" style="width:120px;text-align:right">0 m/s²</span></div>
+        <p class="small">這種結構叫 <b class="g">MEMS（微機電系統）</b>：整個傳感器只有幾毫米大，梳齒比頭髮還要幼，所以可以放進手機。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- P8 GRAVITY / TILT -->
+  <section class="slide" data-id="tilt" data-stage="2" data-hook="tilt">
+    <h2 class="t"><span class="lvl acc">2-2</span>靜止時也有讀數：重力</h2>
+    <div class="row grow">
+      <div class="col" style="align-items:center;flex:none">
+        <div class="tilt"><svg class="ph" id="tiltPh" viewBox="0 0 100 180" width="110" height="198" shape-rendering="crispEdges" aria-label="手機"><rect x="4" y="2" width="92" height="176" fill="#1A1440" stroke="#000" stroke-width="5"/><rect x="11" y="14" width="78" height="150" fill="#38BDF8"/><g id="tiltUi"><rect x="20" y="24" width="60" height="10" fill="#F6F4FF"/><rect x="20" y="40" width="60" height="44" fill="#FFD23F"/><rect x="20" y="90" width="44" height="6" fill="#F6F4FF"/><rect x="20" y="100" width="52" height="6" fill="#F6F4FF"/></g><rect x="42" y="6" width="16" height="3" fill="#000"/><text x="50" y="140" fill="#1A1440" font-size="14" font-weight="900" text-anchor="middle" font-family="Press Start 2P, monospace">Y↑</text></svg>
+          <div class="gv">重力<b>↓</b>9.8 m/s²</div></div>
+        <div class="seg" id="tiltBtns" style="margin-top:10px"><button class="btn on" data-v="0">直放</button><button class="btn" data-v="30">斜 30°</button><button class="btn" data-v="90">橫放</button><button class="btn" data-v="flat">平放桌上</button></div>
+      </div>
+      <div class="col grow">
+        <div class="px axes">
+          <p class="lead">靜止時，加速度計量到<b class="a">重力</b>：約 <b class="g">9.8 m/s²</b>（1 g），方向向下。</p>
+          <div class="axis x"><span class="an">X</span><div class="ab"><i id="axX"></i></div><span class="av" id="avX"></span></div>
+          <div class="axis y"><span class="an">Y</span><div class="ab"><i id="axY"></i></div><span class="av" id="avY"></span></div>
+          <div class="axis z"><span class="an">Z</span><div class="ab"><i id="axZ"></i></div><span class="av" id="avZ"></span></div>
+          <p class="ori">畫面方向：<b class="g" id="tiltOri">直向</b>　<span class="small" id="tiltWhy"></span></p>
+        </div>
+        <div class="qgrid c2" data-badge="s2">
+          <div class="q px ch" data-ans="2"><p class="qt">手機平放桌上（螢幕向上），哪一軸讀數最接近 9.8？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">X 軸</button><button class="btn">Y 軸</button><button class="btn">Z 軸</button><button class="btn">全部 0</button></div><p class="why">平放時重力穿過螢幕方向，即 Z 軸。</p></div>
+          <div class="q px ch" data-ans="0"><p class="qt">手機正在跌落地面（自由落體），三軸讀數大約是？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">全部接近 0</button><button class="btn">Z 軸約 9.8</button><button class="btn">Y 軸約 9.8</button><button class="btn">全部約 9.8</button></div><p class="why">跌落時手機和質量塊一起落下，質量塊不會「被拉」，讀數接近 0。手機可以用這點偵測跌落。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P9 STEP COUNTER -->
+  <section class="slide" data-id="steps" data-stage="2" data-hook="steps">
+    <h2 class="t"><span class="lvl acc">2-3</span>計步器：決策就是「設門檻」</h2>
+    <div class="row grow">
+      <div class="col grow">
+        <canvas class="cv" id="stepCv" width="760" height="230" aria-label="加速度讀數波形"></canvas>
+        <div class="sliderrow"><span>門檻</span><input type="range" id="stepTh" min="10" max="20" step="0.5" value="13" aria-label="計步門檻"><span class="mono" id="stepThV" style="width:120px">13 m/s²</span></div>
+        <div class="row" style="gap:14px;align-items:center"><button class="btn on" id="stepGo">▶ 行 12 步</button><div class="stat2"><div>真正步數<b id="stepReal">0</b></div><div>計到步數<b id="stepCnt">0</b></div></div><p class="small grow" id="stepMsg">每行一步，身體上下起伏，讀數出現一個高峰。高峰超過門檻，才算一步。</p></div>
+        <div class="chipz"><span>加速度計的其他用途：</span><span class="hi">自動轉屏</span><span class="hi">計步</span><span>跌倒偵測</span><span>撞車偵測</span><span>搖一搖</span></div>
+      </div>
+      <div class="col" style="width:380px;flex:none">
+        <div class="px"><p class="k2">SENSE → DECIDE → ACT</p><p class="body"><b class="a">感知</b>：加速度計量到上下起伏<br><b class="g">決策</b>：高峰超過門檻？<br><b class="ok">執行</b>：步數 +1，顯示在 App</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">門檻設得太低，會怎樣？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">計多了步數</button><button class="btn">計少了步數</button><button class="btn">完全計不到</button><button class="btn">手機變得很慢</button></div><p class="why">手輕輕一搖也超過門檻，會被當成一步。</p></div>
+        <div class="px und" data-sec="2"><span class="ul">第 2 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P10 GYROSCOPE -->
+  <section class="slide" data-id="gyro" data-intro="1" data-stage="3" data-hook="gyro">
+    <div class="intro"><span class="stg">STAGE 3</span><h2>陀螺儀</h2><div class="mission"><span class="lab">MISSION</span><p>加速度計知道「哪邊是下」，但手機原地轉動，誰來量度？</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">量度轉速</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">和加速度計比較</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">傳感器融合</li></ol><p class="press">PRESS → START</p></div>
+    <h2 class="t"><span class="lvl gyr">3-1</span>陀螺儀：量度手機轉得有多快</h2>
+    <div class="row grow">
+      <div class="col" style="flex:none;align-items:center">
+        <div class="gyrobox"><svg class="ph" id="gyPh" viewBox="0 0 100 180" width="104" height="187" shape-rendering="crispEdges" aria-label="手機"><rect x="4" y="2" width="92" height="176" fill="#1A1440" stroke="#000" stroke-width="5"/><rect x="11" y="14" width="78" height="150" fill="#E879F9"/><rect x="20" y="28" width="60" height="60" fill="#F6F4FF"/><rect x="42" y="6" width="16" height="3" fill="#000"/></svg><span class="axl">X 俯仰 · Y 翻滾 · Z 偏航</span></div>
+        <div class="seg" id="gyBtns" style="margin-top:10px"><button class="btn" data-v="x">俯仰（X）</button><button class="btn" data-v="y">翻滾（Y）</button><button class="btn" data-v="z">偏航（Z）</button></div>
+      </div>
+      <div class="col grow">
+        <div class="px gauge"><span class="gu">陀螺儀讀數（角速度）</span><span class="gv" id="gyV">0 °/s</span><span class="gt" id="gyT">按左邊的掣，令手機轉 90°</span></div>
+        <div class="px"><p class="lead">陀螺儀量度的是<b class="y">轉動速度</b>（每秒轉幾多度，°/s），<b class="y">不是</b>手機現在的角度。停止轉動，讀數就回到 0。</p></div>
+        <div class="px"><p class="body">原理（簡化）：裏面有一粒<b class="y">不停振動</b>的質量塊。手機一轉，質量塊會被推向側面（<b class="y">科里奧利力</b>），推得越多＝轉得越快。</p><p class="small">好像在旋轉木馬上向前拋球，球看起來會向一邊彎。</p>
+          <p class="small adv">進階：角度 = 角速度 × 時間。例如 90 °/s 轉 1 秒 = 90°。手機要把讀數不停相加，才知道總共轉了多少度。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P11 ACC vs GYRO -->
+  <section class="slide" data-id="vs" data-stage="3">
+    <h2 class="t"><span class="lvl gyr">3-2</span>加速度計 vs 陀螺儀</h2>
+    <table class="cmp"><tr><th></th><th>加速度計</th><th>陀螺儀</th></tr>
+      <tr><td>量度甚麼</td><td class="ca">加速度（包括重力）</td><td class="cg">轉動速度（角速度）</td></tr>
+      <tr><td>單位</td><td>m/s²</td><td>°/s（度每秒）</td></tr>
+      <tr><td>靜止時</td><td>約 9.8（重力）</td><td>0</td></tr>
+      <tr><td>擅長</td><td>知道哪邊是下、偵測撞擊和步伐</td><td>偵測快速、細微的轉動</td></tr></table>
+    <div class="sorter" data-badge="s3" style="grid-template-columns:1fr 1fr">
+      <div class="it ch" data-ans="陀螺儀"><span class="tt">手機平放桌上，原地慢慢轉一圈</span><div class="seg opts"><button class="btn" data-v="加速度計">加速度計</button><button class="btn" data-v="陀螺儀">陀螺儀</button></div><p class="why">重力方向沒有變，加速度計讀數幾乎不變；陀螺儀量到轉動。</p></div>
+      <div class="it ch" data-ans="加速度計"><span class="tt">手機從手中跌落地面</span><div class="seg opts"><button class="btn" data-v="加速度計">加速度計</button><button class="btn" data-v="陀螺儀">陀螺儀</button></div><p class="why">跌落時讀數突然接近 0，落地一刻有強烈撞擊。</p></div>
+      <div class="it ch" data-ans="陀螺儀"><span class="tt">戴 VR 眼鏡轉頭，畫面即時跟着轉</span><div class="seg opts"><button class="btn" data-v="加速度計">加速度計</button><button class="btn" data-v="陀螺儀">陀螺儀</button></div><p class="why">頭部快速轉動，要靠陀螺儀即時量度。</p></div>
+      <div class="it ch" data-ans="加速度計"><span class="tt">計算今天一共行了多少步</span><div class="seg opts"><button class="btn" data-v="加速度計">加速度計</button><button class="btn" data-v="陀螺儀">陀螺儀</button></div><p class="why">步伐令讀數上下起伏，數高峰就知道步數。</p></div>
+    </div>
+  </section>
+
+  <!-- P12 FUSION -->
+  <section class="slide" data-id="fusion" data-stage="3" data-hook="fusion">
+    <h2 class="t"><span class="lvl gyr">3-3</span>傳感器融合：兩個一起用，更準</h2>
+    <div class="row grow">
+      <div class="col grow">
+        <canvas class="cv" id="fuCv" width="760" height="260" aria-label="角度估計比較"></canvas>
+        <div class="row" style="gap:12px;align-items:center"><button class="btn on" id="fuGo">▶ 模擬 20 秒</button><div class="leg"><span style="--c:#F6F4FF">真實角度</span><span style="--c:#E879F9">只用陀螺儀（漂移）</span><span style="--c:#FF9F43">只用加速度計（震動）</span><span style="--c:#3BE08F">融合</span></div></div>
+      </div>
+      <div class="col" style="width:400px;flex:none">
+        <div class="px"><p class="body"><b class="y">陀螺儀</b>：反應快、很順，但每次相加都有一點誤差，時間越長偏差越大（<b class="y">漂移</b>）。</p></div>
+        <div class="px"><p class="body"><b class="a">加速度計</b>：永遠知道重力方向，不會漂移，但手一郁就有<b class="a">震動雜訊</b>。</p></div>
+        <div class="px green"><p class="body"><b class="ok">融合</b>：短時間信陀螺儀，長時間用加速度計校正 → 又快又準。</p></div>
+        <p class="small">例子：拍片防手震、隧道內沒有 GPS 時估計方向、AR 遊戲。</p>
+        <div class="px und" data-sec="3"><span class="ul">第 3 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P13 AMBIENT LIGHT -->
+  <section class="slide" data-id="light" data-intro="1" data-stage="4" data-hook="light">
+    <div class="intro"><span class="stg">STAGE 4</span><h2>環境光傳感器</h2><div class="mission"><span class="lab">MISSION</span><p>為甚麼手機在陽光下會自動變亮，在黑房會自動變暗？它和「距離傳感器」有甚麼分別？</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">光有多強：lux</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">環境光 vs 距離</li></ol><p class="press">PRESS → START</p></div>
+    <h2 class="t"><span class="lvl lux">4-1</span>環境光傳感器：量度周圍有多光</h2>
+    <div class="row grow">
+      <div class="col grow">
+        <div class="px" style="display:flex;flex-direction:column;gap:8px">
+          <div class="sliderrow"><span>拉動改變環境</span><input type="range" id="luxR" min="-1" max="5" step="0.05" value="2.6" aria-label="環境光度"><span class="luxval" id="luxV"></span></div>
+          <div class="luxscale" id="luxScale"></div>
+        </div>
+        <div class="lightbox">
+          <div class="room" id="luxRoom"><svg viewBox="0 0 260 200" shape-rendering="crispEdges" aria-hidden="true"><g id="luxSun"><rect x="200" y="20" width="36" height="36" fill="#FFD23F"/></g><g id="luxMoon"><rect x="200" y="20" width="26" height="26" fill="#F6F4FF"/><rect x="210" y="20" width="16" height="16" fill="#0A0826"/></g><rect x="60" y="60" width="76" height="130" fill="#1A1440" stroke="#000" stroke-width="5"/><rect x="68" y="72" width="60" height="106" id="luxScr" fill="#38BDF8"/><rect x="86" y="64" width="6" height="4" fill="#FFD23F"/></svg></div>
+          <div class="col grow" style="gap:8px">
+            <div class="pd"><span>光電二極管電流</span><div class="cur"><i id="luxCur"></i></div></div>
+            <div class="pd"><span>螢幕亮度</span><div class="cur"><i id="luxBri" style="background:var(--npu)"></i></div><span class="mono" id="luxBriV" style="width:60px"></span></div>
+            <p class="body"><b class="d">感知</b>：<span id="luxS"></span><br><b class="g">決策</b>：<span id="luxD"></span><br><b class="ok">執行</b>：<span id="luxE"></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="width:390px;flex:none">
+        <div class="px"><p class="body">原理：<b class="l">光電二極管</b>照到光會產生電流，光越強，電流越大，再換算成 <b class="l">lux（勒克斯）</b>。</p><p class="small">位置：通常在螢幕頂部，或藏在螢幕下面。</p></div>
+        <div class="q px ch" data-ans="1"><p class="qt">由課室（約 400 lux）走到陽光下（約 50,000 lux），光度大約變成幾倍？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">約 12 倍</button><button class="btn">約 125 倍</button><button class="btn">約 1,250 倍</button><button class="btn">約 2 倍</button></div><p class="why">50,000 ÷ 400 = 125。人眼覺得「光很多」，數字其實差很遠。</p></div>
+        <p class="src">lux 參考值：滿月 0.05–0.3、辦公室 320–500、陰天約 1,000、陽光直射 32,000–100,000（Wikipedia 照度表）。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- P14 LIGHT vs PROXIMITY -->
+  <section class="slide" data-id="prox" data-stage="4" data-hook="prox">
+    <h2 class="t"><span class="lvl lux">4-2</span>環境光 vs 距離傳感器：常常混淆</h2>
+    <div class="row" style="gap:16px">
+      <div class="px grow" style="display:flex;flex-direction:column;gap:6px"><p class="lead"><b class="l">環境光傳感器</b>：只<b class="l">接收</b>光</p>
+        <div class="prox"><svg viewBox="0 0 560 150" aria-label="環境光傳感器示意"><rect x="10" y="20" width="40" height="110" fill="#1A1440" stroke="#000" stroke-width="4"/><rect x="46" y="54" width="6" height="10" fill="#FFD23F"/><rect x="16" y="30" width="28" height="90" fill="#38BDF8"/><rect x="470" y="40" width="48" height="48" fill="#FFD23F"/><g class="blink"><rect x="452" y="58" width="12" height="4" fill="#FFD23F"/><rect x="524" y="58" width="12" height="4" fill="#FFD23F"/><rect x="492" y="20" width="4" height="12" fill="#FFD23F"/><rect x="492" y="96" width="4" height="12" fill="#FFD23F"/></g><line x1="460" y1="64" x2="56" y2="59" stroke="#FFD23F" stroke-width="3" stroke-dasharray="6 5"/><line x1="470" y1="90" x2="56" y2="62" stroke="#FFD23F" stroke-width="3" stroke-dasharray="6 5"/><text x="260" y="122" fill="#BDB7EC" font-size="17" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">光只是照進來，傳感器不會發光</text></svg></div>
+        <p class="body">量度周圍光線有多強 → 調整螢幕亮度、色溫。</p></div>
+      <div class="px grow" style="display:flex;flex-direction:column;gap:6px">
+        <p class="lead"><b class="p">距離傳感器</b>：自己<b class="p">發出</b>紅外線，再接收反射</p>
+        <div class="prox"><svg viewBox="0 0 560 150" aria-label="距離傳感器示意"><rect x="10" y="20" width="40" height="110" fill="#1A1440" stroke="#000" stroke-width="4"/><rect x="46" y="54" width="6" height="8" fill="#FF4D5E"/><rect x="46" y="70" width="6" height="8" fill="#3BE08F"/><rect id="pxScr" x="16" y="30" width="28" height="90" fill="#38BDF8"/><g id="pxHand"><rect x="0" y="40" width="70" height="70" fill="#FFD9B0" stroke="#000" stroke-width="3"/><text x="35" y="82" font-size="18" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">耳朵</text></g><line id="pxRay" x1="52" y1="58" x2="200" y2="58" stroke="#FF4D5E" stroke-width="3" stroke-dasharray="6 5"/><line id="pxBack" x1="200" y1="74" x2="52" y2="74" stroke="#3BE08F" stroke-width="3" stroke-dasharray="6 5"/></svg></div>
+        <div class="sliderrow"><span>距離</span><input type="range" id="pxR" min="1" max="30" step="1" value="20" aria-label="耳朵與手機距離"><span id="pxV" style="width:190px"></span></div>
+      </div>
+    </div>
+    <div class="sorter" data-badge="s4">
+      <div class="it ch" data-ans="距離"><span class="tt">通話時手機貼近耳邊，螢幕自動關閉</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">量度有沒有物件很近（約 10 cm 內）→ 距離傳感器。</p></div>
+      <div class="it ch" data-ans="環境光"><span class="tt">由室外走入地鐵站，螢幕自動變暗</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">周圍光度下降 → 環境光傳感器。</p></div>
+      <div class="it ch" data-ans="環境光"><span class="tt">按周圍燈光的顏色，調整螢幕色溫</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">新式環境光傳感器可以量度光的顏色（例如 True Tone）。</p></div>
+      <div class="it ch" data-ans="距離"><span class="tt">感應器自己發出紅外線，再接收反射</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">會主動發光的是距離傳感器；環境光傳感器只接收光。</p></div>
+    </div>
+    <div class="px und" data-sec="4"><span class="ul">第 4 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
+  </section>
+
+  <!-- P15 LIDAR TOF -->
+  <section class="slide" data-id="lidar" data-intro="1" data-stage="5" data-hook="lidar">
+    <div class="intro"><span class="stg">STAGE 5</span><h2>LiDAR 激光雷達</h2><div class="mission"><span class="lab">MISSION</span><p>手機怎樣「用光量度距離」？一束光來回只需要幾十億分之一秒，怎樣計出距離？</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">飛行時間</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">計一計</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">深度圖</li></ol><p class="press">PRESS → START</p></div>
+    <h2 class="t"><span class="lvl lid">5-1</span>LiDAR：發出激光，量度來回時間</h2>
+    <p class="sub"><b class="d">LiDAR</b> = Light Detection And Ranging（光學偵測與測距）。好像蝙蝠用聲音回聲定位，LiDAR 用的是<b class="d">紅外激光</b>。</p>
+    <div class="tof"><svg viewBox="0 0 1170 190" aria-label="飛行時間示意"><rect x="20" y="40" width="50" height="110" fill="#1A1440" stroke="#000" stroke-width="4"/><rect x="66" y="80" width="8" height="12" fill="#38BDF8"/><text x="45" y="172" fill="#BDB7EC" font-size="15" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">手機</text>
+      <g id="tofWall"><rect x="0" y="20" width="22" height="150" fill="#8C85C9"/><text x="11" y="186" fill="#BDB7EC" font-size="15" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">牆</text></g>
+      <line id="tofLine" x1="74" y1="86" x2="74" y2="86" stroke="#38BDF8" stroke-width="2" stroke-dasharray="4 6" opacity=".5"/>
+      <rect id="tofDot" x="70" y="80" width="12" height="12" fill="#FF4D5E"/>
+      <text id="tofDist" x="600" y="30" fill="#FFD23F" font-size="20" font-weight="800" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif"></text>
+    </svg></div>
+    <div class="row" style="gap:16px;align-items:center">
+      <div class="sliderrow grow"><span>牆的距離</span><input type="range" id="tofR" min="0.5" max="5" step="0.1" value="3" aria-label="牆的距離"><span class="mono" id="tofV" style="width:80px"></span></div>
+      <button class="btn on" id="tofGo">▶ 發射激光</button>
+      <div class="stat2"><div>來回時間<b id="tofT">0 ns</b></div></div>
+    </div>
+    <div class="row" style="gap:16px">
+      <div class="formula grow">距離 = 光速 × 來回時間 ÷ 2<small>÷ 2：激光要去再返回，走了兩倍距離</small></div>
+      <div class="px" style="width:470px;flex:none"><p class="small">Apple 介紹 iPad Pro 的 LiDAR：可量度最遠約 <b class="g">5 米</b>的物件，以<b class="g">納秒</b>級速度運作，室內室外都可以用。<br>1 納秒（ns）= 十億分之一秒。</p></div>
+    </div>
+  </section>
+
+  <!-- P16 LIDAR CALC -->
+  <section class="slide" data-id="tofcalc" data-stage="5" data-steps="3">
+    <h2 class="t"><span class="lvl lid">5-2</span>計一計：光走得有多快？</h2>
+    <div class="row grow">
+      <div class="col grow">
+        <div class="steps3">
+          <div class="s3 f" data-f="0"><span class="n">1</span><span>光速約每秒 30 萬公里 = 3 × 10⁸ m/s</span></div>
+          <div class="s3 f" data-f="1"><span class="n">2</span><span>1 納秒內，光走 <b class="g">0.3 米（30 cm）</b></span></div>
+          <div class="s3 f" data-f="2"><span class="n">3</span><span>來回要 ÷ 2 → 來回時間每 1 ns ＝ 距離 <b class="g">0.15 米（15 cm）</b></span></div>
+          <div class="s3 ans f" data-f="3"><span class="n">例</span><span>來回時間 20 ns → 20 × 0.15 = <b class="g">3 米</b></span></div>
+        </div>
+        <p class="small adv">進階：3 × 10⁸ × 20 × 10⁻⁹ ÷ 2 = 3 m。</p>
+      </div>
+      <div class="col" style="width:560px;flex:none" data-badge="s5">
+        <div class="q px ch" data-ans="0"><p class="qt">激光來回時間是 20 ns，物件距離是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">3 m</button><button class="btn">6 m</button><button class="btn">1.5 m</button><button class="btn">0.3 m</button></div><p class="why">20 × 0.15 = 3 m。</p></div>
+        <div class="q px ch" data-ans="1"><p class="qt">物件在 4.5 米外，激光來回時間大約是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">15 ns</button><button class="btn">30 ns</button><button class="btn">45 ns</button><button class="btn">60 ns</button></div><p class="why">4.5 ÷ 0.15 = 30 ns。</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">公式為甚麼要 ÷ 2？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">光要去再返回</button><button class="btn">光速會減慢一半</button><button class="btn">手機有兩個鏡頭</button><button class="btn">數據分給兩顆晶片</button></div><p class="why">量到的是來回時間，光走了兩倍距離。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P17 DEPTH MAP -->
+  <section class="slide" data-id="depth" data-stage="5" data-hook="depth">
+    <h2 class="t"><span class="lvl lid">5-3</span>深度圖：一點變成千點</h2>
+    <div class="row grow">
+      <div class="col grow">
+        <div class="depth">
+          <figure><svg viewBox="0 0 400 210" shape-rendering="crispEdges" aria-label="相機看到的房間"><rect width="400" height="210" fill="#C9C3F0"/><rect y="150" width="400" height="60" fill="#8C6A4A"/><rect x="40" y="90" width="150" height="70" fill="#E85A71"/><rect x="40" y="70" width="150" height="26" fill="#C9445A"/><rect x="250" y="110" width="90" height="10" fill="#6B4A2E"/><rect x="258" y="120" width="8" height="48" fill="#6B4A2E"/><rect x="324" y="120" width="8" height="48" fill="#6B4A2E"/><rect x="300" y="30" width="60" height="44" fill="#8ADCFF" stroke="#fff" stroke-width="4"/></svg><figcaption>相機：記錄顏色（平面 2D）</figcaption></figure>
+          <figure><svg viewBox="0 0 400 210" id="depSvg" aria-label="LiDAR 深度圖"></svg><figcaption>LiDAR：記錄每一點的距離（深度）<span class="k2" style="margin-left:8px">紅=近 · 藍=遠</span></figcaption></figure>
+        </div>
+        <div class="row" style="gap:12px;align-items:center"><button class="btn on" id="depGo">▶ 掃描</button><p class="small">相機的顏色 ＋ LiDAR 的深度 → 手機得到 <b class="g">3D</b> 的世界。</p></div>
+        <div class="uses">
+          <div><b>量度 App</b>量度傢俬、門框的長度</div>
+          <div><b>AR 擺放</b>虛擬傢俬「坐」在真實地面</div>
+          <div><b>暗光對焦</b>夜間拍照、人像更快對焦</div>
+          <div><b>房間掃描</b>自動畫出平面圖、3D 模型</div>
+          <div><b>放大鏡 App</b>幫視障人士知道人和門有多遠</div>
+          <div><b>手機以外</b>自動駕駛、掃地機械人、無人機測繪</div>
+        </div>
+      </div>
+      <div class="col" style="width:330px;flex:none">
+        <div class="px"><p class="body">配備 LiDAR 的例子：<b class="d">iPhone 12 Pro 起的 Pro 型號</b>、<b class="d">2020 年起的 iPad Pro</b>。</p><p class="small">iPhone 17 Pro 的官方規格仍然列出「LiDAR 掃描儀」。</p></div>
+        <div class="px"><p class="body">LiDAR 每秒發出大量激光點，<b class="d">一點一個距離</b>，合起來就是<b class="d">深度圖</b>。</p></div>
+        <div class="px und" data-sec="5"><span class="ul">第 5 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- P18 COOPERATION -->
+  <section class="slide" data-id="coop" data-intro="1" data-stage="6" data-hook="coop">
+    <div class="intro"><span class="stg">FINAL</span><h2>陣列合作與總結</h2><div class="mission"><span class="lab">MISSION</span><p>一個功能往往不只用一個傳感器。看看它們怎樣合作，然後準備堂課。</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">陣列合作</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">三句總結</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">堂課</li></ol><p class="press">PRESS → START</p></div>
+    <h2 class="t"><span class="lvl boss">6-1</span>一個功能 = 幾個傳感器一起做</h2>
+    <div class="coop">
+      <div class="fn" id="coopFn"><button class="btn on" data-v="ar">AR 遊戲</button><button class="btn" data-v="crash">撞車偵測</button><button class="btn" data-v="photo">夜間拍照</button><button class="btn" data-v="bright">自動調光</button></div>
+      <div class="col">
+        <div class="chipz" id="coopChips"></div>
+        <div class="px"><p class="why2" id="coopWhy"></p></div>
+      </div>
+    </div>
+    <div class="q px ch" data-ans="0" style="max-width:860px"><p class="qt">要做「手機跌落偵測」，以下哪一組傳感器最合適？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">加速度計 ＋ 陀螺儀</button><button class="btn">環境光 ＋ 距離傳感器</button><button class="btn">LiDAR ＋ 主鏡頭</button><button class="btn">咪高峰 ＋ 指紋傳感器</button></div><p class="why">跌落時加速度計讀數接近 0、落地有撞擊；陀螺儀量到翻轉。</p></div>
+  </section>
+
+  <!-- P19 SUMMARY -->
+  <section class="slide" data-id="sum" data-stage="6">
+    <h2 class="t"><span class="lvl boss">6-2</span>三句帶走 ＋ 堂課規則</h2>
+    <div class="row grow">
+      <div class="col grow sumlist">
+        <div class="px"><span class="n">1</span><p>傳感器把物理量變成數據；手機按<b class="g">感知 → 決策 → 執行</b>運作。</p></div>
+        <div class="px"><span class="n">2</span><p><b class="a">加速度計</b>量加速度和重力；<b class="y">陀螺儀</b>量轉動速度；兩者融合更準。</p></div>
+        <div class="px"><span class="n">3</span><p><b class="l">環境光</b>只收光、調亮度；<b class="d">LiDAR</b> 量激光來回時間：距離 = 光速 × 時間 ÷ 2。</p></div>
+        <div class="bdgrow" id="sumBadges"></div>
+      </div>
+      <div class="col" style="width:420px;flex:none">
+        <div class="px red"><p class="lead">堂課（20 分鐘）</p><ol class="body" style="margin:6px 0 0;padding-left:24px"><li>關閉所有生成式 AI 工具</li><li>獨立完成，不可交談</li><li>老師開放後才可以作答</li><li>共 4 部分，最後按「交卷」</li></ol></div>
+        <div class="px"><p class="small">下週預告：物聯網傳感器（溫濕度、紅外、超聲波、氣體）和<b class="g">執行器</b>（繼電器、伺服馬達、智能開關、聲光報警）。</p></div>
+      </div>
+    </div>
+  </section>
+  <!-- T0 GATE -->
+  <section class="slide" data-id="tgate" data-intro="1" data-stage="7" data-hook="tgate">
+    <div class="intro"><span class="stg">BOSS</span><h2>堂課：傳感器任務卡</h2><div class="mission"><span class="lab">MISSION</span><p>20 分鐘，獨立完成 4 部分。關閉所有生成式 AI 工具。</p></div><ol class="route"><li data-n="A" style="animation-delay:.15s">傳感器配對</li><li class="arrow">▶</li><li data-n="B" style="animation-delay:.27s">感知決策執行</li><li class="arrow">▶</li><li data-n="C" style="animation-delay:.39s">LiDAR 計算</li><li class="arrow">▶</li><li data-n="D" style="animation-delay:.51s">短答</li></ol><p class="press">PRESS → START</p></div>
+    <h2 class="t"><span class="lvl boss">堂課</span>規則和開始</h2>
+    <div class="gate">
+      <div class="px">
+        <ol>
+          <li>關閉所有生成式 AI 工具，獨立完成，不可交談。</li>
+          <li>A、B、C 部分：按一下選擇答案，交卷前可以更改。</li>
+          <li>D 部分：用自己的文字作答。</li>
+          <li>做完後到最後一頁按「交卷」。交卷後不可以再改。</li>
+          <li>老師按「結束堂課」時，未交卷的答案會自動交出。</li>
+        </ol>
+      </div>
+      <div class="px gold gstat sonly">
+        <span class="gs lock" id="gateS">等待老師開放…</span>
+        <p class="small" id="gateHint">老師開放後，這裏會自動解鎖。如果一直未解鎖，請輸入老師給的開放碼。</p>
+        <div class="codein"><input class="inp" id="gateCode" inputmode="numeric" maxlength="4" placeholder="開放碼" autocomplete="off" aria-label="開放碼"><button class="btn sm on" id="gateGo">解鎖</button></div>
+        <p class="err" id="gateErr"></p>
+      </div>
+      <div class="px gold gstat tonly">
+        <span class="gs" id="tGateS">堂課未開放</span>
+        <div class="dctl"><button class="btn on" id="tOpen">開放堂課</button><button class="btn danger" id="tClose">結束堂課</button></div>
+        <p class="small">學生未能連線時，口頭讀出開放碼：</p>
+        <span class="tcode" id="tCode"></span>
+        <p class="small" id="tGateN">連線後顯示：已開始 0 人 · 已交卷 0 人</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- T1 PART A -->
+  <section class="slide task" data-id="tA" data-stage="7">
+    <h2 class="t"><span class="lvl boss">A</span>傳感器配對：每個功能最主要用哪個傳感器？</h2>
+    <div class="lockmsg">等待老師開放堂課</div>
+    <div class="tbody">
+      <div class="tgrid c2">
+        <div class="tk" data-t="A1"><span class="tq"><span class="no">A1</span>手機由直放轉為橫放，畫面自動轉向</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A2"><span class="tq"><span class="no">A2</span>用量度 App 量度房門的高度</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A3"><span class="tq"><span class="no">A3</span>在猛烈陽光下，螢幕自動調到最亮</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A4"><span class="tq"><span class="no">A4</span>拍片時偵測手部細微轉動，用來防手震</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A5"><span class="tq"><span class="no">A5</span>通話時貼近耳邊，螢幕自動關閉</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A6"><span class="tq"><span class="no">A6</span>運動 App 計算今天行了多少步</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A7"><span class="tq"><span class="no">A7</span>在昏暗的餐廳拍人像，手機仍然很快對焦</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A8"><span class="tq"><span class="no">A8</span>手機平放桌上原地旋轉，遊戲角色跟着轉身</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- T2 PART B -->
+  <section class="slide task" data-id="tB" data-stage="7">
+    <h2 class="t"><span class="lvl boss">B</span>智能鬧鐘：每一步是感知、決策，還是執行？</h2>
+    <div class="lockmsg">等待老師開放堂課</div>
+    <div class="tbody">
+      <div class="px"><p class="body">情境：晚上把手機放在床上。手機在你「淺睡」的時候才響鬧，令你起床時沒有那麼辛苦。</p></div>
+      <div class="tgrid rowk">
+        <div class="tk" data-t="B1"><span class="tq"><span class="no">B1</span>加速度計量到床褥的細微震動</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+        <div class="tk" data-t="B2"><span class="tq"><span class="no">B2</span>系統分析震動的規律，判斷你正處於淺睡</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+        <div class="tk" data-t="B3"><span class="tq"><span class="no">B3</span>在設定時間前的 30 分鐘內，提早響鬧</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+        <div class="tk" data-t="B4"><span class="tq"><span class="no">B4</span>環境光傳感器發現房間已經天光</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+        <div class="tk" data-t="B5"><span class="tq"><span class="no">B5</span>響鬧時，螢幕亮度由暗慢慢調亮</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- T3 PART C -->
+  <section class="slide task" data-id="tC" data-stage="7">
+    <h2 class="t"><span class="lvl boss">C</span>LiDAR 計算</h2>
+    <div class="lockmsg">等待老師開放堂課</div>
+    <div class="tbody">
+      <div class="formula">距離 = 光速 × 來回時間 ÷ 2<small>提示：來回時間每 1 ns ＝ 距離 0.15 m</small></div>
+      <div class="tgrid">
+        <div class="tk" data-t="C1"><span class="tq"><span class="no">C1</span>激光來回時間是 10 ns，物件距離是多少？</span><div class="tops"><button class="btn">0.75 m</button><button class="btn">1.5 m</button><button class="btn">3 m</button><button class="btn">15 m</button></div></div>
+        <div class="tk" data-t="C2"><span class="tq"><span class="no">C2</span>物件在 2.4 米外，激光來回時間是多少？</span><div class="tops"><button class="btn">8 ns</button><button class="btn">16 ns</button><button class="btn">24 ns</button><button class="btn">32 ns</button></div></div>
+        <div class="tk" data-t="C3"><span class="tq"><span class="no">C3</span>LiDAR 量度 5 米外的牆，激光來回時間大約是多少？</span><div class="tops"><button class="btn">約 17 ns</button><button class="btn">約 33 ns</button><button class="btn">約 50 ns</button><button class="btn">約 67 ns</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- T4 PART D -->
+  <section class="slide task" data-id="tD" data-stage="7">
+    <h2 class="t"><span class="lvl boss">D</span>短答：用自己的文字</h2>
+    <div class="lockmsg">等待老師開放堂課</div>
+    <div class="tbody">
+      <div class="px dbox"><label for="tD1">D1　手機平放在桌上，原地轉一圈。陀螺儀有讀數，但加速度計的讀數幾乎不變。試解釋原因。</label><textarea class="ta tin" id="tD1" data-t="D1" rows="3" maxlength="150"></textarea><p class="cnt">最多 150 字</p></div>
+      <div class="px dbox"><label>D2　選一個手機功能（不可以用「自動調光」或「通話熄屏」），寫出它的感知、決策、執行。</label>
+        <input class="inp tin" data-t="D2f" maxlength="30" placeholder="功能名稱，例如：……" aria-label="功能名稱">
+        <div class="dgrid"><textarea class="ta tin" data-t="D2s" rows="3" maxlength="80" placeholder="感知：用甚麼傳感器量度甚麼？" aria-label="感知"></textarea><textarea class="ta tin" data-t="D2d" rows="3" maxlength="80" placeholder="決策：程式怎樣判斷？" aria-label="決策"></textarea><textarea class="ta tin" data-t="D2e" rows="3" maxlength="80" placeholder="執行：手機做了甚麼？" aria-label="執行"></textarea></div>
+      </div>
+      <div class="px tonly"><p class="small">D 部分由老師評分。即時面板「堂課」分頁可以看到全部學生的短答。</p></div>
+    </div>
+  </section>
+
+  <!-- T5 SUBMIT -->
+  <section class="slide task" data-id="tsub" data-stage="7" data-hook="tsub">
+    <h2 class="t"><span class="lvl boss">交卷</span>檢查，然後交卷</h2>
+    <div class="lockmsg">等待老師開放堂課</div>
+    <div class="tbody">
+      <div class="sonly" id="subPre" style="display:flex;flex-direction:column;gap:10px">
+        <div class="review" id="subReview"></div>
+        <div class="row" style="gap:12px;align-items:center"><button class="btn on" id="subGo" style="font-size:22px">交卷</button><button class="btn" id="subYes" hidden style="font-size:22px;background:var(--red);border-color:var(--red)">確定交卷？交卷後不可以再改</button><p class="err" id="subMsg"></p></div>
+      </div>
+      <div class="px gold subcard sonly" id="subCard" hidden>
+        <div class="who" id="scWho"></div>
+        <div class="ansl" id="scAns"></div>
+        <p class="dtx" id="scD"></p>
+        <p class="small" id="scNote"></p>
+      </div>
+      <div class="px tonly" style="display:flex;flex-direction:column;gap:8px"><p class="lead">老師：交卷情況</p><p class="body" id="tSubN">連線後顯示全班交卷情況。</p><button class="btn" id="tSubDash" style="align-self:flex-start">打開即時面板（D）</button></div>
+    </div>
+  </section>
+  <button class="edge l" id="eL" aria-label="上一步" title="上一步">◀</button><button class="edge r" id="eR" aria-label="下一步" title="下一步">▶</button>
+  <div id="nav"><button class="btn" id="bPgPrev" title="上一頁">⏮</button><button class="btn big" id="bPrev" aria-label="上一步">◀ 上一步</button><button id="pg" title="跳到指定頁（G）">1 / 30</button><button class="btn big" id="bNext" aria-label="下一步">下一步 ▶</button><button class="btn" id="bPgNext" title="下一頁">⏭</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
+  <div id="bar"><i></i></div>
+  <div id="toast" role="status"></div>
+  <div id="jump" hidden><div class="px gold"><div class="jh"><h3>跳到指定頁</h3><label for="jumpNo" class="small">輸入頁數</label><input class="inp" id="jumpNo" inputmode="numeric" maxlength="2" autocomplete="off"><button class="btn sm on" id="jumpGo">前往</button><span class="small" id="jumpTip" style="margin-left:auto">按頁面或輸入頁數；按 Esc 關閉</span><button class="btn sm" id="jumpClose">✕ 關閉</button></div><div id="jumpGrid"></div></div></div>
+  <div id="pop" hidden><div class="px gold popbox"><div id="popBody"></div><button class="btn on" id="popClose">明白了，關閉</button></div></div>
+  <div id="picker" hidden><div class="px gold pk" id="pkBox"><span class="k">RANDOM PICK</span><span id="pkNum">--</span><span class="pkt">號同學</span><div class="row" style="gap:10px;align-items:center"><label for="pkMax" class="small">全班人數</label><input id="pkMax" type="number" min="2" max="60" value="26"><button class="btn sm" id="pkAgain">再抽</button><button class="btn sm" id="pkClose">關閉</button></div></div></div>
+  <div id="unlock" hidden><div class="px gold"><span class="k">BADGE UNLOCKED</span><span class="bdg got" id="unlockIcon">1</span><span class="nm" id="unlockName"></span></div></div>
+  <div id="stuId" hidden><div class="px gold">
+    <h3>登入任務</h3>
+    <p class="small">輸入或確認你的班別、學號和姓名。答案會交給老師；每頁練習題只計第一次作答。<br>如果顯示的不是你，請改成你自己的資料。</p>
+    <div class="fld"><label for="sCls">班別</label><input class="inp" id="sCls" maxlength="6" value="5A" autocomplete="off"></div>
+    <div class="fld"><label for="sNo">學號</label><input class="inp" id="sNo" inputmode="numeric" maxlength="2" placeholder="例：12" autocomplete="off"></div>
+    <div class="fld"><label for="sName">姓名</label><input class="inp" id="sName" maxlength="20" autocomplete="off"></div>
+    <p class="err" id="sErr"></p>
+    <button class="btn on" id="sGo" style="font-size:22px">開始任務</button>
+  </div></div>
+</div>
+<div id="notes" hidden><div id="notesHead"><span>講者備註　按 N 或 Esc 也可以關閉</span><button id="notesClose">✕ 關閉備註</button></div><div id="notesBody"></div></div>
+<script>
+(function(){
+const TEACHER=false;
+const FB_CFG={"apiKey": "AIzaSyACrOYiSzMt3rqknfvJ1Ehnm56cDpnoZ5Q", "databaseURL": "https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app"};
+const TASK_KEY=null;
+const TASK_CODE=null;
+const TASK_CODE_H="e2e794e8";
+
+/* ---------- lesson data: week 10 ---------- */
+const LESSON='w10';
+const STAGES={0:['START','手機傳感器陣列'],1:['STAGE 1','感知・決策・執行'],2:['STAGE 2','加速度計'],3:['STAGE 3','陀螺儀'],4:['STAGE 4','環境光'],5:['STAGE 5','LiDAR'],6:['FINAL','總結'],7:['BOSS','堂課']};
+const ROUTE={review:'1/5 重溫',senses:'2/5 人有五感',sda:'3/5 感知決策執行',sdaq:'4/5 練習',array:'5/5 傳感器陣列',acc:'1/3 巴士急剎',tilt:'2/3 重力',steps:'3/3 計步器',gyro:'1/3 量度轉速',vs:'2/3 比較',fusion:'3/3 融合',light:'1/2 lux',prox:'2/2 環境光 vs 距離',lidar:'1/3 飛行時間',tofcalc:'2/3 計一計',depth:'3/3 深度圖',coop:'1/2 陣列合作',sum:'2/2 總結',tgate:'規則',tA:'A 配對',tB:'B 感知決策執行',tC:'C 計算',tD:'D 短答',tsub:'交卷'};
+const BADGES=[['s1','系統分析員'],['s2','重力偵探'],['s3','旋轉大師'],['s4','光線管理員'],['s5','LiDAR 測距員']];
+const UND_SECS={1:'第 1 關 感知決策執行',2:'第 2 關 加速度計',3:'第 3 關 陀螺儀',4:'第 4 關 環境光',5:'第 5 關 LiDAR'};
+const SA_Q={fav:'每天都用、要靠傳感器的手機功能'};
+const TASK_IDS=['A1','A2','A3','A4','A5','A6','A7','A8','B1','B2','B3','B4','B5','C1','C2','C3'];
+const TASK_TEXT=['D1','D2f','D2s','D2d','D2e'];
+const POPS={};
+const NOTES={
+};
+
+const $=s=>document.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const fmt=n=>{const r=Math.round(n*10)/10;return (Number.isInteger(r)?r.toFixed(0):r.toFixed(1));};
+const LS={ get(k){ try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } }, set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }, del(k){ try{ localStorage.removeItem(k); }catch(e){} } };
+let ADV=false;
+let REC=()=>{};          // practice first-answer recorder (student layer replaces it)
+const slides=$$('.slide');
+if(TEACHER) $('#stage').classList.add('teacher');
+
+/* ---------- XP / badges / toast ---------- */
+const got=new Set(); let XP=0;
+const MAXXP=($$('.ch').length+1)*10;
+function hud(){ $('#xpNum').textContent=XP; $('#xpFill').style.width=Math.min(100,XP/MAXXP*100)+'%'; $('#hudBadges').textContent='徽章 '+got.size+'/'+BADGES.length; sumBadges(); }
+let tT; function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(tT); tT=setTimeout(()=>t.classList.remove('on'),1700); }
+function gain(n){ XP+=n; hud(); toast('+'+n+' XP'); }
+let uT; function unlock(id){ if(got.has(id))return; got.add(id); hud(); const i=BADGES.findIndex(b=>b[0]===id); $('#unlockIcon').textContent=i+1; $('#unlockName').textContent=BADGES[i][1]; $('#unlock').hidden=false; clearTimeout(uT); uT=setTimeout(()=>$('#unlock').hidden=true,1900); }
+$('#unlock').addEventListener('click',()=>$('#unlock').hidden=true);
+function sumBadges(){ const el=$('#sumBadges'); if(!el)return; el.innerHTML=BADGES.map((b,i)=>`<figure><span class="bdg${got.has(b[0])?' got':''}">${i+1}</span><figcaption>${esc(b[1])}</figcaption></figure>`).join(''); }
+function pulse(el,c){ if(!el) return; el.classList.remove(c); void el.offsetWidth; el.classList.add(c); }
+
+/* ---------- pop-up explanations ---------- */
+function openPop(k){ $('#popBody').innerHTML=POPS[k]; $('#pop').hidden=false; $('#popClose').focus(); }
+function closePop(){ $('#pop').hidden=true; }
+$$('[data-pop]').forEach(b=>b.addEventListener('click',()=>openPop(b.dataset.pop)));
+$('#popClose').addEventListener('click',closePop);
+$('#pop').addEventListener('click',e=>{ if(e.target.id==='pop') closePop(); });
+
+/* ---------- random student picker (teacher) ---------- */
+let pkUsed=new Set(), pkSpin=null;
+function pickStudent(cb){ const max=Math.max(2,Math.min(60,+$('#pkMax').value||26)); if(pkUsed.size>=max) pkUsed.clear(); let n; do{ n=1+Math.floor(Math.random()*max); }while(pkUsed.has(n)); pkUsed.add(n);
+  $('#picker').hidden=false; clearInterval(pkSpin); let i=0;
+  pkSpin=setInterval(()=>{ $('#pkNum').textContent=String(1+Math.floor(Math.random()*max)).padStart(2,'0'); if(++i>16){ clearInterval(pkSpin); $('#pkNum').textContent=String(n).padStart(2,'0'); pulse($('#pkNum'),'pop'); if(cb) setTimeout(()=>cb(n),300); } },65); }
+function closePicker(){ clearInterval(pkSpin); $('#picker').hidden=true; }
+$('#pkAgain').addEventListener('click',()=>pickStudent());
+$('#pkClose').addEventListener('click',closePicker);
+$('#picker').addEventListener('click',e=>{ if(e.target.id==='picker') closePicker(); });
+
+/* ---------- correct-answer burst ---------- */
+let SCALE=1;
+function burst(btn){ const box=btn.closest('.opts')||btn.parentElement; if(!box) return; const br=btn.getBoundingClientRect(), ob=box.getBoundingClientRect();
+  const cx=(br.left-ob.left+br.width/2)/SCALE, cy=(br.top-ob.top+br.height/2)/SCALE, cols=['#FFD23F','#3BE08F','#38BDF8','#E879F9','#FF9F43'];
+  for(let i=0;i<14;i++){ const d=document.createElement('i'); d.className='burst'; const a=i/14*Math.PI*2, r=50+Math.random()*40;
+    d.style.left=(cx-5)+'px'; d.style.top=(cy-5)+'px'; d.style.background=cols[i%5]; d.style.setProperty('--dx',Math.round(Math.cos(a)*r)+'px'); d.style.setProperty('--dy',Math.round(Math.sin(a)*r)+'px');
+    box.appendChild(d); setTimeout(()=>d.remove(),760); } }
+
+/* ---------- practice items (.ch): retry until right, first answer recorded ---------- */
+$$('.slide').forEach(sl=>$$('.ch',sl).forEach((c,i)=>{ c.dataset.q=sl.dataset.id+'-'+(i+1); }));
+$$('.ch').forEach(ch=>{
+  const btns=$$('.opts .btn',ch); btns.forEach((b,i)=>{ if(!b.dataset.v) b.dataset.v=String(i); b.insertAdjacentHTML('afterbegin','<span class="lf"></span>'); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); });
+  let tries=0;
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    if(ch.classList.contains('done'))return;
+    if(b.dataset.v===ch.dataset.ans){
+      REC(ch,b,true);
+      b.classList.add('ok'); btns.forEach(x=>{ if(x!==b) x.classList.add('dim'); });
+      ch.classList.add('done');
+      pulse(ch,'pop'); burst(b); gain(tries===0?10:5);
+      const g=ch.closest('[data-badge]'); if(g && $$('.ch',g).every(x=>x.classList.contains('done'))) setTimeout(()=>unlock(g.dataset.badge),700);
+    } else {
+      REC(ch,b,false); tries++; b.classList.add('no'); pulse(b,'shake'); setTimeout(()=>b.classList.remove('no'),700); toast('再想一想');
+    }
+  }));
+});
+function segPick(id,fn){ const seg=$(id); seg.addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(!b)return; $$('.btn',seg).forEach(x=>x.classList.toggle('on',x===b)); fn(b.dataset.v); }); return ()=>$('.btn.on',seg).dataset.v; }
+
+/* ---------- P4 sense-decide-act ---------- */
+const SDA={sun:{s:'環境光傳感器量到約 <b class="g">50,000 lux</b>',d:'周圍很光 → 螢幕要調亮，才看得清楚',e:'螢幕背光調到 <b class="g">100%</b>',c:'#E8F7FF'},
+ room:{s:'環境光傳感器量到約 <b class="g">400 lux</b>',d:'一般室內 → 用中等亮度',e:'螢幕背光調到 <b class="g">約 50%</b>',c:'#4C8DB8'},
+ dark:{s:'環境光傳感器量到約 <b class="g">1 lux</b>',d:'很暗 → 調暗，避免刺眼和浪費電',e:'螢幕背光調到 <b class="g">約 5%</b>',c:'#0E2A40'}};
+let sdaK='room';
+function sdaShow(k,anim){ sdaK=k; const o=SDA[k]; $('#sdaS').innerHTML=o.s; $('#sdaD').innerHTML=o.d; $('#sdaE').innerHTML=o.e; $('#sdaGlow').style.background=o.c;
+  if(anim){ const bs=$$('[data-id="sda"] .sda .bx'); bs.forEach((b,i)=>setTimeout(()=>pulse(b,'flash'),i*260)); } }
+segPick('#sdaEnv',v=>sdaShow(v,true));
+
+/* ---------- P6 sensor array ---------- */
+const SENS={1:['環境光傳感器','正面頂部','周圍光線有多強（lux）','自動調整螢幕亮度'],2:['距離傳感器','正面頂部','有沒有物件很近（發紅外線、收反射）','通話時貼耳熄屏'],3:['前鏡頭／Face ID','正面頂部','影像、臉部立體形狀','自拍、人臉解鎖'],4:['觸控屏／指紋','螢幕','手指觸碰的位置、指紋','觸控操作、指紋解鎖'],5:['咪高峰','底部','聲音','通話、語音助理'],6:['主鏡頭','背面','影像（顏色）','拍照、掃描二維碼'],7:['LiDAR 掃描儀','背面鏡頭旁','物件的距離（深度）','量度、AR、暗光對焦'],8:['加速度計','機身內部','加速度（包括重力）','自動轉屏、計步'],9:['陀螺儀','機身內部','轉動速度（角速度）','VR、遊戲、防手震'],10:['磁力計','機身內部','地球磁場的方向','指南針、地圖方向'],11:['氣壓計','機身內部','氣壓 → 估計高度變化','計算行了幾層樓梯'],12:['定位接收器（GPS）','機身內部','衛星訊號 → 所在位置','地圖導航']};
+function arrShow(k){ const o=SENS[k]; $$('[data-id="array"] .hs').forEach(h=>h.classList.toggle('on',h.dataset.k===String(k)));
+  $('#sInfo').innerHTML=`<h3>${k}　${esc(o[0])}</h3><dl><dt>位置</dt><dd>${esc(o[1])}</dd><dt>量度</dt><dd>${esc(o[2])}</dd><dt>例子</dt><dd>${esc(o[3])}</dd></dl>`; }
+$$('[data-id="array"] .hs').forEach(h=>{ h.addEventListener('click',()=>arrShow(h.dataset.k)); h.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); arrShow(h.dataset.k); } }); });
+
+/* ---------- P7 accelerometer ---------- */
+$('#busGo').addEventListener('click',()=>$('#bus').classList.add('brake'));
+$('#busReset').addEventListener('click',()=>$('#bus').classList.remove('brake'));
+function accSet(v){ v=+v; $('#mFrame').style.transform=`translateX(${v*34}px)`; $('#mMass').style.transform=`translateX(${v*14}px)`;
+  const bar=$('#accBar'); if(v===0){ bar.style.left='50%'; bar.style.width='0'; } else if(v>0){ bar.style.left='50%'; bar.style.width='32%'; } else { bar.style.left='18%'; bar.style.width='32%'; }
+  $('#accVal').textContent=v===0?'0 m/s²':(v>0?'+3.0 m/s²':'−3.0 m/s²'); }
+segPick('#accBtns',accSet);
+
+/* ---------- P8 tilt ---------- */
+function tiltSet(v){ let x=0,y=9.8,z=0,ph='',ui='',ori='直向',why='Y 最大：手機直放';
+  if(v==='flat'){ x=0;y=0;z=9.8; ph='rotateX(62deg)'; ori='保持原來方向'; why='Z 最大：平放時，畫面不會自動轉'; }
+  else { const a=+v*Math.PI/180; x=9.8*Math.sin(a); y=9.8*Math.cos(a); ph=`rotate(${-v}deg)`; if(Math.abs(x)>Math.abs(y)){ ori='橫向'; ui='rotate(90 50 90)'; why='X 比 Y 大：手機判斷已經橫放 → 自動轉屏'; } else why=v==0?'Y 最大：手機直放':'Y 仍然比 X 大：保持直向'; }
+  $('#tiltPh').style.transform=ph; $('#tiltUi').setAttribute('transform',ui);
+  [['X',x],['Y',y],['Z',z]].forEach(([k,val])=>{ $('#ax'+k).style.width=(Math.abs(val)/9.8*100)+'%'; $('#av'+k).textContent=fmt(Math.abs(val))+' m/s²'; });
+  $('#tiltOri').textContent=ori; $('#tiltWhy').textContent=why; }
+segPick('#tiltBtns',tiltSet);
+
+/* ---------- P9 step counter ---------- */
+const STEP_SIG=(()=>{ const N=640, a=new Array(N).fill(9.8); let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; };
+  const peaks=[14.2,15.6,13.8,16.4,14.9,15.2,13.7,16.1,14.4,15.8,14.0,15.0];
+  peaks.forEach((h,i)=>{ const c=40+i*48; for(let k=-14;k<=14;k++){ const t=k/14; a[c+k]+= (h-9.8)*Math.max(0,Math.cos(t*Math.PI/2))**2; } for(let k=16;k<24;k++) a[c+k]-=2.2*Math.sin((k-16)/8*Math.PI); });
+  [[64,12.4],[208,11.6],[352,12.6],[500,11.3]].forEach(([c,h])=>{ for(let k=-4;k<=4;k++) a[c+k]+=(h-9.8)*Math.max(0,1-Math.abs(k)/4); });
+  for(let i=0;i<N;i++) a[i]+= (rnd()-.5)*0.6; return a; })();
+let stepT=null, stepN=0;
+function stepCount(n){ const th=+$('#stepTh').value; let c=0, up=false; for(let i=0;i<n;i++){ if(!up && STEP_SIG[i]>th){ c++; up=true; } else if(up && STEP_SIG[i]<th-0.8) up=false; } return c; }
+function stepDraw(n){ const cv=$('#stepCv'), g=cv.getContext('2d'), W=cv.width, H=cv.height, th=+$('#stepTh').value; const yv=v=>H-14-(v-6)/(18-6)*(H-28);
+  g.fillStyle='#0A0826'; g.fillRect(0,0,W,H); g.strokeStyle='#2A2670'; g.lineWidth=1; for(let v=8;v<=18;v+=2){ g.beginPath(); g.moveTo(0,yv(v)); g.lineTo(W,yv(v)); g.stroke(); }
+  g.fillStyle='#8C85C9'; g.font='13px sans-serif'; for(let v=8;v<=18;v+=4) g.fillText(v+'',4,yv(v)-3);
+  g.strokeStyle='#FFD23F'; g.setLineDash([8,6]); g.lineWidth=2; g.beginPath(); g.moveTo(0,yv(th)); g.lineTo(W,yv(th)); g.stroke(); g.setLineDash([]); g.fillStyle='#FFD23F'; g.fillText('門檻',W-40,yv(th)-6);
+  g.strokeStyle='#FF9F43'; g.lineWidth=3; g.beginPath(); for(let i=0;i<n;i++){ const x=i/(STEP_SIG.length-1)*W; i?g.lineTo(x,yv(STEP_SIG[i])):g.moveTo(x,yv(STEP_SIG[i])); } g.stroke();
+  let up=false; g.fillStyle='#3BE08F'; for(let i=0;i<n;i++){ if(!up && STEP_SIG[i]>th){ g.fillRect(i/(STEP_SIG.length-1)*W-5,yv(STEP_SIG[i])-14,10,10); up=true; } else if(up && STEP_SIG[i]<th-0.8) up=false; } }
+function stepUpdate(n){ const c=stepCount(n), real=Math.min(12,Math.floor(Math.max(0,n-26)/48)+(n>26?1:0)); $('#stepCnt').textContent=c; $('#stepReal').textContent=n>=STEP_SIG.length?12:real; stepDraw(n);
+  if(n>=STEP_SIG.length){ $('#stepMsg').innerHTML=c>12?`<b class="no">計多了 ${c-12} 步</b>：門檻太低，手輕輕搖也被當成一步。`:c<12?`<b class="no">計少了 ${12-c} 步</b>：門檻太高，有些步伐的高峰不夠高。`:'<b class="ok">剛好 12 步</b>：門檻合適。試試把門檻拉低或拉高。'; } }
+function stepRun(){ clearInterval(stepT); stepN=0; stepT=setInterval(()=>{ stepN=Math.min(STEP_SIG.length,stepN+8); stepUpdate(stepN); if(stepN>=STEP_SIG.length) clearInterval(stepT); },40); }
+$('#stepGo').addEventListener('click',stepRun);
+$('#stepTh').addEventListener('input',()=>{ $('#stepThV').textContent=$('#stepTh').value+' m/s²'; stepUpdate(stepN||STEP_SIG.length); if(!stepN) stepN=STEP_SIG.length; });
+
+/* ---------- P10 gyroscope ---------- */
+const gyA={x:0,y:0,z:0}; let gyT=null, gyBusy=false;
+function gyTf(){ return `rotateX(${gyA.x}deg) rotateY(${gyA.y}deg) rotateZ(${gyA.z}deg)`; }
+function gyRot(ax){ if(gyBusy) return; gyBusy=true; gyA[ax]+=90; $('#gyPh').style.transform=gyTf(); const nm={x:'俯仰',y:'翻滾',z:'偏航'}[ax];
+  $('#gyV').textContent='90 °/s'; $('#gyT').textContent=`正在${nm}（${ax.toUpperCase()} 軸）…`; clearTimeout(gyT);
+  gyT=setTimeout(()=>{ $('#gyV').textContent='0 °/s'; $('#gyT').innerHTML=`已停下：讀數回到 0，<br>但手機已經轉了 90°（90 °/s × 1 秒）`; gyBusy=false; },1000); }
+$('#gyBtns').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(b) gyRot(b.dataset.v); });
+function gyReset(){ clearTimeout(gyT); gyBusy=false; gyA.x=gyA.y=gyA.z=0; $('#gyPh').style.transition='none'; $('#gyPh').style.transform=''; void $('#gyPh').offsetWidth; $('#gyPh').style.transition=''; $('#gyV').textContent='0 °/s'; $('#gyT').textContent='按左邊的掣，令手機轉 90°'; }
+
+/* ---------- P12 sensor fusion ---------- */
+const FU=(()=>{ const N=400, dt=20/N; let seed=11; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647-.5; };
+  const tru=[],gy=[],ac=[],fu=[]; let g=0,f=0; for(let i=0;i<N;i++){ const t=i*dt, th=30*Math.sin(2*Math.PI*t/8), w=30*2*Math.PI/8*Math.cos(2*Math.PI*t/8);
+    tru.push(th); if(i){ g+= (w+1.3+rnd()*2)*dt; } gy.push(g); const a=th+rnd()*16; ac.push(a); if(i){ f=0.97*(f+(w+1.3+rnd()*2)*dt)+0.03*a; } fu.push(f); }
+  return {N,tru,gy,ac,fu}; })();
+let fuT=null;
+function fuDraw(n){ const cv=$('#fuCv'), g=cv.getContext('2d'), W=cv.width, H=cv.height; const yv=v=>H/2-v/60*(H/2-16), xv=i=>40+i/(FU.N-1)*(W-50);
+  g.fillStyle='#0A0826'; g.fillRect(0,0,W,H); g.strokeStyle='#2A2670'; g.lineWidth=1; [-45,-30,-15,0,15,30,45].forEach(v=>{ g.beginPath(); g.moveTo(40,yv(v)); g.lineTo(W,yv(v)); g.stroke(); });
+  g.fillStyle='#8C85C9'; g.font='13px sans-serif'; [-30,0,30].forEach(v=>g.fillText(v+'°',4,yv(v)+4)); [0,5,10,15,20].forEach(s=>g.fillText(s+'s',xv(s/20*(FU.N-1))-8,H-3));
+  const line=(arr,c,w,dash)=>{ g.strokeStyle=c; g.lineWidth=w; g.setLineDash(dash||[]); g.beginPath(); for(let i=0;i<n;i++){ i?g.lineTo(xv(i),yv(arr[i])):g.moveTo(xv(i),yv(arr[i])); } g.stroke(); g.setLineDash([]); };
+  line(FU.ac,'#FF9F43',1.5); line(FU.gy,'#E879F9',3); line(FU.tru,'#F6F4FF',2,[6,5]); line(FU.fu,'#3BE08F',3);
+  if(n>=FU.N){ g.fillStyle='#E879F9'; g.font='bold 15px sans-serif'; g.fillText('漂移 +'+Math.round(FU.gy[FU.N-1]-FU.tru[FU.N-1])+'°',xv(FU.N-1)-110,yv(FU.gy[FU.N-1])-10); } }
+function fuRun(){ clearInterval(fuT); let n=0; fuT=setInterval(()=>{ n=Math.min(FU.N,n+6); fuDraw(n); if(n>=FU.N) clearInterval(fuT); },30); }
+$('#fuGo').addEventListener('click',fuRun);
+
+/* ---------- P13 ambient light ---------- */
+const LUXT=[[0.3,'滿月'],[50,'客廳燈'],[400,'課室'],[1000,'陰天'],[20000,'日光'],[100000,'陽光直射']];
+const luxPos=l=>(Math.log10(l)+1)/6*100;
+$('#luxScale').innerHTML=LUXT.map(([l,n],i)=>`<span class="tick${i%2?' lo':''}" style="left:${luxPos(l)}%">${n}<br>${l>=1000?l.toLocaleString('en'):l}</span>`).join('');
+const luxScene=l=>l<1?'夜晚月光':l<100?'昏暗室內':l<700?'室內（課室、辦公室）':l<5000?'陰天室外':l<30000?'日光（非直射）':'陽光直射';
+function luxSet(){ const v=+$('#luxR').value, l=Math.pow(10,v); const lt=l>=100?Math.round(l/10)*10:l>=10?Math.round(l):fmt(l);
+  const bri=Math.round(Math.max(3,Math.min(100,(v+0.6)/5.4*100)));
+  $('#luxV').textContent=(typeof lt==='number'?lt.toLocaleString('en'):lt)+' lux'; $('#luxCur').style.width=((v+1)/6*100)+'%'; $('#luxBri').style.width=bri+'%'; $('#luxBriV').textContent=bri+'%';
+  const k=Math.max(0,Math.min(1,(v+1)/6)); $('#luxRoom').style.background=`rgb(${Math.round(10+k*190)},${Math.round(8+k*200)},${Math.round(38+k*190)})`;
+  $('#luxSun').style.display=v>=3.3?'':'none'; $('#luxMoon').style.display=v<0.7?'':'none';
+  const sk=Math.round(30+bri*2.2); $('#luxScr').setAttribute('fill',`rgb(${Math.round(sk*0.35)},${Math.round(sk*0.75)},${Math.min(255,sk)})`);
+  $('#luxS').textContent=`約 ${$('#luxV').textContent}（${luxScene(l)}）`; $('#luxD').textContent=bri<30?'很暗 → 調暗螢幕，避免刺眼':bri<70?'一般光線 → 中等亮度':'很光 → 調亮螢幕，才看得清楚'; $('#luxE').textContent=`螢幕背光 ${bri}%`; }
+$('#luxR').addEventListener('input',luxSet);
+
+/* ---------- P14 proximity ---------- */
+function pxSet(){ const cm=+$('#pxR').value, x=52+cm*16, near=cm<=10;
+  $('#pxHand').setAttribute('transform',`translate(${x},0)`); $('#pxRay').setAttribute('x2',x); $('#pxBack').setAttribute('x1',x);
+  $('#pxBack').style.opacity=cm<=20?1:.25; $('#pxScr').setAttribute('fill',near?'#000':'#38BDF8');
+  $('#pxV').innerHTML=`${cm} cm：${near?'<b class="no">很近 → 熄屏</b>':'<b class="ok">不近 → 螢幕亮着</b>'}`; }
+$('#pxR').addEventListener('input',pxSet);
+
+/* ---------- P15 LiDAR time of flight ---------- */
+let tofA=null;
+const tofX=d=>90+d/5*1050;
+function tofSet(){ cancelAnimationFrame(tofA); const d=+$('#tofR').value, x=tofX(d); $('#tofWall').setAttribute('transform',`translate(${x},0)`); $('#tofLine').setAttribute('x2',x); $('#tofV').textContent=fmt(d)+' m';
+  $('#tofDot').setAttribute('x',70); $('#tofT').textContent='0 ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = '+fmt(d/0.15)+' ns'; }
+function tofRun(){ cancelAnimationFrame(tofA); const d=+$('#tofR').value, x=tofX(d), T=1600, t0=performance.now(), ns=d/0.15;
+  const fr=t=>{ const p=Math.min(1,(t-t0)/T), pos=p<.5?70+(x-82)*(p*2):70+(x-82)*(2-p*2); $('#tofDot').setAttribute('x',pos); $('#tofT').textContent=fmt(ns*p)+' ns'; if(p<1) tofA=requestAnimationFrame(fr); else $('#tofT').textContent=fmt(ns)+' ns'; };
+  tofA=requestAnimationFrame(fr); }
+$('#tofR').addEventListener('input',tofSet); $('#tofGo').addEventListener('click',tofRun);
+
+/* ---------- P17 depth map ---------- */
+const DCOL=['#FF4D5E','#FF7A45','#FF9F43','#FFD23F','#3BE08F','#2FC7C9','#38BDF8','#4B6BFB'];
+function depthAt(x,y){ if(x>=40&&x<=190&&y>=70&&y<=160) return 0.22; if(x>=250&&x<=340&&y>=110&&y<=120) return 0.5; if(((x>=258&&x<=266)||(x>=324&&x<=332))&&y>=120&&y<=168) return 0.52; if(y>=150) return Math.max(0.05,0.82-(y-150)/60*0.75); return 0.92; }
+let depT=null;
+function depRun(){ clearInterval(depT); const sv=$('#depSvg'); sv.innerHTML=''; let row=0; const cols=40, rows=21;
+  depT=setInterval(()=>{ let h=''; for(let c=0;c<cols;c++){ const x=5+c*10, y=5+row*10, d=depthAt(x,y); h+=`<rect x="${x-4}" y="${y-4}" width="8" height="8" fill="${DCOL[Math.min(7,Math.floor(d*8))]}"/>`; } sv.insertAdjacentHTML('beforeend',h); if(++row>=rows) clearInterval(depT); },45); }
+$('#depGo').addEventListener('click',depRun);
+
+/* ---------- P18 cooperation ---------- */
+const COOP_ALL=['主鏡頭','LiDAR','加速度計','陀螺儀','環境光','距離','氣壓計','定位（GPS）','咪高峰'];
+const COOP={ar:[['主鏡頭','陀螺儀','加速度計','LiDAR'],'AR 要知道鏡頭望向哪裏（陀螺儀、加速度計），又要知道地面和傢俬有多遠（LiDAR），再把虛擬物件放進相機畫面。'],
+ crash:[['加速度計','陀螺儀','氣壓計','定位（GPS）','咪高峰'],'Apple 介紹 iPhone 14 的撞車偵測：加速度計（強烈撞擊）、陀螺儀、氣壓計（車廂氣壓變化）、GPS（車速變化）、咪高峰（巨大聲響）一起判斷。'],
+ photo:[['主鏡頭','LiDAR','陀螺儀','環境光'],'暗處用 LiDAR 量距離幫助對焦；陀螺儀偵測手震來防震；環境光傳感器幫助判斷光線和白平衡。'],
+ bright:[['環境光'],'自動調光主要靠環境光傳感器。有些手機還會學習你平時手動調的亮度，再調整決策。']};
+function coopShow(k){ const [on,why]=COOP[k]; $('#coopChips').innerHTML=COOP_ALL.map(n=>`<span class="${on.includes(n)?'lit':''}">${esc(n)}</span>`).join(''); $('#coopWhy').textContent=why; }
+segPick('#coopFn',coopShow);
+
+const HOOKS={
+ sda:{enter:()=>sdaShow(sdaK,false)},
+ array:{enter:()=>{ if(!$('#sInfo').innerHTML) arrShow(1); }},
+ acc:{enter:()=>{ accSet(0); $$('#accBtns .btn').forEach(b=>b.classList.toggle('on',b.dataset.v==='0')); }},
+ tilt:{enter:()=>{ const v=$('#tiltBtns .btn.on').dataset.v; tiltSet(v); }},
+ steps:{enter:()=>{ $('#stepThV').textContent=$('#stepTh').value+' m/s²'; stepN=0; stepUpdate(0); }, leave:()=>clearInterval(stepT)},
+ gyro:{enter:gyReset},
+ fusion:{enter:()=>fuDraw(0), leave:()=>clearInterval(fuT)},
+ light:{enter:luxSet},
+ prox:{enter:pxSet},
+ lidar:{enter:tofSet, leave:()=>cancelAnimationFrame(tofA)},
+ depth:{enter:()=>{ clearInterval(depT); $('#depSvg').innerHTML='<text x="200" y="110" fill="#8C85C9" font-size="18" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">按「掃描」</text>'; }, leave:()=>clearInterval(depT)},
+ coop:{enter:()=>coopShow($('#coopFn .btn.on').dataset.v)},
+ tgate:{enter:()=>TASKUI.gate()},
+ tsub:{enter:()=>TASKUI.sub()}
+};
+
+/* ---------- deck engine ---------- */
+let cur=-1, step=0;
+const OFF=i=>slides[i].dataset.intro?1:0;
+const nsteps=i=>+(slides[i].dataset.steps||0)+OFF(i);
+let ONPAGE=()=>{};   // live layer hook: page changed
+function render(prev){ const s=slides[cur];
+  slides.forEach((x,i)=>x.classList.toggle('active',i===cur));
+  const off=OFF(cur), sx=step-off; const it=s.querySelector('.intro'); if(it) it.classList.toggle('hide',sx>=0);
+  $$('.f',s).forEach(f=>f.classList.toggle('on',+f.dataset.f<=sx));
+  const h=HOOKS[s.dataset.hook]; if(h&&h.step) h.step(Math.max(0,sx),prev<0?prev:prev-off);
+  const st=STAGES[s.dataset.stage]; $('#hudStage').textContent=st[0]; $('#hudName').textContent=st[1]+(ROUTE[s.dataset.id]?'　›　'+ROUTE[s.dataset.id]:'');
+  $('#pg').innerHTML=`${cur+1} / ${slides.length}<small>${nsteps(cur)?'步驟 '+step+' / '+nsteps(cur):'☰ 選頁'}</small>`; $('#bNext').classList.toggle('more',step<nsteps(cur));
+  $('#bNext').disabled=$('#eR').disabled=(step>=nsteps(cur)&&cur>=slides.length-1); $('#bPrev').disabled=$('#eL').disabled=(step===0&&cur===0);
+  $('#bar i').style.width=((cur+1)/slides.length*100)+'%';
+  $('#notesBody').innerHTML=esc(NOTES[s.dataset.id]||'').replace(/【(.*?)】/g,'<b>【$1】</b>');
+  try{ history.replaceState(null,'','#'+(cur+1)); }catch(e){} }
+function go(i,st){ i=Math.max(0,Math.min(slides.length-1,i)); const prevStep=step;
+  if(i!==cur){ if(cur>=0){ const o=HOOKS[slides[cur].dataset.hook]; if(o&&o.leave) o.leave(); }
+    cur=i; step=st; try{ const a=document.activeElement; if(a&&a!==document.body&&!slides[cur].contains(a)&&!a.closest('#nav')) a.blur(); }catch(e){} const h=HOOKS[slides[cur].dataset.hook]; if(h&&h.enter) h.enter(); render(-1); ONPAGE(cur); }
+  else { step=st; render(prevStep); } }
+function next(){ if(step<nsteps(cur)) go(cur,step+1); else if(cur<slides.length-1) go(cur+1,0); }
+function prev(){ if(step>0) go(cur,step-1); else if(cur>0) go(cur-1,nsteps(cur-1)); }
+const PG_STEP=i=>TEACHER?0:nsteps(i);
+function pgPrev(){ if(cur>0) go(cur-1,PG_STEP(cur-1)); }
+function pgNext(){ if(cur<slides.length-1) go(cur+1,PG_STEP(cur+1)); }
+
+/* ---------- jump menu ---------- */
+let JUMPINFO=()=>'';
+const ptitle=sl=>{ const h=sl.querySelector('h2.t,h1'); if(!h) return sl.dataset.id; const c=h.cloneNode(true); c.querySelectorAll('.lvl').forEach(x=>x.remove()); return c.textContent.trim().replace(/\s+/g,' '); };
+function openJump(){ $('#jumpGrid').innerHTML=slides.map((sl,i)=>`<button class="jp${i===cur?' cur':''}" data-i="${i}"><b>P${i+1}</b><span class="jt">${esc(ptitle(sl))}</span>${JUMPINFO(sl)}</button>`).join(''); $('#jumpNo').value=''; $('#jumpTip').textContent='按頁面或輸入頁數；按 Esc 關閉'; $('#jump').hidden=false; setTimeout(()=>$('#jumpNo').focus(),30); }
+function closeJump(){ $('#jump').hidden=true; }
+function jumpTo(i){ if(!(i>=0&&i<slides.length)){ $('#jumpTip').innerHTML='<b style="color:var(--red)">頁數要是 1 至 '+slides.length+'</b>'; return; } closeJump(); go(i,PG_STEP(i)); }
+$('#jumpGrid').addEventListener('click',e=>{ const b=e.target.closest('.jp'); if(b) jumpTo(+b.dataset.i); });
+$('#jumpGo').addEventListener('click',()=>jumpTo(parseInt($('#jumpNo').value,10)-1));
+$('#jumpNo').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); jumpTo(parseInt($('#jumpNo').value,10)-1); } else if(e.key==='Escape') closeJump(); });
+$('#jumpClose').addEventListener('click',closeJump);
+$('#jump').addEventListener('click',e=>{ if(e.target.id==='jump') closeJump(); });
+
+/* ---------- notes / adv / fullscreen ---------- */
+function toggleNotes(){ if(!TEACHER) return; $('#notes').hidden=!$('#notes').hidden; $('#bNotes').classList.toggle('on',!$('#notes').hidden); fit(); }
+function toggleAdv(){ ADV=!ADV; $('#stage').classList.toggle('adv-on',ADV); $('#hudMode').textContent=ADV?'進階':'基礎'; $('#bAdv').classList.toggle('on',ADV); const h=HOOKS[slides[cur].dataset.hook]; if(h&&h.enter) h.enter(); if(h&&h.step) h.step(Math.max(0,step-OFF(cur)),Math.max(0,step-OFF(cur))); toast(ADV?'進階模式：顯示公式和細節':'基礎模式'); }
+function full(){ try{ if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}); else document.exitFullscreen().catch(()=>{}); }catch(e){} }
+let KEYX=()=>false;
+let START=()=>{};   // live layer can claim keys (returns true when handled)
+document.addEventListener('keydown',e=>{ const tg=e.target.tagName;
+  if($('#stuId')&&!$('#stuId').hidden) return;
+  if($('#liveM')&&!$('#liveM').hidden){ if(e.key==='Escape') $('#liveM').hidden=true; return; }
+  if(!$('#jump').hidden){ if(e.key==='Escape') closeJump(); return; }
+  if(tg==='INPUT'||tg==='SELECT'||tg==='TEXTAREA'){ if(e.key==='Escape') e.target.blur(); return; }
+  if((e.key==='Enter'||e.key===' ')&&tg==='BUTTON') return;
+  if(KEYX(e)) return;
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){ e.preventDefault(); next(); }
+  else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){ e.preventDefault(); prev(); }
+  else if((e.key==='n'||e.key==='N')&&TEACHER) toggleNotes();
+  else if(e.key==='Escape' && !$('#notes').hidden) toggleNotes();
+  else if(e.key==='a'||e.key==='A') toggleAdv();
+  else if((e.key==='r'||e.key==='R')&&TEACHER) pickStudent();
+  else if(e.key==='Escape' && !$('#picker').hidden) closePicker();
+  else if(e.key==='Escape' && !$('#pop').hidden) closePop();
+  else if(e.key==='f'||e.key==='F') full();
+  else if(e.key==='g'||e.key==='G'){ e.preventDefault(); openJump(); }
+  else if(e.key==='Home') go(0,0);
+  else if(e.key==='End') go(slides.length-1,0); });
+$('#bPrev').onclick=prev; $('#bNext').onclick=next; $('#eL').onclick=prev; $('#eR').onclick=next; $('#bPgPrev').onclick=pgPrev; $('#bPgNext').onclick=pgNext; $('#pg').onclick=openJump;
+$('#bNotes').onclick=toggleNotes; $('#notesClose').onclick=toggleNotes; $('#bAdv').onclick=toggleAdv; $('#bPick').onclick=()=>pickStudent(); $('#bFull').onclick=full;
+if(!TEACHER){ ['#bPick','#bNotes','#bPgPrev','#bPgNext'].forEach(s=>$(s).hidden=true); }
+function fit(){ const nh=$('#notes').hidden?0:$('#notes').offsetHeight, H=Math.max(200,window.innerHeight-nh), k=Math.min(window.innerWidth/1280,H/720); SCALE=k; const st=$('#stage'); st.style.top=(H/2)+'px'; st.style.transform=`translate(-50%,-50%) scale(${k})`; }
+window.addEventListener('resize',fit); fit(); hud();
+
+/* =====================================================================
+   Live layer: Firebase Realtime Database over REST (no SDK).
+   Students: anonymous sign-in, PUT their own record, poll the control node.
+   Teacher: email/password sign-in, streams all records (Server-Sent Events).
+   ===================================================================== */
+const FB={key:FB_CFG.apiKey||'', db:(FB_CFG.databaseURL||'').replace(/\/+$/,''), idt:FB_CFG.idt||'https://identitytoolkit.googleapis.com', stk:FB_CFG.stk||'https://securetoken.googleapis.com'};
+const FB_ON=!!(FB.key&&FB.db);
+const LPATH='lessons/'+LESSON;
+const ERRZH={INVALID_LOGIN_CREDENTIALS:'電郵或密碼不正確',INVALID_PASSWORD:'電郵或密碼不正確',EMAIL_NOT_FOUND:'電郵或密碼不正確',INVALID_EMAIL:'電郵格式不正確',USER_DISABLED:'這個帳號已停用',OPERATION_NOT_ALLOWED:'Firebase 未開啟這種登入方式（設定步驟 3）',ADMIN_ONLY_OPERATION:'Firebase 未開啟「匿名」登入（設定步驟 3）',TOO_MANY_ATTEMPTS_TRY_LATER:'嘗試次數太多，請稍後再試','Permission denied':'權限不足：檢查設定步驟 4 的規則和電郵'};
+const zhErr=e=>{ const m=String(e&&e.message||e); for(const k in ERRZH) if(m.indexOf(k)>=0) return ERRZH[k]; if(e&&e.name==='AbortError') return '連線逾時'; if(/Failed to fetch|NetworkError|Load failed/i.test(m)) return '連不上網絡或 Firebase'; return m; };
+async function fx(url,opt,ms){ const ac=new AbortController(), t=setTimeout(()=>ac.abort(),ms||9000);
+  try{ const r=await fetch(url,Object.assign({},opt||{},{signal:ac.signal})); const tx=await r.text(); let j=null; try{ j=tx?JSON.parse(tx):null; }catch(e){}
+    if(!r.ok){ const m=j&&j.error?(j.error.message||j.error):('HTTP '+r.status); const er=new Error(typeof m==='string'?m:JSON.stringify(m)); er.status=r.status; throw er; } return j; }
+  finally{ clearTimeout(t); } }
+function Auth(kind){ const key='u4auth.'+kind+'.'+(FB.db||'none'); let st=LS.get(key), pend=null; const save=()=>LS.set(key,st);
+  const take=(id,rt,exp,uid,email)=>{ st={uid,rt,it:id,exp:Date.now()+(+exp||3600)*1000,email:email||(st&&st.email)||''}; save(); };
+  async function refresh(){ const j=await fx(`${FB.stk}/v1/token?key=${FB.key}`,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=refresh_token&refresh_token='+encodeURIComponent(st.rt)}); take(j.id_token,j.refresh_token,j.expires_in,j.user_id); }
+  async function anon(){ const j=await fx(`${FB.idt}/v1/accounts:signUp?key=${FB.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({returnSecureToken:true})}); take(j.idToken,j.refreshToken,j.expiresIn,j.localId); }
+  return { get uid(){ return st&&st.uid; }, get email(){ return st&&st.email; }, has(){ return !!(st&&st.rt); },
+    token(force){ if(!force&&st&&st.it&&Date.now()<st.exp-120000) return Promise.resolve(st.it); if(pend) return pend;
+      pend=(async()=>{ try{ if(st&&st.rt){ try{ await refresh(); }catch(e){ if(kind==='stu'&&e.status===400){ st=null; await anon(); } else throw e; } } else if(kind==='stu') await anon(); else throw new Error('LOGIN'); return st.it; } finally{ pend=null; } })(); return pend; },
+    async login(email,pw){ const j=await fx(`${FB.idt}/v1/accounts:signInWithPassword?key=${FB.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pw,returnSecureToken:true})}); take(j.idToken,j.refreshToken,j.expiresIn,j.localId,j.email); },
+    logout(){ st=null; LS.del(key); } }; }
+async function dbReq(auth,method,path,body){ const run=async tok=>fx(`${FB.db}/${path}.json?auth=${encodeURIComponent(tok)}`,{method,headers:body!==undefined?{'Content-Type':'application/json'}:{},body:body!==undefined?JSON.stringify(body):undefined});
+  try{ return await run(await auth.token()); }catch(e){ if(e.status===401||e.status===403) return run(await auth.token(true)); throw e; } }
+
+/* ---------- helpers shared by both views ---------- */
+const QINFO={}; $$('.ch').forEach(ch=>{ const sl=ch.closest('.slide'), t=ch.querySelector('.qt,.tt'); QINFO[ch.dataset.q]={pg:slides.indexOf(sl), text:t?t.textContent.trim():ch.dataset.q, ans:ch.dataset.ans, opts:$$('.opts .btn',ch).map(b=>[b.dataset.v,b.textContent.trim()])}; });
+const TKBTN={}; $$('.tk').forEach(tk=>{ $$('.tops .btn',tk).forEach(b=>{ b.dataset.v=b.textContent.trim(); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); }); TKBTN[tk.dataset.t]=$$('.tops .btn',tk); });
+const CODE_H=s=>{ let h=2166136261; for(const c of 'u4|'+LESSON+'|'+s){ h^=c.charCodeAt(0); h=Math.imul(h,16777619); } return (h>>>0).toString(16); };
+const z2=n=>String(n).padStart(2,'0');
+const tstr=t=>{ const d=new Date(t); return `${d.getFullYear()}-${z2(d.getMonth()+1)}-${z2(d.getDate())} ${z2(d.getHours())}:${z2(d.getMinutes())}`; };
+function liveDot(state,txt){ const d=$('#liveDot'); d.className=state; d.textContent=txt; }
+$('#hudMode').insertAdjacentHTML('beforebegin','<button id="liveDot" title="即時連線">○ 離線</button>');
+let TASKUI={gate(){},sub(){}};
+
+/* =====================================================================
+   STUDENT VIEW
+   ===================================================================== */
+if(!TEACHER){
+  const auth=FB_ON?Auth('stu'):null;
+  const ST={who:null, r:null, unl:false};
+  const recKey=w=>`u4.${LESSON}.${w.cls}.${w.no}`;
+  const blank=()=>({prac:{},und:{},sa:{},task:{},sub:0,unl:0,page:1});
+  const PRAC_TOTAL=$$('.ch').length;
+  let syncT=null, syncing=false, again=false, lastOk=0;
+  function saveLocal(){ if(ST.who) LS.set(recKey(ST.who),Object.assign({name:ST.who.name},ST.r)); }
+  function touch(){ saveLocal(); clearTimeout(syncT); syncT=setTimeout(sync,600); }
+  async function sync(){ if(!FB_ON||!ST.who) return; if(syncing){ again=true; return; } syncing=true;
+    try{ await auth.token(); const w=ST.who; const body={cls:w.cls,no:w.no,name:w.name,ts:Date.now(),page:cur+1,prac:ST.r.prac,und:ST.r.und,sa:ST.r.sa,task:ST.r.task,sub:ST.r.sub||0,unl:ST.r.unl||0};
+      await dbReq(auth,'PUT',`${LPATH}/students/${auth.uid}`,body); lastOk=Date.now(); liveDot('on','● 已連線'); if(ST.r.sub) subUI(); }
+    catch(e){ liveDot('err','○ 離線：答案存在本機'); clearTimeout(syncT); syncT=setTimeout(sync,8000); }
+    finally{ syncing=false; if(again){ again=false; sync(); } } }
+  setInterval(()=>{ if(ST.who&&FB_ON&&!document.hidden) sync(); },25000);
+  ONPAGE=()=>{ if(ST.r){ ST.r.page=cur+1; touch(); } };
+
+  // identity
+  $('#hudMode').insertAdjacentHTML('beforebegin','<button id="hudStu" title="更改資料">未登入</button>');
+  const hudStu=()=>{ $('#hudStu').textContent=ST.who?`${ST.who.cls} · ${z2(ST.who.no)} ${ST.who.name}`:'未登入'; };
+  function openId(){ const w=ST.who||{}; $('#sCls').value=w.cls||'5A'; $('#sNo').value=w.no||''; $('#sName').value=w.name||''; $('#sErr').textContent=''; $('#stuId').hidden=false; setTimeout(()=>$(w.no?'#sGo':'#sNo').focus(),50); }
+  function idGo(){ const cls=$('#sCls').value.trim().toUpperCase().replace(/\s+/g,''), no=parseInt($('#sNo').value.trim(),10), name=$('#sName').value.trim();
+    if(!/^[0-9A-Z]{1,6}$/.test(cls)){ $('#sErr').textContent='請輸入班別，例如 5A'; return; }
+    if(!(no>=1&&no<=60)){ $('#sErr').textContent='學號要是 1 至 60 的數字'; return; }
+    if(!name){ $('#sErr').textContent='請輸入姓名'; return; }
+    const w={cls,no,name}; LS.set(`u4.${LESSON}.who`,w); loadWho(w); $('#stuId').hidden=true; toast('歡迎，'+name); }
+  $('#sGo').addEventListener('click',idGo);
+  $$('#stuId .inp').forEach(i=>i.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); idGo(); } }));
+  $('#hudStu').addEventListener('click',openId);
+  $('#liveDot').addEventListener('click',()=>{ if(FB_ON) sync(); toast(FB_ON?(lastOk?'已連線，答案會即時交給老師':'未能連線：答案先存在本機'):'本頁未設定即時連線：答案存在本機'); });
+  function loadWho(w){ ST.who=w; const r=LS.get(recKey(w)); ST.r=Object.assign(blank(),r||{}); delete ST.r.name; restoreAll(); hudStu(); touch(); }
+
+  // practice: first answer only
+  REC=(ch,b,ok)=>{ if(!ST.who) return; const q=ch.dataset.q; if(!ST.r.prac[q]) ST.r.prac[q]={v:b.dataset.v,ok:ok?1:0}; if(ok) ST.r.prac[q].done=1; touch(); };
+  function restorePractice(){ XP=0; got.clear();
+    $$('.ch').forEach(ch=>{ const bs=$$('.opts .btn',ch); ch.classList.remove('done'); bs.forEach(x=>x.classList.remove('ok','dim','no'));
+      const r=ST.r.prac[ch.dataset.q]; if(!r||!r.done) return; const b=bs.find(x=>x.dataset.v===ch.dataset.ans); if(b){ b.classList.add('ok'); bs.forEach(x=>{ if(x!==b) x.classList.add('dim'); }); } ch.classList.add('done'); XP+=r.ok?10:5; });
+    $$('[data-badge]').forEach(g=>{ const c=$$('.ch',g); if(c.length&&c.every(x=>x.classList.contains('done'))) got.add(g.dataset.badge); }); hud(); }
+  JUMPINFO=sl=>{ const cs=$$('.ch',sl); if(cs.length&&ST.r){ const n=cs.filter(c=>ST.r.prac[c.dataset.q]).length; return `<span class="jx ${n===cs.length?'y':'n'}">練習 ${n}/${cs.length}</span>`; } if(sl.classList.contains('task')&&ST.r&&ST.r.sub) return '<span class="jx y">已交卷</span>'; return ''; };
+
+  // self-check
+  $$('.und').forEach(u=>u.addEventListener('click',e=>{ const b=e.target.closest('[data-u]'); if(!b||!ST.r) return; ST.r.und[u.dataset.sec]=+b.dataset.u; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',x===b)); toast(b.dataset.u==='1'?'收到：明白':'收到：老師會再講解'); touch(); }));
+  // short answer
+  $$('.sa').forEach(s=>{ const ta=s.querySelector('textarea'), bt=s.querySelector('.btn');
+    bt.addEventListener('click',()=>{ const v=ta.value.trim(); if(!v){ toast('請先輸入答案'); return; } if(!ST.r) return; ST.r.sa[s.dataset.sa]=v; s.querySelector('.sent').textContent='已提交 ✔（可以修改後再提交）'; touch(); }); });
+
+  // ---------- task (堂課) ----------
+  const tasks=$$('.slide.task');
+  function lockUI(){ const lock=!ST.r||!ST.r.unl; tasks.forEach(t=>t.classList.toggle('tlocked',lock));
+    const s=$('#gateS'); if(!s) return; if(ST.r&&ST.r.sub){ s.textContent='已交卷 ✔'; s.className='gs open'; } else if(!lock){ s.textContent='已開放：按 → 開始作答'; s.className='gs open'; } else { s.textContent='等待老師開放…'; s.className='gs lock'; } }
+  function setUnl(src){ if(!ST.r||ST.r.unl) return; ST.r.unl=Date.now(); lockUI(); toast('堂課已開放'); touch(); }
+  $('#gateGo').addEventListener('click',()=>{ const c=$('#gateCode').value.trim(); if(CODE_H(c)===TASK_CODE_H){ $('#gateErr').textContent=''; setUnl('code'); } else $('#gateErr').textContent='開放碼不正確'; });
+  $('#gateCode').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); $('#gateGo').click(); } });
+  const editable=()=>ST.r&&ST.r.unl&&!ST.r.sub;
+  $$('.tk').forEach(tk=>tk.addEventListener('click',e=>{ const b=e.target.closest('.tops .btn'); if(!b) return; if(!editable()){ toast(ST.r&&ST.r.sub?'已交卷，不可以再改':'等待老師開放堂課'); return; }
+    ST.r.task[tk.dataset.t]=b.dataset.v; TKBTN[tk.dataset.t].forEach(x=>x.classList.toggle('sel',x===b)); touch(); }));
+  $$('.tin').forEach(i=>i.addEventListener('input',()=>{ if(!editable()){ return; } ST.r.task[i.dataset.t]=i.value; touch(); }));
+  function restoreTask(){ $$('.tk').forEach(tk=>{ const v=ST.r.task[tk.dataset.t]; TKBTN[tk.dataset.t].forEach(x=>x.classList.toggle('sel',x.dataset.v===v)); });
+    $$('.tin').forEach(i=>{ i.value=ST.r.task[i.dataset.t]||''; i.disabled=!!ST.r.sub; }); lockUI(); subUI(); }
+  const missing=()=>TASK_IDS.filter(k=>!ST.r.task[k]).concat(TASK_TEXT.filter(k=>!(ST.r.task[k]||'').trim()));
+  function subUI(){ if(!$('#subReview')||!ST.r) return; const done=!!ST.r.sub; $('#subPre').style.display=done?'none':'flex'; $('#subCard').hidden=!done;
+    $('#subReview').innerHTML=TASK_IDS.concat(['D1','D2']).map(k=>{ const v=k==='D2'?['D2f','D2s','D2d','D2e'].every(x=>(ST.r.task[x]||'').trim()):(ST.r.task[k]||'').trim(); return `<span class="rv${v?'':' miss'}"><b>${k}</b>${v?(k[0]==='D'?'已作答':esc(v)):'未答'}</span>`; }).join('');
+    if(done){ const w=ST.who, T=ST.r.task; $('#scWho').innerHTML=`<span>班別 <b>${esc(w.cls)}</b></span><span>學號 <b>${w.no}</b></span><span>姓名 <b>${esc(w.name)}</b></span><span class="stime">交卷 ${tstr(ST.r.sub)}</span>`;
+      $('#scAns').innerHTML=TASK_IDS.map(k=>`<span><b>${k}</b>${esc(T[k]||'－')}</span>`).join('');
+      $('#scD').innerHTML=`<b>D1</b> ${esc(T.D1||'－')}<br><b>D2</b> ${esc(T.D2f||'－')}｜感知：${esc(T.D2s||'－')}｜決策：${esc(T.D2d||'－')}｜執行：${esc(T.D2e||'－')}`;
+      const p=Object.values(ST.r.prac); $('#scNote').innerHTML=`課堂練習：第一次答對 ${p.filter(x=>x.ok).length} / ${PRAC_TOTAL} 題。${lastOk>=ST.r.sub?'<b class="ok">已交給老師 ✔</b>':'<b class="no">未能連線：請截圖這張卡交給老師</b>（Win + Shift + S）'}`; } }
+  function doSubmit(auto){ if(!ST.r||ST.r.sub) return; ST.r.sub=Date.now(); $$('.tin').forEach(i=>i.disabled=true); subUI(); lockUI(); touch(); toast(auto?'老師已結束堂課：答案已自動交出':'已交卷'); setTimeout(subUI,1500); }
+  $('#subGo').addEventListener('click',()=>{ if(!editable()){ $('#subMsg').textContent='堂課未開放'; return; } const m=missing(); $('#subMsg').textContent=m.length?`還有 ${m.length} 項未答（紅色）。`:''; $('#subYes').hidden=false; });
+  $('#subYes').addEventListener('click',()=>{ $('#subYes').hidden=true; doSubmit(false); });
+  TASKUI={gate:lockUI, sub:()=>{ $('#subYes').hidden=true; $('#subMsg').textContent=''; subUI(); }};
+  // control polling: teacher opens / closes the task
+  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control`); if(c&&c.open) setUnl('net'); if(c&&c.closed&&ST.r.unl&&!ST.r.sub) doSubmit(true); }catch(e){} }
+  setInterval(pollCtl,8000);
+
+  function restoreAll(){ restorePractice(); $$('.und').forEach(u=>{ const v=ST.r.und[u.dataset.sec]; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',v!==undefined&&+x.dataset.u===v)); });
+    $$('.sa').forEach(s=>{ const v=ST.r.sa[s.dataset.sa]; s.querySelector('textarea').value=v||''; s.querySelector('.sent').textContent=v?'已提交 ✔（可以修改後再提交）':''; }); restoreTask(); }
+  if(!FB_ON) liveDot('','○ 本機模式');
+  document.body.classList.add('stu');
+  START=()=>{ const w=LS.get(`u4.${LESSON}.who`); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); pollCtl(); };
+}
+
+/* =====================================================================
+   TEACHER VIEW
+   ===================================================================== */
+if(TEACHER){
+  const auth=FB_ON?Auth('tch'):null;
+  let DATA={}, CTL={}, es=null, esFails=0, pollT=null, rT=null, connected=false;
+  $('#nav').insertAdjacentHTML('beforebegin','<div id="navL"></div>'); $('#navL').insertAdjacentHTML('afterbegin','<button class="btn" id="bLive" title="即時連線">即時</button><button class="btn" id="bDash" title="即時面板（D）">面板 D</button><button class="btn" id="bShow" title="顯示全班答案（L）">全班 L</button>');
+  // ----- tree helpers for streamed data -----
+  function setPath(root,path,val){ const ks=path.split('/').filter(Boolean); if(!ks.length) return val==null?{}:val; let o=root; for(let i=0;i<ks.length-1;i++){ if(o[ks[i]]==null||typeof o[ks[i]]!=='object') o[ks[i]]={}; o=o[ks[i]]; } const k=ks[ks.length-1]; if(val==null) delete o[k]; else o[k]=val; return root; }
+  // ----- students merged by class + number -----
+  function students(){ const by={}; Object.keys(DATA||{}).forEach(uid=>{ const r=DATA[uid]; if(!r||!r.cls) return; const k=r.cls+'-'+z2(r.no); const o=by[k];
+      if(!o){ by[k]=JSON.parse(JSON.stringify(r)); by[k].prac=by[k].prac||{}; return; }
+      const newer=(r.ts||0)>(o.ts||0); const pr=Object.assign({},r.prac||{},o.prac||{}); if(newer){ by[k]=Object.assign(JSON.parse(JSON.stringify(r)),{prac:pr}); } else o.prac=pr; });
+    return Object.values(by).sort((a,b)=>a.cls<b.cls?-1:a.cls>b.cls?1:a.no-b.no); }
+  const online=r=>Date.now()-(r.ts||0)<60000;
+  const taskScore=r=>{ if(!TASK_KEY) return null; let s=0; TASK_IDS.forEach(k=>{ if(r.task&&r.task[k]===TASK_KEY[k]) s++; }); return s; };
+  // ----- rendering -----
+  function renderAll(){ clearTimeout(rT); rT=setTimeout(renderNow,250); }
+  function renderNow(){ const S=students(), n=S.length;
+    // practice distributions
+    $$('.ch').forEach(ch=>{ const q=ch.dataset.q; const cnt={}; let tot=0; S.forEach(r=>{ const a=r.prac&&r.prac[q]; if(a){ cnt[a.v]=(cnt[a.v]||0)+1; tot++; } });
+      $$('.opts .btn',ch).forEach(b=>{ const c=cnt[b.dataset.v]||0; b.querySelector('.lc').textContent=c; b.querySelector('.lf').style.width=(tot?c/tot*100:0)+'%'; }); });
+    // self-checks
+    $$('.und').forEach(u=>{ let y=0,no=0; S.forEach(r=>{ const v=r.und&&r.und[u.dataset.sec]; if(v===1) y++; else if(v===0) no++; }); let c=u.querySelector('.ucnt'); if(!c){ u.insertAdjacentHTML('beforeend','<span class="ucnt"></span>'); c=u.querySelector('.ucnt'); }
+      const tot=Math.max(1,n); c.innerHTML=`<span class="ubar"><i class="g" style="width:${y/tot*100}%"></i><i class="r" style="width:${no/tot*100}%"></i></span><b class="ok">${y}</b> 明白 · <b class="no">${no}</b> 未明白 · ${Math.max(0,n-y-no)} 未答`; });
+    // answer walls
+    $$('.sa').forEach(s=>{ const id=s.dataset.sa, w=s.querySelector('.wall'); const a=S.filter(r=>r.sa&&r.sa[id]); w.innerHTML=a.length?a.map(r=>`<span class="card">${esc(r.sa[id])}</span>`).join(''):'<span class="empty">等待學生提交…</span>'; });
+    // task item counts
+    $$('.tk').forEach(tk=>{ const id=tk.dataset.t, cnt={}; S.forEach(r=>{ const v=r.task&&r.task[id]; if(v) cnt[v]=(cnt[v]||0)+1; }); TKBTN[id].forEach(b=>{ b.querySelector('.lc').textContent=' '+(cnt[b.dataset.v]||0); }); });
+    const started=S.filter(r=>r.unl||Object.keys(r.task||{}).length).length, subd=S.filter(r=>r.sub).length, on=S.filter(online).length;
+    $('#tGateN').textContent=`已登入 ${n} 人 · 已開始堂課 ${started} 人 · 已交卷 ${subd} 人`;
+    $('#tSubN').textContent=`已交卷 ${subd} / ${n} 人。打開即時面板「堂課」分頁看分數和短答。`;
+    if(connected) liveDot('on',`● 即時 ${on}/${n}`);
+    if(!$('#dash').hidden) dashRender(); }
+  // ----- connection -----
+  function stopStream(){ if(es){ es.close(); es=null; } clearInterval(pollT); pollT=null; }
+  async function pollOnce(){ try{ DATA=(await dbReq(auth,'GET',`${LPATH}/students`))||{}; connected=true; renderAll(); }catch(e){ liveDot('err','○ '+zhErr(e)); } }
+  async function startStream(){ stopStream(); let tok; try{ tok=await auth.token(); }catch(e){ liveDot('err','○ 未登入'); return; }
+    try{ CTL=(await dbReq(auth,'GET',`${LPATH}/control`))||{}; ctlUI(); }catch(e){ liveDot('err','○ '+zhErr(e)); $('#lvErr').textContent=zhErr(e); return; }
+    if(typeof EventSource==='undefined'){ pollT=setInterval(pollOnce,5000); pollOnce(); return; }
+    es=new EventSource(`${FB.db}/${LPATH}/students.json?auth=${encodeURIComponent(tok)}`);
+    const onData=(kind,ev)=>{ esFails=0; connected=true; let d; try{ d=JSON.parse(ev.data); }catch(e){ return; } if(!d) return;
+      if(kind==='put') DATA=setPath(DATA,d.path,d.data); else Object.keys(d.data||{}).forEach(k=>{ DATA=setPath(DATA,d.path.replace(/\/$/,'')+'/'+k,d.data[k]); }); renderAll(); };
+    es.addEventListener('put',ev=>onData('put',ev)); es.addEventListener('patch',ev=>onData('patch',ev));
+    es.addEventListener('auth_revoked',async()=>{ stopStream(); try{ await auth.token(true); }catch(e){} startStream(); });
+    es.addEventListener('cancel',()=>{ stopStream(); liveDot('err','○ 權限不足'); $('#lvErr').textContent=ERRZH['Permission denied']; });
+    es.onerror=()=>{ if(++esFails>=3){ stopStream(); liveDot('err','○ 重新連線中…'); setTimeout(async()=>{ try{ await auth.token(true); }catch(e){} startStream(); },3000); } }; }
+  setInterval(()=>{ if(connected) renderAll(); },15000);   // refresh "online" dots
+  // ----- login modal -----
+  function lvUI(){ const has=FB_ON&&auth.has(); $('#lvForm').hidden=!FB_ON||has; $('#lvIn').hidden=!has; $('#lvNo').hidden=FB_ON; if(has) $('#lvWho').textContent=auth.email||'老師'; }
+  function openLive(){ $('#lvErr').textContent=''; lvUI(); $('#liveM').hidden=false; if(FB_ON&&!auth.has()) setTimeout(()=>$('#lvEmail').focus(),50); }
+  $('#bLive').onclick=openLive; $('#liveDot').onclick=openLive; $('#lvClose').onclick=()=>$('#liveM').hidden=true;
+  $('#lvGo').onclick=async()=>{ const em=$('#lvEmail').value.trim(), pw=$('#lvPw').value; if(!em||!pw){ $('#lvErr').textContent='請輸入電郵和密碼'; return; } $('#lvErr').textContent='登入中…';
+    try{ await auth.login(em,pw); $('#lvPw').value=''; $('#lvErr').textContent=''; lvUI(); startStream(); toast('已登入即時功能'); }catch(e){ $('#lvErr').textContent=zhErr(e); } };
+  $('#lvPw').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); $('#lvGo').click(); } });
+  $('#lvOut').onclick=()=>{ stopStream(); auth.logout(); connected=false; DATA={}; renderNow(); liveDot('','○ 未登入'); lvUI(); };
+  $('#lvDash').onclick=()=>{ $('#liveM').hidden=true; openDash(); };
+  // ----- show / hide class answers -----
+  function toggleShow(){ const on=$('#stage').classList.toggle('show-live'); $('#bShow').classList.toggle('on',on); toast(on?'顯示全班答案':'隱藏全班答案'); }
+  $('#bShow').onclick=toggleShow;
+  // ----- task control -----
+  function ctlUI(){ const s=$('#tGateS'); if(CTL.closed){ s.textContent='堂課已結束'; s.style.color='var(--red)'; } else if(CTL.open){ s.textContent='堂課已開放 ✔'; s.style.color='var(--green)'; } else { s.textContent='堂課未開放'; s.style.color=''; } }
+  async function setCtl(v){ if(!FB_ON||!auth.has()){ toast('請先登入即時功能'); openLive(); return false; } try{ await dbReq(auth,'PUT',`${LPATH}/control`,v); CTL=v; ctlUI(); return true; }catch(e){ toast(zhErr(e)); return false; } }
+  $('#tOpen').onclick=async()=>{ if(await setCtl({open:true,closed:false,at:Date.now()})) toast('已開放堂課'); };
+  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認'); return; } closeArm=0; if(await setCtl({open:false,closed:true,at:Date.now()})) toast('已結束堂課：未交卷的學生會自動交出'); };
+  $('#tCode').textContent=TASK_CODE;
+  $('#tSubDash').onclick=()=>openDash('task');
+  // task pages: mark the key
+  $$('.tk').forEach(tk=>{ const k=TASK_KEY[tk.dataset.t]; TKBTN[tk.dataset.t].forEach(b=>b.classList.toggle('key',b.dataset.v===k)); tk.classList.add('ans'); });
+  $$('.tin').forEach(i=>i.disabled=true);
+  // ----- dashboard -----
+  let dTab='stu';
+  function openDash(tab){ if(tab) dTab=tab; $('#dash').hidden=false; dashRender(); }
+  function closeDash(){ $('#dash').hidden=true; }
+  $('#bDash').onclick=()=>$('#dash').hidden?openDash():closeDash(); $('#dClose').onclick=closeDash;
+  $('#dTabs').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(b){ dTab=b.dataset.v; dashRender(); } });
+  function dashRender(){ const S=students(), n=S.length; $$('#dTabs .btn').forEach(b=>b.classList.toggle('on',b.dataset.v===dTab));
+    $('#dSum').textContent=connected?`已登入 ${n} 人 · 在線 ${S.filter(online).length} 人 · 已交卷 ${S.filter(r=>r.sub).length} 人`:(FB_ON?'未連線：按「即時」登入':'本頁未設定 Firebase');
+    const B=$('#dBody'); const PT=Object.keys(QINFO).length;
+    if(dTab==='stu'){ B.innerHTML=n?'<div class="stiles">'+S.map(r=>{ const p=Object.values(r.prac||{}), c=p.filter(x=>x.ok).length, u=r.und||{}, uy=Object.values(u).filter(v=>v===1).length, un=Object.values(u).filter(v=>v===0).length, ta=TASK_IDS.filter(k=>r.task&&r.task[k]).length, sc=taskScore(r);
+        return `<div class="st${online(r)?' online':''}${r.sub?' sub':''}"><span class="on2"></span><span class="sn"><b>${esc(r.cls)}-${z2(r.no)}</b>${esc(r.name)}</span><span class="sl">第 ${r.page||'?'} 頁 · 練習 ${c}/${p.length}</span><div class="bar"><i style="width:${PT?p.length/PT*100:0}%"></i></div><span class="sl">自評 ✔${uy} ？${un}</span><span class="sl">${r.sub?`<b class="ok">已交卷</b> ${sc}/${TASK_IDS.length}`:(r.unl?`堂課 ${ta}/${TASK_IDS.length}`:'堂課未開始')}</span></div>`; }).join('')+'</div>':'<p class="body">還沒有學生登入。</p>'; }
+    else if(dTab==='q'){ const rows=Object.keys(QINFO).map(q=>{ const I=QINFO[q]; let a=0,ok=0; const wr={}; S.forEach(r=>{ const x=r.prac&&r.prac[q]; if(x){ a++; if(x.ok) ok++; else wr[x.v]=(wr[x.v]||0)+1; } }); const top=Object.keys(wr).sort((x,y)=>wr[y]-wr[x])[0]; const tl=top!=null?(I.opts.find(o=>o[0]===top)||[0,top])[1]:''; return {q,I,a,ok,rate:a?ok/a:1,tl,tn:top!=null?wr[top]:0}; }).sort((x,y)=>x.rate-y.rate);
+      const und=Object.keys(UND_SECS).map(k=>{ let y=0,no=0; S.forEach(r=>{ const v=r.und&&r.und[k]; if(v===1) y++; else if(v===0) no++; }); return `<tr class="${no>y&&no>0?'low':''}"><td>${esc(UND_SECS[k])}</td><td class="r">${y}</td><td class="r">${no}</td><td class="r">${n-y-no}</td></tr>`; }).join('');
+      B.innerHTML=`<table class="qtab"><tr><th>頁</th><th>題目（按答對率由低至高）</th><th>已答</th><th>第一次答對</th><th>最多人選的錯誤答案</th></tr>${rows.map(x=>`<tr class="${x.a&&x.rate<0.6?'low':''}"><td><a data-pg="${x.I.pg}">P${x.I.pg+1}</a></td><td>${esc(x.I.text)}</td><td class="r">${x.a}</td><td>${x.a?`<span class="rate" style="width:${Math.round(x.rate*80)}px"></span>${Math.round(x.rate*100)}%`:'－'}</td><td>${x.tn?esc(x.tl)+'（'+x.tn+' 人）':''}</td></tr>`).join('')}</table>
+        <h3 style="margin:14px 0 6px;font-size:20px;color:var(--gold)">每關自評</h3><table class="qtab"><tr><th>關卡</th><th>明白</th><th>未明白</th><th>未答</th></tr>${und}</table>
+        <h3 style="margin:14px 0 6px;font-size:20px;color:var(--gold)">短答</h3>${Object.keys(SA_Q).map(id=>`<p class="small">${esc(SA_Q[id])}</p><div class="wall">${S.filter(r=>r.sa&&r.sa[id]).map(r=>`<span class="card"><small>${esc(r.cls)}-${z2(r.no)}</small>${esc(r.sa[id])}</span>`).join('')||'<span class="empty">未有</span>'}</div>`).join('')}`;
+      $$('#dBody a[data-pg]').forEach(a=>a.onclick=()=>{ closeDash(); go(+a.dataset.pg,0); }); }
+    else { const items=TASK_IDS.map(k=>{ let c=0,a=0; S.forEach(r=>{ const v=r.task&&r.task[k]; if(v){ a++; if(v===TASK_KEY[k]) c++; } }); return `<td class="r" title="${k}">${a?Math.round(c/a*100)+'%':'－'}</td>`; }).join('');
+      B.innerHTML=`<div class="dctl" style="margin-bottom:10px"><span class="body">堂課狀態：<b id="dCtl">${CTL.closed?'已結束':CTL.open?'已開放':'未開放'}</b>　開放碼 <b class="g">${TASK_CODE}</b></span><button class="btn sm on" id="dOpen">開放堂課</button><button class="btn sm danger" id="dClose2">結束堂課</button><button class="btn sm" id="dCsv">下載成績 CSV</button><button class="btn sm danger" id="dClear">清除本課資料</button></div>
+        <table class="qtab tq"><tr><th>學生</th><th>狀態</th><th>A–C</th>${TASK_IDS.map(k=>`<th>${k}</th>`).join('')}<th>D1</th><th>D2</th></tr>
+        <tr><td>答對率</td><td></td><td></td>${items}<td></td><td></td></tr>
+        ${S.map(r=>{ const T=r.task||{}; return `<tr><td>${esc(r.cls)}-${z2(r.no)} ${esc(r.name)}</td><td>${r.sub?'<b class="ok">已交卷</b>':(r.unl?'作答中':'未開始')}</td><td class="r">${taskScore(r)}/${TASK_IDS.length}</td>${TASK_IDS.map(k=>`<td style="color:${!T[k]?'var(--dim)':T[k]===TASK_KEY[k]?'var(--green)':'var(--red)'}">${T[k]?(T[k]===TASK_KEY[k]?'✔':'✘'):'－'}</td>`).join('')}<td class="tx"><div title="${esc(T.D1||'')}">${esc(T.D1||'')}</div></td><td class="tx"><div title="${esc([T.D2f,T.D2s,T.D2d,T.D2e].filter(Boolean).join('｜'))}">${esc([T.D2f,T.D2s,T.D2d,T.D2e].filter(Boolean).join('｜'))}</div></td></tr>`; }).join('')}</table>`;
+      $('#dOpen').onclick=()=>$('#tOpen').click(); $('#dClose2').onclick=()=>{ $('#tClose').click(); };
+      $('#dCsv').onclick=csv; let arm=0; $('#dClear').onclick=async()=>{ if(Date.now()-arm>4000){ arm=Date.now(); toast('再按一次「清除本課資料」確認：會刪除全班答案'); return; } try{ await dbReq(auth,'DELETE',`${LPATH}/students`); await setCtl({open:false,closed:false,at:Date.now()}); DATA={}; renderNow(); toast('已清除本課資料'); }catch(e){ toast(zhErr(e)); } }; } }
+  function csv(){ const S=students(); const head=['班別','學號','姓名','練習第一次答對','練習已答','自評明白','自評未明白','堂課A-C分數（/'+TASK_IDS.length+'）'].concat(TASK_IDS,['D1','D2功能','D2感知','D2決策','D2執行','交卷時間','短答：'+SA_Q.fav]);
+    const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
+    const rows=S.map(r=>{ const p=Object.values(r.prac||{}), u=Object.values(r.und||{}), T=r.task||{}; return [r.cls,r.no,r.name,p.filter(x=>x.ok).length,p.length,u.filter(v=>v===1).length,u.filter(v=>v===0).length,taskScore(r)].concat(TASK_IDS.map(k=>T[k]||''),[T.D1,T.D2f,T.D2s,T.D2d,T.D2e,r.sub?tstr(r.sub):'',(r.sa||{}).fav]).map(q).join(','); });
+    const blob=new Blob(['﻿'+[head.map(q).join(',')].concat(rows).join('\r\n')],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`${LESSON}_成績_${tstr(Date.now()).slice(0,10)}.csv`; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500); }
+  KEYX=e=>{ if(e.key==='l'||e.key==='L'){ toggleShow(); return true; } if(e.key==='d'||e.key==='D'){ $('#dash').hidden?openDash():closeDash(); return true; } if(e.key==='Escape'&&!$('#dash').hidden){ closeDash(); return true; } return false; };
+  liveDot('',FB_ON?'○ 未登入':'○ 未設定');
+  START=()=>{ if(FB_ON&&auth.has()) startStream(); renderNow(); };
+}
+
+const startAt=parseInt(location.hash.slice(1),10)-1;
+go(isNaN(startAt)?0:startAt,0);
+START();
+})();
+</script>
+</body>
+</html>
