@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-KWRo07ntVz2+TTQuCS/uB3zVpFYQcyTLhO20Tr8qXok='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-WMJzlLin9hAnavt/wlmYM6BIJAXRtM7RH/RUH64bQ88='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>學生版 · 手機傳感器陣列</title>
@@ -526,6 +526,13 @@ canvas.cv{display:block;width:100%;background:#0A0826;border:3px solid var(--lin
 .sa .sarow .btn{flex:none;white-space:nowrap}
 #hudHome{font-family:var(--zh);font-size:15px;font-weight:800;color:var(--ink);text-decoration:none;border:3px solid var(--line);padding:3px 10px;background:var(--bg3);white-space:nowrap}#hudHome:hover,#hudHome:focus-visible{border-color:var(--gold);outline:none}
 .st .warn{color:var(--red);font-size:12px;line-height:1.35}
+
+/* class pickers: students choose their class; the teacher picks the class being taught */
+select.inp{cursor:pointer}
+select.btn{font:inherit;font-weight:700;appearance:none;-webkit-appearance:none;padding-right:26px;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 14px) 52%,calc(100% - 9px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+#navL select.btn{padding-right:24px}
+select.btn.sm{padding-right:28px}
+select option{background:#1D1A52;color:#F6F4FF}
 
 </style>
 </head>
@@ -1084,8 +1091,8 @@ canvas.cv{display:block;width:100%;background:#0A0826;border:3px solid var(--lin
   <div id="unlock" hidden><div class="px gold"><span class="k">BADGE UNLOCKED</span><span class="bdg got" id="unlockIcon">1</span><span class="nm" id="unlockName"></span></div></div>
   <div id="stuId" hidden><div class="px gold">
     <h3>登入任務</h3>
-    <p class="small">輸入或確認你的班別、學號和姓名。答案會交給老師；每頁練習題只計第一次作答。<br>如果顯示的不是你，請改成你自己的資料。</p>
-    <div class="fld"><label for="sCls">班別</label><input class="inp" id="sCls" maxlength="6" value="5A" autocomplete="off"></div>
+    <p class="small">選擇班別，再輸入或確認學號和姓名。答案會交給老師；每頁練習題只計第一次作答。<br>如果顯示的不是你，請改成你自己的資料。</p>
+    <div class="fld"><label for="sCls">班別</label><select class="inp" id="sCls"></select></div>
     <div class="fld"><label for="sNo">學號</label><input class="inp" id="sNo" inputmode="numeric" maxlength="2" placeholder="例：12" autocomplete="off"></div>
     <div class="fld"><label for="sName">姓名</label><input class="inp" id="sName" maxlength="20" autocomplete="off"></div>
     <p class="err" id="sErr"></p>
@@ -1398,10 +1405,11 @@ window.addEventListener('resize',fit); fit(); hud();
 const FB={key:FB_CFG.apiKey||'', db:(FB_CFG.databaseURL||'').replace(/\/+$/,''), idt:FB_CFG.idt||'https://identitytoolkit.googleapis.com', stk:FB_CFG.stk||'https://securetoken.googleapis.com'};
 const FB_ON=!!(FB.key&&FB.db);
 const LPATH='lessons/'+LESSON;
+const CLASSES=['5A','5B','5C','5D','5E'];   // classes that use the site (students pick one when they sign in)
 const MK_DEADLINE=1801411200000;            // 2027-02-01 00:00 台灣時間（UTC+8）
 const MK_TEXT='2027 年 2 月 1 日（台灣時間）前';
 const mkOpen=()=>Date.now()<MK_DEADLINE;
-const ERRZH={INVALID_LOGIN_CREDENTIALS:'電郵或密碼不正確',INVALID_PASSWORD:'電郵或密碼不正確',EMAIL_NOT_FOUND:'電郵或密碼不正確',INVALID_EMAIL:'電郵格式不正確',USER_DISABLED:'這個帳號已停用',OPERATION_NOT_ALLOWED:'Firebase 未開啟這種登入方式（設定步驟 3）',ADMIN_ONLY_OPERATION:'Firebase 未開啟「匿名」登入（設定步驟 3）',TOO_MANY_ATTEMPTS_TRY_LATER:'嘗試次數太多，請稍後再試','Permission denied':'權限不足：檢查設定步驟 4 的規則和老師 UID','are blocked':'這個網址不可以連線（API key 只准課程網站使用）：請用課程網站上的版本'};
+const ERRZH={INVALID_LOGIN_CREDENTIALS:'電郵或密碼不正確',INVALID_PASSWORD:'電郵或密碼不正確',EMAIL_NOT_FOUND:'電郵或密碼不正確',INVALID_EMAIL:'電郵格式不正確',USER_DISABLED:'這個帳號已停用',OPERATION_NOT_ALLOWED:'Firebase 未開啟這種登入方式（設定步驟 3）',ADMIN_ONLY_OPERATION:'Firebase 未開啟「匿名」登入（設定步驟 3）',TOO_MANY_ATTEMPTS_TRY_LATER:'嘗試次數太多，請稍後再試','Permission denied':'權限不足：檢查規則，以及 teachers 名單有沒有這個老師帳號的 UID','are blocked':'這個網址不可以連線（API key 只准課程網站使用）：請用課程網站上的版本'};
 /* records written by students are untrusted: keep only the known fields, with fixed types and lengths, before the teacher views or exports them */
 const cStr=(v,n)=>(typeof v==='string'||typeof v==='number')?String(v).slice(0,n):'';
 const cNum=(v,lo,hi)=>{ const x=Number(v); return isFinite(x)?Math.min(hi,Math.max(lo,x)):0; };
@@ -1413,6 +1421,8 @@ function cleanRec(r){ if(!r||typeof r!=='object') return null;
   cKeys(r.und).forEach(k=>{ if(r.und[k]===0||r.und[k]===1) o.und[k]=r.und[k]; });
   cKeys(r.sa).forEach(k=>{ o.sa[k]=cStr(r.sa[k],500); }); cKeys(r.task).forEach(k=>{ o.task[k]=cStr(r.task[k],500); });
   return o; }
+/* task control is kept per class: control/{班別} = {open, closed, at} */
+const normCtl=c=>{ const o={}; if(c&&typeof c==='object') Object.keys(c).forEach(k=>{ const v=c[k]; if(/^[0-9A-Z]{1,6}$/.test(k)&&v&&typeof v==='object') o[k]={open:!!v.open,closed:!!v.closed,at:cNum(v.at,0,9e15)}; }); return o; };
 /* a CSV cell that starts with = + - @ would run as an Excel formula: keep student text as plain text */
 const csvTxt=v=>{ const s=String(v==null?'':v); return /^[=+\-@\t\r]/.test(s)?"'"+s:s; };
 const zhErr=e=>{ const m=String(e&&e.message||e); for(const k in ERRZH) if(m.indexOf(k)>=0) return ERRZH[k]; if(e&&e.name==='AbortError') return '連線逾時'; if(/Failed to fetch|NetworkError|Load failed/i.test(m)) return '連不上網絡或 Firebase'; return m; };
@@ -1466,9 +1476,10 @@ if(!TEACHER){
   // identity
   $('#hudMode').insertAdjacentHTML('beforebegin','<button id="hudStu" title="更改資料">未登入</button>');
   const hudStu=()=>{ $('#hudStu').textContent=ST.who?`${ST.who.cls} · ${z2(ST.who.no)} ${ST.who.name}`:'未登入'; };
-  function openId(){ const w=ST.who||{}; $('#sCls').value=w.cls||'5A'; $('#sNo').value=w.no||''; $('#sName').value=w.name||''; $('#sErr').textContent=''; $('#stuId').hidden=false; setTimeout(()=>$(w.no?'#sGo':'#sNo').focus(),50); }
-  function idGo(){ const cls=$('#sCls').value.trim().toUpperCase().replace(/\s+/g,''), no=parseInt($('#sNo').value.trim(),10), name=$('#sName').value.trim();
-    if(!/^[0-9A-Z]{1,6}$/.test(cls)){ $('#sErr').textContent='請輸入班別，例如 5A'; return; }
+  $('#sCls').innerHTML='<option value="">請選擇班別</option>'+CLASSES.map(c=>`<option value="${c}">${c}</option>`).join('');
+  function openId(){ const w=ST.who||{}; $('#sCls').value=CLASSES.includes(w.cls)?w.cls:''; $('#sNo').value=w.no||''; $('#sName').value=w.name||''; $('#sErr').textContent=''; $('#stuId').hidden=false; setTimeout(()=>$(!$('#sCls').value?'#sCls':w.no?'#sGo':'#sNo').focus(),50); }
+  function idGo(){ const cls=$('#sCls').value, no=parseInt($('#sNo').value.trim(),10), name=$('#sName').value.trim();
+    if(!CLASSES.includes(cls)){ $('#sErr').textContent='請選擇班別'; return; }
     if(!(no>=1&&no<=60)){ $('#sErr').textContent='學號要是 1 至 60 的數字'; return; }
     if(!name){ $('#sErr').textContent='請輸入姓名'; return; }
     const w={cls,no,name}; LS.set(`u4.${LESSON}.who`,w); loadWho(w); $('#stuId').hidden=true; toast('歡迎，'+name); }
@@ -1525,7 +1536,7 @@ if(!TEACHER){
   $('#subYes').addEventListener('click',()=>{ $('#subYes').hidden=true; doSubmit(false); });
   TASKUI={gate:lockUI, sub:()=>{ $('#subYes').hidden=true; $('#subMsg').textContent=''; subUI(); }};
   // control polling: teacher opens / closes the task
-  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control`); ST.closed=!!(c&&c.closed); if(c&&c.open) setUnl('net'); if(ST.closed&&ST.r.unl&&!ST.r.sub&&!ST.r.mk) doSubmit(true); lockUI(); }catch(e){} }
+  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control/${ST.who.cls}`); ST.closed=!!(c&&c.closed); if(c&&c.open) setUnl('net'); if(ST.closed&&ST.r.unl&&!ST.r.sub&&!ST.r.mk) doSubmit(true); lockUI(); }catch(e){} }
   setInterval(pollCtl,8000);
 
   function restoreAll(){ restorePractice(); $$('.und').forEach(u=>{ const v=ST.r.und[u.dataset.sec]; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',v!==undefined&&+x.dataset.u===v)); });
@@ -1540,18 +1551,23 @@ if(!TEACHER){
    ===================================================================== */
 if(TEACHER){
   const auth=FB_ON?Auth('tch'):null;
-  let DATA={}, CTL={}, es=null, esFails=0, pollT=null, rT=null, connected=false;
-  $('#nav').insertAdjacentHTML('beforebegin','<div id="navL"></div>'); $('#navL').insertAdjacentHTML('afterbegin','<button class="btn" id="bLive" title="即時連線">即時</button><button class="btn" id="bDash" title="即時面板（D）">面板 D</button><button class="btn" id="bShow" title="顯示全班答案（L）">全班 L</button>');
+  let DATA={}, CTLS={}, es=null, esFails=0, pollT=null, rT=null, connected=false;
+  // the class being taught now: the slides, the dashboard, the CSV and the task switch all act on this class only
+  let TCLS=LS.get('u4.tcls'); if(!CLASSES.includes(TCLS)) TCLS=CLASSES[0];
+  const CTL_=()=>CTLS[TCLS]||{};
+  const clsOpts=()=>CLASSES.map(c=>`<option value="${c}">${c}</option>`).join('');
+  $('#nav').insertAdjacentHTML('beforebegin','<div id="navL"></div>'); $('#navL').insertAdjacentHTML('afterbegin','<select class="btn" id="bCls" title="本堂班別" aria-label="本堂班別"></select><button class="btn" id="bLive" title="即時連線">即時</button><button class="btn" id="bDash" title="即時面板（D）">面板 D</button><button class="btn" id="bShow" title="顯示全班答案（L）">全班 L</button>');
   // ----- tree helpers for streamed data -----
   function setPath(root,path,val){ const ks=path.split('/').filter(Boolean); if(!ks.length) return val==null?{}:val; let o=root; for(let i=0;i<ks.length-1;i++){ if(o[ks[i]]==null||typeof o[ks[i]]!=='object') o[ks[i]]={}; o=o[ks[i]]; } const k=ks[ks.length-1]; if(val==null) delete o[k]; else o[k]=val; return root; }
   // ----- students merged by class + number -----
   // one student may appear several times (another browser, private window, another computer):
   // practice keeps the earliest answer, the task keeps the FIRST submission, and the teacher sees a warning
-  function students(){ const g={}; Object.keys(DATA||{}).forEach(uid=>{ const r=cleanRec(DATA[uid]); if(!r||!r.cls) return; const k=String(r.cls)+'-'+z2(r.no); (g[k]=g[k]||[]).push(r); });
+  function students(){ return studentsAll().filter(r=>r.cls===TCLS); }
+  function studentsAll(){ const g={}; Object.keys(DATA||{}).forEach(uid=>{ const r=cleanRec(DATA[uid]); if(!r||!r.cls) return; const k=String(r.cls)+'-'+z2(r.no); (g[k]=g[k]||[]).push(r); });
     return Object.values(g).map(list=>{ list.sort((a,b)=>(a.ts||0)-(b.ts||0)); const o=JSON.parse(JSON.stringify(list[list.length-1]));
       const prac={}; list.forEach(r=>Object.keys(r.prac||{}).forEach(q=>{ const x=r.prac[q], t=x.t||r.ts||0; if(!prac[q]||t<prac[q].t) prac[q]=Object.assign({},x,{t}); })); o.prac=prac;
       const subs=list.filter(r=>r.sub>0).sort((a,b)=>a.sub-b.sub); if(subs.length){ o.task=subs[0].task||{}; o.sub=subs[0].sub; o.unl=subs[0].unl||o.unl; }
-      o.mk=subs.length?(subs[0].mk||0):(o.mk||0); const closedAt=CTL.closed?CTL.at||0:0;
+      o.mk=subs.length?(subs[0].mk||0):(o.mk||0); const C=CTLS[o.cls]||{}, closedAt=C.closed?C.at||0:0;
       o.cat=!o.sub?(o.unl?'作答中':'未交'):((o.mk||(closedAt&&o.sub>closedAt+30000))?'補做':'準時'); o.afterDl=!!(o.sub&&o.sub>MK_DEADLINE);
       o.flags=[]; if(list.length>1) o.flags.push(`${list.length} 個瀏覽器登入`); if(subs.length>1) o.flags.push(`交卷 ${subs.length} 次（只計第一次）`); if(o.afterDl) o.flags.push('截止後才交卷');
       return o; }).sort((a,b)=>a.cls<b.cls?-1:a.cls>b.cls?1:a.no-b.no); }
@@ -1573,7 +1589,7 @@ if(TEACHER){
     const started=S.filter(r=>r.unl||Object.keys(r.task||{}).length).length, subd=S.filter(r=>r.sub).length, on=S.filter(online).length;
     $('#tGateN').textContent=`已登入 ${n} 人 · 已開始堂課 ${started} 人 · 已交卷 ${subd} 人`;
     $('#tSubN').textContent=`已交卷 ${subd} / ${n} 人。打開即時面板「堂課」分頁看分數和短答。`;
-    if(connected) liveDot('on',`● 即時 ${on}/${n}`);
+    if(connected) liveDot('on',`● 即時 ${TCLS} ${on}/${n}`);
     if(!$('#dash').hidden) dashRender(); }
   // ----- connection -----
   function stopStream(){ if(es){ es.close(); es=null; } clearInterval(pollT); pollT=null; }
@@ -1582,7 +1598,7 @@ if(TEACHER){
   function retry(ms){ clearTimeout(retryT); liveDot('err','○ 重新連線中…'); retryT=setTimeout(startStream,ms||5000); }
   async function startStream(){ stopStream(); clearTimeout(retryT); if(!auth.has()) return; let tok;
     try{ tok=await auth.token(); }catch(e){ if(e.status===400){ liveDot('err','○ 請重新登入'); return; } retry(); return; }   // network problem → keep trying
-    try{ CTL=(await dbReq(auth,'GET',`${LPATH}/control`))||{}; ctlUI(); }catch(e){ if(e.status===401||e.status===403){ liveDot('err','○ '+zhErr(e)); $('#lvErr').textContent=zhErr(e); return; } retry(); return; }
+    try{ CTLS=normCtl(await dbReq(auth,'GET',`${LPATH}/control`)); ctlUI(); }catch(e){ if(e.status===401||e.status===403){ liveDot('err','○ '+zhErr(e)); $('#lvErr').textContent=zhErr(e); return; } retry(); return; }
     if(typeof EventSource==='undefined'){ pollT=setInterval(pollOnce,5000); pollOnce(); return; }
     es=new EventSource(`${FB.db}/${LPATH}/students.json?auth=${encodeURIComponent(tok)}`);
     const onData=(kind,ev)=>{ esFails=0; connected=true; let d; try{ d=JSON.parse(ev.data); }catch(e){ return; } if(!d) return;
@@ -1591,7 +1607,7 @@ if(TEACHER){
     es.addEventListener('auth_revoked',async()=>{ stopStream(); try{ await auth.token(true); }catch(e){ retry(); return; } startStream(); });
     es.addEventListener('cancel',()=>{ stopStream(); liveDot('err','○ 權限不足'); $('#lvErr').textContent=ERRZH['Permission denied']; });
     es.onerror=()=>{ if(++esFails>=3){ stopStream(); retry(3000); } }; }
-  setInterval(()=>{ if(connected) renderAll(); },15000);   // refresh "online" dots
+  setInterval(()=>{ if(!connected) return; renderAll(); dbReq(auth,'GET',`${LPATH}/control`).then(c=>{ CTLS=normCtl(c); ctlUI(); }).catch(()=>{}); },15000);   // refresh "online" dots and every class's task switch
   // ----- login modal -----
   function lvUI(){ const has=FB_ON&&auth.has(); $('#lvForm').hidden=!FB_ON||has; $('#lvIn').hidden=!has; $('#lvNo').hidden=FB_ON; if(has) $('#lvWho').textContent=auth.email||'老師'; }
   function openLive(){ $('#lvErr').textContent=''; lvUI(); $('#liveM').hidden=false; if(FB_ON&&!auth.has()) setTimeout(()=>$('#lvEmail').focus(),50); }
@@ -1605,10 +1621,13 @@ if(TEACHER){
   function toggleShow(){ const on=$('#stage').classList.toggle('show-live'); $('#bShow').classList.toggle('on',on); toast(on?'顯示全班答案':'隱藏全班答案'); }
   $('#bShow').onclick=toggleShow;
   // ----- task control -----
-  function ctlUI(){ const s=$('#tGateS'); if(CTL.closed){ s.textContent='堂課已結束'; s.style.color='var(--red)'; } else if(CTL.open){ s.textContent='堂課已開放 ✔'; s.style.color='var(--green)'; } else { s.textContent='堂課未開放'; s.style.color=''; } }
-  async function setCtl(v){ if(!FB_ON||!auth.has()){ toast('請先登入即時功能'); openLive(); return false; } try{ await dbReq(auth,'PUT',`${LPATH}/control`,v); CTL=v; ctlUI(); return true; }catch(e){ toast(zhErr(e)); return false; } }
-  $('#tOpen').onclick=async()=>{ if(await setCtl({open:true,closed:false,at:Date.now()})) toast('已開放堂課'); };
-  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認'); return; } closeArm=0; if(await setCtl({open:false,closed:true,at:Date.now()})) toast('已結束堂課：未交卷的學生會自動交出'); };
+  function ctlUI(){ const s=$('#tGateS'), C=CTL_(); if(C.closed){ s.textContent=TCLS+' 堂課已結束'; s.style.color='var(--red)'; } else if(C.open){ s.textContent=TCLS+' 堂課已開放 ✔'; s.style.color='var(--green)'; } else { s.textContent=TCLS+' 堂課未開放'; s.style.color=''; }
+    $$('#bCls,#dCls').forEach(x=>x.value=TCLS); const d=$('#dCtl'); if(d) d.textContent=C.closed?'已結束':C.open?'已開放':'未開放'; }
+  function setTCls(c){ if(!CLASSES.includes(c)) return; TCLS=c; LS.set('u4.tcls',c); ctlUI(); renderNow(); toast('現在是 '+c+'：只顯示和控制這一班'); }
+  $$('#bCls,#dCls').forEach(x=>{ x.innerHTML=clsOpts(); x.value=TCLS; x.addEventListener('change',()=>{ setTCls(x.value); x.blur(); }); });
+  async function setCtl(v){ if(!FB_ON||!auth.has()){ toast('請先登入即時功能'); openLive(); return false; } try{ await dbReq(auth,'PUT',`${LPATH}/control/${TCLS}`,v); CTLS[TCLS]=v; ctlUI(); renderAll(); return true; }catch(e){ toast(zhErr(e)); return false; } }
+  $('#tOpen').onclick=async()=>{ if(await setCtl({open:true,closed:false,at:Date.now()})) toast('已開放 '+TCLS+' 堂課'); };
+  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認：只結束 '+TCLS); return; } closeArm=0; if(await setCtl({open:false,closed:true,at:Date.now()})) toast('已結束 '+TCLS+' 堂課：未交卷的學生會自動交出'); };
   $('#tCode').textContent=TASK_CODE;
   $('#tSubDash').onclick=()=>openDash('task');
   // task pages: mark the key
@@ -1623,7 +1642,7 @@ if(TEACHER){
   $('#bDash').onclick=()=>$('#dash').hidden?openDash():closeDash(); $('#dClose').onclick=closeDash;
   $('#dTabs').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(b){ dTab=b.dataset.v; dashRender(); } });
   function dashRender(){ const S=students(), n=S.length; $$('#dTabs .btn').forEach(b=>b.classList.toggle('on',b.dataset.v===dTab));
-    $('#dSum').textContent=connected?`已登入 ${n} 人 · 在線 ${S.filter(online).length} 人 · 已交卷 ${S.filter(r=>r.sub).length} 人`:(FB_ON?'未連線：按「即時」登入':'本頁未設定 Firebase');
+    $('#dSum').textContent=connected?`${TCLS}：已登入 ${n} 人 · 在線 ${S.filter(online).length} 人 · 已交卷 ${S.filter(r=>r.sub).length} 人`:(FB_ON?'未連線：按「即時」登入':'本頁未設定 Firebase');
     const B=$('#dBody'); const PT=Object.keys(QINFO).length;
     if(dTab==='stu'){ B.innerHTML=n?'<div class="stiles">'+S.map(r=>{ const p=Object.values(r.prac||{}), c=p.filter(x=>x.ok).length, u=r.und||{}, uy=Object.values(u).filter(v=>v===1).length, un=Object.values(u).filter(v=>v===0).length, ta=TASK_IDS.filter(k=>r.task&&r.task[k]).length, sc=taskScore(r);
         return `<div class="st${online(r)?' online':''}${r.sub?' sub':''}"><span class="on2"></span><span class="sn"><b>${esc(r.cls)}-${z2(r.no)}</b>${esc(r.name)}</span><span class="sl">第 ${r.page||'?'} 頁 · 練習 ${c}/${p.length}</span><div class="bar"><i style="width:${PT?p.length/PT*100:0}%"></i></div><span class="sl">自評 ✔${uy} ？${un}</span><span class="sl">${r.sub?`<b class="ok">${r.cat==='補做'?'已補做':'已交卷'}</b> ${sc}/${TASK_IDS.length}`:(r.unl?`堂課 ${ta}/${TASK_IDS.length}`:'堂課未開始')}</span>${r.flags.length?`<span class="sl warn">⚠ ${esc(r.flags.join('；'))}</span>`:''}</div>`; }).join('')+'</div>':'<p class="body">還沒有學生登入。</p>'; }
@@ -1634,13 +1653,15 @@ if(TEACHER){
         <h3 style="margin:14px 0 6px;font-size:20px;color:var(--gold)">短答</h3>${Object.keys(SA_Q).map(id=>`<p class="small">${esc(SA_Q[id])}</p><div class="wall">${S.filter(r=>r.sa&&r.sa[id]).map(r=>`<span class="card"><small>${esc(r.cls)}-${z2(r.no)}</small>${esc(r.sa[id])}</span>`).join('')||'<span class="empty">未有</span>'}</div>`).join('')}`;
       $$('#dBody a[data-pg]').forEach(a=>a.onclick=()=>{ closeDash(); go(+a.dataset.pg,0); }); }
     else { const items=TASK_IDS.map(k=>{ let c=0,a=0; S.forEach(r=>{ const v=r.task&&r.task[k]; if(v){ a++; if(v===TASK_KEY[k]) c++; } }); return `<td class="r" title="${k}">${a?Math.round(c/a*100)+'%':'－'}</td>`; }).join('');
-      B.innerHTML=`<div class="dctl" style="margin-bottom:10px"><span class="body">堂課狀態：<b id="dCtl">${CTL.closed?'已結束':CTL.open?'已開放':'未開放'}</b>　開放碼 <b class="g">${TASK_CODE}</b></span><button class="btn sm on" id="dOpen">開放堂課</button><button class="btn sm danger" id="dClose2">結束堂課</button><button class="btn sm" id="dCsv">下載成績 CSV</button><button class="btn sm danger" id="dClear">清除本課資料</button></div>
+      B.innerHTML=`<div class="dctl" style="margin-bottom:10px"><span class="body">${TCLS} 堂課狀態：<b id="dCtl">${CTL_().closed?'已結束':CTL_().open?'已開放':'未開放'}</b>　開放碼 <b class="g">${TASK_CODE}</b></span><button class="btn sm on" id="dOpen">開放堂課</button><button class="btn sm danger" id="dClose2">結束堂課</button><button class="btn sm" id="dCsv">下載成績 CSV</button><button class="btn sm danger" id="dClear">清除 ${TCLS} 本課資料</button></div>
         <p class="small" style="margin:0 0 8px">結束堂課後才開始或交卷的，算作<b class="g">補做</b>（截止 ${MK_TEXT}）。下載 CSV 後，在「D 分數」欄填分，「百分制總分」會自動計算，補做自動扣 50 分。</p>
         <table class="qtab tq"><tr><th>學生</th><th>狀態</th><th>A–C</th>${TASK_IDS.map(k=>`<th>${k}</th>`).join('')}<th>D1</th><th>D2</th></tr>
         <tr><td>答對率</td><td></td><td></td>${items}<td></td><td></td></tr>
         ${S.map(r=>{ const T=r.task||{}; return `<tr><td>${esc(r.cls)}-${z2(r.no)} ${esc(r.name)}</td><td>${r.sub?`<b class="ok">${r.cat==='補做'?'補做 ✔':'已交卷'}</b>`:(r.unl?'作答中':'未開始')}${r.flags.length?`<br><b class="no" style="font-size:12px">⚠ ${esc(r.flags.join('；'))}</b>`:''}</td><td class="r">${taskScore(r)}/${TASK_IDS.length}</td>${TASK_IDS.map(k=>`<td style="color:${!T[k]?'var(--dim)':T[k]===TASK_KEY[k]?'var(--green)':'var(--red)'}">${T[k]?(T[k]===TASK_KEY[k]?'✔':'✘'):'－'}</td>`).join('')}<td class="tx"><div title="${esc(T.D1||'')}">${esc(T.D1||'')}</div></td><td class="tx"><div title="${esc([T.D2f,T.D2s,T.D2d,T.D2e].filter(Boolean).join('｜'))}">${esc([T.D2f,T.D2s,T.D2d,T.D2e].filter(Boolean).join('｜'))}</div></td></tr>`; }).join('')}</table>`;
       $('#dOpen').onclick=()=>$('#tOpen').click(); $('#dClose2').onclick=()=>{ $('#tClose').click(); };
-      $('#dCsv').onclick=csv; let arm=0; $('#dClear').onclick=async()=>{ if(Date.now()-arm>4000){ arm=Date.now(); toast('再按一次「清除本課資料」確認：會刪除全班答案'); return; } try{ await dbReq(auth,'DELETE',`${LPATH}/students`); await setCtl({open:false,closed:false,at:Date.now()}); DATA={}; renderNow(); toast('已清除本課資料'); }catch(e){ toast(zhErr(e)); } }; } }
+      $('#dCsv').onclick=csv; let arm=0; $('#dClear').onclick=async()=>{ if(Date.now()-arm>4000){ arm=Date.now(); toast('再按一次確認：會刪除 '+TCLS+' 全班本課答案（其他班不受影響）'); return; }
+        const del={}; Object.keys(DATA||{}).forEach(uid=>{ const r=cleanRec(DATA[uid]); if(!r||r.cls===TCLS||!r.cls) del[uid]=null; });
+        try{ if(Object.keys(del).length) await dbReq(auth,'PATCH',`${LPATH}/students`,del); await setCtl({open:false,closed:false,at:Date.now()}); Object.keys(del).forEach(u=>delete DATA[u]); renderNow(); toast('已清除 '+TCLS+' 本課資料'); }catch(e){ toast(zhErr(e)); } }; } }
   function csv(){ const S=students(); const NT=TASK_IDS.length, FULL=NT+5;
     // fixed first columns so the formula can point at them: D 類別, F A–C, G D 分數 (teacher fills), H 百分制總分
     const head=['班別','學號','姓名','類別','交卷時間','A–C 分數（/'+NT+'）','D 分數（/5，老師填）','百分制總分（填 D 分後自動計；補做扣 50 分）','備註','練習第一次答對','練習已答','自評明白','自評未明白'].concat(TASK_IDS,['D1','D2功能','D2感知','D2決策','D2執行','短答：'+SA_Q.fav]);
@@ -1648,7 +1669,7 @@ if(TEACHER){
     const rows=S.map((r,i)=>{ const n=i+2, p=Object.values(r.prac||{}), u=Object.values(r.und||{}), T=r.task||{};
       const f=`=IF(G${n}="","",MAX(0,ROUND((F${n}+G${n})/${FULL}*100,0)-IF(D${n}="補做",50,0)))`;
       return [r.cls,r.no,csvTxt(r.name),r.cat,r.sub?tstr(r.sub):'',r.sub?taskScore(r):'','',r.sub?f:'',r.flags.join('；'),p.filter(x=>x.ok).length,p.length,u.filter(v=>v===1).length,u.filter(v=>v===0).length].concat(TASK_IDS.map(k=>csvTxt(T[k]||'')),[T.D1,T.D2f,T.D2s,T.D2d,T.D2e,(r.sa||{}).fav].map(csvTxt)).map(q).join(','); });
-    const blob=new Blob(['\ufeff'+[head.map(q).join(',')].concat(rows).join('\r\n')],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`${LESSON}_成績_${tstr(Date.now()).slice(0,10)}.csv`; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500); }
+    const blob=new Blob(['\ufeff'+[head.map(q).join(',')].concat(rows).join('\r\n')],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`${LESSON}_${TCLS}_成績_${tstr(Date.now()).slice(0,10)}.csv`; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500); }
   KEYX=e=>{ if(e.key==='l'||e.key==='L'){ toggleShow(); return true; } if(e.key==='d'||e.key==='D'){ $('#dash').hidden?openDash():closeDash(); return true; } if(e.key==='Escape'&&!$('#dash').hidden){ closeDash(); return true; } return false; };
   liveDot('',FB_ON?'○ 未登入':'○ 未設定');
   START=()=>{ if(FB_ON&&auth.has()) startStream(); renderNow(); };
