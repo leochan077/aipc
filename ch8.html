@@ -2,6 +2,8 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-73UQ9RAyl5tzWNtUfXYIQQtBw46Izncufqh5FhLOfIU='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>學生版 · AI PC 本地推論任務</title>
 <style>
@@ -1806,7 +1808,20 @@ const LPATH='lessons/'+LESSON;
 const MK_DEADLINE=1801411200000;            // 2027-02-01 00:00 台灣時間（UTC+8）
 const MK_TEXT='2027 年 2 月 1 日（台灣時間）前';
 const mkOpen=()=>Date.now()<MK_DEADLINE;
-const ERRZH={INVALID_LOGIN_CREDENTIALS:'電郵或密碼不正確',INVALID_PASSWORD:'電郵或密碼不正確',EMAIL_NOT_FOUND:'電郵或密碼不正確',INVALID_EMAIL:'電郵格式不正確',USER_DISABLED:'這個帳號已停用',OPERATION_NOT_ALLOWED:'Firebase 未開啟這種登入方式（設定步驟 3）',ADMIN_ONLY_OPERATION:'Firebase 未開啟「匿名」登入（設定步驟 3）',TOO_MANY_ATTEMPTS_TRY_LATER:'嘗試次數太多，請稍後再試','Permission denied':'權限不足：檢查設定步驟 4 的規則和電郵'};
+const ERRZH={INVALID_LOGIN_CREDENTIALS:'電郵或密碼不正確',INVALID_PASSWORD:'電郵或密碼不正確',EMAIL_NOT_FOUND:'電郵或密碼不正確',INVALID_EMAIL:'電郵格式不正確',USER_DISABLED:'這個帳號已停用',OPERATION_NOT_ALLOWED:'Firebase 未開啟這種登入方式（設定步驟 3）',ADMIN_ONLY_OPERATION:'Firebase 未開啟「匿名」登入（設定步驟 3）',TOO_MANY_ATTEMPTS_TRY_LATER:'嘗試次數太多，請稍後再試','Permission denied':'權限不足：檢查設定步驟 4 的規則和老師 UID','are blocked':'這個網址不可以連線（API key 只准課程網站使用）：請用課程網站上的版本'};
+/* records written by students are untrusted: keep only the known fields, with fixed types and lengths, before the teacher views or exports them */
+const cStr=(v,n)=>(typeof v==='string'||typeof v==='number')?String(v).slice(0,n):'';
+const cNum=(v,lo,hi)=>{ const x=Number(v); return isFinite(x)?Math.min(hi,Math.max(lo,x)):0; };
+const cKeys=o=>(o&&typeof o==='object')?Object.keys(o).filter(k=>/^[A-Za-z0-9_-]{1,30}$/.test(k)).slice(0,300):[];
+function cleanRec(r){ if(!r||typeof r!=='object') return null;
+  const o={cls:cStr(r.cls,8).toUpperCase().replace(/[^0-9A-Z]/g,''), no:Math.round(cNum(r.no,0,99)), name:cStr(r.name,40), ts:cNum(r.ts,0,9e15), page:Math.round(cNum(r.page,0,999)),
+    sub:cNum(r.sub,0,9e15), unl:cNum(r.unl,0,9e15), mk:r.mk?1:0, prac:{}, und:{}, sa:{}, task:{}};
+  cKeys(r.prac).forEach(q=>{ const x=r.prac[q]; if(x&&typeof x==='object') o.prac[q]={v:cStr(x.v,80), ok:x.ok?1:0, t:cNum(x.t,0,9e15), done:x.done?1:0}; });
+  cKeys(r.und).forEach(k=>{ if(r.und[k]===0||r.und[k]===1) o.und[k]=r.und[k]; });
+  cKeys(r.sa).forEach(k=>{ o.sa[k]=cStr(r.sa[k],500); }); cKeys(r.task).forEach(k=>{ o.task[k]=cStr(r.task[k],500); });
+  return o; }
+/* a CSV cell that starts with = + - @ would run as an Excel formula: keep student text as plain text */
+const csvTxt=v=>{ const s=String(v==null?'':v); return /^[=+\-@\t\r]/.test(s)?"'"+s:s; };
 const zhErr=e=>{ const m=String(e&&e.message||e); for(const k in ERRZH) if(m.indexOf(k)>=0) return ERRZH[k]; if(e&&e.name==='AbortError') return '連線逾時'; if(/Failed to fetch|NetworkError|Load failed/i.test(m)) return '連不上網絡或 Firebase'; return m; };
 async function fx(url,opt,ms){ const ac=new AbortController(), t=setTimeout(()=>ac.abort(),ms||9000);
   try{ const r=await fetch(url,Object.assign({},opt||{},{signal:ac.signal})); const tx=await r.text(); let j=null; try{ j=tx?JSON.parse(tx):null; }catch(e){}
