@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-WMJzlLin9hAnavt/wlmYM6BIJAXRtM7RH/RUH64bQ88='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rNc2LeHYhsxQePwRBLtgkYZ/MD6PgC7/qIa1vLWOe6M='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>學生版 · 手機傳感器陣列</title>
@@ -547,9 +547,31 @@ select.btn{font:inherit;font-weight:700;appearance:none;-webkit-appearance:none;
 select.btn.sm{padding-right:28px}
 select option{background:#1D1A52;color:#F6F4FF}
 
+
+/* ---------- phone support ---------- */
+html{touch-action:manipulation;-webkit-text-size-adjust:100%}
+#stage{position:fixed} /* keep the unscaled 1280px box from widening the phone's layout viewport */
+#rotTip{position:fixed;inset:0;z-index:100;background:#0A0820;color:var(--ink);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;box-sizing:border-box;text-align:center;font-family:var(--zh)}
+body.rotTip #rotTip{display:flex}
+#rotTip .ph{width:54px;height:92px;border:4px solid #FFD23F;border-radius:10px;position:relative;animation:rotPh 2.4s ease-in-out infinite}
+#rotTip .ph::after{content:"";position:absolute;left:50%;bottom:6px;width:12px;height:4px;margin-left:-6px;background:#FFD23F;border-radius:2px}
+@keyframes rotPh{0%,25%{transform:rotate(0)}55%,85%{transform:rotate(-90deg)}100%{transform:rotate(0)}}
+#rotTip h2{margin:6px 0 0;font-size:22px;color:#FFD23F}
+#rotTip p{margin:0;font-size:15px;line-height:1.6;opacity:.85;max-width:300px}
+#rotTip button{font:inherit;font-size:16px;padding:12px 18px;min-width:230px;border:3px solid #FFD23F;background:#FFD23F;color:#0A0820;font-weight:700;cursor:pointer}
+#rotTip button.alt{background:transparent;color:var(--ink);border-color:#5b5a8a;font-weight:400}
+#rotTip .lnk{background:none;border:0;min-width:0;padding:4px;color:var(--ink);opacity:.6;text-decoration:underline;font-size:14px}
 </style>
 </head>
 <body>
+<div id="rotTip" role="dialog" aria-label="請把手機打橫">
+  <div class="ph" aria-hidden="true"></div>
+  <h2>請把手機打橫</h2>
+  <p>本課畫面是橫向設計，打橫後字會大好多。</p>
+  <button type="button" id="rtFull" hidden>⛶ 全螢幕＋打橫</button>
+  <button type="button" id="rtRot" class="alt">手機鎖咗旋轉？按此把畫面轉 90°</button>
+  <button type="button" id="rtStay" class="lnk">仍然直向使用（字會好細）</button>
+</div>
 
 <div id="stage">
   <div id="hud">
@@ -1143,9 +1165,9 @@ $('#pkClose').addEventListener('click',closePicker);
 $('#picker').addEventListener('click',e=>{ if(e.target.id==='picker') closePicker(); });
 
 /* ---------- correct-answer burst ---------- */
-let SCALE=1;
+let SCALE=1, ROT=false;
 function burst(btn){ const box=btn.closest('.opts')||btn.parentElement; if(!box) return; const br=btn.getBoundingClientRect(), ob=box.getBoundingClientRect();
-  const cx=(br.left-ob.left+br.width/2)/SCALE, cy=(br.top-ob.top+br.height/2)/SCALE, cols=['#FFD23F','#3BE08F','#38BDF8','#E879F9','#FF9F43'];
+  const cx=(ROT?br.top-ob.top+br.height/2:br.left-ob.left+br.width/2)/SCALE, cy=(ROT?ob.right-br.left-br.width/2:br.top-ob.top+br.height/2)/SCALE, cols=['#FFD23F','#3BE08F','#38BDF8','#E879F9','#FF9F43'];
   for(let i=0;i<14;i++){ const d=document.createElement('i'); d.className='burst'; const a=i/14*Math.PI*2, r=50+Math.random()*40;
     d.style.left=(cx-5)+'px'; d.style.top=(cy-5)+'px'; d.style.background=cols[i%5]; d.style.setProperty('--dx',Math.round(Math.cos(a)*r)+'px'); d.style.setProperty('--dy',Math.round(Math.sin(a)*r)+'px');
     box.appendChild(d); setTimeout(()=>d.remove(),760); } }
@@ -1380,7 +1402,40 @@ document.addEventListener('keydown',e=>{ const tg=e.target.tagName;
 $('#bPrev').onclick=prev; $('#bNext').onclick=next; $('#eL').onclick=prev; $('#eR').onclick=next; $('#bPgPrev').onclick=pgPrev; $('#bPgNext').onclick=pgNext; $('#pg').onclick=openJump;
 $('#bNotes').onclick=toggleNotes; $('#notesClose').onclick=toggleNotes; $('#bAdv').onclick=toggleAdv; $('#bPick').onclick=()=>pickStudent(); $('#bFull').onclick=full;
 if(!TEACHER){ ['#bPick','#bNotes','#bPgPrev','#bPgNext'].forEach(s=>$(s).hidden=true); }
-function fit(){ const nh=$('#notes').hidden?0:$('#notes').offsetHeight, H=Math.max(200,window.innerHeight-nh), k=Math.min(window.innerWidth/1280,H/720); SCALE=k; const st=$('#stage'); st.style.top=(H/2)+'px'; st.style.transform=`translate(-50%,-50%) scale(${k})`; }
+/* phone support: PHONE = small touch screen. In portrait we show #rotTip, or rotate the stage 90deg if chosen. */
+const PHONE=matchMedia('(pointer:coarse)').matches && Math.min(screen.width,screen.height)<600;
+function ssGet(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
+function ssSet(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
+const isField=a=>!!a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && !/^(range|checkbox|radio|button|submit)$/.test(a.type);
+let focusW=-1;
+document.addEventListener('focusin',e=>{ if(isField(e.target)) focusW=window.innerWidth; });
+document.addEventListener('focusout',()=>{ focusW=-1; if(PHONE) setTimeout(fit,350); });
+function fit(){ const vw=window.innerWidth, vh=window.innerHeight;
+  /* soft keyboard open: width unchanged while typing -> keep layout, don't shrink the stage */
+  if(PHONE && focusW===vw && isField(document.activeElement)) return;
+  if(isField(document.activeElement)) focusW=vw;
+  const portrait=PHONE && vh>vw, mode=ssGet('rotMode');
+  ROT=portrait && mode==='rot';
+  document.body.classList.toggle('rotTip', portrait && !mode);
+  const nh=$('#notes').hidden?0:$('#notes').offsetHeight, st=$('#stage');
+  if(ROT){ const k=Math.min(vh/1280,vw/720); SCALE=k; st.style.top=(vh/2)+'px'; st.style.transform=`translate(-50%,-50%) rotate(90deg) scale(${k})`; return; }
+  const H=Math.max(200,vh-nh), k=Math.min(vw/1280,H/720); SCALE=k; st.style.top=(H/2)+'px'; st.style.transform=`translate(-50%,-50%) scale(${k})`; }
+(function(){
+  const fsOK=!!(document.documentElement.requestFullscreen && screen.orientation && screen.orientation.lock);
+  $('#rtFull').hidden=!fsOK;
+  $('#rtFull').addEventListener('click',()=>{ document.documentElement.requestFullscreen().then(()=>screen.orientation.lock('landscape')).catch(()=>{}).then(()=>setTimeout(fit,300)); });
+  $('#rtRot').addEventListener('click',()=>{ ssSet('rotMode','rot'); fit(); });
+  $('#rtStay').addEventListener('click',()=>{ ssSet('rotMode','stay'); fit(); });
+  /* swipe left/right on the stage = next/prev (skipped on form fields, sliders, canvases, scrollers, dialogs) */
+  let sx=0, sy=0, sOn=false;
+  const skip=t=>{ if(!t.closest) return true; if(t.closest('input,textarea,select,canvas,[contenteditable],[role=dialog],#stuId')) return true;
+    for(let e=t; e && e.id!=='stage'; e=e.parentElement){ const o=getComputedStyle(e).overflowX; if((o==='auto'||o==='scroll') && e.scrollWidth>e.clientWidth+2) return true; } return false; };
+  $('#stage').addEventListener('touchstart',e=>{ sOn=e.touches.length===1 && !skip(e.target); if(sOn){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; } },{passive:true});
+  $('#stage').addEventListener('touchend',e=>{ if(!sOn) return; sOn=false; const t=e.changedTouches[0]; let dx=t.clientX-sx, dy=t.clientY-sy;
+    if(ROT){ const d=dx; dx=dy; dy=-d; }
+    if(Math.abs(dx)>60 && Math.abs(dx)>2*Math.abs(dy)){ if(dx<0) next(); else prev(); } },{passive:true});
+  window.addEventListener('orientationchange',()=>setTimeout(fit,250));
+})();
 window.addEventListener('resize',fit); fit(); hud();
 
 /* =====================================================================
