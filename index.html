@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Mq5p/PWIm7WR1js2f/QKOi65gktST98+Wi54Ru9k71g='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yGkrLIkiGRe7E8nnY7al9DczpOAZm8guUAWuLawC/eI='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>高二信息系統任務地圖</title>
@@ -123,7 +123,7 @@ const z2=n=>String(n).padStart(2,'0');
 // progress saved by each lesson page on this computer
 const REC={
  aipc:()=>{ const w=get('aipc8mk.who'); if(!w) return ''; const r=get(`aipc8mk.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：補做練習已答 ${n} / 34 題`; },
- w10:()=>{ const w=get('u4.w10.who'); if(!w) return ''; const r=get(`u4.w10.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：練習已答 ${n} / 25 題 · ${r.sub?(r.mk?'堂課已補做 ✔':'堂課已交卷 ✔'):'堂課未交卷'}`; }
+ w10:()=>{ const w=get('u4.w10.who'); if(!w) return ''; const r=get(`u4.w10.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：練習已答 ${n} / 22 題 · ${r.sub?(r.mk?'堂課已補做 ✔':'堂課已交卷 ✔'):'堂課未交卷'}`; }
 };
 document.getElementById('map').innerHTML=WORLDS.map(W=>`<section class="world"><h2><span class="w">${esc(W.unit)}</span>${esc(W.name)}</h2><div class="levels">${W.lessons.map(L=>{
   if(L.boss) return `<article class="lv boss"><div class="top"><span class="no">BOSS</span><span class="pill boss">測驗</span></div><h3>${esc(L.title)}</h3><p class="meta">${esc(L.meta)}</p><div class="topics">${L.topics.map(t=>`<span>${esc(t)}</span>`).join('')}</div><p class="rec none">${esc(L.note||'')}</p></article>`;

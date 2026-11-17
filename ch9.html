@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rNc2LeHYhsxQePwRBLtgkYZ/MD6PgC7/qIa1vLWOe6M='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-xYyLYzn7QxbkdVknQZDRKHug1KOUDDWCkL0lo87ZvVs='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>學生版 · 手機傳感器陣列</title>
@@ -33,10 +33,6 @@ button{font:inherit;color:inherit}
 .hud-l,.hud-r{display:flex;align-items:center;gap:12px}
 #hudStage{font-family:var(--pix);font-size:12px;color:#1A1440;background:var(--gold);padding:7px 9px;box-shadow:3px 3px 0 #000}
 #hudName{font-size:18px;font-weight:700;color:var(--mute)}
-#hud span,#hud a,#hud button{white-space:nowrap}
-.hud-l{min-width:0;flex:1 1 auto}.hud-l>*{flex:none}.hud-r{flex:none;margin-left:12px}
-#hud #hudName{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
-#hud #hudStu{max-width:200px;overflow:hidden;text-overflow:ellipsis}
 .xp-lbl{font-family:var(--pix);font-size:11px;color:var(--gold)}
 .xpbar{width:190px;height:16px;background:#000;border:3px solid var(--line)}
 .xpbar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--gold) 0 10px,#D9A916 10px 12px);transition:width .6s steps(10)}
@@ -63,7 +59,7 @@ h2.t{font-size:33px;font-weight:800;margin:0;display:flex;align-items:center;gap
 b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:var(--green)} b.no{color:var(--red)} b.c{color:var(--cpu)} b.gp{color:var(--gpu)}
 .f{opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;pointer-events:none}
 .f.on{opacity:1;transform:none;pointer-events:auto}
-.mono{font-family:Consolas,"Courier New",monospace;font-weight:700;white-space:nowrap}
+.mono{font-family:var(--lab);letter-spacing:.5px}
 /* ---------- buttons ---------- */
 .btn{font-weight:700;font-size:19px;line-height:1.35;color:var(--ink);background:var(--bg3);border:3px solid var(--line);box-shadow:0 5px 0 var(--edge);padding:9px 14px;cursor:pointer;transition:transform .08s,background .15s,border-color .15s;text-align:center}
 .btn:hover{border-color:var(--gold)}
@@ -90,15 +86,6 @@ b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:va
 .seg.opts .btn{flex:1;text-align:center}
 .why{display:none;margin:4px 0 0;font-size:17px;line-height:1.5;color:var(--green)}
 .done>.why,.done .why{display:block}
-/* pages where the explanations would run under the bottom buttons at 1280x720 */
-[data-id="tilt"] .axes{gap:6px;padding-top:10px;padding-bottom:10px}[data-id="tilt"] .axes .lead{margin:0}
-[data-id="tilt"] .q,[data-id="tofcalc"] .q{padding-top:9px;padding-bottom:9px}
-[data-id="tilt"] .qt,[data-id="tofcalc"] .qt{font-size:19px;margin-bottom:2px}
-[data-id="tilt"] .why,[data-id="tofcalc"] .why{font-size:15px;line-height:1.4;margin-top:2px}
-[data-id="tilt"] .opts .btn,[data-id="tofcalc"] .opts .btn{padding-top:6px;padding-bottom:6px}
-#tTimer{position:absolute;left:18px;bottom:12px;z-index:6;font-size:16px;font-weight:800;color:var(--gold);background:#0C0A2A;border:3px solid var(--line);padding:5px 12px;font-variant-numeric:tabular-nums}
-#tTimer.late{color:var(--red);border-color:var(--red)}
-body.stu .review .rv{cursor:pointer}body.stu .review .rv:hover{border-color:var(--gold)}
 .shake{animation:shake .35s}
 @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .pop{animation:pop .4s steps(4)}
@@ -345,7 +332,7 @@ svg.px8{image-rendering:pixelated}
 .axis .an{font-family:var(--pix);font-size:16px}
 .axis .ab{height:22px;background:#000;border:3px solid var(--line)}
 .axis .ab i{display:block;height:100%;transition:width .4s steps(6)}
-.axis .av{font-family:Consolas,"Courier New",monospace;font-size:16px;text-align:right;white-space:nowrap}
+.axis .av{font-family:var(--lab);font-size:15px;text-align:right;white-space:nowrap}
 .axis.x .an{color:#FF4D5E}.axis.x .ab i{background:#FF4D5E}
 .axis.y .an{color:#3BE08F}.axis.y .ab i{background:#3BE08F}
 .axis.z .an{color:#38BDF8}.axis.z .ab i{background:#38BDF8}
@@ -362,7 +349,7 @@ canvas.cv{display:block;width:100%;background:#0A0826;border:3px solid var(--lin
 .stat2 b{font-family:var(--pix);font-size:24px;color:var(--gold);margin-top:4px}
 /* gyroscope */
 .gyrobox{width:340px;height:300px;flex:none;background:#0A0826;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;perspective:700px;position:relative}
-.gyrobox .ph{transform-style:preserve-3d;transition:transform 1s linear;transform:rotateX(-20deg) rotateY(25deg)}
+.gyrobox .ph{transform-style:preserve-3d;transition:transform 1s linear}
 .gyrobox .axl{position:absolute;left:10px;bottom:8px;font-family:var(--pix);font-size:10px;color:var(--dim)}
 .gauge{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 16px}
 .gauge .gv{font-family:var(--pix);font-size:34px;color:var(--gpu)}
@@ -547,31 +534,184 @@ select.btn{font:inherit;font-weight:700;appearance:none;-webkit-appearance:none;
 select.btn.sm{padding-right:28px}
 select option{background:#1D1A52;color:#F6F4FF}
 
+/* ===== v2 pages (2026-11-17): life situations, animations and a self-check popup ===== */
+/* P2 a day with the phone */
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;min-height:0}
+.dayc{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px;position:relative}
+.dayc .dt{margin:0;align-self:flex-start;font-size:17px;font-weight:800;color:var(--mute)}
+.dayc .dt b{font-family:var(--pix);font-size:14px;color:var(--gold);margin-right:8px}
+.dayc svg{width:220px;height:110px}
+.dayc .dw{margin:0;font-size:18px;font-weight:700;text-align:center}
+.dayc .dk{position:absolute;right:8px;top:8px;font-size:14px;font-weight:800;color:#1A1440;background:var(--npu);padding:2px 8px}
+.d-wk{transform-box:fill-box;transform-origin:50% 100%;transform:rotate(-72deg)}
+.d-wkt{opacity:0}
+.dayc.on .d-wk{animation:dWake .9s steps(5) .2s forwards}
+.dayc.on .d-wks{animation:dFill1 .2s steps(1) 1.1s forwards}
+.dayc.on .d-wkt{animation:dShow .2s steps(1) 1.2s forwards}
+.dayc.on .d-zz{animation:dHide .2s steps(1) 1s forwards}
+@keyframes dWake{to{transform:none}}
+@keyframes dFill1{to{fill:#38BDF8}}
+@keyframes dShow{to{opacity:1}}
+@keyframes dHide{to{opacity:0}}
+.d-scan{opacity:0}
+.dayc.on .d-scan{animation:blinkTxt .3s steps(1) .3s 4}
+.d-sh{transform-box:fill-box}
+.dayc.on .d-sh{animation:dShackle .3s steps(2) 1.5s forwards}
+.dayc.on .d-lb{animation:dGreen .2s steps(1) 1.5s forwards}
+@keyframes dShackle{to{transform:translateY(-7px)}}
+@keyframes dGreen{to{fill:#3BE08F}}
+.d-rt{transform-box:view-box;transform-origin:100px 50px}
+.d-rtl{opacity:0}
+.dayc.on .d-rt{animation:dRot .8s steps(4) .3s forwards}
+.dayc.on .d-rtp{animation:dHide .1s steps(1) .9s forwards}
+.dayc.on .d-rtl{animation:dShow .1s steps(1) 1.15s forwards}
+@keyframes dRot{to{transform:rotate(-90deg)}}
+.d-sun{opacity:0;transform-box:fill-box;transform-origin:50% 50%}
+.dayc.on .d-sun{animation:dSun .6s steps(3) .2s forwards}
+.dayc.on .d-ray{animation:blinkTxt .6s steps(1) 1s infinite}
+@keyframes dSun{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.dayc.on .d-br{animation:dBright 1s steps(4) .8s forwards}
+@keyframes dBright{to{fill:#F2FBFF}}
+.dayc.on .d-lvl{animation:dLvl 1s steps(4) .8s forwards}
+@keyframes dLvl{to{width:66px}}
+.d-ear{transform:translateX(-10px)}
+.dayc.on .d-ear{animation:dEar .8s steps(4) .2s forwards}
+@keyframes dEar{to{transform:translateX(50px)}}
+.dayc.on .d-cs{animation:dBlack .2s steps(1) 1s forwards}
+.dayc.on .d-ct{animation:dHide .2s steps(1) 1s forwards}
+@keyframes dBlack{to{fill:#000}}
+.d-fp,.d-cnt{opacity:0}
+.dayc.on .d-fp{animation:dShow .1s steps(1) forwards}
+.dayc.on .d-fp.d1{animation-delay:.2s}.dayc.on .d-fp.d2{animation-delay:.5s}.dayc.on .d-fp.d3{animation-delay:.8s}.dayc.on .d-fp.d4{animation-delay:1.1s}
+.dayc.on .d-cnt{animation:dShow .1s steps(1) 1.4s forwards}
 
-/* ---------- phone support ---------- */
-html{touch-action:manipulation;-webkit-text-size-adjust:100%}
-#stage{position:fixed} /* keep the unscaled 1280px box from widening the phone's layout viewport */
-#rotTip{position:fixed;inset:0;z-index:100;background:#0A0820;color:var(--ink);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;box-sizing:border-box;text-align:center;font-family:var(--zh)}
-body.rotTip #rotTip{display:flex}
-#rotTip .ph{width:54px;height:92px;border:4px solid #FFD23F;border-radius:10px;position:relative;animation:rotPh 2.4s ease-in-out infinite}
-#rotTip .ph::after{content:"";position:absolute;left:50%;bottom:6px;width:12px;height:4px;margin-left:-6px;background:#FFD23F;border-radius:2px}
-@keyframes rotPh{0%,25%{transform:rotate(0)}55%,85%{transform:rotate(-90deg)}100%{transform:rotate(0)}}
-#rotTip h2{margin:6px 0 0;font-size:22px;color:#FFD23F}
-#rotTip p{margin:0;font-size:15px;line-height:1.6;opacity:.85;max-width:300px}
-#rotTip button{font:inherit;font-size:16px;padding:12px 18px;min-width:230px;border:3px solid #FFD23F;background:#FFD23F;color:#0A0820;font-weight:700;cursor:pointer}
-#rotTip button.alt{background:transparent;color:var(--ink);border-color:#5b5a8a;font-weight:400}
-#rotTip .lnk{background:none;border:0;min-width:0;padding:4px;color:var(--ink);opacity:.6;text-decoration:underline;font-size:14px}
+/* P3 phone pictures under each human sense */
+.sense svg.phi{width:44px;height:70px}
+.glw{animation:blinkTxt 1.2s steps(1) infinite}
+.rock{transform-box:fill-box;transform-origin:50% 100%;animation:rock 1.6s steps(4) infinite}
+@keyframes rock{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.tap{animation:blinkTxt .8s steps(1) infinite}
+
+/* P4 the walk after school */
+.walk{position:relative;height:300px;border:3px solid var(--line);background:#0A0826;overflow:hidden}
+.walk svg{width:100%;height:100%;display:block}
+.walk .bgs{opacity:0;transition:opacity .45s steps(3)}
+.walk.scn-room .bg-room,.walk.scn-sun .bg-sun,.walk.scn-dark .bg-dark{opacity:1}
+.walk .kid{transform-box:view-box}
+.walk.walking .kid{animation:kidWalk 2.6s linear infinite}
+.walk.walking .lg1{animation:legA .5s steps(1) infinite}
+.walk.walking .lg2{animation:legA .5s steps(1) .25s infinite}
+@keyframes kidWalk{from{transform:translateX(-150px)}to{transform:translateX(150px)}}
+@keyframes legA{50%{transform:translateY(-6px)}}
+#sdaScr,#sdaScr2{transition:fill .4s steps(3)}
+#sdaLv{transition:width .4s steps(4)}
+.sda2{gap:12px}
+.sda2 .bx{flex:1;display:flex;flex-direction:column;gap:6px;padding:10px 16px;border-width:5px}
+.sda2 .bx h3{margin:0;font-size:26px;font-weight:900;display:flex;align-items:center;gap:10px}
+.sda2 .bx h3 .k2{font-size:12px}
+.sda2 .bx .v{margin:0;font-size:20px;font-weight:700;line-height:1.4}
+.sda2 .bx.s{border-color:var(--npu)} .sda2 .bx.d{border-color:var(--gold)} .sda2 .bx.e{border-color:var(--green)}
+.sda2 .bx.s h3{color:var(--npu)} .sda2 .bx.d h3{color:var(--gold)} .sda2 .bx.e h3{color:var(--green)}
+.sda2 .bx.flash{animation:pop .4s steps(4)}
+.life{padding:10px 14px}
+.life .body,.life .small{margin:0}
+.px.life[data-f]{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.px.life .lh{font-size:17px;font-weight:900;color:var(--green);margin-right:6px}
+.px.life > span:not(.lh){font-size:16px;font-weight:700;background:var(--bg3);border:2px solid var(--line);padding:3px 10px}
+
+/* P5 small pictures beside each situation */
+.sch{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.sch svg{width:90px;height:56px;flex:none}
+.sch h3{margin:0}
+.d-ear2{animation:dEar2 2.4s steps(4) infinite}
+@keyframes dEar2{0%,20%{transform:translateX(0)}50%,100%{transform:translateX(26px)}}
+.d-off{animation:dOff 2.4s steps(1) infinite}
+@keyframes dOff{0%,49%{fill:#3BE08F}50%,100%{fill:#000}}
+.d-lift{transform-box:fill-box;transform-origin:50% 100%;animation:dLift 2.4s steps(4) infinite}
+@keyframes dLift{0%,20%{transform:rotate(-70deg)}50%,100%{transform:none}}
+.d-on{animation:dOn 2.4s steps(1) infinite}
+@keyframes dOn{0%,54%{fill:#0C0A2A}55%,100%{fill:#38BDF8}}
+
+/* P7 the ball inside the phone */
+.minip{padding:8px 12px;display:flex;flex-direction:column;gap:6px}
+.minip svg{width:100%;height:auto;display:block}
+.mp-ball{transition:transform .5s steps(5)}
+.mp-sl{transform-box:view-box;transform-origin:66px 48px;transition:transform .5s steps(5)}
+.mp-sr{transform-box:view-box;transform-origin:404px 48px;transition:transform .5s steps(5)}
+.minip.brake .mp-ball{transform:translateX(70px)}
+.minip.brake .mp-sl{transform:scaleX(1.5)}
+.minip.brake .mp-sr{transform:scaleX(.45)}
+
+/* P8 phone with X, Y, Z arrows */
+.tp-rot{transform-box:view-box;transform-origin:150px 150px;transition:transform .5s steps(6)}
+.axlb{font-family:var(--pix);font-size:16px;text-anchor:middle;paint-order:stroke;stroke:#000;stroke-width:4px;transition:opacity .2s}
+.axlb.sm{font-family:var(--zh);font-size:14px;font-weight:900;text-anchor:start}
+.tilt.moving .axlb{opacity:0}
+
+/* P9 the bar to jump over */
+.stepbox{border:3px solid var(--line);background:#0A0826}
+.stepbox svg{display:block;width:100%;height:auto}
+#stepBar .sl{font-size:17px;font-weight:800;align-self:center}
+
+/* P10 3D phone */
+.gyrobox{perspective:800px}
+.ph3d{position:relative;width:104px;height:188px;transform-style:preserve-3d;transition:transform 1s linear}
+.ph3d .f3{position:absolute;box-sizing:border-box;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.ph3d .fr{left:0;top:0;width:104px;height:188px;transform:translateZ(9px);background:#000;padding:8px 6px}
+.ph3d .scr3{position:relative;width:100%;height:100%;background:#E879F9;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:22px;gap:8px;padding:22px 8px 8px;box-sizing:border-box}
+.ph3d .scr3 .nt{position:absolute;left:50%;top:4px;width:28px;height:7px;margin-left:-14px;background:#000}
+.ph3d .scr3 .ap{display:block;background:#F6F4FF;border:2px solid #1A1440}
+.ph3d .scr3 .ap:nth-child(3n){background:#FFD23F}
+.ph3d .fr span,.ph3d .bk span{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:14px;font-weight:900;color:#1A1440}
+.ph3d .bk{left:0;top:0;width:104px;height:188px;transform:rotateY(180deg) translateZ(9px);background:#3A3480;border:5px solid #000}
+.ph3d .bk span{color:#F6F4FF}
+.ph3d .bk .cam{position:absolute;left:8px;top:8px;width:40px;height:40px;background:#0C0A2A;border:3px solid #000;display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;box-sizing:border-box}
+.ph3d .bk .cam b{display:block;background:#8C85C9;border:2px solid #000}
+.ph3d .sl,.ph3d .sr{left:43px;top:0;width:18px;height:188px;background:#4B44A8;border:3px solid #000}
+.ph3d .sl{transform:rotateY(-90deg) translateZ(52px)}
+.ph3d .sr{transform:rotateY(90deg) translateZ(52px)}
+.ph3d .sl i,.ph3d .sr i{position:absolute;left:3px;width:6px;background:#FFD23F}
+.ph3d .bt1{top:34px;height:22px}.ph3d .bt2{top:62px;height:22px}.ph3d .bt3{top:46px;height:34px}
+.ph3d .tp,.ph3d .bm{left:0;top:85px;width:104px;height:18px;background:#4B44A8;border:3px solid #000}
+.ph3d .tp{transform:rotateX(90deg) translateZ(94px)}
+.ph3d .bm{transform:rotateX(-90deg) translateZ(94px)}
+.ph3d .bm .usb{position:absolute;left:38px;top:4px;width:22px;height:5px;background:#000}
+.gyrobox .gizmo{position:absolute;right:8px;top:8px;width:84px;height:84px}
+
+/* self-check: students answer in a popup at the end of each stage; the teacher page shows the counts */
+.stu .und{display:none!important}
+.teacher .und .btn{display:none}
+.teacher .und .ul::after{content:"（學生在彈窗作答）";font-size:13px;color:var(--dim);font-weight:700;margin-left:6px}
+#undM{position:absolute;inset:0;z-index:40;background:rgba(6,5,24,.82);display:flex;align-items:center;justify-content:center}
+#undM[hidden]{display:none}
+#undM .px{width:560px;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center;padding:26px 28px}
+#undM .k2{font-family:var(--pix);font-size:13px;color:var(--npu);margin:0}
+#undM h3{margin:0;font-size:30px;font-weight:900;color:var(--gold)}
+#undM .row{gap:16px;justify-content:center}
+#undM .btn{font-size:24px;padding:12px 26px}
+#undM #undSkip{font-size:15px;padding:5px 12px;opacity:.75}
+
+/* v2b: bigger 3D phone, tags, compact options */
+.ph3d{width:120px;height:216px}
+.ph3d .fr,.ph3d .bk{width:120px;height:216px}
+.ph3d .fr{transform:translateZ(11px)}
+.ph3d .bk{transform:rotateY(180deg) translateZ(11px)}
+.ph3d .scr3{grid-auto-rows:26px}
+.ph3d .sl,.ph3d .sr{left:49px;width:22px;height:216px}
+.ph3d .sl{transform:rotateY(-90deg) translateZ(60px)}
+.ph3d .sr{transform:rotateY(90deg) translateZ(60px)}
+.ph3d .tp,.ph3d .bm{top:97px;width:120px;height:22px}
+.ph3d .tp{transform:rotateX(90deg) translateZ(108px)}
+.ph3d .bm{transform:rotateX(-90deg) translateZ(108px)}
+.ph3d .bm .usb{left:46px;top:5px}
+.ph3d .bk .cam{width:48px;height:48px}
+.gyrobox .gizmo{width:104px;height:104px}
+.tag2{display:inline-block;font-size:14px;padding:2px 8px;background:#FF9F43;color:#1A1440;vertical-align:middle;margin-left:4px}
+.opts.o4 .btn{padding-left:4px;padding-right:4px;white-space:nowrap}
+
 </style>
 </head>
 <body>
-<div id="rotTip" role="dialog" aria-label="請把手機打橫">
-  <div class="ph" aria-hidden="true"></div>
-  <h2>請把手機打橫</h2>
-  <p>本課畫面是橫向設計，打橫後字會大好多。</p>
-  <button type="button" id="rtFull" hidden>⛶ 全螢幕＋打橫</button>
-  <button type="button" id="rtRot" class="alt">手機鎖咗旋轉？按此把畫面轉 90°</button>
-  <button type="button" id="rtStay" class="lnk">仍然直向使用（字會好細）</button>
-</div>
 
 <div id="stage">
   <div id="hud">
@@ -580,7 +720,7 @@ body.rotTip #rotTip{display:flex}
   </div>
   <!-- P1 COVER -->
   <section class="slide cover" data-id="cover" data-stage="0">
-    <div class="cover-top"><span class="tag">高二電腦 · 單元四 · 第 9 課（第十週）</span><span class="tag">感知與執行</span><span class="tag">5 關任務 ＋ 堂課</span></div>
+    <div class="cover-top"><span class="tag">高二電腦 · 單元四 · 第十週</span><span class="tag">感知與執行</span><span class="tag">5 關任務 ＋ 堂課</span></div>
     <div class="cover-main">
       <div>
         <p class="pre">NEW GAME</p>
@@ -613,72 +753,102 @@ body.rotTip #rotTip{display:flex}
     <p class="press">PRESS → START</p>
   </section>
 
-  <!-- P2 REVIEW -->
-  <section class="slide" data-id="review" data-intro="1" data-stage="1">
-    <div class="intro"><span class="stg">STAGE 1</span><h2>感知・決策・執行</h2><div class="mission"><span class="lab">MISSION</span><p>先熱身重溫上一課，再認識手機怎樣「感知」世界，以及信息系統「感知—決策—執行」的運作模式。</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">重溫上一課</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">人有五感</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">感知決策執行</li><li class="arrow">▶</li><li data-n="4" style="animation-delay:.51s">手機傳感器陣列</li></ol><p class="press">PRESS → START</p></div>
-    <h2 class="t"><span class="lvl">1-1</span>熱身：重溫上一課 AI PC</h2>
-    <p class="sub">每題只計第一次作答。老師畫面會即時看到全班的選擇。</p>
-    <div class="qgrid c3">
-      <div class="q px ch" data-ans="1">
-        <p class="qt">Copilot+ PC 對 NPU 的要求是多少？</p>
-        <div class="opts"><button class="btn">10+ TOPS</button><button class="btn">40+ TOPS</button><button class="btn">80+ TOPS</button><button class="btn">400+ TOPS</button></div>
-        <p class="why">Copilot+ PC 要求 NPU 達到 40+ TOPS（每秒 40 萬億次運算以上）。</p>
-      </div>
-      <div class="q px ch" data-ans="0">
-        <p class="qt">7B 模型用 4 bit 儲存，權重大約佔多少記憶體？</p>
-        <div class="opts"><button class="btn">約 3.5 GB</button><button class="btn">約 7 GB</button><button class="btn">約 14 GB</button><button class="btn">約 28 GB</button></div>
-        <p class="why">速算：4 bit → 參數數目 ÷ 2，7 ÷ 2 = 3.5 GB。</p>
-      </div>
-      <div class="q px ch" data-ans="2">
-        <p class="qt">本地 AI 逐字生成時，出字速度主要受甚麼限制？</p>
-        <div class="opts"><button class="btn">硬碟容量</button><button class="btn">螢幕大小</button><button class="btn">記憶體頻寬</button><button class="btn">網絡速度</button></div>
-        <p class="why">每出一個字都要讀一次全部權重，所以看記憶體「走廊」有多闊（頻寬）。</p>
-      </div>
+  <!-- P2 A DAY WITH THE PHONE (life situation, no questions) -->
+  <section class="slide" data-id="day" data-intro="1" data-stage="1" data-steps="7">
+    <div class="intro"><span class="stg">STAGE 1</span><h2>感知・決策・執行</h2><div class="mission"><span class="lab">MISSION</span><p>手機每天自動幫你做很多事。找出手機怎樣「感知」世界，以及信息系統「感知—決策—執行」的運作模式。</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">手機的一天</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">人有五感</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">感知決策執行</li><li class="arrow">▶</li><li data-n="4" style="animation-delay:.51s">手機傳感器陣列</li></ol><p class="press">PRESS → START</p></div>
+    <h2 class="t"><span class="lvl">1-1</span>手機的一天：沒有人按掣，它自己做了甚麼？</h2>
+    <div class="days">
+      <div class="px dayc f" data-f="1"><p class="dt"><b>07:00</b>起床</p>
+        <svg viewBox="0 0 200 100" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="88" width="200" height="12" fill="#2A2670"/><text class="d-zz" x="44" y="40" fill="#8C85C9" font-size="18" font-family="Press Start 2P, monospace">z</text><text class="d-zz" x="56" y="28" fill="#8C85C9" font-size="12" font-family="Press Start 2P, monospace">z</text>
+          <g class="d-wk"><rect x="84" y="20" width="34" height="66" fill="#000"/><rect class="d-wks" x="88" y="26" width="26" height="54" fill="#0C0A2A"/><text class="d-wkt" x="101" y="56" fill="#1A1440" font-size="9" text-anchor="middle" font-family="Press Start 2P, monospace">7:00</text></g></svg>
+        <p class="dw">拿起手機 → <b class="g">螢幕自動亮起</b></p><span class="dk f" data-f="7">加速度計</span></div>
+      <div class="px dayc f" data-f="2"><p class="dt"><b>07:05</b>出門前</p>
+        <svg viewBox="0 0 200 100" shape-rendering="crispEdges" aria-hidden="true"><rect x="34" y="22" width="36" height="40" fill="#FFD9B0"/><rect x="34" y="16" width="36" height="10" fill="#3A2A1A"/><rect x="42" y="36" width="6" height="6" fill="#000"/><rect x="56" y="36" width="6" height="6" fill="#000"/><rect x="46" y="50" width="12" height="3" fill="#C9906A"/><rect x="40" y="62" width="24" height="26" fill="#38BDF8"/>
+          <g class="d-scan" fill="#3BE08F"><rect x="76" y="30" width="8" height="2"/><rect x="88" y="30" width="8" height="2"/><rect x="100" y="30" width="8" height="2"/><rect x="76" y="44" width="8" height="2"/><rect x="88" y="44" width="8" height="2"/><rect x="100" y="44" width="8" height="2"/><rect x="76" y="58" width="8" height="2"/><rect x="88" y="58" width="8" height="2"/><rect x="100" y="58" width="8" height="2"/></g>
+          <rect x="116" y="16" width="38" height="72" fill="#000"/><rect x="120" y="22" width="30" height="60" fill="#2A2670"/><rect x="132" y="18" width="6" height="3" fill="#38BDF8"/>
+          <g class="d-lock"><rect class="d-sh" x="129" y="38" width="12" height="10" fill="none" stroke="#FFD23F" stroke-width="3"/><rect class="d-lb" x="126" y="46" width="18" height="16" fill="#FFD23F"/></g></svg>
+        <p class="dw">望一望手機 → <b class="g">自動解鎖</b></p><span class="dk f" data-f="7">前鏡頭（Face ID）</span></div>
+      <div class="px dayc f" data-f="3"><p class="dt"><b>08:00</b>巴士上</p>
+        <svg viewBox="0 0 200 100" shape-rendering="crispEdges" aria-hidden="true"><g class="d-rt"><rect x="82" y="16" width="36" height="68" fill="#000"/><rect x="86" y="22" width="28" height="56" fill="#2A2670"/><g class="d-rtp"><rect x="88" y="26" width="24" height="16" fill="#E879F9"/><rect x="88" y="46" width="24" height="4" fill="#8C85C9"/><rect x="88" y="54" width="18" height="4" fill="#8C85C9"/></g></g>
+          <g class="d-rtl"><rect x="72" y="34" width="56" height="32" fill="#E879F9"/><rect x="94" y="42" width="4" height="16" fill="#F6F4FF"/><rect x="98" y="44" width="4" height="12" fill="#F6F4FF"/><rect x="102" y="47" width="4" height="6" fill="#F6F4FF"/></g></svg>
+        <p class="dw">打橫手機看片 → <b class="g">畫面自動轉橫</b></p><span class="dk f" data-f="7">加速度計</span></div>
+      <div class="px dayc f" data-f="4"><p class="dt"><b>12:30</b>午飯</p>
+        <svg viewBox="0 0 200 100" shape-rendering="crispEdges" aria-hidden="true"><g class="d-sun"><rect x="140" y="12" width="28" height="28" fill="#FFD23F"/><g class="d-ray" fill="#FFD23F"><rect x="152" y="2" width="4" height="6"/><rect x="152" y="44" width="4" height="6"/><rect x="130" y="24" width="6" height="4"/><rect x="172" y="24" width="6" height="4"/></g></g>
+          <rect x="62" y="16" width="38" height="72" fill="#000"/><rect class="d-br" x="66" y="22" width="30" height="60" fill="#244E70"/><rect x="70" y="30" width="22" height="6" fill="#1A1440"/><rect x="70" y="40" width="22" height="4" fill="#1A1440"/><rect x="70" y="48" width="16" height="4" fill="#1A1440"/>
+          <rect x="108" y="76" width="70" height="8" fill="#000"/><rect class="d-lvl" x="110" y="78" width="14" height="4" fill="#FFD23F"/></svg>
+        <p class="dw">走到陽光下 → <b class="g">螢幕自動變亮</b></p><span class="dk f" data-f="7">環境光傳感器</span></div>
+      <div class="px dayc f" data-f="5"><p class="dt"><b>18:00</b>打電話</p>
+        <svg viewBox="0 0 200 100" shape-rendering="crispEdges" aria-hidden="true"><g class="d-ear"><rect x="30" y="20" width="22" height="8" fill="#FFD9B0"/><rect x="24" y="28" width="8" height="40" fill="#FFD9B0"/><rect x="52" y="28" width="8" height="26" fill="#FFD9B0"/><rect x="44" y="54" width="8" height="16" fill="#FFD9B0"/><rect x="32" y="66" width="14" height="8" fill="#FFD9B0"/><rect x="36" y="36" width="8" height="18" fill="#C9906A"/></g>
+          <rect x="112" y="16" width="38" height="72" fill="#000"/><rect class="d-cs" x="116" y="22" width="30" height="60" fill="#3BE08F"/><text class="d-ct" x="131" y="56" fill="#05301C" font-size="7" text-anchor="middle" font-family="Press Start 2P, monospace">0:12</text><rect x="128" y="18" width="6" height="3" fill="#FF4D5E" class="blink"/></svg>
+        <p class="dw">貼近耳朵 → <b class="g">螢幕自動熄滅</b></p><span class="dk f" data-f="7">距離傳感器</span></div>
+      <div class="px dayc f" data-f="6"><p class="dt"><b>22:00</b>睡前</p>
+        <svg viewBox="0 0 200 100" shape-rendering="crispEdges" aria-hidden="true"><g fill="#FF9F43"><rect class="d-fp d1" x="20" y="64" width="10" height="16"/><rect class="d-fp d2" x="38" y="50" width="10" height="16"/><rect class="d-fp d3" x="56" y="64" width="10" height="16"/><rect class="d-fp d4" x="74" y="50" width="10" height="16"/></g>
+          <rect x="112" y="12" width="64" height="76" fill="#000"/><rect x="116" y="18" width="56" height="64" fill="#1A1440"/><text x="144" y="38" fill="#BDB7EC" font-size="8" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">今日步數</text><text class="d-cnt" x="144" y="64" fill="#FFD23F" font-size="11" text-anchor="middle" font-family="Press Start 2P, monospace">8000</text></svg>
+        <p class="dw">打開健康 App → <b class="g">今日行了 8,000 步</b></p><span class="dk f" data-f="7">加速度計（計步）</span></div>
     </div>
-    <p class="foot">上一課：TOPS = Trillion Operations Per Second，每秒萬億次運算。</p>
+    <div class="px gold f" data-f="7"><p class="lead" style="font-size:21px">這些都沒有人按掣：手機靠<b class="g">傳感器</b>「感覺」到發生了甚麼，再自己作決定。今日任務：認識手機的「感官」。</p></div>
   </section>
 
   <!-- P3 SENSES -->
   <section class="slide" data-id="senses" data-stage="1" data-steps="2">
     <h2 class="t"><span class="lvl">1-2</span>人有五感，手機有傳感器</h2>
     <div class="senses">
-      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="16" height="6" fill="#F6F4FF"/><rect x="6" y="4" width="12" height="2" fill="#F6F4FF"/><rect x="6" y="12" width="12" height="2" fill="#F6F4FF"/><rect x="10" y="6" width="4" height="6" fill="#38BDF8"/><rect x="11" y="8" width="2" height="2" fill="#000"/></svg><span class="hm">眼睛</span><span class="ar">▼</span><span class="ph">鏡頭<br>環境光傳感器</span></div>
-      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="9" y="2" width="6" height="2" fill="#FFD9B0"/><rect x="7" y="4" width="2" height="8" fill="#FFD9B0"/><rect x="15" y="4" width="2" height="6" fill="#FFD9B0"/><rect x="13" y="10" width="2" height="4" fill="#FFD9B0"/><rect x="9" y="12" width="4" height="2" fill="#FFD9B0"/><rect x="11" y="6" width="2" height="4" fill="#C9906A"/><rect x="18" y="5" width="1" height="1" fill="#FFD23F" class="blink"/><rect x="20" y="7" width="1" height="3" fill="#FFD23F" class="blink d2"/></svg><span class="hm">耳朵</span><span class="ar">▼</span><span class="ph">咪高峰</span></div>
-      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><g class="shake2"><rect x="11" y="1" width="3" height="3" fill="#FFD9B0"/><rect x="10" y="4" width="5" height="6" fill="#E879F9"/><rect x="4" y="5" width="6" height="2" fill="#FFD9B0"/><rect x="15" y="5" width="6" height="2" fill="#FFD9B0"/><rect x="11" y="10" width="2" height="6" fill="#4B44A8"/><rect x="13" y="10" width="3" height="2" fill="#4B44A8"/></g><rect x="2" y="16" width="20" height="2" fill="#8C85C9"/></svg><span class="hm">內耳平衡</span><span class="ar">▼</span><span class="ph">加速度計<br>陀螺儀</span></div>
-      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="8" y="2" width="2" height="8" fill="#FFD9B0"/><rect x="10" y="6" width="8" height="8" fill="#FFD9B0"/><rect x="8" y="10" width="2" height="4" fill="#FFD9B0"/><rect x="11" y="4" width="2" height="2" fill="#FFD9B0"/><rect x="14" y="4" width="2" height="2" fill="#FFD9B0"/><rect x="2" y="15" width="20" height="2" fill="#38BDF8"/><rect x="8" y="1" width="2" height="1" fill="#3BE08F" class="blink"/></svg><span class="hm">皮膚觸覺</span><span class="ar">▼</span><span class="ph">觸控屏<br>指紋傳感器</span></div>
-      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><g class="fly"><rect x="9" y="6" width="5" height="5" fill="#8C85C9"/><rect x="3" y="5" width="6" height="2" fill="#8C85C9"/><rect x="14" y="5" width="6" height="2" fill="#8C85C9"/><rect x="2" y="7" width="3" height="2" fill="#8C85C9"/><rect x="18" y="7" width="3" height="2" fill="#8C85C9"/><rect x="10" y="7" width="1" height="1" fill="#FFD23F"/><rect x="12" y="7" width="1" height="1" fill="#FFD23F"/></g><rect x="1" y="14" width="2" height="2" fill="#38BDF8" class="blink"/><rect x="5" y="14" width="2" height="2" fill="#38BDF8" class="blink d2"/><rect x="9" y="14" width="2" height="2" fill="#38BDF8" class="blink d3"/></svg><span class="hm">蝙蝠回聲定位</span><span class="ar">▼</span><span class="ph">LiDAR<br>（用光，不用聲）</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="16" height="6" fill="#F6F4FF"/><rect x="6" y="4" width="12" height="2" fill="#F6F4FF"/><rect x="6" y="12" width="12" height="2" fill="#F6F4FF"/><rect x="10" y="6" width="4" height="6" fill="#38BDF8"/><rect x="11" y="8" width="2" height="2" fill="#000"/></svg><span class="hm">眼睛</span><span class="ar">▼</span>
+        <svg class="phi" viewBox="0 0 40 64" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="2" width="28" height="60" fill="#000"/><rect x="9" y="9" width="22" height="47" fill="#2A2670"/><rect x="18" y="4" width="4" height="3" fill="#38BDF8"/><rect class="glw" x="12" y="4" width="3" height="3" fill="#FFD23F"/><rect x="12" y="14" width="16" height="10" fill="#8ADCFF"/><rect x="12" y="28" width="16" height="3" fill="#4B44A8"/><rect x="12" y="34" width="12" height="3" fill="#4B44A8"/></svg>
+        <span class="ph">鏡頭、光線感應器</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="9" y="2" width="6" height="2" fill="#FFD9B0"/><rect x="7" y="4" width="2" height="8" fill="#FFD9B0"/><rect x="15" y="4" width="2" height="6" fill="#FFD9B0"/><rect x="13" y="10" width="2" height="4" fill="#FFD9B0"/><rect x="9" y="12" width="4" height="2" fill="#FFD9B0"/><rect x="11" y="6" width="2" height="4" fill="#C9906A"/><rect x="18" y="5" width="1" height="1" fill="#FFD23F" class="blink"/><rect x="20" y="7" width="1" height="3" fill="#FFD23F" class="blink d2"/></svg><span class="hm">耳朵</span><span class="ar">▼</span>
+        <svg class="phi" viewBox="0 0 40 64" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="2" width="28" height="60" fill="#000"/><rect x="9" y="7" width="22" height="47" fill="#2A2670"/><rect x="14" y="20" width="12" height="12" fill="#3BE08F"/><rect x="18" y="16" width="4" height="4" fill="#3BE08F"/><g class="glw" fill="#FFD23F"><rect x="14" y="57" width="2" height="2"/><rect x="19" y="57" width="2" height="2"/><rect x="24" y="57" width="2" height="2"/></g><g fill="#FFD23F"><rect class="blink" x="36" y="50" width="2" height="6"/><rect class="blink d2" x="38" y="46" width="2" height="14"/></g></svg>
+        <span class="ph">咪高峰</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><g class="shake2"><rect x="11" y="1" width="3" height="3" fill="#FFD9B0"/><rect x="10" y="4" width="5" height="6" fill="#E879F9"/><rect x="4" y="5" width="6" height="2" fill="#FFD9B0"/><rect x="15" y="5" width="6" height="2" fill="#FFD9B0"/><rect x="11" y="10" width="2" height="6" fill="#4B44A8"/><rect x="13" y="10" width="3" height="2" fill="#4B44A8"/></g><rect x="2" y="16" width="20" height="2" fill="#8C85C9"/></svg><span class="hm">內耳平衡</span><span class="ar">▼</span>
+        <svg class="phi" viewBox="0 0 40 64" shape-rendering="crispEdges" aria-hidden="true"><g class="rock"><rect x="6" y="2" width="28" height="60" fill="#000"/><rect x="9" y="7" width="22" height="47" fill="#2A2670"/><rect class="glw" x="15" y="26" width="10" height="10" fill="#E879F9"/><rect x="13" y="28" width="2" height="2" fill="#E879F9"/><rect x="25" y="32" width="2" height="2" fill="#E879F9"/></g></svg>
+        <span class="ph">加速度計、陀螺儀</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><rect x="8" y="2" width="2" height="8" fill="#FFD9B0"/><rect x="10" y="6" width="8" height="8" fill="#FFD9B0"/><rect x="8" y="10" width="2" height="4" fill="#FFD9B0"/><rect x="11" y="4" width="2" height="2" fill="#FFD9B0"/><rect x="14" y="4" width="2" height="2" fill="#FFD9B0"/><rect x="2" y="15" width="20" height="2" fill="#38BDF8"/><rect x="8" y="1" width="2" height="1" fill="#3BE08F" class="blink"/></svg><span class="hm">皮膚觸覺</span><span class="ar">▼</span>
+        <svg class="phi" viewBox="0 0 40 64" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="2" width="28" height="60" fill="#000"/><rect x="9" y="7" width="22" height="47" fill="#2A2670"/><rect class="tap" x="17" y="26" width="6" height="6" fill="#3BE08F"/><rect x="20" y="30" width="4" height="16" fill="#FFD9B0"/><rect x="20" y="44" width="10" height="12" fill="#FFD9B0"/><rect x="18" y="58" width="6" height="2" fill="#FFD23F" class="glw"/></svg>
+        <span class="ph">觸控屏、指紋</span></div>
+      <div class="px sense"><svg viewBox="0 0 24 18" shape-rendering="crispEdges" aria-hidden="true"><g class="fly"><rect x="9" y="6" width="5" height="5" fill="#8C85C9"/><rect x="3" y="5" width="6" height="2" fill="#8C85C9"/><rect x="14" y="5" width="6" height="2" fill="#8C85C9"/><rect x="2" y="7" width="3" height="2" fill="#8C85C9"/><rect x="18" y="7" width="3" height="2" fill="#8C85C9"/><rect x="10" y="7" width="1" height="1" fill="#FFD23F"/><rect x="12" y="7" width="1" height="1" fill="#FFD23F"/></g><rect x="1" y="14" width="2" height="2" fill="#38BDF8" class="blink"/><rect x="5" y="14" width="2" height="2" fill="#38BDF8" class="blink d2"/><rect x="9" y="14" width="2" height="2" fill="#38BDF8" class="blink d3"/></svg><span class="hm">蝙蝠回聲定位</span><span class="ar">▼</span>
+        <svg class="phi" viewBox="0 0 40 64" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="2" width="28" height="60" fill="#2A2670" stroke="#000" stroke-width="2"/><rect x="5" y="5" width="14" height="14" fill="#0C0A2A"/><rect x="7" y="7" width="4" height="4" fill="#8C85C9"/><rect x="13" y="7" width="4" height="4" fill="#8C85C9"/><rect class="glw" x="10" y="13" width="4" height="4" fill="#38BDF8"/><g fill="#38BDF8"><rect class="blink" x="22" y="14" width="2" height="2"/><rect class="blink d2" x="27" y="12" width="2" height="2"/><rect class="blink d3" x="33" y="10" width="2" height="2"/><rect class="blink d2" x="33" y="16" width="2" height="2"/></g></svg>
+        <span class="ph">LiDAR（用光，不用聲）</span></div>
     </div>
-    <div class="px gold f" data-f="1"><p class="lead"><b class="g">傳感器（感測器）</b>：把光、動作、距離等<b class="g">物理量</b>，轉成<b class="g">電子訊號</b>，再變成電腦可以處理的<b class="g">數據</b>。</p></div>
+    <div class="px gold f" data-f="1"><p class="lead"><b class="g">傳感器</b>就是手機的「感官」：感受外面的世界（光、聲音、動作、距離），變成<b class="g">數字</b>，交給 App 使用。</p></div>
     <div class="pipe f" data-f="2">
-      <div class="pc"><span class="ic">LIGHT · MOVE</span>物理量<br>光、動作、距離</div><div class="pa"><i></i></div>
-      <div class="pc"><span class="ic">SENSOR</span>傳感器</div><div class="pa"><i></i></div>
-      <div class="pc"><span class="ic">~~~</span>電子訊號<br>（電壓、電流）</div><div class="pa"><i></i></div>
-      <div class="pc"><span class="ic">0101</span>轉成數字數據</div><div class="pa"><i></i></div>
-      <div class="pc"><span class="ic">CPU · APP</span>處理器和 App<br>使用數據</div>
+      <div class="pc"><span class="ic">DARK</span>房間很暗</div><div class="pa"><i></i></div>
+      <div class="pc"><span class="ic">SENSOR</span>光線感應器<br>感到「很暗」</div><div class="pa"><i></i></div>
+      <div class="pc"><span class="ic">0101</span>變成數字<br>例如「5」</div><div class="pa"><i></i></div>
+      <div class="pc"><span class="ic">APP</span>App 收到數字<br>把螢幕調暗</div>
     </div>
   </section>
 
-  <!-- P4 SENSE-DECIDE-ACT -->
+  <!-- P4 SENSE-DECIDE-ACT: a walk after school -->
   <section class="slide" data-id="sda" data-stage="1" data-steps="2" data-hook="sda">
-    <h2 class="t"><span class="lvl">1-3</span>感知 → 決策 → 執行：自動調光</h2>
-    <div class="row grow" style="gap:20px;align-items:stretch">
-      <div class="col" style="width:190px;flex:none;align-items:center">
-        <div class="seg" id="sdaEnv" style="flex-direction:column;width:100%"><button class="btn" data-v="sun">☀ 陽光下</button><button class="btn on" data-v="room">課室</button><button class="btn" data-v="dark">黑房</button></div>
-        <div class="scr"><svg viewBox="0 0 150 240" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="4" width="138" height="232" fill="#1A1440" stroke="#000" stroke-width="6"/><rect x="58" y="10" width="34" height="5" fill="#000"/><rect x="40" y="10" width="6" height="5" fill="#FFD23F"/></svg><div class="glow" id="sdaGlow"></div></div>
+    <h2 class="t"><span class="lvl">1-3</span>感知 → 決策 → 執行：放學後，螢幕自動調光</h2>
+    <div class="row" style="gap:18px;align-items:stretch">
+      <div class="col" style="width:660px;flex:none;gap:10px">
+        <div class="walk scn-room" id="sdaScene"><svg viewBox="0 0 660 300" shape-rendering="crispEdges" aria-label="放學後由課室走到街上，再入戲院">
+          <g class="bgs bg-room"><rect width="450" height="300" fill="#3A3F7A"/><rect y="250" width="450" height="50" fill="#2A2670"/><rect x="30" y="56" width="110" height="90" fill="#8ADCFF" stroke="#1A1440" stroke-width="6"/><rect x="83" y="56" width="4" height="90" fill="#1A1440"/><rect x="180" y="48" width="210" height="96" fill="#1F4A3A" stroke="#8C6A3A" stroke-width="6"/><text x="285" y="104" fill="#F6F4FF" font-size="24" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">放學！</text><rect x="230" y="0" width="90" height="10" fill="#F6F4FF"/>
+            <rect x="12" y="12" width="74" height="30" fill="#000" opacity=".6"/><text x="49" y="34" fill="#F6F4FF" font-size="18" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">課室</text></g>
+          <g class="bgs bg-sun"><rect width="450" height="300" fill="#8ADCFF"/><g class="d-ray"><rect x="350" y="26" width="56" height="56" fill="#FFD23F"/><g fill="#FFD23F"><rect x="374" y="6" width="8" height="12"/><rect x="374" y="90" width="8" height="12"/><rect x="330" y="50" width="12" height="8"/><rect x="414" y="50" width="12" height="8"/></g></g>
+            <rect x="20" y="96" width="70" height="154" fill="#5B6BB5"/><rect x="100" y="126" width="64" height="124" fill="#4B44A8"/><g fill="#8ADCFF"><rect x="32" y="110" width="14" height="14"/><rect x="62" y="110" width="14" height="14"/><rect x="32" y="140" width="14" height="14"/><rect x="62" y="140" width="14" height="14"/><rect x="112" y="140" width="14" height="14"/><rect x="138" y="140" width="14" height="14"/></g>
+            <rect y="250" width="450" height="50" fill="#6B6B7B"/><g fill="#F6F4FF"><rect x="30" y="272" width="44" height="6"/><rect x="130" y="272" width="44" height="6"/><rect x="230" y="272" width="44" height="6"/><rect x="330" y="272" width="44" height="6"/></g>
+            <rect x="12" y="12" width="128" height="30" fill="#000" opacity=".6"/><text x="76" y="34" fill="#F6F4FF" font-size="18" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">街上（陽光）</text></g>
+          <g class="bgs bg-dark"><rect width="450" height="300" fill="#07061A"/><rect x="40" y="40" width="370" height="140" fill="#1D1A52"/><rect x="50" y="50" width="350" height="120" fill="#2A2670"/><g fill="#141238"><rect x="10" y="232" width="430" height="22"/><rect x="0" y="262" width="450" height="38"/></g>
+            <rect x="12" y="12" width="74" height="30" fill="#000" opacity=".6"/><text x="49" y="34" fill="#F6F4FF" font-size="18" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">戲院</text></g>
+          <g class="kid"><rect x="194" y="144" width="36" height="12" fill="#3A2A1A"/><rect x="196" y="150" width="32" height="30" fill="#FFD9B0"/><rect x="204" y="160" width="4" height="4" fill="#000"/><rect x="216" y="160" width="4" height="4" fill="#000"/><rect x="192" y="182" width="40" height="40" fill="#E879F9"/><rect x="228" y="192" width="16" height="8" fill="#FFD9B0"/><rect x="238" y="174" width="16" height="28" fill="#000"/><rect id="sdaScr2" x="240" y="177" width="12" height="22" fill="#6FA8D6"/>
+            <rect class="lg1" x="196" y="222" width="12" height="30" fill="#1A1440"/><rect class="lg2" x="216" y="222" width="12" height="30" fill="#1A1440"/></g>
+          <rect x="450" y="0" width="210" height="300" fill="#0A0826"/><rect x="450" y="0" width="4" height="300" fill="#4B44A8"/><text x="557" y="28" fill="#BDB7EC" font-size="16" font-weight="700" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">手機螢幕</text>
+          <rect x="507" y="40" width="100" height="196" fill="#000"/><rect id="sdaScr" x="514" y="54" width="86" height="168" fill="#6FA8D6"/><g fill="#1A1440" opacity=".45"><rect x="524" y="66" width="66" height="10"/><rect x="524" y="84" width="66" height="44"/><rect x="524" y="136" width="50" height="8"/><rect x="524" y="150" width="58" height="8"/></g>
+          <text x="478" y="268" fill="#BDB7EC" font-size="15" font-weight="700" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">亮度</text><rect x="514" y="254" width="116" height="18" fill="#000" stroke="#4B44A8" stroke-width="3"/><rect id="sdaLv" x="517" y="257" width="55" height="12" fill="#FFD23F"/>
+        </svg></div>
+        <div class="row" style="gap:10px;align-items:center"><button class="btn on" id="sdaPlay">▶ 播放：放學後</button><div class="seg" id="sdaEnv"><button class="btn" data-v="room">課室</button><button class="btn" data-v="sun">☀ 街上</button><button class="btn" data-v="dark">戲院</button></div></div>
       </div>
-      <div class="col grow" style="gap:14px">
-        <div class="sda">
-          <div class="px bx s f" data-f="1"><h3>感知<span class="k2">SENSE</span></h3><p class="v" id="sdaS"></p></div><div class="arw f" data-f="1">▶</div>
-          <div class="px bx d f" data-f="1"><h3>決策<span class="k2">DECIDE</span></h3><p class="v" id="sdaD"></p></div><div class="arw f" data-f="1">▶</div>
-          <div class="px bx e f" data-f="1"><h3>執行<span class="k2">ACT</span></h3><p class="v" id="sdaE"></p></div>
-        </div>
-        <p class="body f" data-f="1">按左邊的掣，改變環境：手機<b class="g">不停重複</b>這三步，環境一變，結果就跟着變。</p>
-        <div class="px f" data-f="2" style="display:flex;flex-direction:column;gap:10px">
-          <p class="lead">信息系統的角度：這就是 <b class="g">輸入 → 處理 → 輸出</b></p>
-          <div class="ipo"><span>輸入（傳感器數據）</span><i>▶</i><span>處理（程式判斷）</span><i>▶</i><span>輸出（控制硬件）</span></div>
-          <p class="small">感知靠<b class="g">傳感器</b>，決策靠<b class="g">處理器和程式</b>，執行靠<b class="g">執行器</b>（例如螢幕背光、馬達、喇叭）。下一課會詳細講執行器。</p>
-        </div>
+      <div class="col grow sda2">
+        <div class="px bx s f" data-f="1"><h3>感知<span class="k2">SENSE</span></h3><p class="v" id="sdaS"></p></div>
+        <div class="px bx d f" data-f="1"><h3>決策<span class="k2">DECIDE</span></h3><p class="v" id="sdaD"></p></div>
+        <div class="px bx e f" data-f="1"><h3>執行<span class="k2">ACT</span></h3><p class="v" id="sdaE"></p></div>
       </div>
+    </div>
+    <div class="row f" data-f="2" style="gap:18px;align-items:stretch">
+      <div class="px grow"><p class="body"><b class="g">輸入 → 處理 → 輸出</b>：光線感應器的數據 → 程式判斷 → 控制螢幕。手機每秒都不停重複這三步，環境一變，螢幕就跟着變。</p></div>
+      <div class="px green life" style="width:440px;flex:none"><p class="body"><b class="ok">生活用得着</b>：自動亮度不準？看看手機殼或貼紙有沒有遮住螢幕頂部的光線感應器。</p></div>
     </div>
   </section>
 
@@ -687,19 +857,21 @@ body.rotTip #rotTip{display:flex}
     <h2 class="t"><span class="lvl">1-4</span>練習：這一步是感知、決策，還是執行？</h2>
     <div class="sorter" data-badge="s1">
       <div class="px">
-        <h3>情境 A：通話時，手機貼近耳邊自動熄屏</h3>
-        <div class="it ch" data-q="sdaq-3" data-ans="執行"><span class="tt">關閉螢幕顯示和觸控，避免面部誤按</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">真正改變硬件狀態 → 執行。</p></div>
-        <div class="it ch" data-q="sdaq-1" data-ans="感知"><span class="tt">距離傳感器發出紅外線，發現有物件很近</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">傳感器收集環境資料 → 感知。</p></div>
-        <div class="it ch" data-q="sdaq-2" data-ans="決策"><span class="tt">系統判斷：正在通話，而且手機貼着面部</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">程式根據數據作判斷 → 決策。</p></div>
+        <div class="sch"><svg viewBox="0 0 90 56" shape-rendering="crispEdges" aria-hidden="true"><g class="d-ear2"><rect x="8" y="10" width="14" height="6" fill="#FFD9B0"/><rect x="4" y="16" width="6" height="26" fill="#FFD9B0"/><rect x="20" y="16" width="6" height="16" fill="#FFD9B0"/><rect x="14" y="32" width="6" height="12" fill="#FFD9B0"/><rect x="12" y="20" width="6" height="10" fill="#C9906A"/></g><rect x="52" y="4" width="26" height="48" fill="#000"/><rect class="d-off" x="55" y="9" width="20" height="38" fill="#3BE08F"/></svg>
+          <h3>情境 A：通話時貼近耳朵，螢幕自動熄滅</h3></div>
+        <div class="it ch" data-ans="感知"><span class="tt">距離感應器發現：有東西很近</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">傳感器收集周圍的資料 → 感知。</p></div>
+        <div class="it ch" data-ans="決策"><span class="tt">系統判斷：正在通話，手機貼着臉</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">程式根據數據作判斷 → 決策。</p></div>
+        <div class="it ch" data-ans="執行"><span class="tt">關掉螢幕和觸控，臉不會誤按</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">真的改變了手機的狀態 → 執行。</p></div>
       </div>
       <div class="px">
-        <h3>情境 B：撞車偵測，自動致電求救</h3>
-        <div class="it ch" data-ans="決策"><span class="tt">系統確認是撞車，不是手機跌落地上</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">比較多個數據後作出判斷 → 決策。</p></div>
-        <div class="it ch" data-ans="執行"><span class="tt">自動撥打緊急電話，並發送所在位置</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">產生實際行動 → 執行。</p></div>
-        <div class="it ch" data-ans="感知"><span class="tt">加速度計量到極大的撞擊力</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">量度撞擊 → 感知。</p></div>
+        <div class="sch"><svg viewBox="0 0 90 56" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="50" width="90" height="6" fill="#2A2670"/><g class="d-lift"><rect x="34" y="6" width="24" height="44" fill="#000"/><rect class="d-on" x="37" y="10" width="18" height="36" fill="#0C0A2A"/><rect x="58" y="30" width="14" height="10" fill="#FFD9B0"/><rect x="66" y="40" width="10" height="10" fill="#FFD9B0"/></g></svg>
+          <h3>情境 B：拿起手機，螢幕自動亮起 <span class="tag2">次序打亂了</span></h3></div>
+        <div class="it ch" data-ans="決策"><span class="tt">系統判斷：你想看手機</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">根據動作作出判斷 → 決策。</p></div>
+        <div class="it ch" data-ans="執行"><span class="tt">螢幕亮起，顯示時間和通知</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">真的做了一件事（亮屏）→ 執行。</p></div>
+        <div class="it ch" data-ans="感知"><span class="tt">加速度計發現：手機被拿起來</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">量度手機的動作 → 感知。</p></div>
       </div>
     </div>
-    <p class="foot">兩個情境的次序都打亂了：先想清楚哪一步先發生。</p>
+    <p class="foot">情境 B 的次序故意打亂了：先想清楚哪一步先發生。</p>
   </section>
 
   <!-- P6 ARRAY -->
@@ -734,31 +906,34 @@ body.rotTip #rotTip{display:flex}
   </section>
 
   <!-- P7 ACCELEROMETER PRINCIPLE -->
-  <section class="slide" data-id="acc" data-intro="1" data-stage="2" data-steps="1" data-hook="acc">
+  <section class="slide" data-id="acc" data-intro="1" data-stage="2" data-steps="2" data-hook="acc">
     <div class="intro"><span class="stg">STAGE 2</span><h2>加速度計</h2><div class="mission"><span class="lab">MISSION</span><p>手機怎樣知道自己被推、被搖、跌落？又怎樣知道「哪一邊是下」？</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">巴士急剎</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">重力也有讀數</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">計步器</li></ol><p class="press">PRESS → START</p></div>
     <h2 class="t"><span class="lvl acc">2-1</span>加速度計：手機怎樣感覺到「被推」？</h2>
-    <div class="row grow">
-      <div class="col" style="width:470px;flex:none">
-        <div class="px"><p class="lead">巴士突然起步，乘客會向<b class="a">後</b>傾；急剎時，乘客向<b class="a">前</b>傾。</p></div>
-        <div class="bus" id="bus"><svg viewBox="0 0 470 118" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="104" width="470" height="14" fill="#2B2B3A"/><g class="busbody"><rect x="90" y="24" width="250" height="74" fill="#FF9F43" stroke="#000" stroke-width="4"/><rect x="104" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="160" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="216" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="272" y="34" width="54" height="30" fill="#8ADCFF"/><g class="pax"><rect x="226" y="40" width="12" height="10" fill="#FFD9B0"/><rect x="224" y="50" width="16" height="14" fill="#E879F9"/></g><rect x="112" y="92" width="24" height="18" fill="#000"/><rect x="290" y="92" width="24" height="18" fill="#000"/></g></svg></div>
+    <div class="row">
+      <div class="col" style="width:520px;flex:none;gap:10px">
+        <div class="px" style="padding:10px 16px"><p class="lead">巴士急剎時，乘客會向<b class="a">前</b>傾。</p></div>
+        <div class="bus" id="bus"><svg viewBox="0 0 470 118" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="104" width="470" height="14" fill="#2B2B3A"/><g class="busbody"><rect x="90" y="24" width="250" height="74" fill="#FF9F43" stroke="#000" stroke-width="4"/><rect x="104" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="160" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="216" y="34" width="44" height="30" fill="#8ADCFF"/><rect x="272" y="34" width="54" height="30" fill="#8ADCFF"/><g class="pax"><rect x="226" y="40" width="12" height="10" fill="#FFD9B0"/><rect x="224" y="50" width="16" height="14" fill="#E879F9"/></g><rect x="112" y="92" width="24" height="18" fill="#000"/><rect x="290" y="92" width="24" height="18" fill="#000"/></g><text x="400" y="60" fill="#8C85C9" font-size="14" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">行車方向 →</text></svg></div>
         <div class="seg"><button class="btn" id="busGo">▶ 巴士急剎</button><button class="btn" id="busReset">重來</button></div>
-        <p class="body f" data-f="1">加速度計裏面也有一位「乘客」：一粒細小的<b class="a">質量塊</b>。手機加速時，質量塊會落後一點點，傳感器量度它移動了多少。</p>
+        <div class="px minip f" data-f="1" id="minip"><svg viewBox="0 0 470 84" shape-rendering="crispEdges" aria-label="手機裏的小球">
+          <rect x="6" y="6" width="458" height="72" fill="#000"/><rect x="14" y="14" width="442" height="56" fill="#1A1440"/><text x="24" y="31" fill="#8C85C9" font-size="13" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">手機裏面</text><rect x="60" y="38" width="6" height="28" fill="#8C85C9"/><rect x="404" y="38" width="6" height="28" fill="#8C85C9"/><g class="mp-sl"><path d="M66 52 h20 l10 -8 l12 16 l12 -16 l12 16 l12 -16 l12 16 l10 -8 h40" fill="none" stroke="#3BE08F" stroke-width="4"/></g><g class="mp-sr"><path d="M404 52 h-20 l-10 -8 l-12 16 l-12 -16 l-12 16 l-12 -16 l-12 16 l-10 -8 h-40" fill="none" stroke="#3BE08F" stroke-width="4"/></g><g class="mp-ball"><rect x="212" y="37" width="46" height="30" fill="#FF9F43" stroke="#000" stroke-width="3"/><text x="235" y="57" fill="#1A1440" font-size="12" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">小球</text></g></svg>
+          <p class="body" style="font-size:18px">手機裏也有一位「小乘客」：一粒小球。急剎時，小球都會向前移；手機量到它移了多少，就知道你急剎了。</p></div>
       </div>
       <div class="col grow">
-        <div class="mems"><svg viewBox="0 0 560 230" aria-label="MEMS 加速度計結構示意">
+        <div class="mems"><svg viewBox="0 0 560 230" aria-label="加速度計結構示意">
           <g id="mFrame"><rect x="20" y="16" width="520" height="198" fill="none" stroke="#8C85C9" stroke-width="4"/><text x="34" y="38" fill="#8C85C9" font-size="15" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">外框（固定在手機上）</text>
             <g fill="#8C85C9"><rect x="150" y="60" width="10" height="110"/><rect x="400" y="60" width="10" height="110"/></g>
             <g fill="#BDB7EC"><rect x="160" y="70" width="60" height="8"/><rect x="160" y="100" width="60" height="8"/><rect x="160" y="130" width="60" height="8"/><rect x="160" y="160" width="60" height="8"/><rect x="340" y="85" width="60" height="8"/><rect x="340" y="115" width="60" height="8"/><rect x="340" y="145" width="60" height="8"/></g>
             <path d="M40 115 h20 l8 -12 l12 24 l12 -24 l12 24 l12 -24 l8 12 h10" fill="none" stroke="#3BE08F" stroke-width="4"/><path d="M520 115 h-20 l-8 -12 l-12 24 l-12 -24 l-12 24 l-12 -24 l-8 12 h-10" fill="none" stroke="#3BE08F" stroke-width="4"/>
           </g>
-          <g id="mMass"><rect x="230" y="60" width="100" height="110" fill="#FF9F43" stroke="#000" stroke-width="3"/><g fill="#FF9F43"><rect x="190" y="85" width="40" height="8"/><rect x="190" y="115" width="40" height="8"/><rect x="190" y="145" width="40" height="8"/><rect x="330" y="70" width="40" height="8"/><rect x="330" y="100" width="40" height="8"/><rect x="330" y="130" width="40" height="8"/><rect x="330" y="160" width="40" height="8"/></g><text x="280" y="120" fill="#1A1440" font-size="17" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">質量塊</text></g>
-          <text x="280" y="206" fill="#3BE08F" font-size="15" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">綠色：像彈簧的支架　　梳齒間的距離改變 → 電容改變 → 電子訊號</text>
+          <g id="mMass"><rect x="230" y="60" width="100" height="110" fill="#FF9F43" stroke="#000" stroke-width="3"/><g fill="#FF9F43"><rect x="190" y="85" width="40" height="8"/><rect x="190" y="115" width="40" height="8"/><rect x="190" y="145" width="40" height="8"/><rect x="330" y="70" width="40" height="8"/><rect x="330" y="100" width="40" height="8"/><rect x="330" y="130" width="40" height="8"/><rect x="330" y="160" width="40" height="8"/></g><text x="280" y="120" fill="#1A1440" font-size="17" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">小球</text></g>
+          <text x="280" y="206" fill="#3BE08F" font-size="15" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">真正的樣子：小球掛在像彈簧的支架上，一移動就變成電子訊號</text>
         </svg></div>
-        <div class="seg" id="accBtns"><button class="btn" data-v="-1">◀ 向左加速</button><button class="btn on" data-v="0">靜止</button><button class="btn" data-v="1">向右加速 ▶</button></div>
+        <div class="seg" id="accBtns"><button class="btn" data-v="-1">◀ 向左推</button><button class="btn on" data-v="0">靜止</button><button class="btn" data-v="1">向右推 ▶</button></div>
         <div class="meter"><span>讀數</span><div class="mb"><i id="accBar"></i></div><span class="mono" id="accVal" style="width:120px;text-align:right">0 m/s²</span></div>
-        <p class="small">這種結構叫 <b class="g">MEMS（微機電系統）</b>：整個傳感器只有幾毫米大，梳齒比頭髮還要幼，所以可以放進手機。</p>
+        <p class="small">整個加速度計只有幾毫米大（叫 <b class="g">MEMS</b>），比米粒還要小，所以可以放進手機。</p>
       </div>
     </div>
+    <div class="px green life f" data-f="2"><span class="lh">生活中的加速度計</span><span>搖一搖：換歌、撤銷打字</span><span>拿起手機：自動亮屏</span><span>打橫手機：自動轉屏</span><span>行路：計步</span><span>跌倒：手錶自動求救</span></div>
   </section>
 
   <!-- P8 GRAVITY / TILT -->
@@ -766,58 +941,97 @@ body.rotTip #rotTip{display:flex}
     <h2 class="t"><span class="lvl acc">2-2</span>靜止時也有讀數：重力</h2>
     <div class="row grow">
       <div class="col" style="align-items:center;flex:none">
-        <div class="tilt"><svg class="ph" id="tiltPh" viewBox="0 0 100 180" width="110" height="198" shape-rendering="crispEdges" aria-label="手機"><rect x="4" y="2" width="92" height="176" fill="#1A1440" stroke="#000" stroke-width="5"/><rect x="11" y="14" width="78" height="150" fill="#38BDF8"/><g id="tiltUi"><rect x="20" y="24" width="60" height="10" fill="#F6F4FF"/><rect x="20" y="40" width="60" height="44" fill="#FFD23F"/><rect x="20" y="90" width="44" height="6" fill="#F6F4FF"/><rect x="20" y="100" width="52" height="6" fill="#F6F4FF"/></g><rect x="42" y="6" width="16" height="3" fill="#000"/><text x="50" y="140" fill="#1A1440" font-size="14" font-weight="900" text-anchor="middle" font-family="Press Start 2P, monospace">Y↑</text></svg>
-          <div class="gv">重力<b>↓</b>9.8 m/s²</div></div>
+        <div class="tilt"><svg id="tiltSvg" viewBox="0 0 300 300" width="300" height="300" shape-rendering="crispEdges" aria-label="手機和 X、Y、Z 三條軸">
+          <g id="tp2d">
+            <g id="tpRot" class="tp-rot">
+              <rect x="105" y="62" width="90" height="176" fill="#1A1440" stroke="#000" stroke-width="5"/><rect x="112" y="74" width="76" height="152" fill="#38BDF8"/><rect x="142" y="66" width="16" height="3" fill="#000"/>
+              <g id="tpUiP"><rect x="120" y="84" width="60" height="10" fill="#F6F4FF"/><rect x="120" y="100" width="60" height="40" fill="#FFD23F"/><rect x="120" y="190" width="44" height="6" fill="#F6F4FF"/><rect x="120" y="200" width="52" height="6" fill="#F6F4FF"/></g>
+              <g id="tpUiL" transform="rotate(90 150 150)" style="display:none"><rect x="76" y="114" width="148" height="72" fill="#1A1440"/><rect x="142" y="136" width="6" height="28" fill="#F6F4FF"/><rect x="148" y="140" width="6" height="20" fill="#F6F4FF"/><rect x="154" y="145" width="6" height="10" fill="#F6F4FF"/><rect x="84" y="176" width="132" height="4" fill="#4B44A8"/><rect x="84" y="176" width="54" height="4" fill="#FF4D5E"/></g>
+              <g class="ax"><rect x="150" y="146" width="74" height="8" fill="#FF4D5E" stroke="#000" stroke-width="2"/><polygon points="222,138 240,150 222,162" fill="#FF4D5E" stroke="#000" stroke-width="2"/></g>
+              <g class="ax"><rect x="146" y="40" width="8" height="110" fill="#3BE08F" stroke="#000" stroke-width="2"/><polygon points="138,42 150,24 162,42" fill="#3BE08F" stroke="#000" stroke-width="2"/></g>
+              <circle cx="150" cy="150" r="12" fill="#38BDF8" stroke="#000" stroke-width="3"/><circle cx="150" cy="150" r="4" fill="#000"/>
+            </g>
+            <text id="lbX" class="axlb" x="256" y="155" fill="#FF4D5E">X</text><text id="lbY" class="axlb" x="150" y="18" fill="#3BE08F">Y</text><text class="axlb sm" x="168" y="180" fill="#38BDF8">Z 指向你</text>
+          </g>
+          <g id="tpFlat" style="display:none">
+            <polygon points="0,236 300,176 300,266 0,300" fill="#1D1A52"/>
+            <polygon points="264,178 264,186 104,242 104,234" fill="#000"/><polygon points="104,234 104,242 36,210 36,202" fill="#000"/>
+            <polygon points="196,146 264,178 104,234 36,202" fill="#1A1440" stroke="#000" stroke-width="3"/><polygon points="189,153 247,180 111,227 53,200" fill="#38BDF8"/>
+            <line x1="150" y1="190" x2="198" y2="213" stroke="#FF4D5E" stroke-width="7"/><rect x="196" y="207" width="12" height="12" fill="#FF4D5E" stroke="#000" stroke-width="2"/>
+            <line x1="150" y1="190" x2="238" y2="159" stroke="#3BE08F" stroke-width="7"/><rect x="236" y="152" width="12" height="12" fill="#3BE08F" stroke="#000" stroke-width="2"/>
+            <rect x="146" y="70" width="8" height="120" fill="#38BDF8" stroke="#000" stroke-width="2"/><polygon points="138,72 150,54 162,72" fill="#38BDF8" stroke="#000" stroke-width="2"/>
+            <text class="axlb" x="214" y="236" fill="#FF4D5E">X</text><text class="axlb" x="252" y="150" fill="#3BE08F">Y</text><text class="axlb sm" x="164" y="66" fill="#38BDF8">Z 向上</text>
+          </g>
+          <g><text x="280" y="22" fill="#FFD23F" font-size="13" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">重力</text><rect x="276" y="30" width="8" height="52" fill="#FFD23F"/><polygon points="268,80 280,96 292,80" fill="#FFD23F"/></g>
+        </svg></div>
         <div class="seg" id="tiltBtns" style="margin-top:10px"><button class="btn on" data-v="0">直放</button><button class="btn" data-v="30">斜 30°</button><button class="btn" data-v="90">橫放</button><button class="btn" data-v="flat">平放桌上</button></div>
+        <div class="px green life" style="width:330px;margin-top:12px;padding:10px 14px"><p class="small"><b class="ok">生活用得着</b>：躺在床上看手機，畫面亂轉？手機以為你打橫了。開啟「直向鎖定」就不會亂轉。</p></div>
       </div>
       <div class="col grow">
         <div class="px axes">
-          <p class="lead">靜止時，加速度計量到<b class="a">重力</b>：約 <b class="g">9.8 m/s²</b>（1 g），方向向下。</p>
+          <p class="lead">靜止時，加速度計量到<b class="a">重力</b>：約 <b class="g">9.8 m/s²</b>，方向向下。手機怎樣擺，哪一條軸<b class="g">豎直</b>（和重力在同一直線），那條軸的讀數就最大。</p>
           <div class="axis x"><span class="an">X</span><div class="ab"><i id="axX"></i></div><span class="av" id="avX"></span></div>
           <div class="axis y"><span class="an">Y</span><div class="ab"><i id="axY"></i></div><span class="av" id="avY"></span></div>
           <div class="axis z"><span class="an">Z</span><div class="ab"><i id="axZ"></i></div><span class="av" id="avZ"></span></div>
           <p class="ori">畫面方向：<b class="g" id="tiltOri">直向</b>　<span class="small" id="tiltWhy"></span></p>
         </div>
         <div class="qgrid c2" data-badge="s2">
-          <div class="q px ch" data-ans="2"><p class="qt">手機平放桌上（螢幕向上），哪一軸讀數最接近 9.8？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">X 軸</button><button class="btn">Y 軸</button><button class="btn">Z 軸</button><button class="btn">全部 0</button></div><p class="why">平放時重力穿過螢幕方向，即 Z 軸。</p></div>
-          <div class="q px ch" data-ans="0"><p class="qt">手機正在跌落地面（自由落體），三軸讀數大約是？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">Z 軸約 9.8</button><button class="btn" data-v="3">全部約 9.8</button><button class="btn" data-v="0">全部接近 0</button><button class="btn" data-v="2">Y 軸約 9.8</button></div><p class="why">跌落時手機和質量塊一起落下，質量塊不會「被拉」，讀數接近 0。手機可以用這點偵測跌落。</p></div>
+          <div class="q px ch" data-ans="2"><p class="qt">手機平放桌上（螢幕向上），哪一軸讀數最接近 9.8？</p><div class="opts o4" style="grid-template-columns:repeat(4,1fr)"><button class="btn">X 軸</button><button class="btn">Y 軸</button><button class="btn">Z 軸</button><button class="btn">全部 0</button></div><p class="why">平放時 Z 軸指向上，和重力在同一直線上。</p></div>
+          <div class="q px ch" data-ans="0"><p class="qt">手機正在跌落地面，三軸讀數大約是？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">全部接近 0</button><button class="btn">Z 軸約 9.8</button><button class="btn">Y 軸約 9.8</button><button class="btn">全部約 9.8</button></div><p class="why">跌落時手機和小球一起落下，小球不會「被拉」，讀數接近 0。手機可以用這點偵測跌落。</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- P9 STEP COUNTER -->
+  <!-- P9 STEP COUNTER: the bar to jump over -->
   <section class="slide" data-id="steps" data-stage="2" data-hook="steps">
-    <h2 class="t"><span class="lvl acc">2-3</span>計步器：決策就是「設門檻」</h2>
+    <h2 class="t"><span class="lvl acc">2-3</span>計步器：怎樣才算「一步」？</h2>
     <div class="row grow">
       <div class="col grow">
-        <canvas class="cv" id="stepCv" width="760" height="230" aria-label="加速度讀數波形"></canvas>
-        <div class="sliderrow"><span>門檻</span><input type="range" id="stepTh" min="10" max="17.5" step="0.5" value="13" aria-label="計步門檻"><span class="mono" id="stepThV" style="width:120px">13 m/s²</span></div>
-        <div class="row" style="gap:14px;align-items:center"><button class="btn on" id="stepGo">▶ 行 12 步</button><div class="stat2"><div>真正步數<b id="stepReal">0</b></div><div>計到步數<b id="stepCnt">0</b></div></div><p class="small grow" id="stepMsg">每行一步，身體上下起伏，讀數出現一個高峰。高峰超過門檻，才算一步。</p></div>
-        <div class="chipz"><span>加速度計的其他用途：</span><span class="hi">自動轉屏</span><span class="hi">計步</span><span>跌倒偵測</span><span>撞車偵測</span><span>搖一搖</span></div>
+        <div class="px" style="padding:10px 16px"><p class="body">每行一步，身體向上彈一下，加速度計就量到一次<b class="a">「彈跳」</b>。手機定了一條<b class="g">橫杆</b>（叫<b class="g">門檻</b>）：彈得<b class="g">高過橫杆</b>，才算一步。</p></div>
+        <div class="stepbox"><svg id="stepSvg" viewBox="0 0 760 236" shape-rendering="crispEdges" aria-label="每次彈跳的高度和橫杆"></svg></div>
+        <div class="row" style="gap:12px;align-items:center;flex-wrap:wrap">
+          <button class="btn on" id="stepGo">▶ 行 10 步（中途搖了 2 次手）</button>
+          <div class="seg" id="stepBar"><span class="sl">橫杆：</span><button class="btn" data-v="low">太低</button><button class="btn on" data-v="mid">剛好</button><button class="btn" data-v="high">太高</button></div>
+          <div class="stat2"><div>真正步數<b id="stepReal">0</b></div><div>手機計到<b id="stepCnt">0</b></div></div>
+        </div>
+        <p class="body" id="stepMsg" style="font-size:18px">按「行 10 步」：綠色 = 手機當成一步。</p>
+        <div class="px green life" style="padding:10px 16px"><p class="small"><b class="ok">生活用得着</b>：坐巴士、搖手也可能被計成步數；手機放在手袋，彈跳小，會計少了。想準一點：放褲袋，或戴手錶。</p></div>
       </div>
       <div class="col" style="width:380px;flex:none">
-        <div class="px"><p class="k2">SENSE → DECIDE → ACT</p><p class="body"><b class="a">感知</b>：加速度計量到上下起伏<br><b class="g">決策</b>：高峰超過門檻？<br><b class="ok">執行</b>：步數 +1，顯示在 App</p></div>
-        <div class="q px ch" data-ans="0"><p class="qt">門檻設得太低，會怎樣？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">計少了步數</button><button class="btn" data-v="0">計多了步數</button><button class="btn" data-v="2">完全計不到</button><button class="btn" data-v="3">手機變得很慢</button></div><p class="why">手輕輕一搖也超過門檻，會被當成一步。</p></div>
+        <div class="px"><p class="k2">SENSE → DECIDE → ACT</p><p class="body"><b class="a">感知</b>：加速度計量到手機「彈」一下<br><b class="g">決策</b>：彈得高過橫杆嗎？<br><b class="ok">執行</b>：步數 +1，顯示在 App</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">如果橫杆（門檻）放得太低，會怎樣？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">計多了步數</button><button class="btn">計少了步數</button><button class="btn">完全計不到</button><button class="btn">手機變得很慢</button></div><p class="why">搖手、坐巴士顛簸也高過橫杆，都被當成一步。</p></div>
         <div class="px und" data-sec="2"><span class="ul">第 2 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
       </div>
     </div>
   </section>
 
-  <!-- P10 GYROSCOPE -->
+  <!-- P10 GYROSCOPE: a 3D phone with front, back and sides -->
   <section class="slide" data-id="gyro" data-intro="1" data-stage="3" data-hook="gyro">
     <div class="intro"><span class="stg">STAGE 3</span><h2>陀螺儀</h2><div class="mission"><span class="lab">MISSION</span><p>加速度計知道「哪邊是下」，但手機原地轉動，誰來量度？</p></div><ol class="route"><li data-n="1" style="animation-delay:.15s">量度轉速</li><li class="arrow">▶</li><li data-n="2" style="animation-delay:.27s">和加速度計比較</li><li class="arrow">▶</li><li data-n="3" style="animation-delay:.39s">傳感器融合</li></ol><p class="press">PRESS → START</p></div>
     <h2 class="t"><span class="lvl gyr">3-1</span>陀螺儀：量度手機轉得有多快</h2>
     <div class="row grow">
       <div class="col" style="flex:none;align-items:center">
-        <div class="gyrobox"><svg class="ph" id="gyPh" viewBox="0 0 100 180" width="104" height="187" shape-rendering="crispEdges" aria-label="手機"><rect x="4" y="2" width="92" height="176" fill="#1A1440" stroke="#000" stroke-width="5"/><rect x="11" y="14" width="78" height="150" fill="#E879F9"/><rect x="20" y="28" width="60" height="60" fill="#F6F4FF"/><rect x="42" y="6" width="16" height="3" fill="#000"/></svg><span class="axl">X 俯仰 · Y 翻滾 · Z 偏航</span></div>
-        <div class="seg" id="gyBtns" style="margin-top:10px"><button class="btn" data-v="x">俯仰（X）</button><button class="btn" data-v="y">翻滾（Y）</button><button class="btn" data-v="z">偏航（Z）</button></div>
+        <div class="gyrobox">
+          <div class="ph3d" id="gyPh" aria-label="立體手機：正面、背面和側面">
+            <div class="f3 fr"><div class="scr3"><i class="nt"></i><i class="ap"></i><i class="ap"></i><i class="ap"></i><i class="ap"></i><i class="ap"></i><i class="ap"></i><i class="ap"></i><i class="ap"></i><i class="ap"></i><span>正面</span></div></div>
+            <div class="f3 bk"><i class="cam"><b></b><b></b><b></b></i><span>背面</span></div>
+            <div class="f3 sl"><i class="bt1"></i><i class="bt2"></i></div>
+            <div class="f3 sr"><i class="bt3"></i></div>
+            <div class="f3 tp"></div>
+            <div class="f3 bm"><i class="usb"></i></div>
+          </div>
+          <svg class="gizmo" viewBox="0 0 96 96" shape-rendering="crispEdges" aria-hidden="true"><rect x="40" y="52" width="40" height="6" fill="#FF4D5E"/><polygon points="78,47 92,55 78,63" fill="#FF4D5E"/><text x="82" y="78" fill="#FF4D5E" font-size="13" font-family="Press Start 2P, monospace">X</text><rect x="40" y="18" width="6" height="40" fill="#3BE08F"/><polygon points="35,20 43,6 51,20" fill="#3BE08F"/><text x="52" y="16" fill="#3BE08F" font-size="13" font-family="Press Start 2P, monospace">Y</text><circle cx="43" cy="55" r="8" fill="#38BDF8" stroke="#000" stroke-width="2"/><circle cx="43" cy="55" r="2.5" fill="#000"/><text x="8" y="86" fill="#38BDF8" font-size="13" font-family="Press Start 2P, monospace">Z</text></svg>
+          <span class="axl">X 俯仰 · Y 翻滾 · Z 偏航</span>
+        </div>
+        <div class="seg" id="gyBtns" style="margin-top:10px"><button class="btn" data-v="x">俯仰（X）</button><button class="btn" data-v="y">翻滾（Y）</button><button class="btn" data-v="z">偏航（Z）</button><button class="btn sm" data-v="r">重設</button></div>
       </div>
       <div class="col grow">
-        <div class="px gauge"><span class="gu">陀螺儀讀數（角速度）</span><span class="gv" id="gyV">0 °/s</span><span class="gt" id="gyT">按左邊的掣，令手機轉 90°</span></div>
-        <div class="px"><p class="lead">陀螺儀量度的是<b class="y">轉動速度</b>（每秒轉幾多度，°/s），<b class="y">不是</b>手機現在的角度。停止轉動，讀數就回到 0。</p></div>
-        <div class="px"><p class="body">原理（簡化）：裏面有一粒<b class="y">不停振動</b>的質量塊。手機一轉，質量塊會被推向側面（<b class="y">科里奧利力</b>），推得越多＝轉得越快。</p><p class="small">好像在旋轉木馬上向前拋球，球看起來會向一邊彎。</p>
-          <p class="small">角度 = 角速度 × 時間。例如 90 °/s 轉 1 秒 = 90°。手機要把讀數不停相加，才知道總共轉了多少度。</p></div>
+        <div class="px gauge"><span class="gu">陀螺儀讀數（轉動速度）</span><span class="gv" id="gyV">0 °/s</span><span class="gt" id="gyT">按左邊的掣，令手機轉 90°（按兩次「翻滾」看背面）</span></div>
+        <div class="px"><p class="lead">陀螺儀量度的是<b class="y">轉得有多快</b>（每秒轉幾多度，°/s），<b class="y">不是</b>手機現在的角度。停下來，讀數就回到 0。</p></div>
+        <div class="px"><p class="body">原理（簡化）：裏面有一粒<b class="y">不停振動</b>的小球。手機一轉，小球會被推向側面，推得越多＝轉得越快。</p><p class="small">好像在旋轉木馬上向前拋球，球看起來會向一邊彎。</p>
+          <p class="small adv">進階：角度 = 角速度 × 時間。例如 90 °/s 轉 1 秒 = 90°。這個側推的力叫科里奧利力。</p></div>
+        <div class="px green life"><p class="small"><b class="ok">生活中的陀螺儀</b>：賽車遊戲傾側手機轉彎 · 360° 相片和 VR 轉身看四周 · 拍片防手震</p></div>
       </div>
     </div>
   </section>
@@ -900,7 +1114,7 @@ body.rotTip #rotTip{display:flex}
       <div class="it ch" data-ans="距離"><span class="tt">通話時手機貼近耳邊，螢幕自動關閉</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">量度有沒有物件很近（約 10 cm 內）→ 距離傳感器。</p></div>
       <div class="it ch" data-ans="環境光"><span class="tt">由室外走入地鐵站，螢幕自動變暗</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">周圍光度下降 → 環境光傳感器。</p></div>
       <div class="it ch" data-ans="環境光"><span class="tt">按周圍燈光的顏色，調整螢幕色溫</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">新式環境光傳感器可以量度光的顏色（例如 True Tone）。</p></div>
-      <div class="it ch" data-ans="距離"><span class="tt">用膠紙貼住它，通話時螢幕會一直熄滅</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">被貼住後收到很強的反射，以為有物件貼近 → 距離傳感器。</p></div>
+      <div class="it ch" data-ans="距離"><span class="tt">感應器自己發出紅外線，再接收反射</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">會主動發光的是距離傳感器；環境光傳感器只接收光。</p></div>
     </div>
     <div class="px und" data-sec="4"><span class="ul">第 4 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
   </section>
@@ -941,9 +1155,9 @@ body.rotTip #rotTip{display:flex}
         <p class="small adv">進階：3 × 10⁸ × 20 × 10⁻⁹ ÷ 2 = 3 m。</p>
       </div>
       <div class="col" style="width:560px;flex:none" data-badge="s5">
-        <div class="q px ch" data-ans="1"><p class="qt">激光來回時間是 40 ns，物件距離是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">3 m</button><button class="btn">6 m</button><button class="btn">1.5 m</button><button class="btn">0.3 m</button></div><p class="why">40 × 0.15 = 6 m。</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">激光來回時間是 20 ns，物件距離是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">3 m</button><button class="btn">6 m</button><button class="btn">1.5 m</button><button class="btn">0.3 m</button></div><p class="why">20 × 0.15 = 3 m。</p></div>
         <div class="q px ch" data-ans="1"><p class="qt">物件在 4.5 米外，激光來回時間大約是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">15 ns</button><button class="btn">30 ns</button><button class="btn">45 ns</button><button class="btn">60 ns</button></div><p class="why">4.5 ÷ 0.15 = 30 ns。</p></div>
-        <div class="q px ch" data-ans="0"><p class="qt">公式為甚麼要 ÷ 2？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">光速會減慢一半</button><button class="btn" data-v="2">手機有兩個鏡頭</button><button class="btn" data-v="3">數據分給兩顆晶片</button><button class="btn" data-v="0">光要去再返回</button></div><p class="why">量到的是來回時間，光走了兩倍距離。</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">公式為甚麼要 ÷ 2？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">光要去再返回</button><button class="btn">光速會減慢一半</button><button class="btn">手機有兩個鏡頭</button><button class="btn">數據分給兩顆晶片</button></div><p class="why">量到的是來回時間，光走了兩倍距離。</p></div>
       </div>
     </div>
   </section>
@@ -986,7 +1200,7 @@ body.rotTip #rotTip{display:flex}
         <div class="px"><p class="why2" id="coopWhy"></p></div>
       </div>
     </div>
-    <div class="q px ch" data-ans="0" style="max-width:860px"><p class="qt">要做「手機跌落偵測」，以下哪一組傳感器最合適？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">環境光 ＋ 距離傳感器</button><button class="btn" data-v="2">LiDAR ＋ 主鏡頭</button><button class="btn" data-v="0">加速度計 ＋ 陀螺儀</button><button class="btn" data-v="3">咪高峰 ＋ 指紋傳感器</button></div><p class="why">跌落時加速度計讀數接近 0、落地有撞擊；陀螺儀量到翻轉。</p></div>
+    <div class="q px ch" data-ans="0" style="max-width:860px"><p class="qt">要做「手機跌落偵測」，以下哪一組傳感器最合適？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">加速度計 ＋ 陀螺儀</button><button class="btn">環境光 ＋ 距離傳感器</button><button class="btn">LiDAR ＋ 主鏡頭</button><button class="btn">咪高峰 ＋ 指紋傳感器</button></div><p class="why">跌落時加速度計讀數接近 0、落地有撞擊；陀螺儀量到翻轉。</p></div>
   </section>
 
   <!-- P19 SUMMARY -->
@@ -1022,7 +1236,7 @@ body.rotTip #rotTip{display:flex}
       <div class="px gold gstat sonly">
         <span class="gs lock" id="gateS">等待老師開放…</span>
         <p class="small" id="gateHint">老師開放後，這裏會自動解鎖。如果一直未解鎖，請輸入老師給的開放碼。</p>
-        <div class="codein" id="gateCodeBox"><input class="inp" id="gateCode" maxlength="20" placeholder="開放碼" autocomplete="off" aria-label="開放碼"><button class="btn sm on" id="gateGo">解鎖</button></div>
+        <div class="codein" id="gateCodeBox"><input class="inp" id="gateCode" inputmode="numeric" maxlength="4" placeholder="開放碼" autocomplete="off" aria-label="開放碼"><button class="btn sm on" id="gateGo">解鎖</button></div>
         <div id="gateMkBox" hidden style="display:flex;flex-direction:column;gap:8px"><p class="small">當日沒有上課的同學可以補做。補做的分數按<b class="g">百分制總分扣 50 分</b>計算。截止：2027 年 2 月 1 日（台灣時間）前。</p><button class="btn on" id="gateMk">開始補做</button></div>
         <p class="err" id="gateErr"></p>
       </div>
@@ -1041,6 +1255,16 @@ body.rotTip #rotTip{display:flex}
     <h2 class="t"><span class="lvl boss">A</span>傳感器配對：每個功能最主要用哪個傳感器？</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
+      <div class="tgrid c2">
+        <div class="tk" data-t="A1"><span class="tq"><span class="no">A1</span>手機由直放轉為橫放，畫面自動轉向</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A2"><span class="tq"><span class="no">A2</span>用量度 App 量度房門的高度</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A3"><span class="tq"><span class="no">A3</span>在猛烈陽光下，螢幕自動調到最亮</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A4"><span class="tq"><span class="no">A4</span>拍片時偵測手部細微轉動，用來防手震</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A5"><span class="tq"><span class="no">A5</span>通話時貼近耳邊，螢幕自動關閉</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A6"><span class="tq"><span class="no">A6</span>運動 App 計算今天行了多少步</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A7"><span class="tq"><span class="no">A7</span>在昏暗的餐廳拍人像，手機仍然很快對焦</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+        <div class="tk" data-t="A8"><span class="tq"><span class="no">A8</span>手機平放桌上原地旋轉，遊戲角色跟着轉身</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
+      </div>
     </div>
   </section>
 
@@ -1049,6 +1273,14 @@ body.rotTip #rotTip{display:flex}
     <h2 class="t"><span class="lvl boss">B</span>智能鬧鐘：每一步是感知、決策，還是執行？</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
+      <div class="px"><p class="body">情境：晚上把手機放在床上。手機在你「淺睡」的時候才響鬧，令你起床時沒有那麼辛苦。</p></div>
+      <div class="tgrid rowk">
+        <div class="tk" data-t="B1"><span class="tq"><span class="no">B1</span>加速度計量到床褥的細微震動</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+        <div class="tk" data-t="B2"><span class="tq"><span class="no">B2</span>系統分析震動的規律，判斷你正處於淺睡</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+        <div class="tk" data-t="B3"><span class="tq"><span class="no">B3</span>在設定時間前的 30 分鐘內，提早響鬧</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+        <div class="tk" data-t="B4"><span class="tq"><span class="no">B4</span>環境光傳感器發現房間已經天光</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+        <div class="tk" data-t="B5"><span class="tq"><span class="no">B5</span>響鬧時，螢幕亮度由暗慢慢調亮</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
+      </div>
     </div>
   </section>
 
@@ -1057,6 +1289,12 @@ body.rotTip #rotTip{display:flex}
     <h2 class="t"><span class="lvl boss">C</span>LiDAR 計算</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
+      <div class="formula">距離 = 光速 × 來回時間 ÷ 2<small>提示：來回時間每 1 ns ＝ 距離 0.15 m</small></div>
+      <div class="tgrid">
+        <div class="tk" data-t="C1"><span class="tq"><span class="no">C1</span>激光來回時間是 10 ns，物件距離是多少？</span><div class="tops"><button class="btn">0.75 m</button><button class="btn">1.5 m</button><button class="btn">3 m</button><button class="btn">15 m</button></div></div>
+        <div class="tk" data-t="C2"><span class="tq"><span class="no">C2</span>物件在 2.4 米外，激光來回時間是多少？</span><div class="tops"><button class="btn">8 ns</button><button class="btn">16 ns</button><button class="btn">24 ns</button><button class="btn">32 ns</button></div></div>
+        <div class="tk" data-t="C3"><span class="tq"><span class="no">C3</span>LiDAR 量度 5 米外的牆，激光來回時間大約是多少？</span><div class="tops"><button class="btn">約 17 ns</button><button class="btn">約 33 ns</button><button class="btn">約 50 ns</button><button class="btn">約 67 ns</button></div></div>
+      </div>
     </div>
   </section>
 
@@ -1065,6 +1303,12 @@ body.rotTip #rotTip{display:flex}
     <h2 class="t"><span class="lvl boss">D</span>短答：用自己的文字</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
+      <div class="px dbox"><label for="tD1">D1　手機平放在桌上，原地轉一圈。陀螺儀有讀數，但加速度計的讀數幾乎不變。試解釋原因。</label><textarea class="ta tin" id="tD1" data-t="D1" rows="3" maxlength="150"></textarea><p class="cnt">最多 150 字</p></div>
+      <div class="px dbox"><label>D2　選一個手機功能（不可以用「自動調光」或「通話熄屏」），寫出它的感知、決策、執行。</label>
+        <input class="inp tin" data-t="D2f" maxlength="30" placeholder="功能名稱，例如：……" aria-label="功能名稱">
+        <div class="dgrid"><textarea class="ta tin" data-t="D2s" rows="3" maxlength="80" placeholder="感知：用甚麼傳感器量度甚麼？" aria-label="感知"></textarea><textarea class="ta tin" data-t="D2d" rows="3" maxlength="80" placeholder="決策：程式怎樣判斷？" aria-label="決策"></textarea><textarea class="ta tin" data-t="D2e" rows="3" maxlength="80" placeholder="執行：手機做了甚麼？" aria-label="執行"></textarea></div>
+      </div>
+      <div class="px tonly"><p class="small">D 部分由老師評分。即時面板「堂課」分頁可以看到全部學生的短答。</p></div>
     </div>
   </section>
 
@@ -1087,7 +1331,7 @@ body.rotTip #rotTip{display:flex}
     </div>
   </section>
   <button class="edge l" id="eL" aria-label="上一步" title="上一步">◀</button><button class="edge r" id="eR" aria-label="下一步" title="下一步">▶</button>
-  <div id="nav"><button class="btn" id="bPgPrev" title="上一頁">⏮</button><button class="btn big" id="bPrev" aria-label="上一步">◀ 上一步</button><button id="pg" title="跳到指定頁（G）">1 / 30</button><button class="btn big" id="bNext" aria-label="下一步">下一步 ▶</button><button class="btn" id="bPgNext" title="下一頁">⏭</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv" title="進階模式：多顯示公式和計算細節（按 A 切換）">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
+  <div id="nav"><button class="btn" id="bPgPrev" title="上一頁">⏮</button><button class="btn big" id="bPrev" aria-label="上一步">◀ 上一步</button><button id="pg" title="跳到指定頁（G）">1 / 30</button><button class="btn big" id="bNext" aria-label="下一步">下一步 ▶</button><button class="btn" id="bPgNext" title="下一頁">⏭</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
   <div id="bar"><i></i></div>
   <div id="toast" role="status"></div>
   <div id="jump" hidden><div class="px gold"><div class="jh"><h3>跳到指定頁</h3><label for="jumpNo" class="small">輸入頁數</label><input class="inp" id="jumpNo" inputmode="numeric" maxlength="2" autocomplete="off"><button class="btn sm on" id="jumpGo">前往</button><span class="small" id="jumpTip" style="margin-left:auto">按頁面或輸入頁數；按 Esc 關閉</span><button class="btn sm" id="jumpClose">✕ 關閉</button></div><div id="jumpGrid"></div></div></div>
@@ -1111,13 +1355,12 @@ const TEACHER=false;
 const FB_CFG={"apiKey": "AIzaSyACrOYiSzMt3rqknfvJ1Ehnm56cDpnoZ5Q", "databaseURL": "https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app"};
 const TASK_KEY=null;
 const TASK_CODE=null;
-const TASK_CODE_H="";
-const TASK_ENC={"s":"Aa3IEEKVNExJBZTrsMVE6w==","i":"qDarit+cpKRJ323s","n":1000000,"c":"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"};
+const TASK_CODE_H="e2e794e8";
 
 /* ---------- lesson data: week 10 ---------- */
 const LESSON='w10';
 const STAGES={0:['START','手機傳感器陣列'],1:['STAGE 1','感知・決策・執行'],2:['STAGE 2','加速度計'],3:['STAGE 3','陀螺儀'],4:['STAGE 4','環境光'],5:['STAGE 5','LiDAR'],6:['FINAL','總結'],7:['BOSS','堂課']};
-const ROUTE={review:'1/5 重溫',senses:'2/5 人有五感',sda:'3/5 感知決策執行',sdaq:'4/5 練習',array:'5/5 傳感器陣列',acc:'1/3 巴士急剎',tilt:'2/3 重力',steps:'3/3 計步器',gyro:'1/3 量度轉速',vs:'2/3 比較',fusion:'3/3 融合',light:'1/2 lux',prox:'2/2 環境光 vs 距離',lidar:'1/3 飛行時間',tofcalc:'2/3 計一計',depth:'3/3 深度圖',coop:'1/2 陣列合作',sum:'2/2 總結',tgate:'規則',tA:'A 配對',tB:'B 感知決策執行',tC:'C 計算',tD:'D 短答',tsub:'交卷'};
+const ROUTE={day:'1/5 手機的一天',senses:'2/5 人有五感',sda:'3/5 感知決策執行',sdaq:'4/5 練習',array:'5/5 傳感器陣列',acc:'1/3 巴士急剎',tilt:'2/3 重力',steps:'3/3 計步器',gyro:'1/3 量度轉速',vs:'2/3 比較',fusion:'3/3 融合',light:'1/2 lux',prox:'2/2 環境光 vs 距離',lidar:'1/3 飛行時間',tofcalc:'2/3 計一計',depth:'3/3 深度圖',coop:'1/2 陣列合作',sum:'2/2 總結',tgate:'規則',tA:'A 配對',tB:'B 感知決策執行',tC:'C 計算',tD:'D 短答',tsub:'交卷'};
 const BADGES=[['s1','系統分析員'],['s2','重力偵探'],['s3','旋轉大師'],['s4','光線管理員'],['s5','LiDAR 測距員']];
 const UND_SECS={1:'第 1 關 感知決策執行',2:'第 2 關 加速度計',3:'第 3 關 陀螺儀',4:'第 4 關 環境光',5:'第 5 關 LiDAR'};
 const SA_Q={fav:'每天都用、要靠傳感器的手機功能'};
@@ -1165,15 +1408,15 @@ $('#pkClose').addEventListener('click',closePicker);
 $('#picker').addEventListener('click',e=>{ if(e.target.id==='picker') closePicker(); });
 
 /* ---------- correct-answer burst ---------- */
-let SCALE=1, ROT=false;
+let SCALE=1;
 function burst(btn){ const box=btn.closest('.opts')||btn.parentElement; if(!box) return; const br=btn.getBoundingClientRect(), ob=box.getBoundingClientRect();
-  const cx=(ROT?br.top-ob.top+br.height/2:br.left-ob.left+br.width/2)/SCALE, cy=(ROT?ob.right-br.left-br.width/2:br.top-ob.top+br.height/2)/SCALE, cols=['#FFD23F','#3BE08F','#38BDF8','#E879F9','#FF9F43'];
+  const cx=(br.left-ob.left+br.width/2)/SCALE, cy=(br.top-ob.top+br.height/2)/SCALE, cols=['#FFD23F','#3BE08F','#38BDF8','#E879F9','#FF9F43'];
   for(let i=0;i<14;i++){ const d=document.createElement('i'); d.className='burst'; const a=i/14*Math.PI*2, r=50+Math.random()*40;
     d.style.left=(cx-5)+'px'; d.style.top=(cy-5)+'px'; d.style.background=cols[i%5]; d.style.setProperty('--dx',Math.round(Math.cos(a)*r)+'px'); d.style.setProperty('--dy',Math.round(Math.sin(a)*r)+'px');
     box.appendChild(d); setTimeout(()=>d.remove(),760); } }
 
 /* ---------- practice items (.ch): retry until right, first answer recorded ---------- */
-$$('.slide').forEach(sl=>$$('.ch',sl).forEach((c,i)=>{ if(!c.dataset.q) c.dataset.q=sl.dataset.id+'-'+(i+1); }));
+$$('.slide').forEach(sl=>$$('.ch',sl).forEach((c,i)=>{ c.dataset.q=sl.dataset.id+'-'+(i+1); }));
 $$('.ch').forEach(ch=>{
   const btns=$$('.opts .btn',ch); btns.forEach((b,i)=>{ if(!b.dataset.v) b.dataset.v=String(i); b.insertAdjacentHTML('afterbegin','<span class="lf"></span>'); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); });
   let tries=0;
@@ -1192,14 +1435,21 @@ $$('.ch').forEach(ch=>{
 });
 function segPick(id,fn){ const seg=$(id); seg.addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(!b)return; $$('.btn',seg).forEach(x=>x.classList.toggle('on',x===b)); fn(b.dataset.v); }); return ()=>$('.btn.on',seg).dataset.v; }
 
-/* ---------- P4 sense-decide-act ---------- */
-const SDA={sun:{s:'環境光傳感器量到約 <b class="g">50,000 lux</b>',d:'周圍很光 → 螢幕要調亮，才看得清楚',e:'螢幕背光調到 <b class="g">100%</b>',c:'#E8F7FF'},
- room:{s:'環境光傳感器量到約 <b class="g">400 lux</b>',d:'一般室內 → 用中等亮度',e:'螢幕背光調到 <b class="g">約 60%</b>',c:'#4C8DB8'},
- dark:{s:'環境光傳感器量到約 <b class="g">1 lux</b>',d:'很暗 → 調暗，避免刺眼和浪費電',e:'螢幕背光調到 <b class="g">約 10%</b>',c:'#0E2A40'}};
-let sdaK='room';
-function sdaShow(k,anim){ sdaK=k; const o=SDA[k]; $('#sdaS').innerHTML=o.s; $('#sdaD').innerHTML=o.d; $('#sdaE').innerHTML=o.e; $('#sdaGlow').style.background=o.c;
-  if(anim){ const bs=$$('[data-id="sda"] .sda .bx'); bs.forEach((b,i)=>setTimeout(()=>pulse(b,'flash'),i*260)); } }
-segPick('#sdaEnv',v=>sdaShow(v,true));
+/* ---------- P4 sense-decide-act: a walk after school ---------- */
+const SDA={room:{s:'光線感應器：光線<b class="g">普通</b><span class="adv">（約 400 lux）</span>',d:'普通光線 → 用<b class="g">中等亮度</b>就看得清楚',e:'螢幕調到<b class="g">一半亮</b>',scr:'#6FA8D6',lv:.5},
+ sun:{s:'光線感應器：光線<b class="g">很強</b><span class="adv">（約 50,000 lux）</span>',d:'太光會看不清 → 要<b class="g">調亮</b>',e:'螢幕調到<b class="g">最亮</b>',scr:'#F2FBFF',lv:1},
+ dark:{s:'光線感應器：<b class="g">很暗</b><span class="adv">（約 1 lux）</span>',d:'太亮會刺眼、浪費電 → 要<b class="g">調暗</b>',e:'螢幕調到<b class="g">很暗</b>',scr:'#173A55',lv:.08}};
+let sdaK='room', sdaT=[];
+function sdaShow(k,anim){ sdaK=k; const o=SDA[k]; $('#sdaS').innerHTML=o.s; $('#sdaD').innerHTML=o.d; $('#sdaE').innerHTML=o.e;
+  const sc=$('#sdaScene'); sc.classList.remove('scn-room','scn-sun','scn-dark'); sc.classList.add('scn-'+k);
+  $('#sdaScr').setAttribute('fill',o.scr); $('#sdaScr2').setAttribute('fill',o.scr); $('#sdaLv').setAttribute('width',Math.round(110*o.lv));
+  $$('#sdaEnv .btn').forEach(b=>b.classList.toggle('on',b.dataset.v===k));
+  if(anim){ $$('[data-id="sda"] .sda2 .bx').forEach((b,i)=>setTimeout(()=>pulse(b,'flash'),i*300)); } }
+function sdaStop(){ sdaT.forEach(clearTimeout); sdaT=[]; $('#sdaScene').classList.remove('walking'); $('#sdaPlay').classList.add('on'); }
+function sdaPlay(){ sdaStop(); $('#sdaPlay').classList.remove('on'); const sc=$('#sdaScene'); sc.classList.add('walking');
+  ['room','sun','dark'].forEach((k,i)=>sdaT.push(setTimeout(()=>sdaShow(k,true),i*2600))); sdaT.push(setTimeout(sdaStop,3*2600-300)); }
+$('#sdaEnv').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(b){ sdaStop(); sdaShow(b.dataset.v,true); } });
+$('#sdaPlay').addEventListener('click',sdaPlay);
 
 /* ---------- P6 sensor array ---------- */
 const SENS={1:['環境光傳感器','正面頂部','周圍光線有多強（lux）','自動調整螢幕亮度'],2:['距離傳感器','正面頂部','有沒有物件很近（發紅外線、收反射）','通話時貼耳熄屏'],3:['前鏡頭／Face ID','正面頂部','影像、臉部立體形狀','自拍、人臉解鎖'],4:['觸控屏／指紋','螢幕','手指觸碰的位置、指紋','觸控操作、指紋解鎖'],5:['咪高峰','底部','聲音','通話、語音助理'],6:['主鏡頭','背面','影像（顏色）','拍照、掃描二維碼'],7:['LiDAR 掃描儀','背面鏡頭旁','物件的距離（深度）','量度、AR、暗光對焦'],8:['加速度計','機身內部','加速度（包括重力）','自動轉屏、計步'],9:['陀螺儀','機身內部','轉動速度（角速度）','VR、遊戲、防手震'],10:['磁力計','機身內部','地球磁場的方向','指南針、地圖方向'],11:['氣壓計','機身內部','氣壓 → 估計高度變化','計算行了幾層樓梯'],12:['定位接收器（GPS）','機身內部','衛星訊號 → 所在位置','地圖導航']};
@@ -1208,51 +1458,61 @@ function arrShow(k){ const o=SENS[k]; $$('[data-id="array"] .hs').forEach(h=>h.c
 $$('[data-id="array"] .hs').forEach(h=>{ h.addEventListener('click',()=>arrShow(h.dataset.k)); h.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); arrShow(h.dataset.k); } }); });
 
 /* ---------- P7 accelerometer ---------- */
-$('#busGo').addEventListener('click',()=>$('#bus').classList.add('brake'));
-$('#busReset').addEventListener('click',()=>$('#bus').classList.remove('brake'));
+$('#busGo').addEventListener('click',()=>{ $('#bus').classList.add('brake'); $('#minip').classList.add('brake'); });
+$('#busReset').addEventListener('click',()=>{ $('#bus').classList.remove('brake'); $('#minip').classList.remove('brake'); });
 function accSet(v){ v=+v; $('#mFrame').style.transform=`translateX(${v*34}px)`; $('#mMass').style.transform=`translateX(${v*14}px)`;
   const bar=$('#accBar'); if(v===0){ bar.style.left='50%'; bar.style.width='0'; } else if(v>0){ bar.style.left='50%'; bar.style.width='32%'; } else { bar.style.left='18%'; bar.style.width='32%'; }
   $('#accVal').textContent=v===0?'0 m/s²':(v>0?'+3.0 m/s²':'−3.0 m/s²'); }
 segPick('#accBtns',accSet);
 
-/* ---------- P8 tilt ---------- */
-function tiltSet(v){ let x=0,y=9.8,z=0,ph='',ui='',ori='直向',why='Y 最大：手機直放';
-  if(v==='flat'){ x=0;y=0;z=9.8; ph='rotateX(62deg)'; ori='保持原來方向'; why='Z 最大：平放時，畫面不會自動轉'; }
-  else { const a=+v*Math.PI/180; x=9.8*Math.sin(a); y=9.8*Math.cos(a); ph=`rotate(${-v}deg)`; if(Math.abs(x)>Math.abs(y)){ ori='橫向'; ui='rotate(90 50 90)'; why='X 比 Y 大：手機判斷已經橫放 → 自動轉屏'; } else why=v==0?'Y 最大：手機直放':'Y 仍然比 X 大：保持直向'; }
-  $('#tiltPh').style.transform=ph; $('#tiltUi').setAttribute('transform',ui);
+/* ---------- P8 tilt: the phone and its X, Y, Z arrows turn together; gravity always points down ---------- */
+let tiltLbT=null;
+function tiltSet(v){ let x=0,y=9.8,z=0,ori='直向',why='Y 指向上下：Y 最大 → 直向';
+  const flat=v==='flat'; $('#tp2d').style.display=flat?'none':''; $('#tpFlat').style.display=flat?'':'none';
+  if(flat){ x=0;y=0;z=9.8; ori='保持原來方向'; why='Z 指向上：Z 最大 → 平放時畫面不會轉'; }
+  else { const th=+v, a=th*Math.PI/180; x=9.8*Math.sin(a); y=9.8*Math.cos(a);
+    $('#tpRot').style.transform=`rotate(${-th}deg)`;
+    const land=Math.abs(x)>Math.abs(y); $('#tpUiP').style.display=land?'none':''; $('#tpUiL').style.display=land?'':'none';
+    if(land){ ori='橫向'; why='X 指向上下：X 比 Y 大 → 自動轉做橫向'; } else if(th) why='Y 仍然比 X 大 → 保持直向';
+    // axis labels sit just beyond the arrow tips; they reappear when the turn ends
+    const tip=(px,py)=>[150+px*Math.cos(a)+py*Math.sin(a), 150-px*Math.sin(a)+py*Math.cos(a)];
+    const [xx,xy]=tip(106,0), [yx,yy]=tip(0,-134); const t=$('.tilt'); t.classList.add('moving'); clearTimeout(tiltLbT);
+    tiltLbT=setTimeout(()=>{ $('#lbX').setAttribute('x',xx.toFixed(0)); $('#lbX').setAttribute('y',(xy+6).toFixed(0)); $('#lbY').setAttribute('x',yx.toFixed(0)); $('#lbY').setAttribute('y',(yy+6).toFixed(0)); t.classList.remove('moving'); },520); }
   [['X',x],['Y',y],['Z',z]].forEach(([k,val])=>{ $('#ax'+k).style.width=(Math.abs(val)/9.8*100)+'%'; $('#av'+k).textContent=fmt(Math.abs(val))+' m/s²'; });
   $('#tiltOri').textContent=ori; $('#tiltWhy').textContent=why; }
 segPick('#tiltBtns',tiltSet);
 
-/* ---------- P9 step counter ---------- */
-const STEP_SIG=(()=>{ const N=640, a=new Array(N).fill(9.8); let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; };
-  const peaks=[14.2,15.6,13.8,16.4,14.9,15.2,13.7,16.1,14.4,15.8,14.0,15.0];
-  peaks.forEach((h,i)=>{ const c=40+i*48; for(let k=-14;k<=14;k++){ const t=k/14; a[c+k]+= (h-9.8)*Math.max(0,Math.cos(t*Math.PI/2))**2; } for(let k=16;k<24;k++) a[c+k]-=2.2*Math.sin((k-16)/8*Math.PI); });
-  [[64,12.4],[208,11.6],[352,12.6],[500,11.3]].forEach(([c,h])=>{ for(let k=-4;k<=4;k++) a[c+k]+=(h-9.8)*Math.max(0,1-Math.abs(k)/4); });
-  for(let i=0;i<N;i++) a[i]+= (rnd()-.5)*0.6; return a; })();
-let stepT=null, stepN=0;
-function stepCount(n){ const th=+$('#stepTh').value; let c=0, up=false; for(let i=0;i<n;i++){ if(!up && STEP_SIG[i]>th){ c++; up=true; } else if(up && STEP_SIG[i]<th-0.8) up=false; } return c; }
-function stepDraw(n){ const cv=$('#stepCv'), g=cv.getContext('2d'), W=cv.width, H=cv.height, th=+$('#stepTh').value; const yv=v=>H-14-(v-6)/(18-6)*(H-28);
-  g.fillStyle='#0A0826'; g.fillRect(0,0,W,H); g.strokeStyle='#2A2670'; g.lineWidth=1; for(let v=8;v<=18;v+=2){ g.beginPath(); g.moveTo(0,yv(v)); g.lineTo(W,yv(v)); g.stroke(); }
-  g.fillStyle='#8C85C9'; g.font='13px sans-serif'; for(let v=8;v<=18;v+=4) g.fillText(v+'',4,yv(v)-3);
-  g.strokeStyle='#FFD23F'; g.setLineDash([8,6]); g.lineWidth=2; g.beginPath(); g.moveTo(0,yv(th)); g.lineTo(W,yv(th)); g.stroke(); g.setLineDash([]); g.fillStyle='#FFD23F'; g.fillText('門檻',W-40,yv(th)-6);
-  g.strokeStyle='#FF9F43'; g.lineWidth=3; g.beginPath(); for(let i=0;i<n;i++){ const x=i/(STEP_SIG.length-1)*W; i?g.lineTo(x,yv(STEP_SIG[i])):g.moveTo(x,yv(STEP_SIG[i])); } g.stroke();
-  let up=false; g.fillStyle='#3BE08F'; for(let i=0;i<n;i++){ if(!up && STEP_SIG[i]>th){ g.fillRect(i/(STEP_SIG.length-1)*W-5,yv(STEP_SIG[i])-14,10,10); up=true; } else if(up && STEP_SIG[i]<th-0.8) up=false; } }
-function stepUpdate(n){ const c=stepCount(n), real=Math.min(12,Math.floor(Math.max(0,n-26)/48)+(n>26?1:0)); $('#stepCnt').textContent=c; $('#stepReal').textContent=n>=STEP_SIG.length?12:real; stepDraw(n);
-  if(n>=STEP_SIG.length){ $('#stepMsg').innerHTML=c>12?`<b class="no">計多了 ${c-12} 步</b>：門檻太低，手輕輕搖也被當成一步。`:c<12?`<b class="no">計少了 ${12-c} 步</b>：門檻太高，${c?'有些':'所有'}步伐的高峰不夠高。`:'<b class="ok">剛好 12 步</b>：門檻合適。試試把門檻拉低或拉高。'; } }
-function stepRun(){ clearInterval(stepT); stepN=0; stepT=setInterval(()=>{ stepN=Math.min(STEP_SIG.length,stepN+8); stepUpdate(stepN); if(stepN>=STEP_SIG.length) clearInterval(stepT); },40); }
+/* ---------- P9 step counter: each bounce must clear the bar ---------- */
+const STEP_EV=[[78,'s'],[82,'s'],[45,'h'],[70,'s'],[85,'s'],[66,'s'],[52,'h'],[80,'s'],[74,'s'],[88,'s'],[69,'s'],[77,'s']];   // height 0–100; s = step, h = hand shake
+const STEP_BAR={low:40,mid:60,high:76};
+let stepT=null, stepN=0, stepLv='mid';
+const stepY=v=>200-v*1.75;
+function stepDraw(){ const th=STEP_BAR[stepLv]; let h='<rect x="0" y="200" width="760" height="36" fill="#1D1A52"/>';
+  if(!stepN) h+='<text x="420" y="70" fill="#8C85C9" font-size="20" font-weight="800" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">按下面「▶ 行 10 步」，看看每一下彈得有多高</text>';
+  STEP_EV.forEach(([v,k],i)=>{ if(i>=stepN) return; const x=36+i*60, top=stepY(v), ok=v>th, c=ok?'#3BE08F':'#4B44A8';
+    h+=`<rect x="${x}" y="${top}" width="34" height="${200-top}" fill="${c}"/>`;
+    h+=k==='s'?`<g fill="${ok?'#3BE08F':'#8C85C9'}"><rect x="${x+6}" y="${top-26}" width="9" height="16"/><rect x="${x+19}" y="${top-22}" width="9" height="16"/></g>`
+              :`<g fill="${ok?'#3BE08F':'#8C85C9'}"><rect x="${x+8}" y="${top-24}" width="18" height="12"/><rect x="${x+8}" y="${top-30}" width="4" height="6"/><rect x="${x+14}" y="${top-32}" width="4" height="8"/><rect x="${x+20}" y="${top-30}" width="4" height="6"/></g>`;
+    h+=`<text x="${x+17}" y="222" fill="${k==='s'?'#F6F4FF':'#FF9F43'}" font-size="15" font-weight="800" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">${k==='s'?'步':'搖手'}</text>`; });
+  const ly=stepY(th); h+=`<rect x="0" y="${ly-3}" width="760" height="6" fill="#FFD23F"/><rect x="0" y="${ly-16}" width="64" height="26" fill="#FFD23F"/><text x="32" y="${ly+3}" fill="#1A1440" font-size="15" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">橫杆</text>`;
+  $('#stepSvg').innerHTML=h; }
+function stepUpdate(){ const th=STEP_BAR[stepLv], seen=STEP_EV.slice(0,stepN), c=seen.filter(([v])=>v>th).length, real=seen.filter(([,k])=>k==='s').length;
+  $('#stepCnt').textContent=c; $('#stepReal').textContent=real; stepDraw();
+  if(stepN>=STEP_EV.length) $('#stepMsg').innerHTML=c>10?`<b class="no">計多了 ${c-10} 步</b>：橫杆太低，搖手都高過橫杆，被當成一步。`:c<10?`<b class="no">計少了 ${10-c} 步</b>：橫杆太高，有些步彈得不夠高。`:'<b class="ok">剛好 10 步</b>：步伐都高過橫杆，搖手就不夠高。試試「太低」和「太高」。';
+  else $('#stepMsg').innerHTML='按「行 10 步」：綠色 = 手機當成一步。'; }
+function stepRun(){ clearInterval(stepT); stepN=0; stepUpdate(); stepT=setInterval(()=>{ stepN++; stepUpdate(); if(stepN>=STEP_EV.length) clearInterval(stepT); },380); }
 $('#stepGo').addEventListener('click',stepRun);
-$('#stepTh').addEventListener('input',()=>{ $('#stepThV').textContent=$('#stepTh').value+' m/s²'; stepUpdate(stepN||STEP_SIG.length); if(!stepN) stepN=STEP_SIG.length; });
+$('#stepBar').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(!b) return; stepLv=b.dataset.v; $$('#stepBar .btn').forEach(x=>x.classList.toggle('on',x===b)); if(!stepN) stepN=STEP_EV.length; stepUpdate(); });
 
 /* ---------- P10 gyroscope ---------- */
 const gyA={x:0,y:0,z:0}; let gyT=null, gyBusy=false;
-/* the phone is drawn flat, so it is always viewed from a fixed oblique angle: edge-on (after a 90° turn) it would vanish */
-function gyTf(){ return `rotateX(-20deg) rotateY(25deg) rotateX(${gyA.x}deg) rotateY(${gyA.y}deg) rotateZ(${gyA.z}deg)`; }
+const GY_VIEW='rotateX(-16deg) rotateY(-30deg)';   // a 3/4 view, so the sides show
+function gyTf(){ return `${GY_VIEW} rotateX(${gyA.x}deg) rotateY(${gyA.y}deg) rotateZ(${gyA.z}deg)`; }
 function gyRot(ax){ if(gyBusy) return; gyBusy=true; gyA[ax]+=90; $('#gyPh').style.transform=gyTf(); const nm={x:'俯仰',y:'翻滾',z:'偏航'}[ax];
   $('#gyV').textContent='90 °/s'; $('#gyT').textContent=`正在${nm}（${ax.toUpperCase()} 軸）…`; clearTimeout(gyT);
   gyT=setTimeout(()=>{ $('#gyV').textContent='0 °/s'; $('#gyT').innerHTML=`已停下：讀數回到 0，<br>但手機已經轉了 90°（90 °/s × 1 秒）`; gyBusy=false; },1000); }
-$('#gyBtns').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(b) gyRot(b.dataset.v); });
-function gyReset(){ clearTimeout(gyT); gyBusy=false; gyA.x=gyA.y=gyA.z=0; $('#gyPh').style.transition='none'; $('#gyPh').style.transform=''; void $('#gyPh').offsetWidth; $('#gyPh').style.transition=''; $('#gyV').textContent='0 °/s'; $('#gyT').textContent='按左邊的掣，令手機轉 90°'; }
+$('#gyBtns').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(!b) return; if(b.dataset.v==='r') gyReset(); else gyRot(b.dataset.v); });
+function gyReset(){ clearTimeout(gyT); gyBusy=false; gyA.x=gyA.y=gyA.z=0; $('#gyPh').style.transition='none'; $('#gyPh').style.transform=gyTf(); void $('#gyPh').offsetWidth; $('#gyPh').style.transition=''; $('#gyV').textContent='0 °/s'; $('#gyT').textContent='按左邊的掣，令手機轉 90°（按兩次「翻滾」看背面）'; }
 
 /* ---------- P12 sensor fusion ---------- */
 const FU=(()=>{ const N=400, dt=20/N; let seed=11; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647-.5; };
@@ -1273,7 +1533,7 @@ $('#fuGo').addEventListener('click',fuRun);
 const LUXT=[[0.3,'滿月'],[50,'客廳燈'],[400,'課室'],[1000,'陰天'],[20000,'日光'],[100000,'陽光直射']];
 const luxPos=l=>(Math.log10(l)+1)/6*100;
 $('#luxScale').innerHTML=LUXT.map(([l,n],i)=>`<span class="tick${i%2?' lo':''}" style="left:${luxPos(l)}%">${n}<br>${l>=1000?l.toLocaleString('en'):l}</span>`).join('');
-const luxScene=l=>l<1?'夜晚月光':l<100?'昏暗室內':l<700?'課室、辦公室等室內':l<5000?'陰天室外':l<30000?'非直射的日光':'陽光直射';
+const luxScene=l=>l<1?'夜晚月光':l<100?'昏暗室內':l<700?'室內（課室、辦公室）':l<5000?'陰天室外':l<30000?'日光（非直射）':'陽光直射';
 function luxSet(){ const v=+$('#luxR').value, l=Math.pow(10,v); const lt=l>=100?Math.round(l/10)*10:l>=10?Math.round(l):fmt(l);
   const bri=Math.round(Math.max(3,Math.min(100,(v+0.6)/5.4*100)));
   $('#luxV').textContent=(typeof lt==='number'?lt.toLocaleString('en'):lt)+' lux'; $('#luxCur').style.width=((v+1)/6*100)+'%'; $('#luxBri').style.width=bri+'%'; $('#luxBriV').textContent=bri+'%';
@@ -1294,9 +1554,9 @@ $('#pxR').addEventListener('input',pxSet);
 let tofA=null;
 const tofX=d=>90+d/5*1050;
 function tofSet(){ cancelAnimationFrame(tofA); const d=+$('#tofR').value, x=tofX(d); $('#tofWall').setAttribute('transform',`translate(${x},0)`); $('#tofLine').setAttribute('x2',x); $('#tofV').textContent=fmt(d)+' m';
-  $('#tofDot').setAttribute('x',70); $('#tofT').textContent='0 ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = ？（按「發射激光」量度）'; }
+  $('#tofDot').setAttribute('x',70); $('#tofT').textContent='0 ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = '+fmt(d/0.15)+' ns'; }
 function tofRun(){ cancelAnimationFrame(tofA); const d=+$('#tofR').value, x=tofX(d), T=1600, t0=performance.now(), ns=d/0.15;
-  const fr=t=>{ const p=Math.min(1,(t-t0)/T), pos=p<.5?70+(x-82)*(p*2):70+(x-82)*(2-p*2); $('#tofDot').setAttribute('x',pos); $('#tofT').textContent=fmt(ns*p)+' ns'; if(p<1) tofA=requestAnimationFrame(fr); else { $('#tofT').textContent=fmt(ns)+' ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = '+fmt(ns)+' ns'; } };
+  const fr=t=>{ const p=Math.min(1,(t-t0)/T), pos=p<.5?70+(x-82)*(p*2):70+(x-82)*(2-p*2); $('#tofDot').setAttribute('x',pos); $('#tofT').textContent=fmt(ns*p)+' ns'; if(p<1) tofA=requestAnimationFrame(fr); else $('#tofT').textContent=fmt(ns)+' ns'; };
   tofA=requestAnimationFrame(fr); }
 $('#tofR').addEventListener('input',tofSet); $('#tofGo').addEventListener('click',tofRun);
 
@@ -1318,11 +1578,11 @@ function coopShow(k){ const [on,why]=COOP[k]; $('#coopChips').innerHTML=COOP_ALL
 segPick('#coopFn',coopShow);
 
 const HOOKS={
- sda:{enter:()=>sdaShow(sdaK,false)},
+ sda:{enter:()=>sdaShow(sdaK,false), leave:sdaStop},
  array:{enter:()=>{ if(!$('#sInfo').innerHTML) arrShow(1); }},
- acc:{enter:()=>{ accSet(0); $$('#accBtns .btn').forEach(b=>b.classList.toggle('on',b.dataset.v==='0')); }},
+ acc:{enter:()=>{ accSet(0); $$('#accBtns .btn').forEach(b=>b.classList.toggle('on',b.dataset.v==='0')); $('#bus').classList.remove('brake'); $('#minip').classList.remove('brake'); }},
  tilt:{enter:()=>{ const v=$('#tiltBtns .btn.on').dataset.v; tiltSet(v); }},
- steps:{enter:()=>{ $('#stepThV').textContent=$('#stepTh').value+' m/s²'; stepN=0; stepUpdate(0); }, leave:()=>clearInterval(stepT)},
+ steps:{enter:()=>{ clearInterval(stepT); stepN=0; stepUpdate(); }, leave:()=>clearInterval(stepT)},
  gyro:{enter:gyReset},
  fusion:{enter:()=>fuDraw(0), leave:()=>clearInterval(fuT)},
  light:{enter:luxSet},
@@ -1345,18 +1605,35 @@ function render(prev){ const s=slides[cur];
   $$('.f',s).forEach(f=>f.classList.toggle('on',+f.dataset.f<=sx));
   const h=HOOKS[s.dataset.hook]; if(h&&h.step) h.step(Math.max(0,sx),prev<0?prev:prev-off);
   const st=STAGES[s.dataset.stage]; $('#hudStage').textContent=st[0]; $('#hudName').textContent=st[1]+(ROUTE[s.dataset.id]?'　›　'+ROUTE[s.dataset.id]:'');
-  $('#pg').innerHTML=`${cur+1} / ${slides.length}<small>${nsteps(cur)?'步驟 '+step+' / '+nsteps(cur):'☰ 選頁'}</small>`; $('#bNext').classList.toggle('more',step<nsteps(cur));
+  navUI();
   $('#bNext').disabled=$('#eR').disabled=(step>=nsteps(cur)&&cur>=slides.length-1); $('#bPrev').disabled=$('#eL').disabled=(step===0&&cur===0);
   $('#bar i').style.width=((cur+1)/slides.length*100)+'%';
   $('#notesBody').innerHTML=esc(NOTES[s.dataset.id]||'').replace(/【(.*?)】/g,'<b>【$1】</b>');
   try{ history.replaceState(null,'','#'+(cur+1)); }catch(e){} }
+/* the page counter and the glowing 下一步 button; on teacher pages the counter also shows how many answers are shown */
+function navUI(){ const qs=TEACHER?$$('.ch',slides[cur]):[], qd=qs.filter(x=>x.classList.contains('done')).length;
+  $('#pg').innerHTML=`${cur+1} / ${slides.length}<small>${nsteps(cur)?'步驟 '+step+' / '+nsteps(cur):'☰ 選頁'}${qs.length?' · 答案 '+qd+'/'+qs.length:''}</small>`; $('#bNext').classList.toggle('more',step<nsteps(cur)||!!nextHidden()); }
+/* ---------- teacher: → also shows answers ----------
+   On a page with practice questions, → first plays the page's own steps; after the last step each → shows the answer of the
+   next question on screen that is not answered yet (the same as clicking the right option); ← takes the last shown answer back.
+   Clicking an option still works. */
+const REVS={};   // page index → answers shown by →, in order: {ch, step, dxp}
+function chVisible(ch){ const it=slides[cur].querySelector('.intro'); if(it&&!it.classList.contains('hide')) return false; if(!ch.offsetParent) return false;
+  for(let e=ch.closest('.f'); e; e=e.parentElement?e.parentElement.closest('.f'):null) if(!e.classList.contains('on')) return false; return true; }
+function nextHidden(){ return TEACHER&&cur>=0&&step>=nsteps(cur)?$$('.ch',slides[cur]).find(ch=>!ch.classList.contains('done')&&chVisible(ch)):null; }
+function revealNext(){ const ch=nextHidden(); if(!ch) return false; const b=$$('.opts .btn',ch).find(x=>x.dataset.v===ch.dataset.ans); if(!b) return false;
+  const x0=XP; b.click(); (REVS[cur]=REVS[cur]||[]).push({ch,step,dxp:XP-x0}); navUI(); return true; }
+function unrevealLast(){ const L=REVS[cur]; if(!TEACHER||!L||!L.length||L[L.length-1].step!==step) return false; const r=L.pop();
+  r.ch.classList.remove('done'); $$('.opts .btn',r.ch).forEach(x=>x.classList.remove('ok','dim')); XP=Math.max(0,XP-r.dxp); hud();
+  const g=r.ch.closest('[data-badge]'); if(g) setTimeout(()=>{ if(!$$('.ch',g).every(x=>x.classList.contains('done'))){ got.delete(g.dataset.badge); hud(); } },800);
+  navUI(); return true; }
 function go(i,st){ i=Math.max(0,Math.min(slides.length-1,i)); const prevStep=step;
   if(i!==cur){ if(cur>=0){ const o=HOOKS[slides[cur].dataset.hook]; if(o&&o.leave) o.leave(); }
     cur=i; step=st; try{ const a=document.activeElement; if(a&&a!==document.body&&!slides[cur].contains(a)&&!a.closest('#nav')) a.blur(); }catch(e){} const h=HOOKS[slides[cur].dataset.hook]; if(h&&h.enter) h.enter(); render(-1); ONPAGE(cur); }
   else { step=st; render(prevStep); } }
-let LEAVE_OK=()=>true;   // student layer: warn once about unanswered practice questions
-function next(){ if(step<nsteps(cur)) go(cur,step+1); else if(cur<slides.length-1){ if(LEAVE_OK()) go(cur+1,0); } }
-function prev(){ if(step>0) go(cur,step-1); else if(cur>0) go(cur-1,nsteps(cur-1)); }
+let BEFORE_NEXT=()=>false;   // student layer: ask the stage self-check before leaving its last page (returns true when it opened a popup)
+function next(){ if(revealNext()) return; if(cur>=0&&step>=nsteps(cur)&&BEFORE_NEXT()) return; if(step<nsteps(cur)) go(cur,step+1); else if(cur<slides.length-1) go(cur+1,0); }
+function prev(){ if(unrevealLast()) return; if(step>0) go(cur,step-1); else if(cur>0) go(cur-1,nsteps(cur-1)); }
 const PG_STEP=i=>TEACHER?0:nsteps(i);
 function pgPrev(){ if(cur>0) go(cur-1,PG_STEP(cur-1)); }
 function pgNext(){ if(cur<slides.length-1) go(cur+1,PG_STEP(cur+1)); }
@@ -1382,6 +1659,7 @@ let START=()=>{};
 let ON_UNLOCK=()=>{};   // teacher pages on the web: answers arrive after the teacher unlocks   // live layer can claim keys (returns true when handled)
 document.addEventListener('keydown',e=>{ const tg=e.target.tagName;
   if($('#stuId')&&!$('#stuId').hidden) return;
+  if($('#undM')&&!$('#undM').hidden){ if(e.key==='Escape') $('#undSkip').click(); return; }
   if($('#liveM')&&!$('#liveM').hidden){ if(e.key==='Escape') $('#liveM').hidden=true; return; }
   if(!$('#jump').hidden){ if(e.key==='Escape') closeJump(); return; }
   if(tg==='INPUT'||tg==='SELECT'||tg==='TEXTAREA'){ if(e.key==='Escape') e.target.blur(); return; }
@@ -1402,40 +1680,7 @@ document.addEventListener('keydown',e=>{ const tg=e.target.tagName;
 $('#bPrev').onclick=prev; $('#bNext').onclick=next; $('#eL').onclick=prev; $('#eR').onclick=next; $('#bPgPrev').onclick=pgPrev; $('#bPgNext').onclick=pgNext; $('#pg').onclick=openJump;
 $('#bNotes').onclick=toggleNotes; $('#notesClose').onclick=toggleNotes; $('#bAdv').onclick=toggleAdv; $('#bPick').onclick=()=>pickStudent(); $('#bFull').onclick=full;
 if(!TEACHER){ ['#bPick','#bNotes','#bPgPrev','#bPgNext'].forEach(s=>$(s).hidden=true); }
-/* phone support: PHONE = small touch screen. In portrait we show #rotTip, or rotate the stage 90deg if chosen. */
-const PHONE=matchMedia('(pointer:coarse)').matches && Math.min(screen.width,screen.height)<600;
-function ssGet(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
-function ssSet(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
-const isField=a=>!!a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && !/^(range|checkbox|radio|button|submit)$/.test(a.type);
-let focusW=-1;
-document.addEventListener('focusin',e=>{ if(isField(e.target)) focusW=window.innerWidth; });
-document.addEventListener('focusout',()=>{ focusW=-1; if(PHONE) setTimeout(fit,350); });
-function fit(){ const vw=window.innerWidth, vh=window.innerHeight;
-  /* soft keyboard open: width unchanged while typing -> keep layout, don't shrink the stage */
-  if(PHONE && focusW===vw && isField(document.activeElement)) return;
-  if(isField(document.activeElement)) focusW=vw;
-  const portrait=PHONE && vh>vw, mode=ssGet('rotMode');
-  ROT=portrait && mode==='rot';
-  document.body.classList.toggle('rotTip', portrait && !mode);
-  const nh=$('#notes').hidden?0:$('#notes').offsetHeight, st=$('#stage');
-  if(ROT){ const k=Math.min(vh/1280,vw/720); SCALE=k; st.style.top=(vh/2)+'px'; st.style.transform=`translate(-50%,-50%) rotate(90deg) scale(${k})`; return; }
-  const H=Math.max(200,vh-nh), k=Math.min(vw/1280,H/720); SCALE=k; st.style.top=(H/2)+'px'; st.style.transform=`translate(-50%,-50%) scale(${k})`; }
-(function(){
-  const fsOK=!!(document.documentElement.requestFullscreen && screen.orientation && screen.orientation.lock);
-  $('#rtFull').hidden=!fsOK;
-  $('#rtFull').addEventListener('click',()=>{ document.documentElement.requestFullscreen().then(()=>screen.orientation.lock('landscape')).catch(()=>{}).then(()=>setTimeout(fit,300)); });
-  $('#rtRot').addEventListener('click',()=>{ ssSet('rotMode','rot'); fit(); });
-  $('#rtStay').addEventListener('click',()=>{ ssSet('rotMode','stay'); fit(); });
-  /* swipe left/right on the stage = next/prev (skipped on form fields, sliders, canvases, scrollers, dialogs) */
-  let sx=0, sy=0, sOn=false;
-  const skip=t=>{ if(!t.closest) return true; if(t.closest('input,textarea,select,canvas,[contenteditable],[role=dialog],#stuId')) return true;
-    for(let e=t; e && e.id!=='stage'; e=e.parentElement){ const o=getComputedStyle(e).overflowX; if((o==='auto'||o==='scroll') && e.scrollWidth>e.clientWidth+2) return true; } return false; };
-  $('#stage').addEventListener('touchstart',e=>{ sOn=e.touches.length===1 && !skip(e.target); if(sOn){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; } },{passive:true});
-  $('#stage').addEventListener('touchend',e=>{ if(!sOn) return; sOn=false; const t=e.changedTouches[0]; let dx=t.clientX-sx, dy=t.clientY-sy;
-    if(ROT){ const d=dx; dx=dy; dy=-d; }
-    if(Math.abs(dx)>60 && Math.abs(dx)>2*Math.abs(dy)){ if(dx<0) next(); else prev(); } },{passive:true});
-  window.addEventListener('orientationchange',()=>setTimeout(fit,250));
-})();
+function fit(){ const nh=$('#notes').hidden?0:$('#notes').offsetHeight, H=Math.max(200,window.innerHeight-nh), k=Math.min(window.innerWidth/1280,H/720); SCALE=k; const st=$('#stage'); st.style.top=(H/2)+'px'; st.style.transform=`translate(-50%,-50%) scale(${k})`; }
 window.addEventListener('resize',fit); fit(); hud();
 
 /* =====================================================================
@@ -1462,7 +1707,7 @@ function cleanRec(r){ if(!r||typeof r!=='object') return null;
   cKeys(r.und).forEach(k=>{ if(r.und[k]===0||r.und[k]===1) o.und[k]=r.und[k]; });
   cKeys(r.sa).forEach(k=>{ o.sa[k]=cStr(r.sa[k],500); }); cKeys(r.task).forEach(k=>{ o.task[k]=cStr(r.task[k],500); });
   return o; }
-/* task control is kept per class: control/{班別} = {open, closed, at, k}  (k = open code, lets students' pages decrypt the task) */
+/* task control is kept per class: control/{班別} = {open, closed, at} */
 const normCtl=c=>{ const o={}; if(c&&typeof c==='object') Object.keys(c).forEach(k=>{ const v=c[k]; if(/^[0-9A-Z]{1,6}$/.test(k)&&v&&typeof v==='object') o[k]={open:!!v.open,closed:!!v.closed,at:cNum(v.at,0,9e15)}; }); return o; };
 /* a CSV cell that starts with = + - @ would run as an Excel formula: keep student text as plain text */
 const csvTxt=v=>{ const s=String(v==null?'':v); return /^[=+\-@\t\r]/.test(s)?"'"+s:s; };
@@ -1486,17 +1731,7 @@ async function dbReq(auth,method,path,body){ const run=async tok=>fx(`${FB.db}/$
 
 /* ---------- helpers shared by both views ---------- */
 const QINFO={}; $$('.ch').forEach(ch=>{ const sl=ch.closest('.slide'), t=ch.querySelector('.qt,.tt'); QINFO[ch.dataset.q]={pg:slides.indexOf(sl), text:t?t.textContent.trim():ch.dataset.q, ans:ch.dataset.ans, opts:$$('.opts .btn',ch).map(b=>[b.dataset.v,b.textContent.trim()])}; });
-const TKBTN={}; function tkInit(){ $$('.tk').forEach(tk=>{ const bs=$$('.tops .btn',tk); bs.forEach(b=>{ if(b.querySelector('.lc')) return; b.dataset.v=b.textContent.trim(); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); }); TKBTN[tk.dataset.t]=bs; }); } tkInit();
-/* the task questions are not in the page: TASK_ENC holds them encrypted (AES-GCM, key = PBKDF2 of the open code).
-   taskOpen(code) decrypts them and fills each task slide; a wrong code simply fails to decrypt. */
-let TASK_READY=!TASK_ENC, ON_TASK=()=>{}, taskQ=Promise.resolve(false);
-const tB64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
-function taskOpen(code){ taskQ=taskQ.then(async()=>{ if(TASK_READY) return true; code=String(code==null?'':code).trim(); if(!code||!TASK_ENC||!(window.crypto&&crypto.subtle)) return false;
-  try{ const km=await crypto.subtle.importKey('raw',new TextEncoder().encode('u4|'+LESSON+'|'+code),'PBKDF2',false,['deriveKey']);
-    const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:tB64(TASK_ENC.s),iterations:TASK_ENC.n,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
-    const d=JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:tB64(TASK_ENC.i)},key,tB64(TASK_ENC.c))));
-    Object.keys(d).forEach(id=>{ const b=document.querySelector('.slide[data-id="'+id+'"] .tbody'); if(b) b.innerHTML=d[id]; }); tkInit(); TASK_READY=true; try{ ON_TASK(code); }catch(e){} return true; }
-  catch(e){ return false; } }); return taskQ; }
+const TKBTN={}; $$('.tk').forEach(tk=>{ $$('.tops .btn',tk).forEach(b=>{ b.dataset.v=b.textContent.trim(); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); }); TKBTN[tk.dataset.t]=$$('.tops .btn',tk); });
 const CODE_H=s=>{ let h=2166136261; for(const c of 'u4|'+LESSON+'|'+s){ h^=c.charCodeAt(0); h=Math.imul(h,16777619); } return (h>>>0).toString(16); };
 const z2=n=>String(n).padStart(2,'0');
 const tstr=t=>{ const d=new Date(t); return `${d.getFullYear()}-${z2(d.getMonth()+1)}-${z2(d.getDate())} ${z2(d.getHours())}:${z2(d.getMinutes())}`; };
@@ -1519,7 +1754,7 @@ if(!TEACHER){
   async function sync(){ if(!FB_ON||!ST.who) return; if(syncing){ again=true; return; } syncing=true;
     try{ await auth.token(); const w=ST.who; const body={cls:w.cls,no:w.no,name:w.name,ts:Date.now(),page:cur+1,prac:ST.r.prac,und:ST.r.und,sa:ST.r.sa,task:ST.r.task,sub:ST.r.sub||0,unl:ST.r.unl||0,mk:ST.r.mk||0};
       await dbReq(auth,'PUT',`${LPATH}/students/${auth.uid}`,body); lastOk=Date.now(); liveDot('on','● 已連線'); if(ST.r.sub) subUI(); }
-    catch(e){ liveDot('err','○ 離線（存本機）'); clearTimeout(syncT); syncT=setTimeout(sync,8000); }
+    catch(e){ liveDot('err','○ 離線：答案存在本機'); clearTimeout(syncT); syncT=setTimeout(sync,8000); }
     finally{ syncing=false; if(again){ again=false; sync(); } } }
   setInterval(()=>{ if(ST.who&&FB_ON&&!document.hidden) sync(); },25000);
   ONPAGE=()=>{ if(ST.r){ ST.r.page=cur+1; touch(); } };
@@ -1550,41 +1785,41 @@ if(!TEACHER){
 
   // self-check
   $$('.und').forEach(u=>u.addEventListener('click',e=>{ const b=e.target.closest('[data-u]'); if(!b||!ST.r) return; ST.r.und[u.dataset.sec]=+b.dataset.u; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',x===b)); toast(b.dataset.u==='1'?'收到：明白':'收到：老師會再講解'); touch(); }));
+  // self-check popup: at the end of each stage's last page, ask once (students may answer later by coming back)
+  $('#stage').insertAdjacentHTML('beforeend','<div id="undM" hidden><div class="px gold" role="dialog" aria-labelledby="undT"><p class="k2">SELF CHECK</p><h3 id="undT"></h3><p class="small">誠實回答：老師會按全班的情況，決定要不要再講一次。</p><div class="row"><button class="btn ok" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div><button class="btn" id="undSkip">稍後再答</button></div></div>');
+  const undAsked=new Set(); let undSec=null;
+  BEFORE_NEXT=()=>{ const u=slides[cur].querySelector('.und'); if(!u||!ST.r) return false; const sec=u.dataset.sec; if(ST.r.und[sec]!==undefined||undAsked.has(sec)) return false;
+    undSec=sec; $('#undT').textContent=(UND_SECS[sec]||'第 '+sec+' 關')+'：你明白嗎？'; $('#undM').hidden=false; setTimeout(()=>$('#undM .btn[data-u="1"]').focus(),30); return true; };
+  $$('#undM [data-u]').forEach(b=>b.addEventListener('click',()=>{ const sec=undSec; undAsked.add(sec); $('#undM').hidden=true; const ib=$(`.und[data-sec="${sec}"] [data-u="${b.dataset.u}"]`); if(ib) ib.click(); next(); }));
+  $('#undSkip').addEventListener('click',()=>{ undAsked.add(undSec); $('#undM').hidden=true; next(); });
   // short answer
   $$('.sa').forEach(s=>{ const ta=s.querySelector('textarea'), bt=s.querySelector('.btn');
     bt.addEventListener('click',()=>{ const v=ta.value.trim(); if(!v){ toast('請先輸入答案'); return; } if(!ST.r) return; ST.r.sa[s.dataset.sa]=v; s.querySelector('.sent').textContent='已提交 ✔（可以修改後再提交）'; touch(); }); });
 
   // ---------- task (堂課) ----------
   const tasks=$$('.slide.task');
-  function lockUI(){ const lock=!ST.r||!ST.r.unl||!TASK_READY; tasks.forEach(t=>t.classList.toggle('tlocked',lock));
+  function lockUI(){ const lock=!ST.r||!ST.r.unl; tasks.forEach(t=>t.classList.toggle('tlocked',lock));
     const s=$('#gateS'); if(!s) return; const mkBox=$('#gateMkBox'), codeBox=$('#gateCodeBox'); let mk=false, code=true;
     if(ST.r&&ST.r.sub){ s.textContent=ST.r.mk?'已交卷 ✔（補做）':'已交卷 ✔'; s.className='gs open'; code=false; }
     else if(!lock){ s.textContent=ST.r.mk?'補做中：按 → 開始作答':'已開放：按 → 開始作答'; s.className='gs open'; code=false; }
-    else if(ST.closed){ code=false; if(mkOpen()){ s.textContent='堂課已結束：缺席同學可以補做'; mk=true; code=!TASK_READY; } else s.textContent='補做已截止'; s.className='gs lock'; }
-    else { s.textContent=ST.needCode?'老師已開放：請輸入開放碼':'等待老師開放…'; s.className='gs lock'; }
+    else if(ST.closed){ code=false; if(mkOpen()){ s.textContent='堂課已結束：缺席同學可以補做'; mk=true; } else s.textContent='補做已截止'; s.className='gs lock'; }
+    else { s.textContent='等待老師開放…'; s.className='gs lock'; }
     if(mkBox) mkBox.hidden=!mk; if(codeBox) codeBox.hidden=!code; $('#gateHint').hidden=!code; }
   let mkArm=0;
-  $('#gateMk').addEventListener('click',()=>{ if(!ST.r||ST.r.unl) return; if(!mkOpen()){ lockUI(); return; } if(!TASK_READY){ $('#gateErr').textContent='請先輸入老師給的開放碼，再按「解鎖」'; return; } if(Date.now()-mkArm>5000){ mkArm=Date.now(); $('#gateMk').textContent='再按一次確認：補做總分扣 50 分'; return; }
+  $('#gateMk').addEventListener('click',()=>{ if(!ST.r||ST.r.unl) return; if(!mkOpen()){ lockUI(); return; } if(Date.now()-mkArm>5000){ mkArm=Date.now(); $('#gateMk').textContent='再按一次確認：補做總分扣 50 分'; return; }
     ST.r.unl=Date.now(); ST.r.mk=1; $('#gateMk').textContent='開始補做'; lockUI(); toast('補做開始：按 → 作答'); touch(); });
-  function setUnl(src){ if(!ST.r||ST.r.unl||!TASK_READY) return; ST.r.unl=Date.now(); lockUI(); toast('堂課已開放'); touch(); }
-  $('#gateGo').addEventListener('click',async()=>{ const E=$('#gateErr'); E.textContent='檢查中…'; if(FB_ON) await Promise.race([pollCtl(),new Promise(r=>setTimeout(r,4000))]); if(!ST.r){ E.textContent='請先登入'; return; } if(ST.r.unl&&TASK_READY){ E.textContent=''; return; }
-    const c=$('#gateCode').value.trim();
-    if(TASK_ENC){ if(!TASK_READY){ if(!c){ E.textContent='請輸入開放碼'; return; } if(!(await taskOpen(c))){ E.textContent='開放碼不正確'; return; } } }
-    else if(CODE_H(c)!==TASK_CODE_H){ E.textContent='開放碼不正確'; return; }
-    if(ST.closed&&!ST.r.unl){ E.textContent='堂課已結束：請按「開始補做」'; lockUI(); return; }
-    E.textContent=''; if(ST.r.unl) lockUI(); else setUnl('code'); });
+  function setUnl(src){ if(!ST.r||ST.r.unl) return; ST.r.unl=Date.now(); lockUI(); toast('堂課已開放'); touch(); }
+  $('#gateGo').addEventListener('click',async()=>{ $('#gateErr').textContent='檢查中…'; if(FB_ON) await Promise.race([pollCtl(),new Promise(r=>setTimeout(r,4000))]); if(ST.r&&ST.r.unl){ $('#gateErr').textContent=''; return; } if(ST.closed&&!ST.r.unl){ $('#gateErr').textContent='堂課已結束：請按「開始補做」'; lockUI(); return; } const c=$('#gateCode').value.trim(); if(CODE_H(c)===TASK_CODE_H){ $('#gateErr').textContent=''; setUnl('code'); } else $('#gateErr').textContent='開放碼不正確'; });
   $('#gateCode').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); $('#gateGo').click(); } });
   const editable=()=>ST.r&&ST.r.unl&&!ST.r.sub;
-  const cntUI=i=>{ const c=i.parentElement.querySelector('.cnt'); if(c&&i.maxLength>0) c.textContent=`已寫 ${i.value.length} / ${i.maxLength} 字`; };
-  // delegated: the task questions are added to the page only after the task is opened
-  tasks.forEach(t=>t.addEventListener('click',e=>{ const b=e.target.closest('.tops .btn'), tk=b&&b.closest('.tk'); if(!tk) return; if(!editable()){ toast(ST.r&&ST.r.sub?'已交卷，不可以再改':'等待老師開放堂課'); return; }
+  $$('.tk').forEach(tk=>tk.addEventListener('click',e=>{ const b=e.target.closest('.tops .btn'); if(!b) return; if(!editable()){ toast(ST.r&&ST.r.sub?'已交卷，不可以再改':'等待老師開放堂課'); return; }
     ST.r.task[tk.dataset.t]=b.dataset.v; TKBTN[tk.dataset.t].forEach(x=>x.classList.toggle('sel',x===b)); touch(); }));
-  tasks.forEach(t=>t.addEventListener('input',e=>{ const i=e.target.closest('.tin'); if(!i||!editable()) return; ST.r.task[i.dataset.t]=i.value; cntUI(i); touch(); }));
+  $$('.tin').forEach(i=>i.addEventListener('input',()=>{ if(!editable()){ return; } ST.r.task[i.dataset.t]=i.value; touch(); }));
   function restoreTask(){ $$('.tk').forEach(tk=>{ const v=ST.r.task[tk.dataset.t]; TKBTN[tk.dataset.t].forEach(x=>x.classList.toggle('sel',x.dataset.v===v)); });
-    $$('.tin').forEach(i=>{ i.value=ST.r.task[i.dataset.t]||''; i.disabled=!!ST.r.sub; cntUI(i); }); lockUI(); subUI(); }
+    $$('.tin').forEach(i=>{ i.value=ST.r.task[i.dataset.t]||''; i.disabled=!!ST.r.sub; }); lockUI(); subUI(); }
   const missing=()=>TASK_IDS.filter(k=>!ST.r.task[k]).concat(TASK_TEXT.filter(k=>!(ST.r.task[k]||'').trim()));
   function subUI(){ if(!$('#subReview')||!ST.r) return; const done=!!ST.r.sub; $('#subPre').style.display=done?'none':'flex'; $('#subCard').hidden=!done;
-    $('#subReview').innerHTML=TASK_IDS.concat(['D1','D2']).map(k=>{ const v=k==='D2'?['D2f','D2s','D2d','D2e'].every(x=>(ST.r.task[x]||'').trim()):(ST.r.task[k]||'').trim(); return `<span class="rv${v?'':' miss'}" data-k="${k}" title="按一下返回這一題"><b>${k}</b>${v?(k[0]==='D'?'已作答':esc(v)):'未答'}</span>`; }).join('');
+    $('#subReview').innerHTML=TASK_IDS.concat(['D1','D2']).map(k=>{ const v=k==='D2'?['D2f','D2s','D2d','D2e'].every(x=>(ST.r.task[x]||'').trim()):(ST.r.task[k]||'').trim(); return `<span class="rv${v?'':' miss'}"><b>${k}</b>${v?(k[0]==='D'?'已作答':esc(v)):'未答'}</span>`; }).join('');
     if(done){ const w=ST.who, T=ST.r.task; $('#scWho').innerHTML=`<span>班別 <b>${esc(w.cls)}</b></span><span>學號 <b>${w.no}</b></span><span>姓名 <b>${esc(w.name)}</b></span><span class="stime">${ST.r.mk?'補做 · ':''}交卷 ${tstr(ST.r.sub)}</span>`;
       $('#scAns').innerHTML=TASK_IDS.map(k=>`<span><b>${k}</b>${esc(T[k]||'－')}</span>`).join('');
       $('#scD').innerHTML=`<b>D1</b> ${esc(T.D1||'－')}<br><b>D2</b> ${esc(T.D2f||'－')}｜感知：${esc(T.D2s||'－')}｜決策：${esc(T.D2d||'－')}｜執行：${esc(T.D2e||'－')}`;
@@ -1594,23 +1829,14 @@ if(!TEACHER){
   $('#subYes').addEventListener('click',()=>{ $('#subYes').hidden=true; doSubmit(false); });
   TASKUI={gate:lockUI, sub:()=>{ $('#subYes').hidden=true; $('#subMsg').textContent=''; subUI(); }};
   // control polling: teacher opens / closes the task
-  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control/${ST.who.cls}`); ST.closed=!!(c&&c.closed); if(c&&c.k&&!TASK_READY) await taskOpen(c.k); ST.needCode=!!(c&&c.open&&!TASK_READY); if(c&&c.open) setUnl('net'); if(ST.closed&&ST.r.unl&&!ST.r.sub&&!ST.r.mk) doSubmit(true); lockUI(); }catch(e){} }
+  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control/${ST.who.cls}`); ST.closed=!!(c&&c.closed); if(c&&c.open) setUnl('net'); if(ST.closed&&ST.r.unl&&!ST.r.sub&&!ST.r.mk) doSubmit(true); lockUI(); }catch(e){} }
   setInterval(pollCtl,8000);
 
   function restoreAll(){ restorePractice(); $$('.und').forEach(u=>{ const v=ST.r.und[u.dataset.sec]; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',v!==undefined&&+x.dataset.u===v)); });
     $$('.sa').forEach(s=>{ const v=ST.r.sa[s.dataset.sa]; s.querySelector('textarea').value=v||''; s.querySelector('.sent').textContent=v?'已提交 ✔（可以修改後再提交）':''; }); restoreTask(); }
   if(!FB_ON) liveDot('','○ 本機模式');
   document.body.classList.add('stu');
-  ON_TASK=code=>{ LS.set(`u4.${LESSON}.tkc`,code); if(ST.r) restoreTask(); else lockUI(); };
-  const warned=new Set(); LEAVE_OK=()=>{ const n=$$('.ch',slides[cur]).filter(c=>!c.classList.contains('done')).length; if(!n||warned.has(cur)) return true; warned.add(cur); toast(`這一頁還有 ${n} 題未答：再按一次「下一步」才離開`); return false; };
-  // task countdown: 20 minutes from the moment this student's task was opened (display only; the teacher ends the task)
-  $('#stage').insertAdjacentHTML('beforeend','<div id="tTimer" hidden></div>');
-  const TASK_MIN=20; function timerUI(){ const el=$('#tTimer'), s=slides[cur], on=!!(ST.r&&ST.r.unl&&!ST.r.sub&&s&&(s.classList.contains('task')||s.dataset.id==='tgate')); el.hidden=!on; if(!on) return;
-    const left=Math.round((ST.r.unl+TASK_MIN*60000-Date.now())/1000); el.classList.toggle('late',left<=0); el.textContent=left>0?`堂課剩餘 ${z2(Math.floor(left/60))}:${z2(left%60)}`:`已超過 ${TASK_MIN} 分鐘：請盡快交卷`; }
-  setInterval(timerUI,1000);
-  // review page: click an item to go back to that part
-  $('#subReview').addEventListener('click',e=>{ const r=e.target.closest('.rv'); if(!r||!r.dataset.k||(ST.r&&ST.r.sub)) return; const i=slides.findIndex(s=>s.dataset.id==='t'+r.dataset.k[0]); if(i>=0) go(i,0); });
-  START=()=>{ const w=LS.get(`u4.${LESSON}.who`); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); const kc=LS.get(`u4.${LESSON}.tkc`); if(kc) taskOpen(kc); pollCtl(); };
+  START=()=>{ const w=LS.get(`u4.${LESSON}.who`); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); pollCtl(); };
 }
 
 /* =====================================================================
@@ -1693,17 +1919,14 @@ if(TEACHER){
   function setTCls(c){ if(!CLASSES.includes(c)) return; TCLS=c; LS.set('u4.tcls',c); ctlUI(); renderNow(); toast('現在是 '+c+'：只顯示和控制這一班'); }
   $$('#bCls,#dCls').forEach(x=>{ x.innerHTML=clsOpts(); x.value=TCLS; x.addEventListener('change',()=>{ setTCls(x.value); x.blur(); }); });
   async function setCtl(v){ if(!FB_ON||!auth.has()){ toast('請先登入即時功能'); openLive(); return false; } try{ await dbReq(auth,'PUT',`${LPATH}/control/${TCLS}`,v); CTLS[TCLS]=v; ctlUI(); renderAll(); return true; }catch(e){ toast(zhErr(e)); return false; } }
-  // k = the open code: students' pages need it to decrypt the task questions (sent only when the task is opened or closed)
-  const ctlK=()=>(TASK_CODE&&/^[0-9A-Za-z]{3,20}$/.test(String(TASK_CODE)))?{k:String(TASK_CODE)}:{};
-  $('#tOpen').onclick=async()=>{ if(TASK_ENC&&!ctlK().k){ toast('請先按左上角「🔒 解鎖」，再開放堂課'); return; } if(await setCtl(Object.assign({open:true,closed:false,at:Date.now()},ctlK()))) toast('已開放 '+TCLS+' 堂課'); };
-  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認：只結束 '+TCLS); return; } closeArm=0; if(await setCtl(Object.assign({open:false,closed:true,at:Date.now()},ctlK()))) toast('已結束 '+TCLS+' 堂課：未交卷的學生會自動交出'); };
+  $('#tOpen').onclick=async()=>{ if(await setCtl({open:true,closed:false,at:Date.now()})) toast('已開放 '+TCLS+' 堂課'); };
+  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認：只結束 '+TCLS); return; } closeArm=0; if(await setCtl({open:false,closed:true,at:Date.now()})) toast('已結束 '+TCLS+' 堂課：未交卷的學生會自動交出'); };
   $('#tCode').textContent=TASK_CODE;
   $('#tSubDash').onclick=()=>openDash('task');
   // task pages: mark the key
   function markKey(){ $$('.tk').forEach(tk=>{ const k=TASK_KEY[tk.dataset.t]; TKBTN[tk.dataset.t].forEach(b=>b.classList.toggle('key',!!k&&b.dataset.v===k)); tk.classList.add('ans'); }); }
   markKey();
   ON_UNLOCK=()=>{ markKey(); $('#tCode').textContent=TASK_CODE; renderNow(); };
-  ON_TASK=()=>{ markKey(); $$('.tin').forEach(i=>i.disabled=true); renderAll(); };
   $$('.tin').forEach(i=>i.disabled=true);
   // ----- dashboard -----
   let dTab='stu';

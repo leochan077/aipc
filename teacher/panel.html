@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Yms7cXaYz60ZZP3LS5cc7CyeGm+3hYb7KC/tZqUACRI='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-WVdggyeDJn0Oaok6JXwT8+Nn55G1pWaPBX/1zp1Ft44='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>高二成績面板</title>
@@ -124,7 +124,7 @@ const TASK_IDS=['A1','A2','A3','A4','A5','A6','A7','A8','B1','B2','B3','B4','B5'
 const KEYOK=()=>TASK_IDS.every(k=>TASK_KEY[k]);
 const L={
  ch8:{name:'第 8 課 AI PC',kind:'prac',total:34,rule:'第 8 課現在只收<b class="g">補做練習</b>（網頁內 34 題，第一次作答）。練習分 = 答對 ÷ 34 × 50。堂課分（同事網站，/50）請在 CSV 填入，「百分制總分」會自動計算：練習分 ＋ 堂課分 − 50（最低 0 分）。'},
- w10:{name:'第 9 課 手機傳感器',kind:'task',total:25,rule:'堂課 A–C 自動評分（/16），D 部分由老師評分（/5）。結束堂課後才開始或交卷的算作<b class="g">補做</b>。CSV 填入 D 分數後，「百分制總分」= (A–C ＋ D) ÷ 21 × 100，補做再扣 50 分（最低 0 分）。'}
+ w10:{name:'第 9 課 手機傳感器',kind:'task',total:22,rule:'堂課 A–C 自動評分（/16），D 部分由老師評分（/5）。結束堂課後才開始或交卷的算作<b class="g">補做</b>。CSV 填入 D 分數後，「百分制總分」= (A–C ＋ D) ÷ 21 × 100，補做再扣 50 分（最低 0 分）。'}
 };
 let cur=LS.get('panel.lesson')||'ch8', DATA={}, CTLS={}, loading=false;
 let CLS=LS.get('panel.cls'); if(CLS!=='ALL'&&!CLASSES.includes(CLS)) CLS='ALL';   // class filter: ALL or one class
@@ -166,7 +166,7 @@ $('#csv').onclick=()=>{ if(L[cur].kind==='task'&&!KEYOK()){ $('#upd').innerHTML=
   const blob=new Blob(['﻿'+[head].concat(rows).map(r=>r.map(q).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`${cur}_${CLS==='ALL'?'全部班':CLS}_成績_${tstr(Date.now()).slice(0,10)}.csv`; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500); };
 const UNLOCK_APPLY=d=>{ Object.assign(TASK_KEY,d.key); render(); };
 /* ---------- 老師解鎖：網上版的備註和答案已加密，輸入老師密碼才顯示 ---------- */
-const UL_ENC=[{"s":"cNleNni/1ZEadOtkm4RXvg==","i":"k6on3iI6GsszVvDd","c":"XfJxu1hzpJcoxL63KSwJyyB7a2Rzc09Cg3BTt98hHes3+FvPDHl1hQh2K7t1yVu8SoY+i4KmLE4D3Q7OqMr8kX99tLHdOAc1MVP9JjpPg4XG8YYm6tlqnQugNCHn6dulCGBDAXCAhepk99nphJowDz7VUO2lmcimMdQFooWtzWe6i2b/kTroThhruhiofMSt6pE2CnOX71XY9uQRG1gUPwEgyiEDp6x6HzM5X8wPPDVQL3/QA5KAe4tRXCmeS4NH0KCoeCwEPzEPXxNKlAGI/0oujEXa2qj1ye2LCNgTvuASQUSZF5DVpy+Tcm+aoGSYCNHN1Sc3RAzMtN2K0KxXZNKgaGnDzUXEKjAACAaEPR3thXtTlWxIUqMT5UW2d1hox2dAqDc+Us8T7Pmx6A=="},{"s":"nS967AIYMZBA2eNfF7GVtw==","i":"HAbet3Dr6EE4RWga","c":"yv/bPsRwxLHDwEby90LRD1FSAFHkM+3BlQvmJ/RPY+3ELCtT8lF1dx1YRwfFWkTNynfOYkHD5fPr5CAQYT1EsnD6ZwEkCCxOKAigZtiFnhbi57zwBTH8scyhgXVNJeVarwKO0hgtx32QUhFW08l/ADFD2BZXw+5ffAeH6UrOvGORojcXcZgf1UUduHT1zqOQKtOKRo1EfgJx2nZOw5E3OY8+OBOn2KDdBz3hbSvdmcSUj6eU4nnjcMztufyv5D+YVFdPzwDCABi70Vpqx9vmKQvXMhLPho5Bp5zkuKDXLAeAbuimOw/BSUr5qzxL1T5cAMEY1rZqA3vXgy/FBLsGAc8obW5QPE84CaZGg66id03PRYhwTGg0hfIgXiLHP8MydqpznuKQYFp71Jy+EA=="}];
+const UL_ENC=[{"s":"41fXBmiNDr0l7euYerxBhA==","i":"Ti+zUbKr0FWFzkoD","c":"UAxB5uSEKLpd7IImTxlEJRHSn/QRks/RvjYMUuo9Iea22SeJYmEaJ+l3JWstHcdi78wKbj8DFgEqddg2AOLsWI/TONy42ft0lbWWwpGKhRhPwFM9PojDimpE1/xYFkooSU7lpe/LChsr4jYYmMKsiXp7tmRL+5Btb2rExpeeKFaFDyp2BfBbzqcrxe9xyQ4j83fHoIQtLpgF/J0Qm4DgmIHN79alP2N+1ffEcR23wLbjwPKx4i7ftlyltjBq/Lw9ZluB57zZIC0mHnBbnNK/CLOCJX3xlyfGXTPbFJiOFVbMkcrIC5XMqTZPwfPugs2aD3CkJEok5LrAGTlnrpk2bg5DTTe8IKKiZM1vhKWIaVXlStS913L6KQrl9+w4zIX1deW3C8+S8MdRCYRegA=="},{"s":"+C9q6gSOGgCqE/+wbFT8wA==","i":"Y0fBmlFKM4sAPM5R","c":"JAc7EwwY7ds/sB5z/ATSL8eKR5nHrA5AzcovY/tqyARmC+sJJLTrMtNjrHpgeZxB1wxo9ddU0hMSEgqyW9tiC3R2yiaMT1aqFeQpgi5XM2WgN+nZx+tz0Yo9HWT6P89Favy9OavIeHwAPYW0YYwxJoVwLDJ00n0cUJ4Pfe2B3+rLqyIrK4JhdDKc6WZeQULxvMjZ6yKlC+B8C97JjmKcmMD7nRLou5d9bT0IeDQC0955So+vlWySTz3UVSIm+wCVqyElPIHZTVlQqnTxwxqXGX79gTzA6a31MtPIgRhMxCIyHK2aFoUpzVu1JdAY2szIskuLBQQ36z7pX4/sbmnbKAdZJN5ziIC0fop8X8/8nk4PkKii3QO+/G7QlrShp/j5EG0V8g+s/oiCuHVOJA=="}];
 const UL_KEY='f5a.teacher.pass';
 const ulB=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 async function ulDecrypt1(pass,E){ const te=new TextEncoder(); const km=await crypto.subtle.importKey('raw',te.encode(pass),'PBKDF2',false,['deriveKey']);
