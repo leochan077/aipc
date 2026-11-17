@@ -33,6 +33,10 @@ button{font:inherit;color:inherit}
 .hud-l,.hud-r{display:flex;align-items:center;gap:12px}
 #hudStage{font-family:var(--pix);font-size:12px;color:#1A1440;background:var(--gold);padding:7px 9px;box-shadow:3px 3px 0 #000}
 #hudName{font-size:18px;font-weight:700;color:var(--mute)}
+#hud span,#hud a,#hud button{white-space:nowrap}
+.hud-l{min-width:0;flex:1 1 auto}.hud-l>*{flex:none}.hud-r{flex:none;margin-left:12px}
+#hud #hudName{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+#hud #hudStu{max-width:200px;overflow:hidden;text-overflow:ellipsis}
 .xp-lbl{font-family:var(--pix);font-size:11px;color:var(--gold)}
 .xpbar{width:190px;height:16px;background:#000;border:3px solid var(--line)}
 .xpbar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--gold) 0 10px,#D9A916 10px 12px);transition:width .6s steps(10)}
@@ -59,7 +63,7 @@ h2.t{font-size:33px;font-weight:800;margin:0;display:flex;align-items:center;gap
 b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:var(--green)} b.no{color:var(--red)} b.c{color:var(--cpu)} b.gp{color:var(--gpu)}
 .f{opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;pointer-events:none}
 .f.on{opacity:1;transform:none;pointer-events:auto}
-.mono{font-family:var(--lab);letter-spacing:.5px}
+.mono{font-family:Consolas,"Courier New",monospace;font-weight:700;white-space:nowrap}
 /* ---------- buttons ---------- */
 .btn{font-weight:700;font-size:19px;line-height:1.35;color:var(--ink);background:var(--bg3);border:3px solid var(--line);box-shadow:0 5px 0 var(--edge);padding:9px 14px;cursor:pointer;transition:transform .08s,background .15s,border-color .15s;text-align:center}
 .btn:hover{border-color:var(--gold)}
@@ -86,6 +90,15 @@ b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:va
 .seg.opts .btn{flex:1;text-align:center}
 .why{display:none;margin:4px 0 0;font-size:17px;line-height:1.5;color:var(--green)}
 .done>.why,.done .why{display:block}
+/* pages where the explanations would run under the bottom buttons at 1280x720 */
+[data-id="tilt"] .axes{gap:6px;padding-top:10px;padding-bottom:10px}[data-id="tilt"] .axes .lead{margin:0}
+[data-id="tilt"] .q,[data-id="tofcalc"] .q{padding-top:9px;padding-bottom:9px}
+[data-id="tilt"] .qt,[data-id="tofcalc"] .qt{font-size:19px;margin-bottom:2px}
+[data-id="tilt"] .why,[data-id="tofcalc"] .why{font-size:15px;line-height:1.4;margin-top:2px}
+[data-id="tilt"] .opts .btn,[data-id="tofcalc"] .opts .btn{padding-top:6px;padding-bottom:6px}
+#tTimer{position:absolute;left:18px;bottom:12px;z-index:6;font-size:16px;font-weight:800;color:var(--gold);background:#0C0A2A;border:3px solid var(--line);padding:5px 12px;font-variant-numeric:tabular-nums}
+#tTimer.late{color:var(--red);border-color:var(--red)}
+body.stu .review .rv{cursor:pointer}body.stu .review .rv:hover{border-color:var(--gold)}
 .shake{animation:shake .35s}
 @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .pop{animation:pop .4s steps(4)}
@@ -332,7 +345,7 @@ svg.px8{image-rendering:pixelated}
 .axis .an{font-family:var(--pix);font-size:16px}
 .axis .ab{height:22px;background:#000;border:3px solid var(--line)}
 .axis .ab i{display:block;height:100%;transition:width .4s steps(6)}
-.axis .av{font-family:var(--lab);font-size:15px;text-align:right;white-space:nowrap}
+.axis .av{font-family:Consolas,"Courier New",monospace;font-size:16px;text-align:right;white-space:nowrap}
 .axis.x .an{color:#FF4D5E}.axis.x .ab i{background:#FF4D5E}
 .axis.y .an{color:#3BE08F}.axis.y .ab i{background:#3BE08F}
 .axis.z .an{color:#38BDF8}.axis.z .ab i{background:#38BDF8}
@@ -349,7 +362,7 @@ canvas.cv{display:block;width:100%;background:#0A0826;border:3px solid var(--lin
 .stat2 b{font-family:var(--pix);font-size:24px;color:var(--gold);margin-top:4px}
 /* gyroscope */
 .gyrobox{width:340px;height:300px;flex:none;background:#0A0826;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;perspective:700px;position:relative}
-.gyrobox .ph{transform-style:preserve-3d;transition:transform 1s linear}
+.gyrobox .ph{transform-style:preserve-3d;transition:transform 1s linear;transform:rotateX(-20deg) rotateY(25deg)}
 .gyrobox .axl{position:absolute;left:10px;bottom:8px;font-family:var(--pix);font-size:10px;color:var(--dim)}
 .gauge{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 16px}
 .gauge .gv{font-family:var(--pix);font-size:34px;color:var(--gpu)}
@@ -545,7 +558,7 @@ select option{background:#1D1A52;color:#F6F4FF}
   </div>
   <!-- P1 COVER -->
   <section class="slide cover" data-id="cover" data-stage="0">
-    <div class="cover-top"><span class="tag">高二電腦 · 單元四 · 第十週</span><span class="tag">感知與執行</span><span class="tag">5 關任務 ＋ 堂課</span></div>
+    <div class="cover-top"><span class="tag">高二電腦 · 單元四 · 第 9 課（第十週）</span><span class="tag">感知與執行</span><span class="tag">5 關任務 ＋ 堂課</span></div>
     <div class="cover-main">
       <div>
         <p class="pre">NEW GAME</p>
@@ -653,9 +666,9 @@ select option{background:#1D1A52;color:#F6F4FF}
     <div class="sorter" data-badge="s1">
       <div class="px">
         <h3>情境 A：通話時，手機貼近耳邊自動熄屏</h3>
-        <div class="it ch" data-ans="感知"><span class="tt">距離傳感器發出紅外線，發現有物件很近</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">傳感器收集環境資料 → 感知。</p></div>
-        <div class="it ch" data-ans="決策"><span class="tt">系統判斷：正在通話，而且手機貼着面部</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">程式根據數據作判斷 → 決策。</p></div>
-        <div class="it ch" data-ans="執行"><span class="tt">關閉螢幕顯示和觸控，避免面部誤按</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">真正改變硬件狀態 → 執行。</p></div>
+        <div class="it ch" data-q="sdaq-3" data-ans="執行"><span class="tt">關閉螢幕顯示和觸控，避免面部誤按</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">真正改變硬件狀態 → 執行。</p></div>
+        <div class="it ch" data-q="sdaq-1" data-ans="感知"><span class="tt">距離傳感器發出紅外線，發現有物件很近</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">傳感器收集環境資料 → 感知。</p></div>
+        <div class="it ch" data-q="sdaq-2" data-ans="決策"><span class="tt">系統判斷：正在通話，而且手機貼着面部</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">程式根據數據作判斷 → 決策。</p></div>
       </div>
       <div class="px">
         <h3>情境 B：撞車偵測，自動致電求救</h3>
@@ -664,7 +677,7 @@ select option{background:#1D1A52;color:#F6F4FF}
         <div class="it ch" data-ans="感知"><span class="tt">加速度計量到極大的撞擊力</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">量度撞擊 → 感知。</p></div>
       </div>
     </div>
-    <p class="foot">情境 B 的次序故意打亂了：先想清楚哪一步先發生。</p>
+    <p class="foot">兩個情境的次序都打亂了：先想清楚哪一步先發生。</p>
   </section>
 
   <!-- P6 ARRAY -->
@@ -745,7 +758,7 @@ select option{background:#1D1A52;color:#F6F4FF}
         </div>
         <div class="qgrid c2" data-badge="s2">
           <div class="q px ch" data-ans="2"><p class="qt">手機平放桌上（螢幕向上），哪一軸讀數最接近 9.8？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">X 軸</button><button class="btn">Y 軸</button><button class="btn">Z 軸</button><button class="btn">全部 0</button></div><p class="why">平放時重力穿過螢幕方向，即 Z 軸。</p></div>
-          <div class="q px ch" data-ans="0"><p class="qt">手機正在跌落地面（自由落體），三軸讀數大約是？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">全部接近 0</button><button class="btn">Z 軸約 9.8</button><button class="btn">Y 軸約 9.8</button><button class="btn">全部約 9.8</button></div><p class="why">跌落時手機和質量塊一起落下，質量塊不會「被拉」，讀數接近 0。手機可以用這點偵測跌落。</p></div>
+          <div class="q px ch" data-ans="0"><p class="qt">手機正在跌落地面（自由落體），三軸讀數大約是？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">Z 軸約 9.8</button><button class="btn" data-v="3">全部約 9.8</button><button class="btn" data-v="0">全部接近 0</button><button class="btn" data-v="2">Y 軸約 9.8</button></div><p class="why">跌落時手機和質量塊一起落下，質量塊不會「被拉」，讀數接近 0。手機可以用這點偵測跌落。</p></div>
         </div>
       </div>
     </div>
@@ -757,13 +770,13 @@ select option{background:#1D1A52;color:#F6F4FF}
     <div class="row grow">
       <div class="col grow">
         <canvas class="cv" id="stepCv" width="760" height="230" aria-label="加速度讀數波形"></canvas>
-        <div class="sliderrow"><span>門檻</span><input type="range" id="stepTh" min="10" max="20" step="0.5" value="13" aria-label="計步門檻"><span class="mono" id="stepThV" style="width:120px">13 m/s²</span></div>
+        <div class="sliderrow"><span>門檻</span><input type="range" id="stepTh" min="10" max="17.5" step="0.5" value="13" aria-label="計步門檻"><span class="mono" id="stepThV" style="width:120px">13 m/s²</span></div>
         <div class="row" style="gap:14px;align-items:center"><button class="btn on" id="stepGo">▶ 行 12 步</button><div class="stat2"><div>真正步數<b id="stepReal">0</b></div><div>計到步數<b id="stepCnt">0</b></div></div><p class="small grow" id="stepMsg">每行一步，身體上下起伏，讀數出現一個高峰。高峰超過門檻，才算一步。</p></div>
         <div class="chipz"><span>加速度計的其他用途：</span><span class="hi">自動轉屏</span><span class="hi">計步</span><span>跌倒偵測</span><span>撞車偵測</span><span>搖一搖</span></div>
       </div>
       <div class="col" style="width:380px;flex:none">
         <div class="px"><p class="k2">SENSE → DECIDE → ACT</p><p class="body"><b class="a">感知</b>：加速度計量到上下起伏<br><b class="g">決策</b>：高峰超過門檻？<br><b class="ok">執行</b>：步數 +1，顯示在 App</p></div>
-        <div class="q px ch" data-ans="0"><p class="qt">門檻設得太低，會怎樣？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">計多了步數</button><button class="btn">計少了步數</button><button class="btn">完全計不到</button><button class="btn">手機變得很慢</button></div><p class="why">手輕輕一搖也超過門檻，會被當成一步。</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">門檻設得太低，會怎樣？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">計少了步數</button><button class="btn" data-v="0">計多了步數</button><button class="btn" data-v="2">完全計不到</button><button class="btn" data-v="3">手機變得很慢</button></div><p class="why">手輕輕一搖也超過門檻，會被當成一步。</p></div>
         <div class="px und" data-sec="2"><span class="ul">第 2 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
       </div>
     </div>
@@ -782,7 +795,7 @@ select option{background:#1D1A52;color:#F6F4FF}
         <div class="px gauge"><span class="gu">陀螺儀讀數（角速度）</span><span class="gv" id="gyV">0 °/s</span><span class="gt" id="gyT">按左邊的掣，令手機轉 90°</span></div>
         <div class="px"><p class="lead">陀螺儀量度的是<b class="y">轉動速度</b>（每秒轉幾多度，°/s），<b class="y">不是</b>手機現在的角度。停止轉動，讀數就回到 0。</p></div>
         <div class="px"><p class="body">原理（簡化）：裏面有一粒<b class="y">不停振動</b>的質量塊。手機一轉，質量塊會被推向側面（<b class="y">科里奧利力</b>），推得越多＝轉得越快。</p><p class="small">好像在旋轉木馬上向前拋球，球看起來會向一邊彎。</p>
-          <p class="small adv">進階：角度 = 角速度 × 時間。例如 90 °/s 轉 1 秒 = 90°。手機要把讀數不停相加，才知道總共轉了多少度。</p></div>
+          <p class="small">角度 = 角速度 × 時間。例如 90 °/s 轉 1 秒 = 90°。手機要把讀數不停相加，才知道總共轉了多少度。</p></div>
       </div>
     </div>
   </section>
@@ -865,7 +878,7 @@ select option{background:#1D1A52;color:#F6F4FF}
       <div class="it ch" data-ans="距離"><span class="tt">通話時手機貼近耳邊，螢幕自動關閉</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">量度有沒有物件很近（約 10 cm 內）→ 距離傳感器。</p></div>
       <div class="it ch" data-ans="環境光"><span class="tt">由室外走入地鐵站，螢幕自動變暗</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">周圍光度下降 → 環境光傳感器。</p></div>
       <div class="it ch" data-ans="環境光"><span class="tt">按周圍燈光的顏色，調整螢幕色溫</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">新式環境光傳感器可以量度光的顏色（例如 True Tone）。</p></div>
-      <div class="it ch" data-ans="距離"><span class="tt">感應器自己發出紅外線，再接收反射</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">會主動發光的是距離傳感器；環境光傳感器只接收光。</p></div>
+      <div class="it ch" data-ans="距離"><span class="tt">用膠紙貼住它，通話時螢幕會一直熄滅</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">被貼住後收到很強的反射，以為有物件貼近 → 距離傳感器。</p></div>
     </div>
     <div class="px und" data-sec="4"><span class="ul">第 4 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
   </section>
@@ -906,9 +919,9 @@ select option{background:#1D1A52;color:#F6F4FF}
         <p class="small adv">進階：3 × 10⁸ × 20 × 10⁻⁹ ÷ 2 = 3 m。</p>
       </div>
       <div class="col" style="width:560px;flex:none" data-badge="s5">
-        <div class="q px ch" data-ans="0"><p class="qt">激光來回時間是 20 ns，物件距離是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">3 m</button><button class="btn">6 m</button><button class="btn">1.5 m</button><button class="btn">0.3 m</button></div><p class="why">20 × 0.15 = 3 m。</p></div>
+        <div class="q px ch" data-ans="1"><p class="qt">激光來回時間是 40 ns，物件距離是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">3 m</button><button class="btn">6 m</button><button class="btn">1.5 m</button><button class="btn">0.3 m</button></div><p class="why">40 × 0.15 = 6 m。</p></div>
         <div class="q px ch" data-ans="1"><p class="qt">物件在 4.5 米外，激光來回時間大約是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">15 ns</button><button class="btn">30 ns</button><button class="btn">45 ns</button><button class="btn">60 ns</button></div><p class="why">4.5 ÷ 0.15 = 30 ns。</p></div>
-        <div class="q px ch" data-ans="0"><p class="qt">公式為甚麼要 ÷ 2？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">光要去再返回</button><button class="btn">光速會減慢一半</button><button class="btn">手機有兩個鏡頭</button><button class="btn">數據分給兩顆晶片</button></div><p class="why">量到的是來回時間，光走了兩倍距離。</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">公式為甚麼要 ÷ 2？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">光速會減慢一半</button><button class="btn" data-v="2">手機有兩個鏡頭</button><button class="btn" data-v="3">數據分給兩顆晶片</button><button class="btn" data-v="0">光要去再返回</button></div><p class="why">量到的是來回時間，光走了兩倍距離。</p></div>
       </div>
     </div>
   </section>
@@ -951,7 +964,7 @@ select option{background:#1D1A52;color:#F6F4FF}
         <div class="px"><p class="why2" id="coopWhy"></p></div>
       </div>
     </div>
-    <div class="q px ch" data-ans="0" style="max-width:860px"><p class="qt">要做「手機跌落偵測」，以下哪一組傳感器最合適？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">加速度計 ＋ 陀螺儀</button><button class="btn">環境光 ＋ 距離傳感器</button><button class="btn">LiDAR ＋ 主鏡頭</button><button class="btn">咪高峰 ＋ 指紋傳感器</button></div><p class="why">跌落時加速度計讀數接近 0、落地有撞擊；陀螺儀量到翻轉。</p></div>
+    <div class="q px ch" data-ans="0" style="max-width:860px"><p class="qt">要做「手機跌落偵測」，以下哪一組傳感器最合適？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">環境光 ＋ 距離傳感器</button><button class="btn" data-v="2">LiDAR ＋ 主鏡頭</button><button class="btn" data-v="0">加速度計 ＋ 陀螺儀</button><button class="btn" data-v="3">咪高峰 ＋ 指紋傳感器</button></div><p class="why">跌落時加速度計讀數接近 0、落地有撞擊；陀螺儀量到翻轉。</p></div>
   </section>
 
   <!-- P19 SUMMARY -->
@@ -987,7 +1000,7 @@ select option{background:#1D1A52;color:#F6F4FF}
       <div class="px gold gstat sonly">
         <span class="gs lock" id="gateS">等待老師開放…</span>
         <p class="small" id="gateHint">老師開放後，這裏會自動解鎖。如果一直未解鎖，請輸入老師給的開放碼。</p>
-        <div class="codein" id="gateCodeBox"><input class="inp" id="gateCode" inputmode="numeric" maxlength="4" placeholder="開放碼" autocomplete="off" aria-label="開放碼"><button class="btn sm on" id="gateGo">解鎖</button></div>
+        <div class="codein" id="gateCodeBox"><input class="inp" id="gateCode" maxlength="20" placeholder="開放碼" autocomplete="off" aria-label="開放碼"><button class="btn sm on" id="gateGo">解鎖</button></div>
         <div id="gateMkBox" hidden style="display:flex;flex-direction:column;gap:8px"><p class="small">當日沒有上課的同學可以補做。補做的分數按<b class="g">百分制總分扣 50 分</b>計算。截止：2027 年 2 月 1 日（台灣時間）前。</p><button class="btn on" id="gateMk">開始補做</button></div>
         <p class="err" id="gateErr"></p>
       </div>
@@ -1006,16 +1019,6 @@ select option{background:#1D1A52;color:#F6F4FF}
     <h2 class="t"><span class="lvl boss">A</span>傳感器配對：每個功能最主要用哪個傳感器？</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
-      <div class="tgrid c2">
-        <div class="tk" data-t="A1"><span class="tq"><span class="no">A1</span>手機由直放轉為橫放，畫面自動轉向</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A2"><span class="tq"><span class="no">A2</span>用量度 App 量度房門的高度</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A3"><span class="tq"><span class="no">A3</span>在猛烈陽光下，螢幕自動調到最亮</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A4"><span class="tq"><span class="no">A4</span>拍片時偵測手部細微轉動，用來防手震</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A5"><span class="tq"><span class="no">A5</span>通話時貼近耳邊，螢幕自動關閉</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A6"><span class="tq"><span class="no">A6</span>運動 App 計算今天行了多少步</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A7"><span class="tq"><span class="no">A7</span>在昏暗的餐廳拍人像，手機仍然很快對焦</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A8"><span class="tq"><span class="no">A8</span>手機平放桌上原地旋轉，遊戲角色跟着轉身</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-      </div>
     </div>
   </section>
 
@@ -1024,14 +1027,6 @@ select option{background:#1D1A52;color:#F6F4FF}
     <h2 class="t"><span class="lvl boss">B</span>智能鬧鐘：每一步是感知、決策，還是執行？</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
-      <div class="px"><p class="body">情境：晚上把手機放在床上。手機在你「淺睡」的時候才響鬧，令你起床時沒有那麼辛苦。</p></div>
-      <div class="tgrid rowk">
-        <div class="tk" data-t="B1"><span class="tq"><span class="no">B1</span>加速度計量到床褥的細微震動</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-        <div class="tk" data-t="B2"><span class="tq"><span class="no">B2</span>系統分析震動的規律，判斷你正處於淺睡</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-        <div class="tk" data-t="B3"><span class="tq"><span class="no">B3</span>在設定時間前的 30 分鐘內，提早響鬧</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-        <div class="tk" data-t="B4"><span class="tq"><span class="no">B4</span>環境光傳感器發現房間已經天光</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-        <div class="tk" data-t="B5"><span class="tq"><span class="no">B5</span>響鬧時，螢幕亮度由暗慢慢調亮</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-      </div>
     </div>
   </section>
 
@@ -1040,12 +1035,6 @@ select option{background:#1D1A52;color:#F6F4FF}
     <h2 class="t"><span class="lvl boss">C</span>LiDAR 計算</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
-      <div class="formula">距離 = 光速 × 來回時間 ÷ 2<small>提示：來回時間每 1 ns ＝ 距離 0.15 m</small></div>
-      <div class="tgrid">
-        <div class="tk" data-t="C1"><span class="tq"><span class="no">C1</span>激光來回時間是 10 ns，物件距離是多少？</span><div class="tops"><button class="btn">0.75 m</button><button class="btn">1.5 m</button><button class="btn">3 m</button><button class="btn">15 m</button></div></div>
-        <div class="tk" data-t="C2"><span class="tq"><span class="no">C2</span>物件在 2.4 米外，激光來回時間是多少？</span><div class="tops"><button class="btn">8 ns</button><button class="btn">16 ns</button><button class="btn">24 ns</button><button class="btn">32 ns</button></div></div>
-        <div class="tk" data-t="C3"><span class="tq"><span class="no">C3</span>LiDAR 量度 5 米外的牆，激光來回時間大約是多少？</span><div class="tops"><button class="btn">約 17 ns</button><button class="btn">約 33 ns</button><button class="btn">約 50 ns</button><button class="btn">約 67 ns</button></div></div>
-      </div>
     </div>
   </section>
 
@@ -1054,12 +1043,6 @@ select option{background:#1D1A52;color:#F6F4FF}
     <h2 class="t"><span class="lvl boss">D</span>短答：用自己的文字</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
-      <div class="px dbox"><label for="tD1">D1　手機平放在桌上，原地轉一圈。陀螺儀有讀數，但加速度計的讀數幾乎不變。試解釋原因。</label><textarea class="ta tin" id="tD1" data-t="D1" rows="3" maxlength="150"></textarea><p class="cnt">最多 150 字</p></div>
-      <div class="px dbox"><label>D2　選一個手機功能（不可以用「自動調光」或「通話熄屏」），寫出它的感知、決策、執行。</label>
-        <input class="inp tin" data-t="D2f" maxlength="30" placeholder="功能名稱，例如：……" aria-label="功能名稱">
-        <div class="dgrid"><textarea class="ta tin" data-t="D2s" rows="3" maxlength="80" placeholder="感知：用甚麼傳感器量度甚麼？" aria-label="感知"></textarea><textarea class="ta tin" data-t="D2d" rows="3" maxlength="80" placeholder="決策：程式怎樣判斷？" aria-label="決策"></textarea><textarea class="ta tin" data-t="D2e" rows="3" maxlength="80" placeholder="執行：手機做了甚麼？" aria-label="執行"></textarea></div>
-      </div>
-      <div class="px tonly"><p class="small">D 部分由老師評分。即時面板「堂課」分頁可以看到全部學生的短答。</p></div>
     </div>
   </section>
 
@@ -1082,7 +1065,7 @@ select option{background:#1D1A52;color:#F6F4FF}
     </div>
   </section>
   <button class="edge l" id="eL" aria-label="上一步" title="上一步">◀</button><button class="edge r" id="eR" aria-label="下一步" title="下一步">▶</button>
-  <div id="nav"><button class="btn" id="bPgPrev" title="上一頁">⏮</button><button class="btn big" id="bPrev" aria-label="上一步">◀ 上一步</button><button id="pg" title="跳到指定頁（G）">1 / 30</button><button class="btn big" id="bNext" aria-label="下一步">下一步 ▶</button><button class="btn" id="bPgNext" title="下一頁">⏭</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
+  <div id="nav"><button class="btn" id="bPgPrev" title="上一頁">⏮</button><button class="btn big" id="bPrev" aria-label="上一步">◀ 上一步</button><button id="pg" title="跳到指定頁（G）">1 / 30</button><button class="btn big" id="bNext" aria-label="下一步">下一步 ▶</button><button class="btn" id="bPgNext" title="下一頁">⏭</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv" title="進階模式：多顯示公式和計算細節（按 A 切換）">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
   <div id="bar"><i></i></div>
   <div id="toast" role="status"></div>
   <div id="jump" hidden><div class="px gold"><div class="jh"><h3>跳到指定頁</h3><label for="jumpNo" class="small">輸入頁數</label><input class="inp" id="jumpNo" inputmode="numeric" maxlength="2" autocomplete="off"><button class="btn sm on" id="jumpGo">前往</button><span class="small" id="jumpTip" style="margin-left:auto">按頁面或輸入頁數；按 Esc 關閉</span><button class="btn sm" id="jumpClose">✕ 關閉</button></div><div id="jumpGrid"></div></div></div>
@@ -1106,7 +1089,8 @@ const TEACHER=false;
 const FB_CFG={"apiKey": "AIzaSyACrOYiSzMt3rqknfvJ1Ehnm56cDpnoZ5Q", "databaseURL": "https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app"};
 const TASK_KEY=null;
 const TASK_CODE=null;
-const TASK_CODE_H="e2e794e8";
+const TASK_CODE_H="";
+const TASK_ENC={"s":"Aa3IEEKVNExJBZTrsMVE6w==","i":"qDarit+cpKRJ323s","n":1000000,"c":"MgQusNyksUWVpQiMZGzW8WDx1IDRyDjoSXaac99BLTESBxNQtQmLJVpmcRlMe5/EzRGmUbc60YB+s0Ahv1IU1J1cWctgH5o5Jh+Z1wlPZTjIhLsQNTVSvczVfHKSUS0EnLKesfoEkg9019FtoreVKVW6pBN4xlmk2Mr2C+BfKQVbO0aeZc9+z3oa+8wtgO0MDUjKIAhR0wmXtCR9PY/AQMeilp2BileqbpGRju6x0fw4YNq1X9jBLnlkbglMMLu0qiBJHzVGZick4aMIVgIPEzTHMexzmh/S5t5LbZaOhh6bk9ZGy4Ck10AdU99qscW+6cWwX/I1Wnmlp1la1yWU7RWvLA0GlxoOe/7G9jyWMyxXvNygSPTUCbux7n6AqMPNPO01OBHJWNsI5khv5hFDf+cxP5cDVEo8y7Qd8pD1ebGI+kE4ThwuCoSFRonVkKT3NVgADhYr9PXnACS7IU2fW0j5AXK3WdRLlDE5jef/ewAWca+07G+mJYmPGgU1Hi+kKEN2fui8RO+5ENH/g6zmJ87qOSuo3VYC4WIWdiC8mXDqriVEnF7puPRnJE1ICgddtPVy61F8BZ6IwBmVO9R2UDFy2W/+XpfM262Uqc3A114VIkEvFPaytoSmeMcBEZOcgaxxc7Rs4cW33jjXF4tmNAzNK597EHqqNLi3xp0lEWZYwZne0gYXoaacMv0LxO5gewstzTtX5BBVfIjregI8xaUCXiJZsqdOLuitJpvSCj8OfFF4Vm+RP3Y7b1tN9aXGtstPyfbgHDS0SYNpwlQYsFriYfuYJtDsQWEDUxCcW5OCRFrHEjblAJAzkFXHZNCBLgfrPFK2qDjrR8ISjSJ8ugFH/x5u+y9lrvbcttTbGnGHH3wxRRx9QrKGssd9f5b4qELbb7mW8LrV3N9fo6YvZQx2VnPjzswepuqhuvCEqvdvALmdZZLuT55XY9gO3KBDpBabEjKtkFLDGrmDivL7H8+n5cal9I2v87qIvj8btne4TpPHOvqKWyL/SueYzNfYcb1FAnVEIpFYSDIH8XWDyU2Md2GkHcbfdi9mTHxWTU8iFFbi3PCTmsZGvOoqzyvheROUYLvmJXYmAHzVfwXLusOEWaEKYvWfSSYG4QYFncne/+leCAFloEfMFsYOclMCL9kIH/GpUnDTqZURnm0ENgDBg6vY1RIOwaTk/0wmn655MQ2XGhh77aaeqCnLQbV2dIXw//MPBSWpoecFXAAit6SJq3ELL6GRxGY0jk8S8oyYwuBZ8Dz9yEm0o3WF7UtX0oSNRBE9sggo/UuXQPAcT6yptCqaFFC2OaYo+lbbsTsGy3FvNwhwtQX1CG81PqqtTUW6xYDgSIrRpj9JjR2ShxbCQsbVmUna1vbcNbAVZTDZVTxtfG/MAG/5L/hK6masartW7+3AprfeimBSvzHJdyIx1se6gr7apk5b4t6LyB+laZTecvZD4+iLElkzQdsXAs1XUMVHYM2HaCoQ1kSve7AudoNyWmdAreZAt5TSpu2hknxogpuRmr1mvE+6Qi1uxSGTflLx9nrrhR2hhEyXtr1havqujxCuC8h5tLX+LBUeGVcfmFeC3PS3MIzZwNG98Del6hn94X3lgu/2TNf/u2fqzpDZwy/ktiVilYh5FC38eUpMUmO14+gfmAwbA2trD8nb36TTSLXZooLjdhEjYyckgkYUFnKQRFLh0EHLdCAD7sT7KW3W+lFaYMcYQ3DXWmGsJOywsVQHdKeDSeYDAd9vgzlBfXuDEw4OHrKwqsP/h3JyaPu4pP8WF3YqEwPLJ32Jvae12j2/Y0X2DVRFu/025Q1tSpz0gXfDaLdFHI9qlx3fAlaKPykNdg8A7Uzcn1tDv1G63ijJfy86iNLwpqOwrQ5g7ST47wwR+yJhnmi/R4oOcn4MRPPuBGSVNmNpNa62XSOXTsBflPStNVfJoBr35R8MPI5pa1bQaUGV3xX/4tWer2jNvOoa7qe+d0CkYMwQAiPYpnRexPmdRdXfMLegZAEc/0IGz1o0c338/5OIQYGrJ4kv66zfaUhgA1uEiZIgeG2ryIYAoeUTYI1sqo+Yr8Yo3VroKhm0D8lC3XK0f+x2Hrs/NCFMg8W8tknix1q9fWTmEVQ0NTF7fDDO9xwMpPxXlgrNrdBCc5wTj2KT5mCRS/LtJxOh+/bYzuWBooho5hphMqPj3mh5vPTv8ck8thdIZ4NVtSu6df76UbdBF9H1BbAbA4sjmJoK9Oz2tAwlVobNLOEi+GhYpf4fEArZqIFAndlQ9zlOY084lxbmFXSCmIMBJZs8pmL0xyXkhC4O6k7rRUGnkny+f+/xW0S9uMKYnfQ4Kd0FXCdyLhpCrIeJ6dSfoPh+Hqrr3Vzx3hq+wFxHFVfHSNoqqgcLyrlkuqFdArj7VjcuaHY0A1u4zr99wWpTaRTVSm7raCBTqLNfHBopy6C2jXtkpVvbHVimS+s2euzRseNcPRbjRYZkQwsUeCt26FzAciEu2ux2M5ZZV/OX2FlLR3ci9+3TfXDSrtYwVmdFaW8vjmmE49AkSFT1amSHcYBvTRQMYLcLorz99pNiISBFSLdnQZNSGgg1RUyXn22gZWxItos0DYPoeqUjpk0rcAq/KTJNiOLfe0YDKsgKCY4Z5wK6sHLmq6I3XtYObOVw61Z8McSg/gjN+dSvew6M2p09ATj+UIGI9oqTo8txDZJtJyRFSh1gGqi9NzJlNF1sGibUW5h/P2NRPSTcqJAZFtmg4RXWCJNs7MIpi+P30+xU2R4kn0ArpMbs40beWgQAEdzr7TiaC6M3dQXq/FFRK+mtzxEkOWsACluAG6lm5fEViVGErP8QDM2Vx7lZkLZa/08HqgD7g88UC5JZoPxwjhG6lIVSBimdY18P1Nr4wOrTEC3MK2dB147+qExBkFFoHaL/PjcJK5KtiANexiF9dvQ3ftG1rQEIuxPRH2P7ITi8spCcNrQrXXTlaq8uBcmPIoLQOGm97y7FXhL0PS2vRs/D2vMAiqEojfjj9u/FLAU2nSS1CxTrGajugl2UAhcdiAf9ox1TpvRUoGYfrQ9947fV1CFqX9vR4N3SWxCrI7RK6+AVtobyAEj5uvH3A8rycSyH1mu/PCOeyXO0mHgroOWYLez4kDkkHmfwW6XY4A4an9k2a12YFvr62RW021PyBA8cFXktCTRyESujvPhF3twrtoqHy3cRrwrFmhISVwpZkOyi5YkbT/8cK10T3kZlFqeqyACMy+LJqvNENMElLkOukVMFICeKvoO0u+1wvt89ur8yfEMyOloyuFnEaoiLsNAygxOCuu05TXqgpUmXOOidANJkOR06n344CQlumOhreQR2jPQkMdGWY4NOduPtNTvNoB6HrjrDqJldgpET16WIl14f8rq4MP74JYuXHCaCLnzrncFh9FSuQA/P8yfBfbPDtgD2Mruh+FfCaa2adchjNR0jvTtsEAdJseVQTANhmKshZL1W5NML25cdjPblg9uMDEnWoCIUfxFBB9PtVSUz62VE4ihqtCNB/ii5lR6wX1xCNnZVQHBCvs54KqtBGul9WyKxS7ZJ6zBlYjJHZdhH0qAFzyZCdZj+DB4gZa5PeoO/AHOjl+U4pV0rTjsQtP4gEoGwlMasFpjNZiZ31ZHfLe8a7F3xHy9sJXy5jmYBg9FsCjLenlg/746W9OQ5jAQBxZWA6YV7uh/eeDcAh82QFwoCXJYd0ez9hkXgBEV9HCMwolY0mNcn4IEyfGOp7kUmS7fnfhbNUVmV5AEXbNaPjp6aLalaeu6lbtM7ZEGTzPjCS1JfVxtV2yO3IfLeeSjEgYjNWnpNxUXKevuATx3N/yG2aUgKnchfoVSap5s/Yh4aQBInDxKU7/E+FG9P/hnsE00yRTKTuCarr0rtNxhpoW/wpdwH3oxeGSj6a2RSx/VevTHzlQcyU6HlqzDZby60/u1bQLNmzvlk5DOLggRr6AvhVBu6nJoqTOkmluz39JvWZZ3J6TDNiboRl8K+gysqW82CDydlOvTESODWeFMZK4Vpxqyjps4CKhc90ej7mHRxvYPQUxXw6pznLF5VWFnxKMvh6r0HgWqtMQ0rQBijzyxT6h43Hhn4jCj6845Ryc+X3fGsusr8J8AhwYO8HOh+48lP6hbsMGy4//f4VTTMi3Azff+VUmdKdBy+iO1MXANC46SUPAvw10/N2DsV0hJszVGBTrGb9en9ul9UIIIOjtEswYsscew2+7MKp0e94atvWuup51ay5pXT6TOSCQvF5JLnyAMU/kLD2CWyH0NFM0V/ClA+D7stY+13NanhZpym50GcICRqWBn/oj8O++CVhkDvF4n8SWIJrhRo4YkOHlLZCLJ55EZf+FraD7zIUAkQTkHnFCsOCiOFeCczlA1qukbzHycUGY/a5r4qlMIXXp8lhYB9p8S3nQgRkdVCJGUbl4M6FEaeCZVfkoYW2VuuPXKPmMYWL7FAasLk5WQXGG7ahNuU4b1TeIkmRXYt5XBTefSyL7ZrM6V/uGlSQADqAzGvYPar5Mb1L9sgnZC6CnfhT6UeGJujaMsiQs55oFS75kARwmKy9KrTsJXE32qhD1+aON3RGMiaam7WnxYj52zyMqnWwq30iwiWUTg5fnAjNAbFQn+a3xmgn+p+Uyyz7e9I96/XkIEJF5M14bdfDGSD4cKHX8lBZnb/x1F4qN9VLLmVQmbdQxYN0DwW8zleilRImKpwjZjJAPO8BiQ4tgbxXLDvn6W/Ej/MJvHg7lrTFbA9HOY4TZi+phi/TB/+jdCfVmxfAOQcxJpUE8NSbDtb2bov9Rf9NMFBjjc4MDB7qKGxrH2kyTf7hIZ5rx2b8p+GDF6XCF6ZiOoLUwqTvt0zbE6JtfQ0UMfBSCm8AoLUdgaUc2HoRZvZPdqDM7Mx9cZUhqkeJ2l7qfYvye53nxQ3JwYCXzNUPaowS0upkkPvag6+LPXqPQ2aREDGom+yTRN3nDomQ6QMs9qhqIepVZH5O7CsIYY10hBSL/eW2u0Wa5RYZCJXlXm/kmZ/66fw7d7WV22WetV8TUzjNuuX0EMU/UXVQsYJivQEYtJHocpNhWZk4b6EExbmZTTRyj96eTy6J9yOFIfXG+vK4KSj1SNW2VZk/m1i6UNX9TX93RNxFv/nUubdpmUcj1w8C2IzTbIuzxXp2xx3HZbk9ExMAr9BhYgjWBbZyQbraYCtPwxBLqv7lrBkjCulO2RmPHdaZd9H/OR4CJRKLfGUchZQvONavxzQxAiwwZ7bJdz621ddORSBlWWCl7w6zKOYuCTqXniI2/PzAR0jX7OjGhdDnPaL2VXW/wyNIy1IfLUarr11NqRzuEeRIPs3rdtTAG6oHFdV/R9V9RCG3KdBnKYdLGV6aUStbDyPCPuKXqoOMNMYFnidxnQjkNQtUMw6+ZeDn1Mbrz4bWG0kW4UH8vDK8nE6ILXybZOawUmIWXcVXb84O7G2YkL/dIF/B3PogZUp9PWOa2mEQJKvmARrynQX0YSUipvzwWCgRVQ6LixJ8lcwfAZrXjheVo+wAwaqsesxw/1yiojEuwLKf0aUh9uwSbjI894WU8r7KyTphylDQjf/OsgiAKhNBYFfp3Qsy0BzY70dh5VUci54bE9QspuA/xssYqY/eo4l+sOMXDs4gCbzchdDQKn1eAGBG3Xfj5XU+v+QECMvIcoE6PSCTq/QNhortyqHVKZSn4dSGfSN7kar/ESzkv3pVvq15mSYdW0vV3oPEMfVSOSEV+vkCeY8bVBpgMDILlMWnJZQWWMNVUN1mXQbInKYukxQ5NWzuDm4k1Lt8Us15DQcR9Oc1sqBZrYoFTLF/1+e4EPkuzha3Z9E06vVk+JpKh5T3MR57INa3qtXozDwDOmH96y5cKqjyRLV9LwfJ6veLviNfnzpptxV6rDYr6ircO4IqIcQjAJJfwdSSCfhLJ021cSDJ8n4IylBAMuYmpwq/Oh1CPJZite06MwwFxCdrzDeMdmkcWbVxp51ZUKlngJyoUfhDPBW/ij5A07bMvm2HBqkny6IdrSqnyOnz8FKlR+Vpmb8sEze3vRQOE4WtyEbBktaZbEioyR2uFGOrnxSHWN1HVqqApRjj+XfIQlBf9d+pHV0C3VnJIcoae5RsVMBckmI/n7H3A+g3Ec/7UhCPLNv6mjxaYTq7BgboshU/zrnqDWR1WxkXn+LqPuyfW/4DnHTcYOMoZbq0zb8tgOkalSL9motLRMZy+uu4Ydgp8w1tv6svnTlQHztUL6KGX7/zAZJVnN60yOiDzdxaUq/6SvYBz4IQy3JUL2Ba8S2c4MPRR4TItP2SR0acQnTLnQgtc4lEq6jy3K0s0AdfXPvTCHxrGAblYHEG7fWQOCc60Ianxe4hafqi+yG1k1boslSA5b2sLmNcWEvuAG49MPGObxtRo7WzQcaDzFYlfVnamEBNtwDizl4M5CDD1oNJs3O59ZYBETAy0YHx3aVRwcVqrnvdHsoywD2EL1y5Q9JqnthznvVAfk9hMGknCBjiPeXNHmbprXhOtF0RADP6oXbhIH6PAF5cuussN9zJ54MigPgjE9y3ZNENx6wHBGKRp+11xnvC/0nf1NPKYsGKhDFZZYSb7suEU3Ui1LOJwcLeOHlVuQPbo9d6ZCQ0OOpnY68a5P1u2PE5bh5WFbtj7TpSbqDaCQBnmlkyAKcYZidX0qHCj3V83wG4yhYO6n4vJQCSaMemNsZLvrooerLPGSqCscKHXkuLCo/kXpvphevF4topncz56NLDZ+q9P9KCgxLk3Wondc9Ltk8lhRGXQnutq3YqAPY38ZFqCbc9SCIW6aSz66Haom5CjwQpYlTm3qcCKs5i0NHYUPzWLHX89M4/LeEiIM9QLV/4m71YrA73PsjcufUCD9TkM2vakoKqqRkP25TaY+xb58IufMbRZoH0kIX2Xh7MbxAHLePcIQKm8KyTIMAayaD+rECb9Gb8zET08XRTC0zB3Vp3GU4yjp0zmDbTSgmMh08E4JQArOh70DGqtzGXdxq8nU8wIvkTTg7UStRjo0P4Nq9Ae/abzv53zoyVhCwZMfO4YzhzOYuOpk6xBdFXPLmYZc5pCm44Cj6VVQCzzSKUF1F1b4xiufudPYVFzL8oGi4jNVScybP22T1p25TZRW24raePHaVouc4db7tK1o8mAF0U1LJ1YjYbADG+LewURHlkmqLCXV9S0iTYZGV29bmSXkHiiI0wxD4FlFcNYfT7+NoAxa6Rqq2jcYulL92pisxDkGUMopYjuMvDj4Oo5aeKInCktItZBpN8AZ4jVFjnwK7VGYMRglpvL9BhrQnsuaHIwTW5Bsjn6NNsS/JMmdTeQrXmPRq4ZBwptrhO/+5HqWp5i5bm7v5tjxMYh41Aet/lTzFxFpvF5OlvPfSfJNpX+gkNa4DPv5FAmXlFGaYj0Rsf0kIAVGtj675+6H6+QNjLls+BbFXJaT7x0AqnSPhx1h1y9FMqTwdEq4LMQiOu0lVMY5KD8MuvwC4mBG+QclDVCoU/7n+IkohvTE9XDzUDpN+fknBBzSmFDVugKsSdDh5G90oyD/keWPyeZrgiMhtzi4Y0D7OgJfIVOWyoKzEm4SyQjeTlj7Nj9Sh2qEcEeRwG0dlYrsq51CtqCG0aiCmVZXLvYVqtQmzUUNtLtjFXRqrU/0m+LOTO4FViWO/v+TOw3/f8jv/QzRFP1i34pKBsI82KLKmvqu0gS8Gpq7NMft8q4qk8t+novIzQRok4o/DkbxbIX9Kvjg6W0W+0WaZbG/gR+sbp36ynHPMV1oQEj+PgJ9exDQDW0nTe/5TeEBgaBwFZpsqS/8dL3dSs3bbT3pd3YXsah8u0rDZUJH0C7Ynd77upI+aKKJmcakUyp3hixRnB8vgVtfZrxYLkWYq45VYh5vLtL6fN0XxBLZ53/mBnjaipy1jlNNxKdz0WQFgzikObOZvYaqAUfoBZASuhSNaN4mfVM4MS2iQhNnS9WZX+yNzgccDQzFcWCPSPGFzhJRkppiyc9klr2wtvqvJbOFOnm7zkKCEindLPA9cC+RZRotnfI1TEbZEUVfJh7sWJfM6zq/lEx0TVGRyQLbxjl7IQdDHs7gcGybdVL+Y6W7seEGSRnvn24LKXx0tZ9joyIIl73IQAng2cuH9EEDn1ggLKiAS4j2l+52Kihk5GaNo0dK6SS75htYlkd8BFsJVycuGcSILnm9BLS7daaypvpLIih6wXmBvoo5xQzCRvrheOoyfez868ofsoc7ErFe7yN0RiBE1tnWSCpokFdqTGeO5welt+b6funUlOTH+lHDgNLkk30GTcpNGB+HBqVetT7JZMz5e5tGTSZj5djhv8ViZvcow4evEcpld3fwXLGZeLW62lfMa872eZYjGJvPNaKEpxmSlB/EDzatY9l/hMeuJJ5LWn8a2HaMV0A3TXkD09iON3Htjwiw2TLb4UZNYE6q2TEkx7jhwzKm93YlEHjWQlRcEb8nqqpMrdOc/9AI199zp02a9w2JpF42wa6cr7oLbZKaQqBXRImFHcyZwKFjsVX4csSPwkOXVw6f66c6rRBkiY0baSi611xrmcfOPCdADz+SQa6Os6LsJRElCqGHiT8xUBQWSttFLPN0LAJik1+N2FarmkyfD5RhsEDK2/nfsoqJcwWY6I9022XVBNIVl7eC9wfzbfDXuI98TyUS895jfGL2v/06jbZgdHOCWhiCtKHyKbWMSOSpTqlWuFYZ0c8GLqhbCnBbR20NjtveB0wa/7Kc1OS+9HCW6I0D3tTeXJ10zBWG5FrqkeQzUP4fizWP0bMRIvt+sVvxev3GQYQi3TqFT7cadfmGJTMowhMImiEldkOy32vaadHSEFo5y2anK4sZVCJQ/Frzb5u3Tnp2y0DsC7zinrkMw+j/W3FLj+ejjEGPUqM5p7HZuQQlMOtDACrsJ5BRtcnroTONU03xxsVb9Vxpki+A5OomBPIXyybENCpyyRjlObZ3M9/n35sVvNBlut3Cx+X1n8GZyuzvuM2F89fcRH6v2qjauukX9stKvnMqcCkgxUgbJ5dgRywjlX5csax5gH3VGEKZQIgAM8ORgIRnjzre1r5mV7cThwjTjaciJfpGgNbCZzXYM7VHoG1Jzea83y+Z+speVITTBpiVtZ0MuYRbE7LjkfyRJcai4abBrLr/of05OMdc14P2z8CFEJ+1qdz0J272XH8csiv8a02RI/rUU3d1IPR1AV+az9LlC3NV6+4jTl0fUaEDwoRtoi9X8k+72qThsjzO+FbWWB0N/Dfs+AQFeV2JLZtpSK5rjf4/e86pA33zRnOt7Vlq3ok6wKKhQv6okMW2RosKKOp3YdSIuMeCiM060GwckGlVblMQ7VnvjJBkguIOxBHivXSNV3gd4wooTV2pppYb2nx9Z+k/LRMsQC4VwUp4oZZN1Y0Jkrh7d69+BW7WZV6wl1qPFMHYkgkIg4iqqaoGOWPjX5toRJ5TN44R/6DMOKJMCZuo4bXexUE2yX0mRwIKy+yjikKjBxBDwO1PD3mPiRwXlPxtZjwYj/ZmhxzXxUjXKyITA3ZmVJGrimKjMrczy3GFw5tbK18jbhEZFJJ8I2A8bIs+CusYNFZAcPEH89zRXBN65OPmMmTDUDv0ACsa22FS0Q85a"};
 
 /* ---------- lesson data: week 10 ---------- */
 const LESSON='w10';
@@ -1167,7 +1151,7 @@ function burst(btn){ const box=btn.closest('.opts')||btn.parentElement; if(!box)
     box.appendChild(d); setTimeout(()=>d.remove(),760); } }
 
 /* ---------- practice items (.ch): retry until right, first answer recorded ---------- */
-$$('.slide').forEach(sl=>$$('.ch',sl).forEach((c,i)=>{ c.dataset.q=sl.dataset.id+'-'+(i+1); }));
+$$('.slide').forEach(sl=>$$('.ch',sl).forEach((c,i)=>{ if(!c.dataset.q) c.dataset.q=sl.dataset.id+'-'+(i+1); }));
 $$('.ch').forEach(ch=>{
   const btns=$$('.opts .btn',ch); btns.forEach((b,i)=>{ if(!b.dataset.v) b.dataset.v=String(i); b.insertAdjacentHTML('afterbegin','<span class="lf"></span>'); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); });
   let tries=0;
@@ -1188,8 +1172,8 @@ function segPick(id,fn){ const seg=$(id); seg.addEventListener('click',e=>{ cons
 
 /* ---------- P4 sense-decide-act ---------- */
 const SDA={sun:{s:'環境光傳感器量到約 <b class="g">50,000 lux</b>',d:'周圍很光 → 螢幕要調亮，才看得清楚',e:'螢幕背光調到 <b class="g">100%</b>',c:'#E8F7FF'},
- room:{s:'環境光傳感器量到約 <b class="g">400 lux</b>',d:'一般室內 → 用中等亮度',e:'螢幕背光調到 <b class="g">約 50%</b>',c:'#4C8DB8'},
- dark:{s:'環境光傳感器量到約 <b class="g">1 lux</b>',d:'很暗 → 調暗，避免刺眼和浪費電',e:'螢幕背光調到 <b class="g">約 5%</b>',c:'#0E2A40'}};
+ room:{s:'環境光傳感器量到約 <b class="g">400 lux</b>',d:'一般室內 → 用中等亮度',e:'螢幕背光調到 <b class="g">約 60%</b>',c:'#4C8DB8'},
+ dark:{s:'環境光傳感器量到約 <b class="g">1 lux</b>',d:'很暗 → 調暗，避免刺眼和浪費電',e:'螢幕背光調到 <b class="g">約 10%</b>',c:'#0E2A40'}};
 let sdaK='room';
 function sdaShow(k,anim){ sdaK=k; const o=SDA[k]; $('#sdaS').innerHTML=o.s; $('#sdaD').innerHTML=o.d; $('#sdaE').innerHTML=o.e; $('#sdaGlow').style.background=o.c;
   if(anim){ const bs=$$('[data-id="sda"] .sda .bx'); bs.forEach((b,i)=>setTimeout(()=>pulse(b,'flash'),i*260)); } }
@@ -1233,14 +1217,15 @@ function stepDraw(n){ const cv=$('#stepCv'), g=cv.getContext('2d'), W=cv.width, 
   g.strokeStyle='#FF9F43'; g.lineWidth=3; g.beginPath(); for(let i=0;i<n;i++){ const x=i/(STEP_SIG.length-1)*W; i?g.lineTo(x,yv(STEP_SIG[i])):g.moveTo(x,yv(STEP_SIG[i])); } g.stroke();
   let up=false; g.fillStyle='#3BE08F'; for(let i=0;i<n;i++){ if(!up && STEP_SIG[i]>th){ g.fillRect(i/(STEP_SIG.length-1)*W-5,yv(STEP_SIG[i])-14,10,10); up=true; } else if(up && STEP_SIG[i]<th-0.8) up=false; } }
 function stepUpdate(n){ const c=stepCount(n), real=Math.min(12,Math.floor(Math.max(0,n-26)/48)+(n>26?1:0)); $('#stepCnt').textContent=c; $('#stepReal').textContent=n>=STEP_SIG.length?12:real; stepDraw(n);
-  if(n>=STEP_SIG.length){ $('#stepMsg').innerHTML=c>12?`<b class="no">計多了 ${c-12} 步</b>：門檻太低，手輕輕搖也被當成一步。`:c<12?`<b class="no">計少了 ${12-c} 步</b>：門檻太高，有些步伐的高峰不夠高。`:'<b class="ok">剛好 12 步</b>：門檻合適。試試把門檻拉低或拉高。'; } }
+  if(n>=STEP_SIG.length){ $('#stepMsg').innerHTML=c>12?`<b class="no">計多了 ${c-12} 步</b>：門檻太低，手輕輕搖也被當成一步。`:c<12?`<b class="no">計少了 ${12-c} 步</b>：門檻太高，${c?'有些':'所有'}步伐的高峰不夠高。`:'<b class="ok">剛好 12 步</b>：門檻合適。試試把門檻拉低或拉高。'; } }
 function stepRun(){ clearInterval(stepT); stepN=0; stepT=setInterval(()=>{ stepN=Math.min(STEP_SIG.length,stepN+8); stepUpdate(stepN); if(stepN>=STEP_SIG.length) clearInterval(stepT); },40); }
 $('#stepGo').addEventListener('click',stepRun);
 $('#stepTh').addEventListener('input',()=>{ $('#stepThV').textContent=$('#stepTh').value+' m/s²'; stepUpdate(stepN||STEP_SIG.length); if(!stepN) stepN=STEP_SIG.length; });
 
 /* ---------- P10 gyroscope ---------- */
 const gyA={x:0,y:0,z:0}; let gyT=null, gyBusy=false;
-function gyTf(){ return `rotateX(${gyA.x}deg) rotateY(${gyA.y}deg) rotateZ(${gyA.z}deg)`; }
+/* the phone is drawn flat, so it is always viewed from a fixed oblique angle: edge-on (after a 90° turn) it would vanish */
+function gyTf(){ return `rotateX(-20deg) rotateY(25deg) rotateX(${gyA.x}deg) rotateY(${gyA.y}deg) rotateZ(${gyA.z}deg)`; }
 function gyRot(ax){ if(gyBusy) return; gyBusy=true; gyA[ax]+=90; $('#gyPh').style.transform=gyTf(); const nm={x:'俯仰',y:'翻滾',z:'偏航'}[ax];
   $('#gyV').textContent='90 °/s'; $('#gyT').textContent=`正在${nm}（${ax.toUpperCase()} 軸）…`; clearTimeout(gyT);
   gyT=setTimeout(()=>{ $('#gyV').textContent='0 °/s'; $('#gyT').innerHTML=`已停下：讀數回到 0，<br>但手機已經轉了 90°（90 °/s × 1 秒）`; gyBusy=false; },1000); }
@@ -1266,7 +1251,7 @@ $('#fuGo').addEventListener('click',fuRun);
 const LUXT=[[0.3,'滿月'],[50,'客廳燈'],[400,'課室'],[1000,'陰天'],[20000,'日光'],[100000,'陽光直射']];
 const luxPos=l=>(Math.log10(l)+1)/6*100;
 $('#luxScale').innerHTML=LUXT.map(([l,n],i)=>`<span class="tick${i%2?' lo':''}" style="left:${luxPos(l)}%">${n}<br>${l>=1000?l.toLocaleString('en'):l}</span>`).join('');
-const luxScene=l=>l<1?'夜晚月光':l<100?'昏暗室內':l<700?'室內（課室、辦公室）':l<5000?'陰天室外':l<30000?'日光（非直射）':'陽光直射';
+const luxScene=l=>l<1?'夜晚月光':l<100?'昏暗室內':l<700?'課室、辦公室等室內':l<5000?'陰天室外':l<30000?'非直射的日光':'陽光直射';
 function luxSet(){ const v=+$('#luxR').value, l=Math.pow(10,v); const lt=l>=100?Math.round(l/10)*10:l>=10?Math.round(l):fmt(l);
   const bri=Math.round(Math.max(3,Math.min(100,(v+0.6)/5.4*100)));
   $('#luxV').textContent=(typeof lt==='number'?lt.toLocaleString('en'):lt)+' lux'; $('#luxCur').style.width=((v+1)/6*100)+'%'; $('#luxBri').style.width=bri+'%'; $('#luxBriV').textContent=bri+'%';
@@ -1287,9 +1272,9 @@ $('#pxR').addEventListener('input',pxSet);
 let tofA=null;
 const tofX=d=>90+d/5*1050;
 function tofSet(){ cancelAnimationFrame(tofA); const d=+$('#tofR').value, x=tofX(d); $('#tofWall').setAttribute('transform',`translate(${x},0)`); $('#tofLine').setAttribute('x2',x); $('#tofV').textContent=fmt(d)+' m';
-  $('#tofDot').setAttribute('x',70); $('#tofT').textContent='0 ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = '+fmt(d/0.15)+' ns'; }
+  $('#tofDot').setAttribute('x',70); $('#tofT').textContent='0 ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = ？（按「發射激光」量度）'; }
 function tofRun(){ cancelAnimationFrame(tofA); const d=+$('#tofR').value, x=tofX(d), T=1600, t0=performance.now(), ns=d/0.15;
-  const fr=t=>{ const p=Math.min(1,(t-t0)/T), pos=p<.5?70+(x-82)*(p*2):70+(x-82)*(2-p*2); $('#tofDot').setAttribute('x',pos); $('#tofT').textContent=fmt(ns*p)+' ns'; if(p<1) tofA=requestAnimationFrame(fr); else $('#tofT').textContent=fmt(ns)+' ns'; };
+  const fr=t=>{ const p=Math.min(1,(t-t0)/T), pos=p<.5?70+(x-82)*(p*2):70+(x-82)*(2-p*2); $('#tofDot').setAttribute('x',pos); $('#tofT').textContent=fmt(ns*p)+' ns'; if(p<1) tofA=requestAnimationFrame(fr); else { $('#tofT').textContent=fmt(ns)+' ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = '+fmt(ns)+' ns'; } };
   tofA=requestAnimationFrame(fr); }
 $('#tofR').addEventListener('input',tofSet); $('#tofGo').addEventListener('click',tofRun);
 
@@ -1347,7 +1332,8 @@ function go(i,st){ i=Math.max(0,Math.min(slides.length-1,i)); const prevStep=ste
   if(i!==cur){ if(cur>=0){ const o=HOOKS[slides[cur].dataset.hook]; if(o&&o.leave) o.leave(); }
     cur=i; step=st; try{ const a=document.activeElement; if(a&&a!==document.body&&!slides[cur].contains(a)&&!a.closest('#nav')) a.blur(); }catch(e){} const h=HOOKS[slides[cur].dataset.hook]; if(h&&h.enter) h.enter(); render(-1); ONPAGE(cur); }
   else { step=st; render(prevStep); } }
-function next(){ if(step<nsteps(cur)) go(cur,step+1); else if(cur<slides.length-1) go(cur+1,0); }
+let LEAVE_OK=()=>true;   // student layer: warn once about unanswered practice questions
+function next(){ if(step<nsteps(cur)) go(cur,step+1); else if(cur<slides.length-1){ if(LEAVE_OK()) go(cur+1,0); } }
 function prev(){ if(step>0) go(cur,step-1); else if(cur>0) go(cur-1,nsteps(cur-1)); }
 const PG_STEP=i=>TEACHER?0:nsteps(i);
 function pgPrev(){ if(cur>0) go(cur-1,PG_STEP(cur-1)); }
@@ -1421,7 +1407,7 @@ function cleanRec(r){ if(!r||typeof r!=='object') return null;
   cKeys(r.und).forEach(k=>{ if(r.und[k]===0||r.und[k]===1) o.und[k]=r.und[k]; });
   cKeys(r.sa).forEach(k=>{ o.sa[k]=cStr(r.sa[k],500); }); cKeys(r.task).forEach(k=>{ o.task[k]=cStr(r.task[k],500); });
   return o; }
-/* task control is kept per class: control/{班別} = {open, closed, at} */
+/* task control is kept per class: control/{班別} = {open, closed, at, k}  (k = open code, lets students' pages decrypt the task) */
 const normCtl=c=>{ const o={}; if(c&&typeof c==='object') Object.keys(c).forEach(k=>{ const v=c[k]; if(/^[0-9A-Z]{1,6}$/.test(k)&&v&&typeof v==='object') o[k]={open:!!v.open,closed:!!v.closed,at:cNum(v.at,0,9e15)}; }); return o; };
 /* a CSV cell that starts with = + - @ would run as an Excel formula: keep student text as plain text */
 const csvTxt=v=>{ const s=String(v==null?'':v); return /^[=+\-@\t\r]/.test(s)?"'"+s:s; };
@@ -1445,7 +1431,17 @@ async function dbReq(auth,method,path,body){ const run=async tok=>fx(`${FB.db}/$
 
 /* ---------- helpers shared by both views ---------- */
 const QINFO={}; $$('.ch').forEach(ch=>{ const sl=ch.closest('.slide'), t=ch.querySelector('.qt,.tt'); QINFO[ch.dataset.q]={pg:slides.indexOf(sl), text:t?t.textContent.trim():ch.dataset.q, ans:ch.dataset.ans, opts:$$('.opts .btn',ch).map(b=>[b.dataset.v,b.textContent.trim()])}; });
-const TKBTN={}; $$('.tk').forEach(tk=>{ $$('.tops .btn',tk).forEach(b=>{ b.dataset.v=b.textContent.trim(); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); }); TKBTN[tk.dataset.t]=$$('.tops .btn',tk); });
+const TKBTN={}; function tkInit(){ $$('.tk').forEach(tk=>{ const bs=$$('.tops .btn',tk); bs.forEach(b=>{ if(b.querySelector('.lc')) return; b.dataset.v=b.textContent.trim(); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); }); TKBTN[tk.dataset.t]=bs; }); } tkInit();
+/* the task questions are not in the page: TASK_ENC holds them encrypted (AES-GCM, key = PBKDF2 of the open code).
+   taskOpen(code) decrypts them and fills each task slide; a wrong code simply fails to decrypt. */
+let TASK_READY=!TASK_ENC, ON_TASK=()=>{}, taskQ=Promise.resolve(false);
+const tB64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+function taskOpen(code){ taskQ=taskQ.then(async()=>{ if(TASK_READY) return true; code=String(code==null?'':code).trim(); if(!code||!TASK_ENC||!(window.crypto&&crypto.subtle)) return false;
+  try{ const km=await crypto.subtle.importKey('raw',new TextEncoder().encode('u4|'+LESSON+'|'+code),'PBKDF2',false,['deriveKey']);
+    const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:tB64(TASK_ENC.s),iterations:TASK_ENC.n,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+    const d=JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:tB64(TASK_ENC.i)},key,tB64(TASK_ENC.c))));
+    Object.keys(d).forEach(id=>{ const b=document.querySelector('.slide[data-id="'+id+'"] .tbody'); if(b) b.innerHTML=d[id]; }); tkInit(); TASK_READY=true; try{ ON_TASK(code); }catch(e){} return true; }
+  catch(e){ return false; } }); return taskQ; }
 const CODE_H=s=>{ let h=2166136261; for(const c of 'u4|'+LESSON+'|'+s){ h^=c.charCodeAt(0); h=Math.imul(h,16777619); } return (h>>>0).toString(16); };
 const z2=n=>String(n).padStart(2,'0');
 const tstr=t=>{ const d=new Date(t); return `${d.getFullYear()}-${z2(d.getMonth()+1)}-${z2(d.getDate())} ${z2(d.getHours())}:${z2(d.getMinutes())}`; };
@@ -1468,7 +1464,7 @@ if(!TEACHER){
   async function sync(){ if(!FB_ON||!ST.who) return; if(syncing){ again=true; return; } syncing=true;
     try{ await auth.token(); const w=ST.who; const body={cls:w.cls,no:w.no,name:w.name,ts:Date.now(),page:cur+1,prac:ST.r.prac,und:ST.r.und,sa:ST.r.sa,task:ST.r.task,sub:ST.r.sub||0,unl:ST.r.unl||0,mk:ST.r.mk||0};
       await dbReq(auth,'PUT',`${LPATH}/students/${auth.uid}`,body); lastOk=Date.now(); liveDot('on','● 已連線'); if(ST.r.sub) subUI(); }
-    catch(e){ liveDot('err','○ 離線：答案存在本機'); clearTimeout(syncT); syncT=setTimeout(sync,8000); }
+    catch(e){ liveDot('err','○ 離線（存本機）'); clearTimeout(syncT); syncT=setTimeout(sync,8000); }
     finally{ syncing=false; if(again){ again=false; sync(); } } }
   setInterval(()=>{ if(ST.who&&FB_ON&&!document.hidden) sync(); },25000);
   ONPAGE=()=>{ if(ST.r){ ST.r.page=cur+1; touch(); } };
@@ -1505,28 +1501,35 @@ if(!TEACHER){
 
   // ---------- task (堂課) ----------
   const tasks=$$('.slide.task');
-  function lockUI(){ const lock=!ST.r||!ST.r.unl; tasks.forEach(t=>t.classList.toggle('tlocked',lock));
+  function lockUI(){ const lock=!ST.r||!ST.r.unl||!TASK_READY; tasks.forEach(t=>t.classList.toggle('tlocked',lock));
     const s=$('#gateS'); if(!s) return; const mkBox=$('#gateMkBox'), codeBox=$('#gateCodeBox'); let mk=false, code=true;
     if(ST.r&&ST.r.sub){ s.textContent=ST.r.mk?'已交卷 ✔（補做）':'已交卷 ✔'; s.className='gs open'; code=false; }
     else if(!lock){ s.textContent=ST.r.mk?'補做中：按 → 開始作答':'已開放：按 → 開始作答'; s.className='gs open'; code=false; }
-    else if(ST.closed){ code=false; if(mkOpen()){ s.textContent='堂課已結束：缺席同學可以補做'; mk=true; } else s.textContent='補做已截止'; s.className='gs lock'; }
-    else { s.textContent='等待老師開放…'; s.className='gs lock'; }
+    else if(ST.closed){ code=false; if(mkOpen()){ s.textContent='堂課已結束：缺席同學可以補做'; mk=true; code=!TASK_READY; } else s.textContent='補做已截止'; s.className='gs lock'; }
+    else { s.textContent=ST.needCode?'老師已開放：請輸入開放碼':'等待老師開放…'; s.className='gs lock'; }
     if(mkBox) mkBox.hidden=!mk; if(codeBox) codeBox.hidden=!code; $('#gateHint').hidden=!code; }
   let mkArm=0;
-  $('#gateMk').addEventListener('click',()=>{ if(!ST.r||ST.r.unl) return; if(!mkOpen()){ lockUI(); return; } if(Date.now()-mkArm>5000){ mkArm=Date.now(); $('#gateMk').textContent='再按一次確認：補做總分扣 50 分'; return; }
+  $('#gateMk').addEventListener('click',()=>{ if(!ST.r||ST.r.unl) return; if(!mkOpen()){ lockUI(); return; } if(!TASK_READY){ $('#gateErr').textContent='請先輸入老師給的開放碼，再按「解鎖」'; return; } if(Date.now()-mkArm>5000){ mkArm=Date.now(); $('#gateMk').textContent='再按一次確認：補做總分扣 50 分'; return; }
     ST.r.unl=Date.now(); ST.r.mk=1; $('#gateMk').textContent='開始補做'; lockUI(); toast('補做開始：按 → 作答'); touch(); });
-  function setUnl(src){ if(!ST.r||ST.r.unl) return; ST.r.unl=Date.now(); lockUI(); toast('堂課已開放'); touch(); }
-  $('#gateGo').addEventListener('click',async()=>{ $('#gateErr').textContent='檢查中…'; if(FB_ON) await Promise.race([pollCtl(),new Promise(r=>setTimeout(r,4000))]); if(ST.r&&ST.r.unl){ $('#gateErr').textContent=''; return; } if(ST.closed&&!ST.r.unl){ $('#gateErr').textContent='堂課已結束：請按「開始補做」'; lockUI(); return; } const c=$('#gateCode').value.trim(); if(CODE_H(c)===TASK_CODE_H){ $('#gateErr').textContent=''; setUnl('code'); } else $('#gateErr').textContent='開放碼不正確'; });
+  function setUnl(src){ if(!ST.r||ST.r.unl||!TASK_READY) return; ST.r.unl=Date.now(); lockUI(); toast('堂課已開放'); touch(); }
+  $('#gateGo').addEventListener('click',async()=>{ const E=$('#gateErr'); E.textContent='檢查中…'; if(FB_ON) await Promise.race([pollCtl(),new Promise(r=>setTimeout(r,4000))]); if(!ST.r){ E.textContent='請先登入'; return; } if(ST.r.unl&&TASK_READY){ E.textContent=''; return; }
+    const c=$('#gateCode').value.trim();
+    if(TASK_ENC){ if(!TASK_READY){ if(!c){ E.textContent='請輸入開放碼'; return; } if(!(await taskOpen(c))){ E.textContent='開放碼不正確'; return; } } }
+    else if(CODE_H(c)!==TASK_CODE_H){ E.textContent='開放碼不正確'; return; }
+    if(ST.closed&&!ST.r.unl){ E.textContent='堂課已結束：請按「開始補做」'; lockUI(); return; }
+    E.textContent=''; if(ST.r.unl) lockUI(); else setUnl('code'); });
   $('#gateCode').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); $('#gateGo').click(); } });
   const editable=()=>ST.r&&ST.r.unl&&!ST.r.sub;
-  $$('.tk').forEach(tk=>tk.addEventListener('click',e=>{ const b=e.target.closest('.tops .btn'); if(!b) return; if(!editable()){ toast(ST.r&&ST.r.sub?'已交卷，不可以再改':'等待老師開放堂課'); return; }
+  const cntUI=i=>{ const c=i.parentElement.querySelector('.cnt'); if(c&&i.maxLength>0) c.textContent=`已寫 ${i.value.length} / ${i.maxLength} 字`; };
+  // delegated: the task questions are added to the page only after the task is opened
+  tasks.forEach(t=>t.addEventListener('click',e=>{ const b=e.target.closest('.tops .btn'), tk=b&&b.closest('.tk'); if(!tk) return; if(!editable()){ toast(ST.r&&ST.r.sub?'已交卷，不可以再改':'等待老師開放堂課'); return; }
     ST.r.task[tk.dataset.t]=b.dataset.v; TKBTN[tk.dataset.t].forEach(x=>x.classList.toggle('sel',x===b)); touch(); }));
-  $$('.tin').forEach(i=>i.addEventListener('input',()=>{ if(!editable()){ return; } ST.r.task[i.dataset.t]=i.value; touch(); }));
+  tasks.forEach(t=>t.addEventListener('input',e=>{ const i=e.target.closest('.tin'); if(!i||!editable()) return; ST.r.task[i.dataset.t]=i.value; cntUI(i); touch(); }));
   function restoreTask(){ $$('.tk').forEach(tk=>{ const v=ST.r.task[tk.dataset.t]; TKBTN[tk.dataset.t].forEach(x=>x.classList.toggle('sel',x.dataset.v===v)); });
-    $$('.tin').forEach(i=>{ i.value=ST.r.task[i.dataset.t]||''; i.disabled=!!ST.r.sub; }); lockUI(); subUI(); }
+    $$('.tin').forEach(i=>{ i.value=ST.r.task[i.dataset.t]||''; i.disabled=!!ST.r.sub; cntUI(i); }); lockUI(); subUI(); }
   const missing=()=>TASK_IDS.filter(k=>!ST.r.task[k]).concat(TASK_TEXT.filter(k=>!(ST.r.task[k]||'').trim()));
   function subUI(){ if(!$('#subReview')||!ST.r) return; const done=!!ST.r.sub; $('#subPre').style.display=done?'none':'flex'; $('#subCard').hidden=!done;
-    $('#subReview').innerHTML=TASK_IDS.concat(['D1','D2']).map(k=>{ const v=k==='D2'?['D2f','D2s','D2d','D2e'].every(x=>(ST.r.task[x]||'').trim()):(ST.r.task[k]||'').trim(); return `<span class="rv${v?'':' miss'}"><b>${k}</b>${v?(k[0]==='D'?'已作答':esc(v)):'未答'}</span>`; }).join('');
+    $('#subReview').innerHTML=TASK_IDS.concat(['D1','D2']).map(k=>{ const v=k==='D2'?['D2f','D2s','D2d','D2e'].every(x=>(ST.r.task[x]||'').trim()):(ST.r.task[k]||'').trim(); return `<span class="rv${v?'':' miss'}" data-k="${k}" title="按一下返回這一題"><b>${k}</b>${v?(k[0]==='D'?'已作答':esc(v)):'未答'}</span>`; }).join('');
     if(done){ const w=ST.who, T=ST.r.task; $('#scWho').innerHTML=`<span>班別 <b>${esc(w.cls)}</b></span><span>學號 <b>${w.no}</b></span><span>姓名 <b>${esc(w.name)}</b></span><span class="stime">${ST.r.mk?'補做 · ':''}交卷 ${tstr(ST.r.sub)}</span>`;
       $('#scAns').innerHTML=TASK_IDS.map(k=>`<span><b>${k}</b>${esc(T[k]||'－')}</span>`).join('');
       $('#scD').innerHTML=`<b>D1</b> ${esc(T.D1||'－')}<br><b>D2</b> ${esc(T.D2f||'－')}｜感知：${esc(T.D2s||'－')}｜決策：${esc(T.D2d||'－')}｜執行：${esc(T.D2e||'－')}`;
@@ -1536,14 +1539,23 @@ if(!TEACHER){
   $('#subYes').addEventListener('click',()=>{ $('#subYes').hidden=true; doSubmit(false); });
   TASKUI={gate:lockUI, sub:()=>{ $('#subYes').hidden=true; $('#subMsg').textContent=''; subUI(); }};
   // control polling: teacher opens / closes the task
-  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control/${ST.who.cls}`); ST.closed=!!(c&&c.closed); if(c&&c.open) setUnl('net'); if(ST.closed&&ST.r.unl&&!ST.r.sub&&!ST.r.mk) doSubmit(true); lockUI(); }catch(e){} }
+  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control/${ST.who.cls}`); ST.closed=!!(c&&c.closed); if(c&&c.k&&!TASK_READY) await taskOpen(c.k); ST.needCode=!!(c&&c.open&&!TASK_READY); if(c&&c.open) setUnl('net'); if(ST.closed&&ST.r.unl&&!ST.r.sub&&!ST.r.mk) doSubmit(true); lockUI(); }catch(e){} }
   setInterval(pollCtl,8000);
 
   function restoreAll(){ restorePractice(); $$('.und').forEach(u=>{ const v=ST.r.und[u.dataset.sec]; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',v!==undefined&&+x.dataset.u===v)); });
     $$('.sa').forEach(s=>{ const v=ST.r.sa[s.dataset.sa]; s.querySelector('textarea').value=v||''; s.querySelector('.sent').textContent=v?'已提交 ✔（可以修改後再提交）':''; }); restoreTask(); }
   if(!FB_ON) liveDot('','○ 本機模式');
   document.body.classList.add('stu');
-  START=()=>{ const w=LS.get(`u4.${LESSON}.who`); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); pollCtl(); };
+  ON_TASK=code=>{ LS.set(`u4.${LESSON}.tkc`,code); if(ST.r) restoreTask(); else lockUI(); };
+  const warned=new Set(); LEAVE_OK=()=>{ const n=$$('.ch',slides[cur]).filter(c=>!c.classList.contains('done')).length; if(!n||warned.has(cur)) return true; warned.add(cur); toast(`這一頁還有 ${n} 題未答：再按一次「下一步」才離開`); return false; };
+  // task countdown: 20 minutes from the moment this student's task was opened (display only; the teacher ends the task)
+  $('#stage').insertAdjacentHTML('beforeend','<div id="tTimer" hidden></div>');
+  const TASK_MIN=20; function timerUI(){ const el=$('#tTimer'), s=slides[cur], on=!!(ST.r&&ST.r.unl&&!ST.r.sub&&s&&(s.classList.contains('task')||s.dataset.id==='tgate')); el.hidden=!on; if(!on) return;
+    const left=Math.round((ST.r.unl+TASK_MIN*60000-Date.now())/1000); el.classList.toggle('late',left<=0); el.textContent=left>0?`堂課剩餘 ${z2(Math.floor(left/60))}:${z2(left%60)}`:`已超過 ${TASK_MIN} 分鐘：請盡快交卷`; }
+  setInterval(timerUI,1000);
+  // review page: click an item to go back to that part
+  $('#subReview').addEventListener('click',e=>{ const r=e.target.closest('.rv'); if(!r||!r.dataset.k||(ST.r&&ST.r.sub)) return; const i=slides.findIndex(s=>s.dataset.id==='t'+r.dataset.k[0]); if(i>=0) go(i,0); });
+  START=()=>{ const w=LS.get(`u4.${LESSON}.who`); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); const kc=LS.get(`u4.${LESSON}.tkc`); if(kc) taskOpen(kc); pollCtl(); };
 }
 
 /* =====================================================================
@@ -1626,14 +1638,17 @@ if(TEACHER){
   function setTCls(c){ if(!CLASSES.includes(c)) return; TCLS=c; LS.set('u4.tcls',c); ctlUI(); renderNow(); toast('現在是 '+c+'：只顯示和控制這一班'); }
   $$('#bCls,#dCls').forEach(x=>{ x.innerHTML=clsOpts(); x.value=TCLS; x.addEventListener('change',()=>{ setTCls(x.value); x.blur(); }); });
   async function setCtl(v){ if(!FB_ON||!auth.has()){ toast('請先登入即時功能'); openLive(); return false; } try{ await dbReq(auth,'PUT',`${LPATH}/control/${TCLS}`,v); CTLS[TCLS]=v; ctlUI(); renderAll(); return true; }catch(e){ toast(zhErr(e)); return false; } }
-  $('#tOpen').onclick=async()=>{ if(await setCtl({open:true,closed:false,at:Date.now()})) toast('已開放 '+TCLS+' 堂課'); };
-  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認：只結束 '+TCLS); return; } closeArm=0; if(await setCtl({open:false,closed:true,at:Date.now()})) toast('已結束 '+TCLS+' 堂課：未交卷的學生會自動交出'); };
+  // k = the open code: students' pages need it to decrypt the task questions (sent only when the task is opened or closed)
+  const ctlK=()=>(TASK_CODE&&/^[0-9A-Za-z]{3,20}$/.test(String(TASK_CODE)))?{k:String(TASK_CODE)}:{};
+  $('#tOpen').onclick=async()=>{ if(TASK_ENC&&!ctlK().k){ toast('請先按左上角「🔒 解鎖」，再開放堂課'); return; } if(await setCtl(Object.assign({open:true,closed:false,at:Date.now()},ctlK()))) toast('已開放 '+TCLS+' 堂課'); };
+  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認：只結束 '+TCLS); return; } closeArm=0; if(await setCtl(Object.assign({open:false,closed:true,at:Date.now()},ctlK()))) toast('已結束 '+TCLS+' 堂課：未交卷的學生會自動交出'); };
   $('#tCode').textContent=TASK_CODE;
   $('#tSubDash').onclick=()=>openDash('task');
   // task pages: mark the key
   function markKey(){ $$('.tk').forEach(tk=>{ const k=TASK_KEY[tk.dataset.t]; TKBTN[tk.dataset.t].forEach(b=>b.classList.toggle('key',!!k&&b.dataset.v===k)); tk.classList.add('ans'); }); }
   markKey();
   ON_UNLOCK=()=>{ markKey(); $('#tCode').textContent=TASK_CODE; renderNow(); };
+  ON_TASK=()=>{ markKey(); $$('.tin').forEach(i=>i.disabled=true); renderAll(); };
   $$('.tin').forEach(i=>i.disabled=true);
   // ----- dashboard -----
   let dTab='stu';

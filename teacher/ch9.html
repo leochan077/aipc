@@ -33,6 +33,10 @@ button{font:inherit;color:inherit}
 .hud-l,.hud-r{display:flex;align-items:center;gap:12px}
 #hudStage{font-family:var(--pix);font-size:12px;color:#1A1440;background:var(--gold);padding:7px 9px;box-shadow:3px 3px 0 #000}
 #hudName{font-size:18px;font-weight:700;color:var(--mute)}
+#hud span,#hud a,#hud button{white-space:nowrap}
+.hud-l{min-width:0;flex:1 1 auto}.hud-l>*{flex:none}.hud-r{flex:none;margin-left:12px}
+#hud #hudName{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+#hud #hudStu{max-width:200px;overflow:hidden;text-overflow:ellipsis}
 .xp-lbl{font-family:var(--pix);font-size:11px;color:var(--gold)}
 .xpbar{width:190px;height:16px;background:#000;border:3px solid var(--line)}
 .xpbar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--gold) 0 10px,#D9A916 10px 12px);transition:width .6s steps(10)}
@@ -59,7 +63,7 @@ h2.t{font-size:33px;font-weight:800;margin:0;display:flex;align-items:center;gap
 b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:var(--green)} b.no{color:var(--red)} b.c{color:var(--cpu)} b.gp{color:var(--gpu)}
 .f{opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;pointer-events:none}
 .f.on{opacity:1;transform:none;pointer-events:auto}
-.mono{font-family:var(--lab);letter-spacing:.5px}
+.mono{font-family:Consolas,"Courier New",monospace;font-weight:700;white-space:nowrap}
 /* ---------- buttons ---------- */
 .btn{font-weight:700;font-size:19px;line-height:1.35;color:var(--ink);background:var(--bg3);border:3px solid var(--line);box-shadow:0 5px 0 var(--edge);padding:9px 14px;cursor:pointer;transition:transform .08s,background .15s,border-color .15s;text-align:center}
 .btn:hover{border-color:var(--gold)}
@@ -86,6 +90,15 @@ b.g{color:var(--gold)} b.n{color:var(--npu)} b.r{color:var(--ram)} b.ok{color:va
 .seg.opts .btn{flex:1;text-align:center}
 .why{display:none;margin:4px 0 0;font-size:17px;line-height:1.5;color:var(--green)}
 .done>.why,.done .why{display:block}
+/* pages where the explanations would run under the bottom buttons at 1280x720 */
+[data-id="tilt"] .axes{gap:6px;padding-top:10px;padding-bottom:10px}[data-id="tilt"] .axes .lead{margin:0}
+[data-id="tilt"] .q,[data-id="tofcalc"] .q{padding-top:9px;padding-bottom:9px}
+[data-id="tilt"] .qt,[data-id="tofcalc"] .qt{font-size:19px;margin-bottom:2px}
+[data-id="tilt"] .why,[data-id="tofcalc"] .why{font-size:15px;line-height:1.4;margin-top:2px}
+[data-id="tilt"] .opts .btn,[data-id="tofcalc"] .opts .btn{padding-top:6px;padding-bottom:6px}
+#tTimer{position:absolute;left:18px;bottom:12px;z-index:6;font-size:16px;font-weight:800;color:var(--gold);background:#0C0A2A;border:3px solid var(--line);padding:5px 12px;font-variant-numeric:tabular-nums}
+#tTimer.late{color:var(--red);border-color:var(--red)}
+body.stu .review .rv{cursor:pointer}body.stu .review .rv:hover{border-color:var(--gold)}
 .shake{animation:shake .35s}
 @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .pop{animation:pop .4s steps(4)}
@@ -332,7 +345,7 @@ svg.px8{image-rendering:pixelated}
 .axis .an{font-family:var(--pix);font-size:16px}
 .axis .ab{height:22px;background:#000;border:3px solid var(--line)}
 .axis .ab i{display:block;height:100%;transition:width .4s steps(6)}
-.axis .av{font-family:var(--lab);font-size:15px;text-align:right;white-space:nowrap}
+.axis .av{font-family:Consolas,"Courier New",monospace;font-size:16px;text-align:right;white-space:nowrap}
 .axis.x .an{color:#FF4D5E}.axis.x .ab i{background:#FF4D5E}
 .axis.y .an{color:#3BE08F}.axis.y .ab i{background:#3BE08F}
 .axis.z .an{color:#38BDF8}.axis.z .ab i{background:#38BDF8}
@@ -349,7 +362,7 @@ canvas.cv{display:block;width:100%;background:#0A0826;border:3px solid var(--lin
 .stat2 b{font-family:var(--pix);font-size:24px;color:var(--gold);margin-top:4px}
 /* gyroscope */
 .gyrobox{width:340px;height:300px;flex:none;background:#0A0826;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;perspective:700px;position:relative}
-.gyrobox .ph{transform-style:preserve-3d;transition:transform 1s linear}
+.gyrobox .ph{transform-style:preserve-3d;transition:transform 1s linear;transform:rotateX(-20deg) rotateY(25deg)}
 .gyrobox .axl{position:absolute;left:10px;bottom:8px;font-family:var(--pix);font-size:10px;color:var(--dim)}
 .gauge{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 16px}
 .gauge .gv{font-family:var(--pix);font-size:34px;color:var(--gpu)}
@@ -545,7 +558,7 @@ select option{background:#1D1A52;color:#F6F4FF}
   </div>
   <!-- P1 COVER -->
   <section class="slide cover" data-id="cover" data-stage="0">
-    <div class="cover-top"><span class="tag">高二電腦 · 單元四 · 第十週</span><span class="tag">感知與執行</span><span class="tag">5 關任務 ＋ 堂課</span></div>
+    <div class="cover-top"><span class="tag">高二電腦 · 單元四 · 第 9 課（第十週）</span><span class="tag">感知與執行</span><span class="tag">5 關任務 ＋ 堂課</span></div>
     <div class="cover-main">
       <div>
         <p class="pre">NEW GAME</p>
@@ -653,9 +666,9 @@ select option{background:#1D1A52;color:#F6F4FF}
     <div class="sorter" data-badge="s1">
       <div class="px">
         <h3>情境 A：通話時，手機貼近耳邊自動熄屏</h3>
-        <div class="it ch" data-ans="感知"><span class="tt">距離傳感器發出紅外線，發現有物件很近</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">傳感器收集環境資料 → 感知。</p></div>
-        <div class="it ch" data-ans="決策"><span class="tt">系統判斷：正在通話，而且手機貼着面部</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">程式根據數據作判斷 → 決策。</p></div>
-        <div class="it ch" data-ans="執行"><span class="tt">關閉螢幕顯示和觸控，避免面部誤按</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">真正改變硬件狀態 → 執行。</p></div>
+        <div class="it ch" data-q="sdaq-3" data-ans="執行"><span class="tt">關閉螢幕顯示和觸控，避免面部誤按</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">真正改變硬件狀態 → 執行。</p></div>
+        <div class="it ch" data-q="sdaq-1" data-ans="感知"><span class="tt">距離傳感器發出紅外線，發現有物件很近</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">傳感器收集環境資料 → 感知。</p></div>
+        <div class="it ch" data-q="sdaq-2" data-ans="決策"><span class="tt">系統判斷：正在通話，而且手機貼着面部</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">程式根據數據作判斷 → 決策。</p></div>
       </div>
       <div class="px">
         <h3>情境 B：撞車偵測，自動致電求救</h3>
@@ -664,7 +677,7 @@ select option{background:#1D1A52;color:#F6F4FF}
         <div class="it ch" data-ans="感知"><span class="tt">加速度計量到極大的撞擊力</span><div class="seg opts"><button class="btn" data-v="感知">感知</button><button class="btn" data-v="決策">決策</button><button class="btn" data-v="執行">執行</button></div><p class="why">量度撞擊 → 感知。</p></div>
       </div>
     </div>
-    <p class="foot">情境 B 的次序故意打亂了：先想清楚哪一步先發生。</p>
+    <p class="foot">兩個情境的次序都打亂了：先想清楚哪一步先發生。</p>
   </section>
 
   <!-- P6 ARRAY -->
@@ -745,7 +758,7 @@ select option{background:#1D1A52;color:#F6F4FF}
         </div>
         <div class="qgrid c2" data-badge="s2">
           <div class="q px ch" data-ans="2"><p class="qt">手機平放桌上（螢幕向上），哪一軸讀數最接近 9.8？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">X 軸</button><button class="btn">Y 軸</button><button class="btn">Z 軸</button><button class="btn">全部 0</button></div><p class="why">平放時重力穿過螢幕方向，即 Z 軸。</p></div>
-          <div class="q px ch" data-ans="0"><p class="qt">手機正在跌落地面（自由落體），三軸讀數大約是？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">全部接近 0</button><button class="btn">Z 軸約 9.8</button><button class="btn">Y 軸約 9.8</button><button class="btn">全部約 9.8</button></div><p class="why">跌落時手機和質量塊一起落下，質量塊不會「被拉」，讀數接近 0。手機可以用這點偵測跌落。</p></div>
+          <div class="q px ch" data-ans="0"><p class="qt">手機正在跌落地面（自由落體），三軸讀數大約是？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">Z 軸約 9.8</button><button class="btn" data-v="3">全部約 9.8</button><button class="btn" data-v="0">全部接近 0</button><button class="btn" data-v="2">Y 軸約 9.8</button></div><p class="why">跌落時手機和質量塊一起落下，質量塊不會「被拉」，讀數接近 0。手機可以用這點偵測跌落。</p></div>
         </div>
       </div>
     </div>
@@ -757,13 +770,13 @@ select option{background:#1D1A52;color:#F6F4FF}
     <div class="row grow">
       <div class="col grow">
         <canvas class="cv" id="stepCv" width="760" height="230" aria-label="加速度讀數波形"></canvas>
-        <div class="sliderrow"><span>門檻</span><input type="range" id="stepTh" min="10" max="20" step="0.5" value="13" aria-label="計步門檻"><span class="mono" id="stepThV" style="width:120px">13 m/s²</span></div>
+        <div class="sliderrow"><span>門檻</span><input type="range" id="stepTh" min="10" max="17.5" step="0.5" value="13" aria-label="計步門檻"><span class="mono" id="stepThV" style="width:120px">13 m/s²</span></div>
         <div class="row" style="gap:14px;align-items:center"><button class="btn on" id="stepGo">▶ 行 12 步</button><div class="stat2"><div>真正步數<b id="stepReal">0</b></div><div>計到步數<b id="stepCnt">0</b></div></div><p class="small grow" id="stepMsg">每行一步，身體上下起伏，讀數出現一個高峰。高峰超過門檻，才算一步。</p></div>
         <div class="chipz"><span>加速度計的其他用途：</span><span class="hi">自動轉屏</span><span class="hi">計步</span><span>跌倒偵測</span><span>撞車偵測</span><span>搖一搖</span></div>
       </div>
       <div class="col" style="width:380px;flex:none">
         <div class="px"><p class="k2">SENSE → DECIDE → ACT</p><p class="body"><b class="a">感知</b>：加速度計量到上下起伏<br><b class="g">決策</b>：高峰超過門檻？<br><b class="ok">執行</b>：步數 +1，顯示在 App</p></div>
-        <div class="q px ch" data-ans="0"><p class="qt">門檻設得太低，會怎樣？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">計多了步數</button><button class="btn">計少了步數</button><button class="btn">完全計不到</button><button class="btn">手機變得很慢</button></div><p class="why">手輕輕一搖也超過門檻，會被當成一步。</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">門檻設得太低，會怎樣？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">計少了步數</button><button class="btn" data-v="0">計多了步數</button><button class="btn" data-v="2">完全計不到</button><button class="btn" data-v="3">手機變得很慢</button></div><p class="why">手輕輕一搖也超過門檻，會被當成一步。</p></div>
         <div class="px und" data-sec="2"><span class="ul">第 2 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
       </div>
     </div>
@@ -782,7 +795,7 @@ select option{background:#1D1A52;color:#F6F4FF}
         <div class="px gauge"><span class="gu">陀螺儀讀數（角速度）</span><span class="gv" id="gyV">0 °/s</span><span class="gt" id="gyT">按左邊的掣，令手機轉 90°</span></div>
         <div class="px"><p class="lead">陀螺儀量度的是<b class="y">轉動速度</b>（每秒轉幾多度，°/s），<b class="y">不是</b>手機現在的角度。停止轉動，讀數就回到 0。</p></div>
         <div class="px"><p class="body">原理（簡化）：裏面有一粒<b class="y">不停振動</b>的質量塊。手機一轉，質量塊會被推向側面（<b class="y">科里奧利力</b>），推得越多＝轉得越快。</p><p class="small">好像在旋轉木馬上向前拋球，球看起來會向一邊彎。</p>
-          <p class="small adv">進階：角度 = 角速度 × 時間。例如 90 °/s 轉 1 秒 = 90°。手機要把讀數不停相加，才知道總共轉了多少度。</p></div>
+          <p class="small">角度 = 角速度 × 時間。例如 90 °/s 轉 1 秒 = 90°。手機要把讀數不停相加，才知道總共轉了多少度。</p></div>
       </div>
     </div>
   </section>
@@ -865,7 +878,7 @@ select option{background:#1D1A52;color:#F6F4FF}
       <div class="it ch" data-ans="距離"><span class="tt">通話時手機貼近耳邊，螢幕自動關閉</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">量度有沒有物件很近（約 10 cm 內）→ 距離傳感器。</p></div>
       <div class="it ch" data-ans="環境光"><span class="tt">由室外走入地鐵站，螢幕自動變暗</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">周圍光度下降 → 環境光傳感器。</p></div>
       <div class="it ch" data-ans="環境光"><span class="tt">按周圍燈光的顏色，調整螢幕色溫</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">新式環境光傳感器可以量度光的顏色（例如 True Tone）。</p></div>
-      <div class="it ch" data-ans="距離"><span class="tt">感應器自己發出紅外線，再接收反射</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">會主動發光的是距離傳感器；環境光傳感器只接收光。</p></div>
+      <div class="it ch" data-ans="距離"><span class="tt">用膠紙貼住它，通話時螢幕會一直熄滅</span><div class="seg opts"><button class="btn" data-v="環境光">環境光</button><button class="btn" data-v="距離">距離</button></div><p class="why">被貼住後收到很強的反射，以為有物件貼近 → 距離傳感器。</p></div>
     </div>
     <div class="px und" data-sec="4"><span class="ul">第 4 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
   </section>
@@ -906,9 +919,9 @@ select option{background:#1D1A52;color:#F6F4FF}
         <p class="small adv">進階：3 × 10⁸ × 20 × 10⁻⁹ ÷ 2 = 3 m。</p>
       </div>
       <div class="col" style="width:560px;flex:none" data-badge="s5">
-        <div class="q px ch" data-ans="0"><p class="qt">激光來回時間是 20 ns，物件距離是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">3 m</button><button class="btn">6 m</button><button class="btn">1.5 m</button><button class="btn">0.3 m</button></div><p class="why">20 × 0.15 = 3 m。</p></div>
+        <div class="q px ch" data-ans="1"><p class="qt">激光來回時間是 40 ns，物件距離是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">3 m</button><button class="btn">6 m</button><button class="btn">1.5 m</button><button class="btn">0.3 m</button></div><p class="why">40 × 0.15 = 6 m。</p></div>
         <div class="q px ch" data-ans="1"><p class="qt">物件在 4.5 米外，激光來回時間大約是？</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><button class="btn">15 ns</button><button class="btn">30 ns</button><button class="btn">45 ns</button><button class="btn">60 ns</button></div><p class="why">4.5 ÷ 0.15 = 30 ns。</p></div>
-        <div class="q px ch" data-ans="0"><p class="qt">公式為甚麼要 ÷ 2？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">光要去再返回</button><button class="btn">光速會減慢一半</button><button class="btn">手機有兩個鏡頭</button><button class="btn">數據分給兩顆晶片</button></div><p class="why">量到的是來回時間，光走了兩倍距離。</p></div>
+        <div class="q px ch" data-ans="0"><p class="qt">公式為甚麼要 ÷ 2？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">光速會減慢一半</button><button class="btn" data-v="2">手機有兩個鏡頭</button><button class="btn" data-v="3">數據分給兩顆晶片</button><button class="btn" data-v="0">光要去再返回</button></div><p class="why">量到的是來回時間，光走了兩倍距離。</p></div>
       </div>
     </div>
   </section>
@@ -951,7 +964,7 @@ select option{background:#1D1A52;color:#F6F4FF}
         <div class="px"><p class="why2" id="coopWhy"></p></div>
       </div>
     </div>
-    <div class="q px ch" data-ans="0" style="max-width:860px"><p class="qt">要做「手機跌落偵測」，以下哪一組傳感器最合適？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn">加速度計 ＋ 陀螺儀</button><button class="btn">環境光 ＋ 距離傳感器</button><button class="btn">LiDAR ＋ 主鏡頭</button><button class="btn">咪高峰 ＋ 指紋傳感器</button></div><p class="why">跌落時加速度計讀數接近 0、落地有撞擊；陀螺儀量到翻轉。</p></div>
+    <div class="q px ch" data-ans="0" style="max-width:860px"><p class="qt">要做「手機跌落偵測」，以下哪一組傳感器最合適？</p><div class="opts" style="grid-template-columns:1fr 1fr"><button class="btn" data-v="1">環境光 ＋ 距離傳感器</button><button class="btn" data-v="2">LiDAR ＋ 主鏡頭</button><button class="btn" data-v="0">加速度計 ＋ 陀螺儀</button><button class="btn" data-v="3">咪高峰 ＋ 指紋傳感器</button></div><p class="why">跌落時加速度計讀數接近 0、落地有撞擊；陀螺儀量到翻轉。</p></div>
   </section>
 
   <!-- P19 SUMMARY -->
@@ -987,7 +1000,7 @@ select option{background:#1D1A52;color:#F6F4FF}
       <div class="px gold gstat sonly">
         <span class="gs lock" id="gateS">等待老師開放…</span>
         <p class="small" id="gateHint">老師開放後，這裏會自動解鎖。如果一直未解鎖，請輸入老師給的開放碼。</p>
-        <div class="codein" id="gateCodeBox"><input class="inp" id="gateCode" inputmode="numeric" maxlength="4" placeholder="開放碼" autocomplete="off" aria-label="開放碼"><button class="btn sm on" id="gateGo">解鎖</button></div>
+        <div class="codein" id="gateCodeBox"><input class="inp" id="gateCode" maxlength="20" placeholder="開放碼" autocomplete="off" aria-label="開放碼"><button class="btn sm on" id="gateGo">解鎖</button></div>
         <div id="gateMkBox" hidden style="display:flex;flex-direction:column;gap:8px"><p class="small">當日沒有上課的同學可以補做。補做的分數按<b class="g">百分制總分扣 50 分</b>計算。截止：2027 年 2 月 1 日（台灣時間）前。</p><button class="btn on" id="gateMk">開始補做</button></div>
         <p class="err" id="gateErr"></p>
       </div>
@@ -1006,16 +1019,7 @@ select option{background:#1D1A52;color:#F6F4FF}
     <h2 class="t"><span class="lvl boss">A</span>傳感器配對：每個功能最主要用哪個傳感器？</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
-      <div class="tgrid c2">
-        <div class="tk" data-t="A1"><span class="tq"><span class="no">A1</span>手機由直放轉為橫放，畫面自動轉向</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A2"><span class="tq"><span class="no">A2</span>用量度 App 量度房門的高度</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A3"><span class="tq"><span class="no">A3</span>在猛烈陽光下，螢幕自動調到最亮</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A4"><span class="tq"><span class="no">A4</span>拍片時偵測手部細微轉動，用來防手震</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A5"><span class="tq"><span class="no">A5</span>通話時貼近耳邊，螢幕自動關閉</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A6"><span class="tq"><span class="no">A6</span>運動 App 計算今天行了多少步</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A7"><span class="tq"><span class="no">A7</span>在昏暗的餐廳拍人像，手機仍然很快對焦</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-        <div class="tk" data-t="A8"><span class="tq"><span class="no">A8</span>手機平放桌上原地旋轉，遊戲角色跟着轉身</span><div class="tops"><button class="btn">加速度計</button><button class="btn">陀螺儀</button><button class="btn">環境光</button><button class="btn">距離</button><button class="btn">LiDAR</button></div></div>
-      </div>
+      <div class="px tonly"><p class="small">題目已加密：按左上角「🔒 解鎖」後顯示。</p></div>
     </div>
   </section>
 
@@ -1024,14 +1028,7 @@ select option{background:#1D1A52;color:#F6F4FF}
     <h2 class="t"><span class="lvl boss">B</span>智能鬧鐘：每一步是感知、決策，還是執行？</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
-      <div class="px"><p class="body">情境：晚上把手機放在床上。手機在你「淺睡」的時候才響鬧，令你起床時沒有那麼辛苦。</p></div>
-      <div class="tgrid rowk">
-        <div class="tk" data-t="B1"><span class="tq"><span class="no">B1</span>加速度計量到床褥的細微震動</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-        <div class="tk" data-t="B2"><span class="tq"><span class="no">B2</span>系統分析震動的規律，判斷你正處於淺睡</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-        <div class="tk" data-t="B3"><span class="tq"><span class="no">B3</span>在設定時間前的 30 分鐘內，提早響鬧</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-        <div class="tk" data-t="B4"><span class="tq"><span class="no">B4</span>環境光傳感器發現房間已經天光</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-        <div class="tk" data-t="B5"><span class="tq"><span class="no">B5</span>響鬧時，螢幕亮度由暗慢慢調亮</span><div class="tops"><button class="btn">感知</button><button class="btn">決策</button><button class="btn">執行</button></div></div>
-      </div>
+      <div class="px tonly"><p class="small">題目已加密：按左上角「🔒 解鎖」後顯示。</p></div>
     </div>
   </section>
 
@@ -1040,12 +1037,7 @@ select option{background:#1D1A52;color:#F6F4FF}
     <h2 class="t"><span class="lvl boss">C</span>LiDAR 計算</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
-      <div class="formula">距離 = 光速 × 來回時間 ÷ 2<small>提示：來回時間每 1 ns ＝ 距離 0.15 m</small></div>
-      <div class="tgrid">
-        <div class="tk" data-t="C1"><span class="tq"><span class="no">C1</span>激光來回時間是 10 ns，物件距離是多少？</span><div class="tops"><button class="btn">0.75 m</button><button class="btn">1.5 m</button><button class="btn">3 m</button><button class="btn">15 m</button></div></div>
-        <div class="tk" data-t="C2"><span class="tq"><span class="no">C2</span>物件在 2.4 米外，激光來回時間是多少？</span><div class="tops"><button class="btn">8 ns</button><button class="btn">16 ns</button><button class="btn">24 ns</button><button class="btn">32 ns</button></div></div>
-        <div class="tk" data-t="C3"><span class="tq"><span class="no">C3</span>LiDAR 量度 5 米外的牆，激光來回時間大約是多少？</span><div class="tops"><button class="btn">約 17 ns</button><button class="btn">約 33 ns</button><button class="btn">約 50 ns</button><button class="btn">約 67 ns</button></div></div>
-      </div>
+      <div class="px tonly"><p class="small">題目已加密：按左上角「🔒 解鎖」後顯示。</p></div>
     </div>
   </section>
 
@@ -1054,12 +1046,7 @@ select option{background:#1D1A52;color:#F6F4FF}
     <h2 class="t"><span class="lvl boss">D</span>短答：用自己的文字</h2>
     <div class="lockmsg">等待老師開放堂課</div>
     <div class="tbody">
-      <div class="px dbox"><label for="tD1">D1　手機平放在桌上，原地轉一圈。陀螺儀有讀數，但加速度計的讀數幾乎不變。試解釋原因。</label><textarea class="ta tin" id="tD1" data-t="D1" rows="3" maxlength="150"></textarea><p class="cnt">最多 150 字</p></div>
-      <div class="px dbox"><label>D2　選一個手機功能（不可以用「自動調光」或「通話熄屏」），寫出它的感知、決策、執行。</label>
-        <input class="inp tin" data-t="D2f" maxlength="30" placeholder="功能名稱，例如：……" aria-label="功能名稱">
-        <div class="dgrid"><textarea class="ta tin" data-t="D2s" rows="3" maxlength="80" placeholder="感知：用甚麼傳感器量度甚麼？" aria-label="感知"></textarea><textarea class="ta tin" data-t="D2d" rows="3" maxlength="80" placeholder="決策：程式怎樣判斷？" aria-label="決策"></textarea><textarea class="ta tin" data-t="D2e" rows="3" maxlength="80" placeholder="執行：手機做了甚麼？" aria-label="執行"></textarea></div>
-      </div>
-      <div class="px tonly"><p class="small">D 部分由老師評分。即時面板「堂課」分頁可以看到全部學生的短答。</p></div>
+      <div class="px tonly"><p class="small">題目已加密：按左上角「🔒 解鎖」後顯示。</p></div>
     </div>
   </section>
 
@@ -1082,7 +1069,7 @@ select option{background:#1D1A52;color:#F6F4FF}
     </div>
   </section>
   <button class="edge l" id="eL" aria-label="上一步" title="上一步">◀</button><button class="edge r" id="eR" aria-label="下一步" title="下一步">▶</button>
-  <div id="nav"><button class="btn" id="bPgPrev" title="上一頁">⏮</button><button class="btn big" id="bPrev" aria-label="上一步">◀ 上一步</button><button id="pg" title="跳到指定頁（G）">1 / 30</button><button class="btn big" id="bNext" aria-label="下一步">下一步 ▶</button><button class="btn" id="bPgNext" title="下一頁">⏭</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
+  <div id="nav"><button class="btn" id="bPgPrev" title="上一頁">⏮</button><button class="btn big" id="bPrev" aria-label="上一步">◀ 上一步</button><button id="pg" title="跳到指定頁（G）">1 / 30</button><button class="btn big" id="bNext" aria-label="下一步">下一步 ▶</button><button class="btn" id="bPgNext" title="下一頁">⏭</button><button class="btn" id="bPick">抽號 R</button><button class="btn" id="bAdv" title="進階模式：多顯示公式和計算細節（按 A 切換）">進階 A</button><button class="btn" id="bNotes">備註 N</button><button class="btn" id="bFull">全螢幕 F</button></div>
   <div id="bar"><i></i></div>
   <div id="toast" role="status"></div>
   <div id="jump" hidden><div class="px gold"><div class="jh"><h3>跳到指定頁</h3><label for="jumpNo" class="small">輸入頁數</label><input class="inp" id="jumpNo" inputmode="numeric" maxlength="2" autocomplete="off"><button class="btn sm on" id="jumpGo">前往</button><span class="small" id="jumpTip" style="margin-left:auto">按頁面或輸入頁數；按 Esc 關閉</span><button class="btn sm" id="jumpClose">✕ 關閉</button></div><div id="jumpGrid"></div></div></div>
@@ -1112,7 +1099,8 @@ const TEACHER=true;
 const FB_CFG={"apiKey": "AIzaSyACrOYiSzMt3rqknfvJ1Ehnm56cDpnoZ5Q", "databaseURL": "https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app"};
 const TASK_KEY={};
 let TASK_CODE='（解鎖後顯示）';
-const TASK_CODE_H="e2e794e8";
+const TASK_CODE_H="";
+const TASK_ENC={"s":"Y53Y/p6PLKsZiaAvmsQ+jw==","i":"CZNBs5nch06rqGEl","n":1000000,"c":"fVZc1qKWrwwbZeGJl6bLrQqRUaR6LsSIUzuCNmG29BrW3ehCaGioTySYwrs6YzmhyDTht2iE51XBzA6sUBrBEIbY6w+ouhqlZDnrY5t0ZwDKAaqUf8u6obakBYWWIj6CwO24qd97mio75nXOzRH8uISlm99xWtazNrY4DKP8u1mGpBDDDcd8m6R+zFOcjDE/khdWvTsI+dx9rNybHKriHzdwlc9PfDSoUxBvmQMcw7sQyUQPn3FujCjGdkrPWIPdbkDbsa7nPBSsdCBqU01Ijh1Aw3Fa2v84rtsutYgIPMgmcGzp9d2Zxt73qgwwW+NTHXuPNFLEpb4JvJAZ/yX0v/AMw3P/F4Piktd4IQ1pa21HtM8stYXUEzIWDYtupF9FC3YB7BO/sd8AvS4V2DW/wxYZQsaBqsqU0+K29IF1sRMXB/RNlIgUW8lqPSeXTBXCWdd6Hgu8d9wQWih9h0HUNT7ucL1hRRAe0sIVwLZTl6NvbtYRopd+kR9afQ6aKxg6Enw+eWXaLJE7kFFAUQ34bakRi5eXkqfLJo7RYoo7j1TN2qTv9qbjT9Cx8c+elgWQasScI+QcKLcdxsMPn6xBo2g7DKbe2njuWeXR0IwYPibFhymwJQgWpMt7rF466HqS8An+e28MGwMuExeHHr5A7M1vY/8sOkmNiapaCh2IFTtwrN//WHwgzUB680+375+jrORRjLSPvu0BCuC+wdHD3b/cHsxunptddNCXcam6eoeJeLVLp9Ny3jqIGFUETn/PY6+ywDwDgt8pkWwZb4mTKuQgsn0hXkQgdyx7GZPfFKiSItT26F0+Q7fpjCEilrL2iwr3XIP4SmmwjlUx9c/lTmEywJzf3yEDRu7paTQHKXcBD+Fjvn/NugndOBwlNCHVL5qTDhmI57vOMq2Vpp7qL3sdlTlt6wSNEwYxsQzG1ut921gNuD7PDkP85I4OCJ/v8SwFYB/xyECecFBrmqPX9Jpl5lH9lxWOMW+bL963GgAijNMPK/i7KlRnWXucSoP7+uh6IxlKie8+D8VFWaxS9gbWF3vzO4elH2AJitNw0UlIyiwvYtbxvRnv7mmebWJY26GDXErlVpMnU86eqKar0ynYZnaMfqscBaQr6Gt2S2bycXlKMErOl5SMZo+TRUwBAlM2j0vS25/mzAsctIHCeLjFnKaw0zYuSk8daT/RD9VjPZxJVk8cQXxDZ8Mct3GrzPUWyZrH8BiNmIWEfn4M1BMeQ8q+hw+e/0ZkRJz+5ZXaNy5JR32UJfynPV2sg3YssT4TFhBjtq+IVHxs+0sJ60rcSo3TB88KDW7m+jJxT+9CmRSwXw+Lw1w2KPixvP/DRuKsqjMNxkdV8/OewcNfmnrbwhRHtL0S3Kk3974H7slW45RIe8dAzKi9ky7OOAnv4vExk67ffFZxNNddtdoY3EwvTkubREBo/m+PQ81nzyXREjIY+8WnhL78CwbA2g7aSG9e0Dlmzdw0UaLRQsoeWQIat4YgxobH6WC8smIzJf9+3qTS/HQ8srpqLsx9Oc/W74OiqwPeB7+FrGFi0uwnSmByyHa8cRDDju58By5xL4uej9Zy0y8T3cSXnA7w/FD9bqe/2sw8r7B7t6wOIXBQoP+isliRFXvnLxbnFlUeFdIZGzfDoZ4JKqSduoMD5hCrr2gNkNq/GGVwur8JHGsDCuGe0ZM/XaQeA8Cut/FItqLPI39J9n5A0O8bbN736+RnQuDeVk9fNvCBIRChhfsKnp+sPDbzB/bITmOskGLzG0ZnwfVWl1yQljt8yYYbwc21DS6neInos1sfkldEPr6epX8fjCgTd+qv9QyP4ID9d37fq+p1pESbjK7F6WC+6sa4JM0bspUFlyKtREFHArIAIeVpRt2d2wWo3Wza7zxW+hcMxmtr15fVhcFl6s/Frj/RppzpFqEP4k7crEBn6/s49H7R7OX4l9qQnvLOKXd7xSLfgLsPDzwmD0vnr6jvnPDM8zijo4OFWTvqtEL2Mr5emjwOKURisSm0KnTTQNnEXR3glQQvhNx4VjdZWmOklz5a7DPdwBeEbzCp+Zn658Z5eNwvBGwUMRPsJzifzcsCam8TZpJbV0votU/Lm0XbEwAJrpw9NgkFfTdMhkmkBuD9N1DzDeKIBJW3gyvM50KzDnBZPTzAOTBYlYF0JbHe+xLyvTpGzT/Fld2R4TWxLg4v/u1Kf3zxR2SCW/Kz+eUro2bSdxVBcGT0P0os4tRH2py9yQ3f3XG7sZe3xeeqIx/pEmC8OVR6eJwGL8+zTrr2SctRDfBSVaMRAtSsnK+AS19g2p8GXpIN91OYj4PmS9SVPBmx7q4w37G2nxlXpJS/aN/6aczIp6SYOgGXlu+m9wFbCqXJY/9PwzoHgCex+emt6tUrvY1x3+Sz+YKKZRYS/zuQzjSkDUG3hfUAPg32nBgXbgFQOt84/65qfbHlfg6fnkHDBM/XlZGf3ONftkUUbV82gb6F6YLOj9yAN8gP1GS7a6r5QhPAmJ3yN1gXNcjMgVH1Ha3lU1FZ/iFo4siN4p5NOmSlYOD6vPcgCOKGLfZpMdjpnIz/pr2eDq7ss50tk6VIjWAk1JSglAS6Q2eo4aMvVxDs43pvbxFH3mxyvSsHwFrkhXkZZRvr06QJyZ7lBBS43UD/JnzeIbdijtMIkzpLqQ+m58DVcg8b5E/i2fRKjyHaPnYg0svsz1S80ESxz8FfyGhuoGNClxYsFIzwncHwDiu227ZER9HQyCE/Iqt9Nw4D4tx0zaQ6uMFdbsWCRRFlHvKUxhNE9w0clUP3TA/Crr6mDPxrFVyMVuEhqk+fCx7rD1IEywCJTsc3CyZRbF4NuGmx5SsBwz4sFeH3vKw7TwMYQ3T6y4S8YOHxDjfAOmHPOBcnT4w9JmJoCccJwNZFJ6Vn1XrfxUCBBjcPUxtzI3goOeQygDH8PH7W7HXQfQvq858dhJr/yLcFV0VnGMhzlcb3hlTV0Db/aKjhhcAOUS+4UsT3mpVu9ucwHBUQzMecvoJdo1VZINcXsnZ4EGkfBYoxLEllSaKzit7i/Wmg+WsYj2inUfd1IWyJtReWoprk0w/QfszysBjlfQrpS0TLsnCvKeF6MEjALaHQx2k1f4ai4YB3oxt/2Q7kkBp8+ZAIhud3KDfPlECfcd4VT1DlEAFRoUGk3EGqWewQNpTuCevRmG4gTFP+CD5IjPtd1Mh46unXOGHf1BE4sPCMsijpg0pZmpRX7tAkNv3Wk4+occEQ/pTc+h+zdG/DE3bHCTe6qimn2ql/gMro3QSwZYXXU5HLq8F/L2fAr6kb/lnWfL684xQdI3WPrWBbFFV1WcwJTHry7VPghEmylcs7vwhbuIM0ydWEV/WZCDmZ9sJei5LnBsUTwrCy5WaYwBQ5h0M1NoptFEGBfKiqQkBa/+ToCxQPvwF7KvbW7jECj5x4h16AZSehjfnmM+TgwgilO+KIDGGcBrWOhbqVm8lB6Znn4+4hcYSb2cwmlEB74e8pydnbEk94bmwW5PQLXlYb0lNlIGQndrXLZ9h5u40MTN174+eZ1fqLCksP1TfLMal9k+jblNkko/v8rIqe8cOBYwzeb6k03mF+397fWiceHw2SmPrBAVBZ8/SNdZAbxbNeD5NDLZNMkeZls5jVq7esLXakVwNzOdIyIjmBaJ84sftVUMa1JPp9IItR3gbvILznBZHrV6QkKSbdMAUS+IcH7tk+wVQHCv6xBXT7/7ohrO6HlHXsa6qUpgWcwikQV2ytg7XABzNF/J9w2RBDhjbhBa0rQ2fmkr9/ndW3QilPSQY1tCnX1eSh85dRtVIYDBgW9pc2hyehLjJrtMCz+2X4zUgb/yM/CCEGUppeLVBsCAMB5IoMb6bm+pH9bXXKn4RlgUpnCABD4gLPNR8azPx1HkWxlGxU1cdrI0Dk9h29V+zoFyNdLkRT9YD3xXGEF6Nlr2vw8vgBHGQkgWdN7AF17YP6RV6JZNr1FmnVahceUxOBNfyNwI8idVbWQyIoBlNIYwe9DMCrHr4SXiTqOcasU7qlt5TY++dtBKX/lTHO5Cz3uRWUfeUxCdJ4kuOUuIhuKDWnKtQHTF933aLqNXI8SnHmWhAQq0W4cc/wGQRMJx4n1X6yGPj1jk4wqsTL9ME5JL5HAMEr+o+OPiz68PpDtQMzu8Q+FXaTnyoE+eMsL+5uJ/yJiPI+n8hlHjMURQzoprDkr3iD7CFQWfIbi2/YbOFbtNO9es42mhu6WpgL8h6j491J7JpB1dWT63G6ORAt29wWjgr4ozNu+GN9i6fuMwAQzadS+GutLjxvvYG8esghcmjxgTZUaYs0X8rjQY2xolF4KzgO6cp1WhfRj4+6kI6xh0QvpAoQ3xCrW5utTLojTvlvt1eMj+4jYCv3wj8IiMDzsN1ADNbmLfFafxaN5ZjEaqKh1Hhlzo/Qq9Bf4fQw2bRaGiztukGKD6nygoRbEJVxq0PaRlV90oBJGgRuTs0uW7xAyzTX6zhdPpq5Bu4/3FH++fS6/W2+AsMO9go/sF6Ztm4wkleo8Pk8HZxVnK8h7bPTykpHEJlONJghtpAuF9yilYyB1F1evpaIrmePsAjrw05JgGSYOLXcAyEtRXGLLSYzabO1hJ1M5WqnICHY4koAxxxc8V9jsXZ4s1Wk++RKmcX2+qNJMUiAX28B2JXzFCk9X3SAnG35HEFGIo5Z1K7Ip4eJLiV5DeGjJ9IgLDo8nQlAS6+EPJNwx5oIDFpSI7PDBLrzCpvaCKPbDUbUZtPYGdXNzJcWMIM8VB0Z40BBJwyX0ja2NbkgpQ5Bciqrc2/PEvh+jzyT42Vw4YqVUiS/c22UvNocGEQjc8M5jl/1Ee4McXAG22x2qf8iSDD2X5BoATmMYW+0U4V/udrsAosFqmmPF6YOE5HCm3MOIRgwR6k5YnTRur/UbLkLFYzeindQ+r2yczOHLwaKOEfYvsWGjTmTvteuBoR015Pb8NsOBggVFXsZ++XjopDWqe05LySYt+SZnCqoDZU62yoWiSQCJQBRA/m29JJ0hDD1hQY2ORXwa/FycllsaxxgEtUClXrEWKKqS9GEEQKnR5rDtL0RwvyqfDGCQlMX6SJYyPCseM1iNv0AA8jD6uTifIVqiEYlPxSvQ57R9R94aziFYljfrYieQp4wrOu9L3m+paaoBaD+qfgPmjqbTuBPxPbwDZEb2yqxxl5gGfc1JXQz65jnwHMu/GNlU3PloKlUCfVbHPxpae4VBDouBp9pSKTqxhCLLDzbjJYvrP26nSh45aQja2R31Yw29I6GODSb/VVxNyrC2VLE4Ah8Qn2msHF2EjCWqGraYK/hzxLdttbZ98QKq6+mZaxvRDW+CGaiSsPueUQ6eTqIkeKDynlR1AlJNnXDzdDdzjX6gMrV4PcaUY7k93vrkDc79umjX9NrSJQNdumAV7oLJZYRqd6xjSQH/Y9rtZWGZzfUTPSNGGKAPd/ngfLxnA/9CryvXsuFa/IbZQyEhxSXcknvlrfG3E+pXsu7tYTlQHhMR5wx90DS/EtLmIxShA7Oh4utKGO8aJvzKsxybJ+Eu5gLyU+0JRVeobhGA85UPLIUY5teUVcST1Pcvoscas+pzTSUB+wpqy1EAD+765FTNk1jR/tNF5INCKzmJfEy84lca7T+3ouKtGSKcwaiBRATQrQwaGEDnsTOGl0n4sf/qsJxgMH+Rf54o7YL3uCqboBF/lx0Hpu2SlS+zhyC56ds8iykQgB3tMyKfDBLVtLsfn8sJhFw/ca7N1gNtw6L6okIMbADg2sEUVTvKUeMMoGEyEeRNyll0LVSAW2kdflySYWqOMMau4WTRlCESpLBoyeJoues1mnNftCf0qG8Eq0laighl6fTpL338c6DirEsKn56JFip4VaunxkEaTivNrWFZ9CreICQqwGCvAUTAnV8RuBc52vhojjdd5S/6DU3eXVvViTjH2Aqeob1Q1IuS+9RApJ6RT4NRV4+QVpaIVTLe6TJXPGii7T8ziSo2zQgqvXK38P0cl7oJHbiB5Ljg07fB3Fy2JALYODQQWE7NWa4dfaPB9rN3CDOfJa8JdTWi9LdMHRDSGBRX9lAmmJQDGnJO4Ms8IWwRUYXofAlJ+80f80z4gmt/VrSpA7nsGx1UmrBHp2vSzPDaGuG1+Zfl2ndRaoP5r8uuFbHD7yBQB9uJV3Q8ES5nuz9ph+M+jSCgRWiw+OdL4VwKGgLnK0aNUjPnkCzx12gjy6DKvBTALwf/aQNsK0kqv3+tM3s2qDM4dmeWxrw+Fee/vcj/44fgK+pMzdM+85OD4qnHghVO76SSu5vOdt1Tp0JnF02fs8ksB84QQPGWqIfsjHgKOekIYN1XCOk1Z+1KZNR/oRX077oe76BM3RN+HHs0cR370XnTfNjMRlll8wu1IbD2mOfnbRO2t/5a9ySVPOuSUlFifeRkbNnVUmKMocHXn/beB4xXco9dP/hX9c9iqfN56f7eDrohemgjwz/tHhfQG7m5ZmMlaRklUGxoyNANtUiz0TrpnQK2Hh7f0mY2J8B+YVd9lI/qi2KM10cuMIwJVkA4YBuxUe80I+z5Byudh7L+JLBqTZLh9se7oV01BtpLmKS9i/jJtrEqYNLQTCP96470gQAsk8c83YcwOgv6LMUHJ2lkvDijSR1Osaf4SKQZu/+TclmpaJUX+UZdCKebvM1fBwX0lF006oK2EQBQ29Us43U+/rnsvHyZXqelAT+dXKVZmmlVBNhlagdbZld3Ww/lTwvseqZxZt1OKleKEvH8ppfbCj2DroSbgsVIq1dZeUlH+BV01wsWMbyh0iwQ+uou9hs0RDDJ2MrvIusgllDWGRy0yFKnZF4bq7iT3+xsq/X9thdlwQpvSefdwzDcwafI0C8kNrGKyRQUB3T4+1l/0Vwkq8RfHlyQNMju5bmobSqT0HdLaMNifU/AsuKVyb3tmXzECwq+mQluBoDOIZakeoDGqdtcuUIBqmq8MCMj17JOz5ecGJa/p6yr81OeILMT7nKXB74l6mKTjJuWYWRCTokxBRpRm1TYR9gKF/YJ5iGp1UUd93KAkKjG48Qb+2p+LY98/EYNa50wAeoInWTbmVrnlIj4TEqiNQ8sF7qSWQEvDC6XchiFxUlPmcPYYwAvqu8oKb3h0vhKomy9iPjcq0C7oXO57M0Tz7++lqMK4c8mv7dt24U+ke74RrwkMxnut2ONkfp+mlHFsmNOCWxHqWMTxPhobtq7yvcKh8pkidV7znu13MaeoSelap5DWsPIPMp4w74XyIy7dcKXX7IFZgkrJaWCP5SChfq7ncw/Db1VGm3Jw6GD3FP2gA2eZoJvrAnFXmFgDd9J2yidRt++RDOTRZ1MeX280NFZipk/NgDC0qvxfqgDW/kcrQ5AzEpe0L9MMVgXVMRKrxqOZFXCaXgCS9ogFcg+7e73DAuryUnMKxXP4hO8WnGcftJyOLymbx/K/hWaaUfyxco5w/v8twFYLFQuAgKClnyD09QkKRzCVz02LZ/oGZXTKhd+4xW/LkhKXfyLMtllFza96vKo5HD0THaf+doiHpm656Zehy0qtkiDiZ/C5xnj/E04tepOvb/zEX137y62qwCEOwA2SL4fFR3iz7zKuYw66uSJsaKSYPf55JlKakd7S0j+IqXanSwD2S1ELJaCQ9nGHLDK1BZH1JdVGWPs1MCPlGnlcjmUZO5xewSp/8Am9Q6CunLPrE0h7aRvmwG7QVMeuBXNeddjeuTh0iReH6ZCAPB1uAz6hryD/Ldfo7EZqPkcuQiopINWOW6W5m7z5XPhzhhnC1Pmu0P0owyfPEp2eUR7dzgDCQx899iM6pg+UaI39bCZ7nEVsgV1IrPFBg2R+caS0ZbOnSGVvFbZ3WZ/Rg1YoUK+mXUOiMBckUlei1KmTmdV9RFCpYPDLfW9qvt94YtoV3Oe1iu1RBWf4ihPpF6tSIUQKF5dDgbKtUrUzNYaQ+FMYMHFccBg4ddjW3OnWahzNoa6V8g0umfjHJjunH7glhjxZHfNLjDJ9xCCmk6tegT93DfXLE/jdZPnl3q6KolNfwPJ2N+HT+SCTF+AqrEy9e3ffoUlMcmlXMX7z50cfZ9czh4uY+tCsopFhQusiG+vJMzSXI+R7NtImwM8ulPFqcTb1+X1hAzuFSWeyMiUMDrAdmuUJA+yaggCtU4f0UwsJs4qKPfLh4TysrgZ8q4Z9ORCXEBUzYQ2evQf7VaUI76skKnS1vsFLUTs4aoodEBasijzScaW5V0TBuMq79rXFfVJd3bs/hx6qH73oPfHBTbxtoPUBSC4FA7kx+yehgG1Y7goqJisy95C06UMd99vicafeRDW6TzUP87zBJZPuMLmFjGFlpIHEocCW3+Aqh7VdCwllgdsITDAp++2Wj1MCwR2nSM8T8RmEsoEnxwOtT5b25iK61/U6ftutJzRucspYZlzsOr+dvBhzphVGJwCFfzIm0RphK47BYq9sKCoN11MnFSWxbR8a6XvhjzEMchq9GIX/ifx9aAlPRiYbR4D29C+zxTiakd7Oppa19ZdQHGBXCGbBYXO9TEoP+1FpRWKDgXleMbjTWHPqFe73M+OyZFpusDIv5JxVq239BSRC3vpgkhV4GvyAfKFbk0U2+bU6RBXz88CATpdiitYsZbBJOudGg6EenpYfJQSDaixa5w+M5wQ4z5lkjVcQBWQCmizNuqMO2MTogwUM6MPy5vhoklu1e2R91MjDFoDk4g97/TRX/UuZ+rx96QsEgJgVLEvBSu+UTyJ6ePDRHsp7tIXW7z+91k+N0O9YxcgXi4XW/JEQQ7zMPbjZEBHxQDYXcsVd7WCbOSvlrk5MNktOQtWkWe8d5jt/CuGnhB7vcSiUuqYIimGnZIlFhCVH9Xy44mJMLZvbulRH4KH8sKiv8jJksP1EOgMT/J77iIAfCyBNVCv8w1ZYRi1iRV03JEEp8B9YbA8p4e67QrXhUegNABo0mLUAsTc9wsgkaCrginfsL2+g1V1kUIFpxjxNEQmcZWTYzkX+BS8har62R2H8konerUd1fcDuAxfghzE3fZOlzMoLUQwHm89rm+kmt0EwHfefKvRW8Yre3eQxdZ6X695k+I9GeL275aeUsHe1GAjEGCaCIiTJ2TVpSWp8mVwVcrI+DVWOwel6mq5UBSdrQLqZma+7wvC6bvSNMbgXyBuDdyFvmWnmhqbX0Deo9+GB3niJ+VU+Aif5YoQGtIf87VY+Mm/CZwiCAnFqI0VJ0eMZ9rLERI1E9sASKJQ94sjgKUFn8s1gu7Q2DQdlgdLHbGz6q7lmkLgEHlV3DDbKbVMDRi6svyUWSGsIwVk5BRVjxDAfbWC+mpFrpAluNPJaTq8/7OYfiENJnpW1TWn2K6NCJ4fYxRv1E4KhY977WdFd0KhpmgxGK1MY526V84vMR7bI46fan25K4nYEjmM7uZzkorrc9X/cOtiJGAADrEhmKAPHhIijco1rZgv6Di6HHnQXLbM7O8UIfxRr+RmBQEW1jkkyQJ5dJUVfvJAnENYfU080DvgRlb5TZfR421AhtjPvsJI4yAzhWWBev9aGRd0YoiXiwhBP46HKAQT+VmiubK00c/6P+tgmY8XvRRiLsNTmqN1F4BXlc+hbNsYO/wQCU2l0ka"};
 
 /* ---------- lesson data: week 10 ---------- */
 const LESSON='w10';
@@ -1173,7 +1161,7 @@ function burst(btn){ const box=btn.closest('.opts')||btn.parentElement; if(!box)
     box.appendChild(d); setTimeout(()=>d.remove(),760); } }
 
 /* ---------- practice items (.ch): retry until right, first answer recorded ---------- */
-$$('.slide').forEach(sl=>$$('.ch',sl).forEach((c,i)=>{ c.dataset.q=sl.dataset.id+'-'+(i+1); }));
+$$('.slide').forEach(sl=>$$('.ch',sl).forEach((c,i)=>{ if(!c.dataset.q) c.dataset.q=sl.dataset.id+'-'+(i+1); }));
 $$('.ch').forEach(ch=>{
   const btns=$$('.opts .btn',ch); btns.forEach((b,i)=>{ if(!b.dataset.v) b.dataset.v=String(i); b.insertAdjacentHTML('afterbegin','<span class="lf"></span>'); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); });
   let tries=0;
@@ -1194,8 +1182,8 @@ function segPick(id,fn){ const seg=$(id); seg.addEventListener('click',e=>{ cons
 
 /* ---------- P4 sense-decide-act ---------- */
 const SDA={sun:{s:'環境光傳感器量到約 <b class="g">50,000 lux</b>',d:'周圍很光 → 螢幕要調亮，才看得清楚',e:'螢幕背光調到 <b class="g">100%</b>',c:'#E8F7FF'},
- room:{s:'環境光傳感器量到約 <b class="g">400 lux</b>',d:'一般室內 → 用中等亮度',e:'螢幕背光調到 <b class="g">約 50%</b>',c:'#4C8DB8'},
- dark:{s:'環境光傳感器量到約 <b class="g">1 lux</b>',d:'很暗 → 調暗，避免刺眼和浪費電',e:'螢幕背光調到 <b class="g">約 5%</b>',c:'#0E2A40'}};
+ room:{s:'環境光傳感器量到約 <b class="g">400 lux</b>',d:'一般室內 → 用中等亮度',e:'螢幕背光調到 <b class="g">約 60%</b>',c:'#4C8DB8'},
+ dark:{s:'環境光傳感器量到約 <b class="g">1 lux</b>',d:'很暗 → 調暗，避免刺眼和浪費電',e:'螢幕背光調到 <b class="g">約 10%</b>',c:'#0E2A40'}};
 let sdaK='room';
 function sdaShow(k,anim){ sdaK=k; const o=SDA[k]; $('#sdaS').innerHTML=o.s; $('#sdaD').innerHTML=o.d; $('#sdaE').innerHTML=o.e; $('#sdaGlow').style.background=o.c;
   if(anim){ const bs=$$('[data-id="sda"] .sda .bx'); bs.forEach((b,i)=>setTimeout(()=>pulse(b,'flash'),i*260)); } }
@@ -1239,14 +1227,15 @@ function stepDraw(n){ const cv=$('#stepCv'), g=cv.getContext('2d'), W=cv.width, 
   g.strokeStyle='#FF9F43'; g.lineWidth=3; g.beginPath(); for(let i=0;i<n;i++){ const x=i/(STEP_SIG.length-1)*W; i?g.lineTo(x,yv(STEP_SIG[i])):g.moveTo(x,yv(STEP_SIG[i])); } g.stroke();
   let up=false; g.fillStyle='#3BE08F'; for(let i=0;i<n;i++){ if(!up && STEP_SIG[i]>th){ g.fillRect(i/(STEP_SIG.length-1)*W-5,yv(STEP_SIG[i])-14,10,10); up=true; } else if(up && STEP_SIG[i]<th-0.8) up=false; } }
 function stepUpdate(n){ const c=stepCount(n), real=Math.min(12,Math.floor(Math.max(0,n-26)/48)+(n>26?1:0)); $('#stepCnt').textContent=c; $('#stepReal').textContent=n>=STEP_SIG.length?12:real; stepDraw(n);
-  if(n>=STEP_SIG.length){ $('#stepMsg').innerHTML=c>12?`<b class="no">計多了 ${c-12} 步</b>：門檻太低，手輕輕搖也被當成一步。`:c<12?`<b class="no">計少了 ${12-c} 步</b>：門檻太高，有些步伐的高峰不夠高。`:'<b class="ok">剛好 12 步</b>：門檻合適。試試把門檻拉低或拉高。'; } }
+  if(n>=STEP_SIG.length){ $('#stepMsg').innerHTML=c>12?`<b class="no">計多了 ${c-12} 步</b>：門檻太低，手輕輕搖也被當成一步。`:c<12?`<b class="no">計少了 ${12-c} 步</b>：門檻太高，${c?'有些':'所有'}步伐的高峰不夠高。`:'<b class="ok">剛好 12 步</b>：門檻合適。試試把門檻拉低或拉高。'; } }
 function stepRun(){ clearInterval(stepT); stepN=0; stepT=setInterval(()=>{ stepN=Math.min(STEP_SIG.length,stepN+8); stepUpdate(stepN); if(stepN>=STEP_SIG.length) clearInterval(stepT); },40); }
 $('#stepGo').addEventListener('click',stepRun);
 $('#stepTh').addEventListener('input',()=>{ $('#stepThV').textContent=$('#stepTh').value+' m/s²'; stepUpdate(stepN||STEP_SIG.length); if(!stepN) stepN=STEP_SIG.length; });
 
 /* ---------- P10 gyroscope ---------- */
 const gyA={x:0,y:0,z:0}; let gyT=null, gyBusy=false;
-function gyTf(){ return `rotateX(${gyA.x}deg) rotateY(${gyA.y}deg) rotateZ(${gyA.z}deg)`; }
+/* the phone is drawn flat, so it is always viewed from a fixed oblique angle: edge-on (after a 90° turn) it would vanish */
+function gyTf(){ return `rotateX(-20deg) rotateY(25deg) rotateX(${gyA.x}deg) rotateY(${gyA.y}deg) rotateZ(${gyA.z}deg)`; }
 function gyRot(ax){ if(gyBusy) return; gyBusy=true; gyA[ax]+=90; $('#gyPh').style.transform=gyTf(); const nm={x:'俯仰',y:'翻滾',z:'偏航'}[ax];
   $('#gyV').textContent='90 °/s'; $('#gyT').textContent=`正在${nm}（${ax.toUpperCase()} 軸）…`; clearTimeout(gyT);
   gyT=setTimeout(()=>{ $('#gyV').textContent='0 °/s'; $('#gyT').innerHTML=`已停下：讀數回到 0，<br>但手機已經轉了 90°（90 °/s × 1 秒）`; gyBusy=false; },1000); }
@@ -1272,7 +1261,7 @@ $('#fuGo').addEventListener('click',fuRun);
 const LUXT=[[0.3,'滿月'],[50,'客廳燈'],[400,'課室'],[1000,'陰天'],[20000,'日光'],[100000,'陽光直射']];
 const luxPos=l=>(Math.log10(l)+1)/6*100;
 $('#luxScale').innerHTML=LUXT.map(([l,n],i)=>`<span class="tick${i%2?' lo':''}" style="left:${luxPos(l)}%">${n}<br>${l>=1000?l.toLocaleString('en'):l}</span>`).join('');
-const luxScene=l=>l<1?'夜晚月光':l<100?'昏暗室內':l<700?'室內（課室、辦公室）':l<5000?'陰天室外':l<30000?'日光（非直射）':'陽光直射';
+const luxScene=l=>l<1?'夜晚月光':l<100?'昏暗室內':l<700?'課室、辦公室等室內':l<5000?'陰天室外':l<30000?'非直射的日光':'陽光直射';
 function luxSet(){ const v=+$('#luxR').value, l=Math.pow(10,v); const lt=l>=100?Math.round(l/10)*10:l>=10?Math.round(l):fmt(l);
   const bri=Math.round(Math.max(3,Math.min(100,(v+0.6)/5.4*100)));
   $('#luxV').textContent=(typeof lt==='number'?lt.toLocaleString('en'):lt)+' lux'; $('#luxCur').style.width=((v+1)/6*100)+'%'; $('#luxBri').style.width=bri+'%'; $('#luxBriV').textContent=bri+'%';
@@ -1293,9 +1282,9 @@ $('#pxR').addEventListener('input',pxSet);
 let tofA=null;
 const tofX=d=>90+d/5*1050;
 function tofSet(){ cancelAnimationFrame(tofA); const d=+$('#tofR').value, x=tofX(d); $('#tofWall').setAttribute('transform',`translate(${x},0)`); $('#tofLine').setAttribute('x2',x); $('#tofV').textContent=fmt(d)+' m';
-  $('#tofDot').setAttribute('x',70); $('#tofT').textContent='0 ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = '+fmt(d/0.15)+' ns'; }
+  $('#tofDot').setAttribute('x',70); $('#tofT').textContent='0 ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = ？（按「發射激光」量度）'; }
 function tofRun(){ cancelAnimationFrame(tofA); const d=+$('#tofR').value, x=tofX(d), T=1600, t0=performance.now(), ns=d/0.15;
-  const fr=t=>{ const p=Math.min(1,(t-t0)/T), pos=p<.5?70+(x-82)*(p*2):70+(x-82)*(2-p*2); $('#tofDot').setAttribute('x',pos); $('#tofT').textContent=fmt(ns*p)+' ns'; if(p<1) tofA=requestAnimationFrame(fr); else $('#tofT').textContent=fmt(ns)+' ns'; };
+  const fr=t=>{ const p=Math.min(1,(t-t0)/T), pos=p<.5?70+(x-82)*(p*2):70+(x-82)*(2-p*2); $('#tofDot').setAttribute('x',pos); $('#tofT').textContent=fmt(ns*p)+' ns'; if(p<1) tofA=requestAnimationFrame(fr); else { $('#tofT').textContent=fmt(ns)+' ns'; $('#tofDist').textContent='距離 '+fmt(d)+' m　→　來回時間 = '+fmt(ns)+' ns'; } };
   tofA=requestAnimationFrame(fr); }
 $('#tofR').addEventListener('input',tofSet); $('#tofGo').addEventListener('click',tofRun);
 
@@ -1353,7 +1342,8 @@ function go(i,st){ i=Math.max(0,Math.min(slides.length-1,i)); const prevStep=ste
   if(i!==cur){ if(cur>=0){ const o=HOOKS[slides[cur].dataset.hook]; if(o&&o.leave) o.leave(); }
     cur=i; step=st; try{ const a=document.activeElement; if(a&&a!==document.body&&!slides[cur].contains(a)&&!a.closest('#nav')) a.blur(); }catch(e){} const h=HOOKS[slides[cur].dataset.hook]; if(h&&h.enter) h.enter(); render(-1); ONPAGE(cur); }
   else { step=st; render(prevStep); } }
-function next(){ if(step<nsteps(cur)) go(cur,step+1); else if(cur<slides.length-1) go(cur+1,0); }
+let LEAVE_OK=()=>true;   // student layer: warn once about unanswered practice questions
+function next(){ if(step<nsteps(cur)) go(cur,step+1); else if(cur<slides.length-1){ if(LEAVE_OK()) go(cur+1,0); } }
 function prev(){ if(step>0) go(cur,step-1); else if(cur>0) go(cur-1,nsteps(cur-1)); }
 const PG_STEP=i=>TEACHER?0:nsteps(i);
 function pgPrev(){ if(cur>0) go(cur-1,PG_STEP(cur-1)); }
@@ -1427,7 +1417,7 @@ function cleanRec(r){ if(!r||typeof r!=='object') return null;
   cKeys(r.und).forEach(k=>{ if(r.und[k]===0||r.und[k]===1) o.und[k]=r.und[k]; });
   cKeys(r.sa).forEach(k=>{ o.sa[k]=cStr(r.sa[k],500); }); cKeys(r.task).forEach(k=>{ o.task[k]=cStr(r.task[k],500); });
   return o; }
-/* task control is kept per class: control/{班別} = {open, closed, at} */
+/* task control is kept per class: control/{班別} = {open, closed, at, k}  (k = open code, lets students' pages decrypt the task) */
 const normCtl=c=>{ const o={}; if(c&&typeof c==='object') Object.keys(c).forEach(k=>{ const v=c[k]; if(/^[0-9A-Z]{1,6}$/.test(k)&&v&&typeof v==='object') o[k]={open:!!v.open,closed:!!v.closed,at:cNum(v.at,0,9e15)}; }); return o; };
 /* a CSV cell that starts with = + - @ would run as an Excel formula: keep student text as plain text */
 const csvTxt=v=>{ const s=String(v==null?'':v); return /^[=+\-@\t\r]/.test(s)?"'"+s:s; };
@@ -1451,7 +1441,17 @@ async function dbReq(auth,method,path,body){ const run=async tok=>fx(`${FB.db}/$
 
 /* ---------- helpers shared by both views ---------- */
 const QINFO={}; $$('.ch').forEach(ch=>{ const sl=ch.closest('.slide'), t=ch.querySelector('.qt,.tt'); QINFO[ch.dataset.q]={pg:slides.indexOf(sl), text:t?t.textContent.trim():ch.dataset.q, ans:ch.dataset.ans, opts:$$('.opts .btn',ch).map(b=>[b.dataset.v,b.textContent.trim()])}; });
-const TKBTN={}; $$('.tk').forEach(tk=>{ $$('.tops .btn',tk).forEach(b=>{ b.dataset.v=b.textContent.trim(); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); }); TKBTN[tk.dataset.t]=$$('.tops .btn',tk); });
+const TKBTN={}; function tkInit(){ $$('.tk').forEach(tk=>{ const bs=$$('.tops .btn',tk); bs.forEach(b=>{ if(b.querySelector('.lc')) return; b.dataset.v=b.textContent.trim(); b.insertAdjacentHTML('beforeend','<span class="lc"></span>'); }); TKBTN[tk.dataset.t]=bs; }); } tkInit();
+/* the task questions are not in the page: TASK_ENC holds them encrypted (AES-GCM, key = PBKDF2 of the open code).
+   taskOpen(code) decrypts them and fills each task slide; a wrong code simply fails to decrypt. */
+let TASK_READY=!TASK_ENC, ON_TASK=()=>{}, taskQ=Promise.resolve(false);
+const tB64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+function taskOpen(code){ taskQ=taskQ.then(async()=>{ if(TASK_READY) return true; code=String(code==null?'':code).trim(); if(!code||!TASK_ENC||!(window.crypto&&crypto.subtle)) return false;
+  try{ const km=await crypto.subtle.importKey('raw',new TextEncoder().encode('u4|'+LESSON+'|'+code),'PBKDF2',false,['deriveKey']);
+    const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:tB64(TASK_ENC.s),iterations:TASK_ENC.n,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+    const d=JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:tB64(TASK_ENC.i)},key,tB64(TASK_ENC.c))));
+    Object.keys(d).forEach(id=>{ const b=document.querySelector('.slide[data-id="'+id+'"] .tbody'); if(b) b.innerHTML=d[id]; }); tkInit(); TASK_READY=true; try{ ON_TASK(code); }catch(e){} return true; }
+  catch(e){ return false; } }); return taskQ; }
 const CODE_H=s=>{ let h=2166136261; for(const c of 'u4|'+LESSON+'|'+s){ h^=c.charCodeAt(0); h=Math.imul(h,16777619); } return (h>>>0).toString(16); };
 const z2=n=>String(n).padStart(2,'0');
 const tstr=t=>{ const d=new Date(t); return `${d.getFullYear()}-${z2(d.getMonth()+1)}-${z2(d.getDate())} ${z2(d.getHours())}:${z2(d.getMinutes())}`; };
@@ -1474,7 +1474,7 @@ if(!TEACHER){
   async function sync(){ if(!FB_ON||!ST.who) return; if(syncing){ again=true; return; } syncing=true;
     try{ await auth.token(); const w=ST.who; const body={cls:w.cls,no:w.no,name:w.name,ts:Date.now(),page:cur+1,prac:ST.r.prac,und:ST.r.und,sa:ST.r.sa,task:ST.r.task,sub:ST.r.sub||0,unl:ST.r.unl||0,mk:ST.r.mk||0};
       await dbReq(auth,'PUT',`${LPATH}/students/${auth.uid}`,body); lastOk=Date.now(); liveDot('on','● 已連線'); if(ST.r.sub) subUI(); }
-    catch(e){ liveDot('err','○ 離線：答案存在本機'); clearTimeout(syncT); syncT=setTimeout(sync,8000); }
+    catch(e){ liveDot('err','○ 離線（存本機）'); clearTimeout(syncT); syncT=setTimeout(sync,8000); }
     finally{ syncing=false; if(again){ again=false; sync(); } } }
   setInterval(()=>{ if(ST.who&&FB_ON&&!document.hidden) sync(); },25000);
   ONPAGE=()=>{ if(ST.r){ ST.r.page=cur+1; touch(); } };
@@ -1511,28 +1511,35 @@ if(!TEACHER){
 
   // ---------- task (堂課) ----------
   const tasks=$$('.slide.task');
-  function lockUI(){ const lock=!ST.r||!ST.r.unl; tasks.forEach(t=>t.classList.toggle('tlocked',lock));
+  function lockUI(){ const lock=!ST.r||!ST.r.unl||!TASK_READY; tasks.forEach(t=>t.classList.toggle('tlocked',lock));
     const s=$('#gateS'); if(!s) return; const mkBox=$('#gateMkBox'), codeBox=$('#gateCodeBox'); let mk=false, code=true;
     if(ST.r&&ST.r.sub){ s.textContent=ST.r.mk?'已交卷 ✔（補做）':'已交卷 ✔'; s.className='gs open'; code=false; }
     else if(!lock){ s.textContent=ST.r.mk?'補做中：按 → 開始作答':'已開放：按 → 開始作答'; s.className='gs open'; code=false; }
-    else if(ST.closed){ code=false; if(mkOpen()){ s.textContent='堂課已結束：缺席同學可以補做'; mk=true; } else s.textContent='補做已截止'; s.className='gs lock'; }
-    else { s.textContent='等待老師開放…'; s.className='gs lock'; }
+    else if(ST.closed){ code=false; if(mkOpen()){ s.textContent='堂課已結束：缺席同學可以補做'; mk=true; code=!TASK_READY; } else s.textContent='補做已截止'; s.className='gs lock'; }
+    else { s.textContent=ST.needCode?'老師已開放：請輸入開放碼':'等待老師開放…'; s.className='gs lock'; }
     if(mkBox) mkBox.hidden=!mk; if(codeBox) codeBox.hidden=!code; $('#gateHint').hidden=!code; }
   let mkArm=0;
-  $('#gateMk').addEventListener('click',()=>{ if(!ST.r||ST.r.unl) return; if(!mkOpen()){ lockUI(); return; } if(Date.now()-mkArm>5000){ mkArm=Date.now(); $('#gateMk').textContent='再按一次確認：補做總分扣 50 分'; return; }
+  $('#gateMk').addEventListener('click',()=>{ if(!ST.r||ST.r.unl) return; if(!mkOpen()){ lockUI(); return; } if(!TASK_READY){ $('#gateErr').textContent='請先輸入老師給的開放碼，再按「解鎖」'; return; } if(Date.now()-mkArm>5000){ mkArm=Date.now(); $('#gateMk').textContent='再按一次確認：補做總分扣 50 分'; return; }
     ST.r.unl=Date.now(); ST.r.mk=1; $('#gateMk').textContent='開始補做'; lockUI(); toast('補做開始：按 → 作答'); touch(); });
-  function setUnl(src){ if(!ST.r||ST.r.unl) return; ST.r.unl=Date.now(); lockUI(); toast('堂課已開放'); touch(); }
-  $('#gateGo').addEventListener('click',async()=>{ $('#gateErr').textContent='檢查中…'; if(FB_ON) await Promise.race([pollCtl(),new Promise(r=>setTimeout(r,4000))]); if(ST.r&&ST.r.unl){ $('#gateErr').textContent=''; return; } if(ST.closed&&!ST.r.unl){ $('#gateErr').textContent='堂課已結束：請按「開始補做」'; lockUI(); return; } const c=$('#gateCode').value.trim(); if(CODE_H(c)===TASK_CODE_H){ $('#gateErr').textContent=''; setUnl('code'); } else $('#gateErr').textContent='開放碼不正確'; });
+  function setUnl(src){ if(!ST.r||ST.r.unl||!TASK_READY) return; ST.r.unl=Date.now(); lockUI(); toast('堂課已開放'); touch(); }
+  $('#gateGo').addEventListener('click',async()=>{ const E=$('#gateErr'); E.textContent='檢查中…'; if(FB_ON) await Promise.race([pollCtl(),new Promise(r=>setTimeout(r,4000))]); if(!ST.r){ E.textContent='請先登入'; return; } if(ST.r.unl&&TASK_READY){ E.textContent=''; return; }
+    const c=$('#gateCode').value.trim();
+    if(TASK_ENC){ if(!TASK_READY){ if(!c){ E.textContent='請輸入開放碼'; return; } if(!(await taskOpen(c))){ E.textContent='開放碼不正確'; return; } } }
+    else if(CODE_H(c)!==TASK_CODE_H){ E.textContent='開放碼不正確'; return; }
+    if(ST.closed&&!ST.r.unl){ E.textContent='堂課已結束：請按「開始補做」'; lockUI(); return; }
+    E.textContent=''; if(ST.r.unl) lockUI(); else setUnl('code'); });
   $('#gateCode').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); $('#gateGo').click(); } });
   const editable=()=>ST.r&&ST.r.unl&&!ST.r.sub;
-  $$('.tk').forEach(tk=>tk.addEventListener('click',e=>{ const b=e.target.closest('.tops .btn'); if(!b) return; if(!editable()){ toast(ST.r&&ST.r.sub?'已交卷，不可以再改':'等待老師開放堂課'); return; }
+  const cntUI=i=>{ const c=i.parentElement.querySelector('.cnt'); if(c&&i.maxLength>0) c.textContent=`已寫 ${i.value.length} / ${i.maxLength} 字`; };
+  // delegated: the task questions are added to the page only after the task is opened
+  tasks.forEach(t=>t.addEventListener('click',e=>{ const b=e.target.closest('.tops .btn'), tk=b&&b.closest('.tk'); if(!tk) return; if(!editable()){ toast(ST.r&&ST.r.sub?'已交卷，不可以再改':'等待老師開放堂課'); return; }
     ST.r.task[tk.dataset.t]=b.dataset.v; TKBTN[tk.dataset.t].forEach(x=>x.classList.toggle('sel',x===b)); touch(); }));
-  $$('.tin').forEach(i=>i.addEventListener('input',()=>{ if(!editable()){ return; } ST.r.task[i.dataset.t]=i.value; touch(); }));
+  tasks.forEach(t=>t.addEventListener('input',e=>{ const i=e.target.closest('.tin'); if(!i||!editable()) return; ST.r.task[i.dataset.t]=i.value; cntUI(i); touch(); }));
   function restoreTask(){ $$('.tk').forEach(tk=>{ const v=ST.r.task[tk.dataset.t]; TKBTN[tk.dataset.t].forEach(x=>x.classList.toggle('sel',x.dataset.v===v)); });
-    $$('.tin').forEach(i=>{ i.value=ST.r.task[i.dataset.t]||''; i.disabled=!!ST.r.sub; }); lockUI(); subUI(); }
+    $$('.tin').forEach(i=>{ i.value=ST.r.task[i.dataset.t]||''; i.disabled=!!ST.r.sub; cntUI(i); }); lockUI(); subUI(); }
   const missing=()=>TASK_IDS.filter(k=>!ST.r.task[k]).concat(TASK_TEXT.filter(k=>!(ST.r.task[k]||'').trim()));
   function subUI(){ if(!$('#subReview')||!ST.r) return; const done=!!ST.r.sub; $('#subPre').style.display=done?'none':'flex'; $('#subCard').hidden=!done;
-    $('#subReview').innerHTML=TASK_IDS.concat(['D1','D2']).map(k=>{ const v=k==='D2'?['D2f','D2s','D2d','D2e'].every(x=>(ST.r.task[x]||'').trim()):(ST.r.task[k]||'').trim(); return `<span class="rv${v?'':' miss'}"><b>${k}</b>${v?(k[0]==='D'?'已作答':esc(v)):'未答'}</span>`; }).join('');
+    $('#subReview').innerHTML=TASK_IDS.concat(['D1','D2']).map(k=>{ const v=k==='D2'?['D2f','D2s','D2d','D2e'].every(x=>(ST.r.task[x]||'').trim()):(ST.r.task[k]||'').trim(); return `<span class="rv${v?'':' miss'}" data-k="${k}" title="按一下返回這一題"><b>${k}</b>${v?(k[0]==='D'?'已作答':esc(v)):'未答'}</span>`; }).join('');
     if(done){ const w=ST.who, T=ST.r.task; $('#scWho').innerHTML=`<span>班別 <b>${esc(w.cls)}</b></span><span>學號 <b>${w.no}</b></span><span>姓名 <b>${esc(w.name)}</b></span><span class="stime">${ST.r.mk?'補做 · ':''}交卷 ${tstr(ST.r.sub)}</span>`;
       $('#scAns').innerHTML=TASK_IDS.map(k=>`<span><b>${k}</b>${esc(T[k]||'－')}</span>`).join('');
       $('#scD').innerHTML=`<b>D1</b> ${esc(T.D1||'－')}<br><b>D2</b> ${esc(T.D2f||'－')}｜感知：${esc(T.D2s||'－')}｜決策：${esc(T.D2d||'－')}｜執行：${esc(T.D2e||'－')}`;
@@ -1542,14 +1549,23 @@ if(!TEACHER){
   $('#subYes').addEventListener('click',()=>{ $('#subYes').hidden=true; doSubmit(false); });
   TASKUI={gate:lockUI, sub:()=>{ $('#subYes').hidden=true; $('#subMsg').textContent=''; subUI(); }};
   // control polling: teacher opens / closes the task
-  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control/${ST.who.cls}`); ST.closed=!!(c&&c.closed); if(c&&c.open) setUnl('net'); if(ST.closed&&ST.r.unl&&!ST.r.sub&&!ST.r.mk) doSubmit(true); lockUI(); }catch(e){} }
+  async function pollCtl(){ if(!FB_ON||!ST.who) return; try{ const c=await dbReq(auth,'GET',`${LPATH}/control/${ST.who.cls}`); ST.closed=!!(c&&c.closed); if(c&&c.k&&!TASK_READY) await taskOpen(c.k); ST.needCode=!!(c&&c.open&&!TASK_READY); if(c&&c.open) setUnl('net'); if(ST.closed&&ST.r.unl&&!ST.r.sub&&!ST.r.mk) doSubmit(true); lockUI(); }catch(e){} }
   setInterval(pollCtl,8000);
 
   function restoreAll(){ restorePractice(); $$('.und').forEach(u=>{ const v=ST.r.und[u.dataset.sec]; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',v!==undefined&&+x.dataset.u===v)); });
     $$('.sa').forEach(s=>{ const v=ST.r.sa[s.dataset.sa]; s.querySelector('textarea').value=v||''; s.querySelector('.sent').textContent=v?'已提交 ✔（可以修改後再提交）':''; }); restoreTask(); }
   if(!FB_ON) liveDot('','○ 本機模式');
   document.body.classList.add('stu');
-  START=()=>{ const w=LS.get(`u4.${LESSON}.who`); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); pollCtl(); };
+  ON_TASK=code=>{ LS.set(`u4.${LESSON}.tkc`,code); if(ST.r) restoreTask(); else lockUI(); };
+  const warned=new Set(); LEAVE_OK=()=>{ const n=$$('.ch',slides[cur]).filter(c=>!c.classList.contains('done')).length; if(!n||warned.has(cur)) return true; warned.add(cur); toast(`這一頁還有 ${n} 題未答：再按一次「下一步」才離開`); return false; };
+  // task countdown: 20 minutes from the moment this student's task was opened (display only; the teacher ends the task)
+  $('#stage').insertAdjacentHTML('beforeend','<div id="tTimer" hidden></div>');
+  const TASK_MIN=20; function timerUI(){ const el=$('#tTimer'), s=slides[cur], on=!!(ST.r&&ST.r.unl&&!ST.r.sub&&s&&(s.classList.contains('task')||s.dataset.id==='tgate')); el.hidden=!on; if(!on) return;
+    const left=Math.round((ST.r.unl+TASK_MIN*60000-Date.now())/1000); el.classList.toggle('late',left<=0); el.textContent=left>0?`堂課剩餘 ${z2(Math.floor(left/60))}:${z2(left%60)}`:`已超過 ${TASK_MIN} 分鐘：請盡快交卷`; }
+  setInterval(timerUI,1000);
+  // review page: click an item to go back to that part
+  $('#subReview').addEventListener('click',e=>{ const r=e.target.closest('.rv'); if(!r||!r.dataset.k||(ST.r&&ST.r.sub)) return; const i=slides.findIndex(s=>s.dataset.id==='t'+r.dataset.k[0]); if(i>=0) go(i,0); });
+  START=()=>{ const w=LS.get(`u4.${LESSON}.who`); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); const kc=LS.get(`u4.${LESSON}.tkc`); if(kc) taskOpen(kc); pollCtl(); };
 }
 
 /* =====================================================================
@@ -1632,14 +1648,17 @@ if(TEACHER){
   function setTCls(c){ if(!CLASSES.includes(c)) return; TCLS=c; LS.set('u4.tcls',c); ctlUI(); renderNow(); toast('現在是 '+c+'：只顯示和控制這一班'); }
   $$('#bCls,#dCls').forEach(x=>{ x.innerHTML=clsOpts(); x.value=TCLS; x.addEventListener('change',()=>{ setTCls(x.value); x.blur(); }); });
   async function setCtl(v){ if(!FB_ON||!auth.has()){ toast('請先登入即時功能'); openLive(); return false; } try{ await dbReq(auth,'PUT',`${LPATH}/control/${TCLS}`,v); CTLS[TCLS]=v; ctlUI(); renderAll(); return true; }catch(e){ toast(zhErr(e)); return false; } }
-  $('#tOpen').onclick=async()=>{ if(await setCtl({open:true,closed:false,at:Date.now()})) toast('已開放 '+TCLS+' 堂課'); };
-  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認：只結束 '+TCLS); return; } closeArm=0; if(await setCtl({open:false,closed:true,at:Date.now()})) toast('已結束 '+TCLS+' 堂課：未交卷的學生會自動交出'); };
+  // k = the open code: students' pages need it to decrypt the task questions (sent only when the task is opened or closed)
+  const ctlK=()=>(TASK_CODE&&/^[0-9A-Za-z]{3,20}$/.test(String(TASK_CODE)))?{k:String(TASK_CODE)}:{};
+  $('#tOpen').onclick=async()=>{ if(TASK_ENC&&!ctlK().k){ toast('請先按左上角「🔒 解鎖」，再開放堂課'); return; } if(await setCtl(Object.assign({open:true,closed:false,at:Date.now()},ctlK()))) toast('已開放 '+TCLS+' 堂課'); };
+  let closeArm=0; $('#tClose').onclick=async()=>{ if(Date.now()-closeArm>4000){ closeArm=Date.now(); toast('再按一次「結束堂課」確認：只結束 '+TCLS); return; } closeArm=0; if(await setCtl(Object.assign({open:false,closed:true,at:Date.now()},ctlK()))) toast('已結束 '+TCLS+' 堂課：未交卷的學生會自動交出'); };
   $('#tCode').textContent=TASK_CODE;
   $('#tSubDash').onclick=()=>openDash('task');
   // task pages: mark the key
   function markKey(){ $$('.tk').forEach(tk=>{ const k=TASK_KEY[tk.dataset.t]; TKBTN[tk.dataset.t].forEach(b=>b.classList.toggle('key',!!k&&b.dataset.v===k)); tk.classList.add('ans'); }); }
   markKey();
   ON_UNLOCK=()=>{ markKey(); $('#tCode').textContent=TASK_CODE; renderNow(); };
+  ON_TASK=()=>{ markKey(); $$('.tin').forEach(i=>i.disabled=true); renderAll(); };
   $$('.tin').forEach(i=>i.disabled=true);
   // ----- dashboard -----
   let dTab='stu';
@@ -1681,7 +1700,7 @@ if(TEACHER){
   START=()=>{ if(FB_ON&&auth.has()) startStream(); renderNow(); };
 }
 
-const UNLOCK_APPLY=d=>{ Object.assign(NOTES,d.notes); Object.assign(TASK_KEY,d.key); TASK_CODE=d.code; ON_UNLOCK(); if(cur>=0) go(cur,step); };
+const UNLOCK_APPLY=async d=>{ Object.assign(NOTES,d.notes); Object.assign(TASK_KEY,d.key); TASK_CODE=d.code; await taskOpen(d.code); ON_UNLOCK(); if(cur>=0) go(cur,step); };
 /* ---------- 老師解鎖：網上版的備註和答案已加密，輸入老師密碼才顯示 ---------- */
 const UL_ENC=[{"s":"DiVWj2Y4XGnURAfB2xrhXw==","i":"zMDUCFzioBwbvdry","c":"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"},{"s":"eJQJnMS83p1AHKEXkxgZaQ==","i":"Uk5Tro5IZ55zjpOz","c":"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"}];
 const UL_KEY='f5a.teacher.pass';
