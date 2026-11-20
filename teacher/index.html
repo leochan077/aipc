@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-5gY4l7tGJ8O9aZGvAHTR4CKvb3YP9+V+ggq+NMzLvAQ='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-1JYwc9tdn9OXDpMXJAVp+F1z9vmoqxvQoE/zMYHn+as='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
@@ -111,10 +111,10 @@ const WORLDS=[
  {unit:'課堂',name:'教師版（投影）',lessons:[
    {no:8,title:'AI PC 本地推論與 40 TOPS',meta:'單元三 · 第 6 週 · 教師版',topics:['備註 N','抽號 R','進階 A'],file:'ch8.html',open:true},
    {no:9,title:'手機傳感器陣列',meta:'單元四 · 第 10 週 · 教師版',topics:['即時','全班 L','面板 D','堂課開放'],file:'ch9.html',open:true},
-   {no:10,title:'物聯網傳感器與執行器',meta:'單元四 · 第 11 週',topics:['即將推出'],file:'ch10.html',open:false}
+   {no:10,title:'物聯網傳感器與執行器',meta:'單元四 · 第 11 週 · 教師版 · 35 分鐘',topics:['即時','全班 L','面板 D','沒有堂課'],file:'ch10.html',open:true}
  ]},
  {unit:'成績',name:'老師成績面板',lessons:[
-   {tool:true,title:'高二成績面板',meta:'第 8 課補做練習（5A）、第 9 課堂課和補做（各班）',topics:['準時／補做','CSV 自動扣分'],file:'panel.html'}
+   {tool:true,title:'高二成績面板',meta:'第 8 課補做練習（5A）、第 9 課堂課和補做、第 10 課課堂紀錄（各班）',topics:['準時／補做','CSV 自動扣分'],file:'panel.html'}
  ]}
 ];
 const get=k=>{ try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } };

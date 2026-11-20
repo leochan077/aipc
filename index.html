@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yGkrLIkiGRe7E8nnY7al9DczpOAZm8guUAWuLawC/eI='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-X/vOvx/v2x0GPc/dl2VgptcwPbqR3EqE1fOvNCN1pyc='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>高二信息系統任務地圖</title>
@@ -113,7 +113,7 @@ const WORLDS=[
  ]},
  {unit:'單元四',name:'感知與執行',lessons:[
    {no:9,title:'手機傳感器陣列',meta:'單元四 · 第 10 週',topics:['加速度計','陀螺儀','環境光','LiDAR'],file:'ch9.html',open:true,rec:'w10'},
-   {no:10,title:'物聯網傳感器與執行器',meta:'單元四 · 第 11 週',topics:['溫濕度','紅外','超聲波','繼電器','伺服馬達'],file:'ch10.html',open:false},
+   {no:10,title:'物聯網傳感器與執行器',meta:'單元四 · 第 11 週',topics:['溫濕度','紅外','超聲波','繼電器','伺服馬達'],file:'ch10.html',open:true,rec:'c10'},
    {boss:true,title:'大測',meta:'第 12 週 · 12 月 1 日',topics:['小測內容','單元四'],note:'溫習範圍：小測內容 ＋ 單元四。'}
  ]}
 ];
@@ -123,6 +123,7 @@ const z2=n=>String(n).padStart(2,'0');
 // progress saved by each lesson page on this computer
 const REC={
  aipc:()=>{ const w=get('aipc8mk.who'); if(!w) return ''; const r=get(`aipc8mk.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：補做練習已答 ${n} / 34 題`; },
+ c10:()=>{ const w=get('u4.c10.who'); if(!w) return ''; const r=get(`u4.c10.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：練習已答 ${n} / 20 題`; },
  w10:()=>{ const w=get('u4.w10.who'); if(!w) return ''; const r=get(`u4.w10.${w.cls}.${w.no}`)||{}; const n=Object.keys(r.prac||{}).length; return `${w.cls}-${z2(w.no)} 在這部電腦：練習已答 ${n} / 22 題 · ${r.sub?(r.mk?'堂課已補做 ✔':'堂課已交卷 ✔'):'堂課未交卷'}`; }
 };
 document.getElementById('map').innerHTML=WORLDS.map(W=>`<section class="world"><h2><span class="w">${esc(W.unit)}</span>${esc(W.name)}</h2><div class="levels">${W.lessons.map(L=>{
