@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ouh9wTvubYsfJvMGD9MEqE0rsfO6ape5gJj4eMvTYvw='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-wjfesMUu7FhAlVXdiPymEatppeh+kaqjeBq1dpTMK4s='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src https://f5a-sensors-default-rtdb.asia-southeast1.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebasedatabase.app; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>學生版 · 物聯網傳感器與執行器</title>
@@ -861,9 +861,76 @@ select option{background:#1D1A52;color:#F6F4FF}
 #dgBtns .btn{font-size:18px}
 .sntabs .btn.on i{background:#1A1440;color:var(--gold)}
 
+
+/* ---------- lesson 10 usability fixes ---------- */
+/* toast: top-right, so it no longer covers the hint bar or the 下一步 area */
+#toast{left:auto;right:18px;top:52px;bottom:auto;transform:none}
+/* 下一步 hint: stay gold (clearly clickable) and bob gently, instead of blinking through a disabled-looking colour */
+#nav .btn.more{background:var(--gold);color:#1A1440;border-color:var(--gold);animation:nudge 1.2s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){#nav .btn.more{animation:none}}
+#nav .btn:disabled,.edge:disabled{opacity:.35;cursor:not-allowed;animation:none;box-shadow:none}
+/* practice: a fixed feedback slot under every item, so answering never pushes the other questions down */
+.fbs{display:grid;min-height:var(--fbh,23px)}
+.fbs>*{grid-area:1/1;margin:0!important}
+.fbs .why{display:block!important;visibility:hidden}
+.done .fbs .why{visibility:visible}
+.wx{font-size:15px;line-height:1.5;color:var(--red);font-weight:700}
+.done .wx{visibility:hidden}
+.it .fbs{grid-column:1/-1}
+.c10s .fbs,.c10m .fbs{--fbh:23px}
+.c10q .fbs{--fbh:45px}
+.c10s .it{padding:6px 12px;row-gap:4px}
+.c10s .px{gap:10px}
+.c10q .q,.c10m .q{gap:6px}
+/* bigger labels in the diagrams and summary */
+.dgflow .k2{font-size:14px!important}
+.bdgrow figcaption{font-size:15px}
+.bdghint{color:var(--mute)}
+/* 進階: alternative lines that replace the basic ones */
+#stage.adv-on .nadv{display:none!important}
+/* self-check popup: unfinished practice warning, and a short review after 未明白 */
+#undLeft{margin:0;color:var(--gold);font-weight:700;font-size:17px}
+#undBack{font-size:16px;padding:5px 14px}
+#undTip{margin:0;font-size:18px;line-height:1.6;text-align:left}
+#undM #undTip,#undM #undGo{display:none}
+#undM .px.tip>*{display:none}
+#undM .px.tip>.k2,#undM .px.tip>#undT,#undM .px.tip>#undTip,#undM .px.tip>#undGo{display:block}
+/* summary: stages the student skipped with 稍後再答 */
+.undl{padding:10px 14px}
+.undl .ulr{display:flex;gap:6px;align-items:center;margin-top:4px}
+.undl .ulr span{flex:1;font-size:15px;font-weight:700}
+.undl .btn{font-size:14px;padding:2px 9px}
+/* short answer: counter and an error next to the box */
+.sacnt{margin:0;font-size:14px;color:var(--mute);text-align:right}
+.sacnt.full{color:var(--gold)}
+.sa textarea.bad{border-color:var(--red)}
+.sa .sent.bad{color:var(--red)}
+
+/* ---------- phone support ---------- */
+html{touch-action:manipulation;-webkit-text-size-adjust:100%}
+#stage{position:fixed} /* keep the unscaled 1280px box from widening the phone's layout viewport */
+#rotTip{position:fixed;inset:0;z-index:100;background:#0A0820;color:var(--ink);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;box-sizing:border-box;text-align:center;font-family:var(--zh)}
+body.rotTip #rotTip{display:flex}
+#rotTip .ph{width:54px;height:92px;border:4px solid #FFD23F;border-radius:10px;position:relative;animation:rotPh 2.4s ease-in-out infinite}
+#rotTip .ph::after{content:"";position:absolute;left:50%;bottom:6px;width:12px;height:4px;margin-left:-6px;background:#FFD23F;border-radius:2px}
+@keyframes rotPh{0%,25%{transform:rotate(0)}55%,85%{transform:rotate(-90deg)}100%{transform:rotate(0)}}
+#rotTip h2{margin:6px 0 0;font-size:22px;color:#FFD23F}
+#rotTip p{margin:0;font-size:15px;line-height:1.6;opacity:.85;max-width:300px}
+#rotTip button{font:inherit;font-size:16px;padding:12px 18px;min-width:230px;border:3px solid #FFD23F;background:#FFD23F;color:#0A0820;font-weight:700;cursor:pointer}
+#rotTip button.alt{background:transparent;color:var(--ink);border-color:#5b5a8a;font-weight:400}
+#rotTip .lnk{background:none;border:0;min-width:0;padding:4px;color:var(--ink);opacity:.6;text-decoration:underline;font-size:14px}
 </style>
 </head>
 <body>
+<div id="rotTip" role="dialog" aria-label="請把手機打橫">
+  <div class="ph" aria-hidden="true"></div>
+  <h2>請把手機打橫</h2>
+  <p>本課畫面是橫向設計，打橫後字會大好多。</p>
+  <button type="button" id="rtFull" hidden>⛶ 全螢幕＋打橫</button>
+  <button type="button" id="rtRot" class="alt">手機鎖咗旋轉？按此把畫面轉 90°</button>
+  <button type="button" id="rtStay" class="lnk">仍然直向使用（字會好細）</button>
+</div>
 
 <div id="stage">
   <div id="hud">
@@ -977,7 +1044,7 @@ select option{background:#1D1A52;color:#F6F4FF}
           <g fill="#E879F9" class="iot-dots"><rect x="352" y="140" width="6" height="6"/><rect x="392" y="150" width="6" height="6"/><rect x="470" y="160" width="6" height="6"/></g>
           <!-- relay -->
           <g><rect x="402" y="186" width="58" height="52" fill="#2E5BD8" stroke="#000" stroke-width="4"/><rect x="410" y="194" width="42" height="20" fill="#0F0C30"/><rect id="iotArm" class="iot-arm" x="414" y="202" width="34" height="4" fill="#FFD23F"/>
-            <text x="431" y="232" fill="#F6F4FF" font-size="10" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">繼電器</text>
+            <text x="431" y="232" fill="#F6F4FF" font-size="13" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">繼電器</text>
             <text x="431" y="262" fill="#3BE08F" font-size="17" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">執行器</text></g>
           <!-- air conditioner -->
           <g><rect x="402" y="40" width="172" height="58" fill="#F6F4FF" stroke="#000" stroke-width="4"/><rect x="410" y="78" width="156" height="6" fill="#BDB7EC"/><rect id="iotLed" x="552" y="50" width="12" height="6" fill="#4B44A8"/><rect x="412" y="90" width="152" height="6" fill="#8C85C9"/>
@@ -985,9 +1052,9 @@ select option{background:#1D1A52;color:#F6F4FF}
             <g id="iotWind" class="iot-wind" fill="#38BDF8"><rect x="450" y="108" width="24" height="4"/><rect x="486" y="116" width="30" height="4"/><rect x="528" y="108" width="24" height="4"/><rect x="560" y="120" width="24" height="4"/><rect x="466" y="128" width="26" height="4"/></g></g>
           <!-- phone app -->
           <g><rect x="506" y="160" width="96" height="134" fill="#000"/><rect x="512" y="170" width="84" height="116" fill="#1A1440"/><rect x="546" y="163" width="16" height="4" fill="#4B44A8"/>
-            <text x="554" y="190" fill="#BDB7EC" font-size="11" font-weight="700" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">我的家 App</text>
-            <text id="iotPh1" x="554" y="222" fill="#FFD23F" font-size="12" text-anchor="middle" font-family="Press Start 2P, monospace">27°C</text>
-            <rect id="iotPhB" x="522" y="240" width="64" height="30" fill="#4B44A8"/><text id="iotPh2" x="554" y="260" fill="#F6F4FF" font-size="13" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">冷氣：關</text>
+            <text x="554" y="190" fill="#BDB7EC" font-size="13" font-weight="700" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">我的家 App</text>
+            <text id="iotPh1" x="554" y="222" fill="#FFD23F" font-size="14" text-anchor="middle" font-family="Press Start 2P, monospace">27°C</text>
+            <rect id="iotPhB" x="516" y="238" width="76" height="32" fill="#2A2660"/><text id="iotPh2" x="554" y="260" fill="#BDB7EC" font-size="15" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">○ 冷氣關</text>
             <text x="554" y="314" fill="#E879F9" font-size="15" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">網絡 · 手機</text></g>
         </svg></div>
         <div class="row" style="gap:10px;align-items:center"><span class="body" style="font-size:18px;font-weight:800">室溫：</span>
@@ -1002,7 +1069,7 @@ select option{background:#1D1A52;color:#F6F4FF}
           <div class="px bx e"><h3>執行<span class="k2">ACT</span></h3><p class="v"><b class="ok">執行器</b>：<span id="iotE">繼電器保持關，冷氣不開</span></p></div>
         </div>
         <div class="px f" data-f="2" style="padding:10px 16px;border-color:#E879F9"><p class="body" style="font-size:18px;margin:0"><b class="y">網絡</b>：控制器用 Wi-Fi 把數據傳到手機 App，人在外面也可以看室溫、遙控冷氣。</p>
-          <p class="small" style="margin:6px 0 0">上一課的手機：三部分都在同一部機。物聯網：三部分可以分開放在家裏不同地方，用網絡連起來。</p></div>
+          <p class="small" style="margin:6px 0 0">上一課的手機：三部分都在同一部機。物聯網：三部分可以分開放在家裏不同地方，用網絡連起來。</p><p class="small adv" style="margin:6px 0 0"><b class="y">進階</b>：室溫在 28°C 上下跳動，冷氣就會不停開關。可以設兩條線：高過 28°C 開、低過 26°C 才關（叫「遲滯」）。</p></div>
       </div>
     </div>
   </section>
@@ -1075,41 +1142,44 @@ select option{background:#1D1A52;color:#F6F4FF}
         <div class="ah"><h3>繼電器</h3><span class="at">開關大電器</span></div>
         <div class="ab"><svg viewBox="0 0 260 140" shape-rendering="crispEdges" aria-label="繼電器示範">
             <rect x="8" y="54" width="62" height="44" fill="#1E7A4A" stroke="#000" stroke-width="3"/><rect x="16" y="62" width="22" height="14" fill="#111"/><rect id="rlLed" x="48" y="64" width="12" height="8" fill="#4B44A8"/>
-            <text x="39" y="114" fill="#FFD23F" font-size="12" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">控制器 3.3V</text>
+            <text x="39" y="114" fill="#FFD23F" font-size="13" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">控制器 3.3V</text>
             <rect x="70" y="74" width="30" height="4" fill="#8C85C9"/>
             <rect x="100" y="52" width="60" height="50" fill="#2E5BD8" stroke="#000" stroke-width="3"/><rect x="108" y="60" width="44" height="22" fill="#0F0C30"/><rect id="rlArm" class="rl-arm" x="112" y="69" width="36" height="4" fill="#FFD23F"/>
-            <text x="130" y="96" fill="#F6F4FF" font-size="10" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">繼電器</text>
+            <text x="130" y="96" fill="#F6F4FF" font-size="13" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">繼電器</text>
             <text id="rlClk" x="130" y="44" fill="#FFD23F" font-size="15" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">咔！</text>
             <rect x="160" y="74" width="30" height="4" fill="#FF4D5E"/>
             <g transform="translate(222 64)"><g id="rlFan" class="rl-fan"><rect x="-4" y="-30" width="8" height="26" fill="#8ADCFF"/><rect x="-4" y="4" width="8" height="26" fill="#8ADCFF"/><rect x="-30" y="-4" width="26" height="8" fill="#8ADCFF"/><rect x="4" y="-4" width="26" height="8" fill="#8ADCFF"/></g><rect x="-6" y="-6" width="12" height="12" fill="#F6F4FF"/></g>
             <rect x="218" y="96" width="8" height="30" fill="#8C85C9"/><rect x="200" y="124" width="44" height="6" fill="#8C85C9"/>
-            <text x="190" y="116" fill="#FF4D5E" font-size="11" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">220V</text></svg>
+            <text x="190" y="116" fill="#FF4D5E" font-size="13" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">220V</text></svg>
           <div class="at2"><p class="body">用<b class="g">小電流</b>控制<b class="g">大電流</b>的電子開關。控制器推不動冷氣機，就靠繼電器幫它開關。</p><button class="btn" id="rlGo">送出訊號：開</button></div></div>
-        <p class="small life2"><b class="ok">生活</b>：智能插座裏面就有繼電器，開關時會「咔」一聲。</p>
+        <p class="small life2 nadv"><b class="ok">生活</b>：智能插座裏面就有繼電器，開關時會「咔」一聲。</p>
+        <p class="small life2 adv"><b class="y">進階</b>：3.3V 小電流令線圈變成電磁鐵，吸合開關，接通 220V 電路。</p>
       </div>
       <div class="px actc">
         <div class="ah"><h3>伺服馬達</h3><span class="at">轉到指定角度</span></div>
         <div class="ab"><svg viewBox="0 0 260 140" shape-rendering="crispEdges" aria-label="伺服馬達示範">
             <g fill="#8C85C9"><rect x="44" y="96" width="10" height="4"/><rect x="206" y="96" width="10" height="4"/><rect x="126" y="14" width="8" height="10"/></g>
-            <text x="38" y="120" fill="#BDB7EC" font-size="11" font-family="Press Start 2P, monospace">0°</text><text x="130" y="12" fill="#BDB7EC" font-size="11" text-anchor="middle" font-family="Press Start 2P, monospace">90°</text><text x="196" y="120" fill="#BDB7EC" font-size="11" font-family="Press Start 2P, monospace">180°</text>
+            <text x="38" y="120" fill="#BDB7EC" font-size="12" font-family="Press Start 2P, monospace">0°</text><text x="130" y="12" fill="#BDB7EC" font-size="12" text-anchor="middle" font-family="Press Start 2P, monospace">90°</text><text x="196" y="120" fill="#BDB7EC" font-size="12" font-family="Press Start 2P, monospace">180°</text>
             <rect x="92" y="96" width="76" height="40" fill="#2E5BD8" stroke="#000" stroke-width="3"/><rect x="80" y="104" width="100" height="8" fill="#2E5BD8" stroke="#000" stroke-width="3"/>
             <g transform="translate(130 98)"><g id="svArm" class="sv-arm"><rect x="-76" y="-5" width="80" height="10" fill="#F6F4FF" stroke="#000" stroke-width="2"/><rect x="-74" y="-2" width="5" height="4" fill="#000"/></g><rect x="-9" y="-9" width="18" height="18" fill="#F6F4FF" stroke="#000" stroke-width="2"/></g></svg>
           <div class="at2"><p class="body">收到指令，就<b class="g">轉到指定角度</b>（0°–180°），轉到就停。</p><div class="seg" id="svBtns"><button class="btn on" data-v="0">0°</button><button class="btn" data-v="90">90°</button><button class="btn" data-v="180">180°</button></div></div></div>
-        <p class="small life2"><b class="ok">生活</b>：自動窗簾、智能門鎖、自動餵魚器、遙控車轉向。</p>
+        <p class="small life2 nadv"><b class="ok">生活</b>：自動窗簾、智能門鎖、自動餵魚器、遙控車轉向。</p>
+        <p class="small life2 adv"><b class="y">進階</b>：每 20 毫秒一個脈衝，脈衝闊約 1–2 毫秒，代表轉到 0°–180°。</p>
       </div>
       <div class="px actc">
         <div class="ah"><h3>智能開關</h3><span class="at">用手機開關電燈</span></div>
         <div class="ab"><svg viewBox="0 0 260 140" shape-rendering="crispEdges" aria-label="智能開關示範">
             <rect x="10" y="14" width="58" height="112" fill="#000"/><rect x="15" y="22" width="48" height="96" fill="#1A1440"/>
-            <text x="39" y="44" fill="#BDB7EC" font-size="10" font-weight="700" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">客廳燈</text>
+            <text x="39" y="44" fill="#BDB7EC" font-size="13" font-weight="700" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">客廳燈</text>
             <rect x="21" y="56" width="36" height="18" fill="#4B44A8"/><rect id="swKnob" class="sw-knob" x="23" y="58" width="14" height="14" fill="#F6F4FF"/>
-            <text id="swTxt" x="39" y="96" fill="#8C85C9" font-size="11" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">關</text>
+            <text id="swTxt" x="39" y="98" fill="#8C85C9" font-size="14" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">關</text>
             <g id="swWifi" class="sw-wifi" fill="#E879F9"><rect x="80" y="60" width="6" height="6"/><rect x="94" y="54" width="6" height="6"/><rect x="108" y="48" width="6" height="6"/></g>
             <rect x="124" y="56" width="34" height="50" fill="#F6F4FF" stroke="#000" stroke-width="3"/><rect id="swRock" x="134" y="64" width="14" height="16" fill="#8C85C9"/><rect x="138" y="96" width="6" height="4" fill="#38BDF8"/>
             <rect x="200" y="0" width="4" height="22" fill="#8C85C9"/><rect x="190" y="22" width="24" height="10" fill="#4B44A8"/><rect id="swBulb" x="192" y="32" width="20" height="20" fill="#4B44A8"/>
             <polygon id="swGlow" class="sw-glow" points="186,52 218,52 250,130 154,130" fill="#FFD23F"/></svg>
           <div class="at2"><p class="body">連上 <b class="g">Wi-Fi</b> 的開關：可以用手機 App、語音或時間表開關電燈。</p><button class="btn" id="swGo">手機按：開燈</button></div></div>
-        <p class="small life2"><b class="ok">生活</b>：出門才記得未熄燈？用手機關；設定 23:00 自動關。</p>
+        <p class="small life2 nadv"><b class="ok">生活</b>：出門才記得未熄燈？用手機關；設定 23:00 自動關。</p>
+        <p class="small life2 adv"><b class="y">進階</b>：手機指令經互聯網送到雲端伺服器，再傳到家中 Wi-Fi 的開關。</p>
       </div>
       <div class="px actc">
         <div class="ah"><h3>聲光報警</h3><span class="at">提醒有危險</span></div>
@@ -1119,7 +1189,8 @@ select option{background:#1D1A52;color:#F6F4FF}
             <g id="alWave" class="al-wave" fill="#FF4D5E"><rect x="60" y="70" width="4" height="30"/><rect x="48" y="62" width="4" height="46"/><rect x="196" y="70" width="4" height="30"/><rect x="208" y="62" width="4" height="46"/></g>
             <text id="alTxt" class="al-txt" x="130" y="136" fill="#FF4D5E" font-size="14" font-weight="900" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans CJK TC, sans-serif">嗶嗶！嗶嗶！</text></svg>
           <div class="at2"><p class="body"><b class="g">蜂鳴器響</b>＋<b class="g">紅燈閃</b>，一看一聽就知道有危險。</p><button class="btn" id="alGo">觸發警報</button></div></div>
-        <p class="small life2"><b class="ok">生活</b>：煤氣警報、火警鐘、泊車雷達。有聲又有光，聽障人士也看得到。</p>
+        <p class="small life2 nadv"><b class="ok">生活</b>：煤氣警報、火警鐘、泊車雷達。有聲又有光，聽障人士也看得到。</p>
+        <p class="small life2 adv"><b class="y">進階</b>：蜂鳴器靠電流令薄片快速振動發聲；閃燈每秒不宜多過 3 次。</p>
       </div>
     </div>
   </section>
@@ -1160,25 +1231,28 @@ select option{background:#1D1A52;color:#F6F4FF}
       </div>
       <div class="col grow" style="gap:10px">
         <div class="px sa" data-sa="idea"><p class="qt">輪到你：寫出一個智能課室或家居設計（40 字內）</p><p class="small" style="margin:0">格式：當＿＿傳感器量到＿＿，就用＿＿（執行器）＿＿。</p><div class="sarow"><textarea rows="3" maxlength="40" class="sonly" placeholder="例：當紅外傳感器發現有人，就用智能開關開燈"></textarea><button class="btn sm on sonly">提交</button></div><p class="sent sonly"></p><div class="wall tonly" style="max-height:250px"></div></div>
+        <div class="px adv" style="padding:10px 16px"><p class="small" style="margin:0"><b class="y">進階</b>：也要想「壞了怎辦」：例如傳感器失靈、讀數一直不變，控制器應發出警告，而不是一直開着冷氣。</p></div>
         <div class="px und" data-sec="4"><span class="ul">第 4 關，你明白嗎？</span><button class="btn" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div>
       </div>
     </div>
   </section>
 
   <!-- P10 SUMMARY -->
-  <section class="slide" data-id="sum" data-stage="5">
+  <section class="slide" data-id="sum" data-stage="5" data-hook="sum">
     <h2 class="t"><span class="lvl bonus">END</span>三句帶走</h2>
     <div class="row grow">
       <div class="col grow sumlist">
-        <div class="px"><span class="n">1</span><p><b class="g">物聯網（IoT）</b>＝物件＋傳感器＋控制器＋網絡：會感覺、會決定、會動手。</p></div>
+        <div class="px"><span class="n">1</span><p><b class="g">物聯網（IoT）</b>＝物件＋傳感器＋控制器＋執行器，再用網絡連起來：會感覺、會決定、會動手。</p></div>
         <div class="px"><span class="n">2</span><p><b class="d">傳感器</b>負責感知（輸入）：溫濕度、光照、紅外、超聲波、氣體、圖像／視頻。</p></div>
         <div class="px"><span class="n">3</span><p><b class="a">執行器</b>負責執行（輸出）：繼電器、伺服馬達、智能開關、聲光報警。</p></div>
         <div class="bdgrow" id="sumBadges"></div>
+        <p class="small bdghint" style="margin:0">徽章：第 1–3 關的練習全部做對（答錯可以再試），就會得到該關的徽章。</p>
       </div>
       <div class="col" style="width:420px;flex:none">
         <div class="px gold"><p class="lead">選裝置的兩個問題</p><p class="body" style="margin:6px 0 0">要量度甚麼？→ 選<b class="d">傳感器</b><br>要做甚麼動作？→ 選<b class="a">執行器</b></p></div>
         <div class="px green life"><p class="small"><b class="ok">回家小任務</b>：找一件家裏的物聯網裝置（例如智能插座、冷氣、門鐘），說出它用了甚麼傳感器和執行器。</p></div>
         <div class="px red"><p class="small" style="margin:0"><b class="no">12 月 1 日大測</b>：溫習範圍包括小測內容和整個單元四（手機傳感器、物聯網傳感器與執行器）。</p></div>
+        <div class="px undl" id="undLater" hidden></div>
       </div>
     </div>
   </section>
@@ -1260,9 +1334,9 @@ $('#pkClose').addEventListener('click',closePicker);
 $('#picker').addEventListener('click',e=>{ if(e.target.id==='picker') closePicker(); });
 
 /* ---------- correct-answer burst ---------- */
-let SCALE=1;
+let SCALE=1, ROT=false;
 function burst(btn){ const box=btn.closest('.opts')||btn.parentElement; if(!box) return; const br=btn.getBoundingClientRect(), ob=box.getBoundingClientRect();
-  const cx=(br.left-ob.left+br.width/2)/SCALE, cy=(br.top-ob.top+br.height/2)/SCALE, cols=['#FFD23F','#3BE08F','#38BDF8','#E879F9','#FF9F43'];
+  const cx=(ROT?br.top-ob.top+br.height/2:br.left-ob.left+br.width/2)/SCALE, cy=(ROT?ob.right-br.left-br.width/2:br.top-ob.top+br.height/2)/SCALE, cols=['#FFD23F','#3BE08F','#38BDF8','#E879F9','#FF9F43'];
   for(let i=0;i<14;i++){ const d=document.createElement('i'); d.className='burst'; const a=i/14*Math.PI*2, r=50+Math.random()*40;
     d.style.left=(cx-5)+'px'; d.style.top=(cy-5)+'px'; d.style.background=cols[i%5]; d.style.setProperty('--dx',Math.round(Math.cos(a)*r)+'px'); d.style.setProperty('--dy',Math.round(Math.sin(a)*r)+'px');
     box.appendChild(d); setTimeout(()=>d.remove(),760); } }
@@ -1285,6 +1359,19 @@ $$('.ch').forEach(ch=>{
     }
   }));
 });
+/* ---------- lesson 10: fixed feedback slot under each practice item (no layout jump) + why a wrong pick is wrong ---------- */
+const OPTW={'溫濕度':'量度溫度和濕度','光照':'量度光線有多強','紅外':'偵測有沒有人在移動','超聲波':'用回聲量度距離','氣體':'量度煤氣、煙等氣體的濃度','圖像／視頻':'拍下影像，再由電腦辨認',
+ '繼電器':'讓控制器的小電流開關大電器','伺服馬達':'轉到指定角度','智能開關':'連 Wi-Fi，讓人用手機或時間表遙控','聲光報警':'響聲＋閃燈提醒人'};
+const WRONGX={'match-1':{'2':'✗ 智能開關讓「人」遙控；這裏是控制器按室溫自動開，要用繼電器。'},
+ 'match-6':{'0':'✗ 繼電器只聽控制器的訊號開關，本身不會連 Wi-Fi，也不會看時間表。'}};
+$$('.c10s .ch,.c10q .ch,.c10m .ch').forEach(ch=>{ const why=ch.querySelector('.why'); if(!why) return;
+  const fb=document.createElement('div'); fb.className='fbs'; why.before(fb); fb.append(why); fb.insertAdjacentHTML('beforeend','<p class="wx" aria-live="polite"></p>');
+  const wx=fb.querySelector('.wx');
+  $$('.opts .btn',ch).forEach(b=>b.addEventListener('click',()=>{ if(ch.classList.contains('done')){ wx.textContent=''; return; }
+    const lab=b.textContent.trim(), q=ch.dataset.q;
+    wx.textContent=ch.closest('.c10s')?(ch.dataset.ans==='執行器'?'✗ 它是在「做動作」（輸出），不是收集資料。':'✗ 它是在「收集資料」（輸入），不是做動作。')
+      :((WRONGX[q]&&WRONGX[q][b.dataset.v])||('✗ '+lab+'：'+(OPTW[lab]||'')+'。再想想題目要的是甚麼。'));
+  })); });
 function segPick(id,fn){ const seg=$(id); seg.addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(!b)return; $$('.btn',seg).forEach(x=>x.classList.toggle('on',x===b)); fn(b.dataset.v); }); return ()=>$('.btn.on',seg).dataset.v; }
 
 /* ---------- lesson 10: IoT sensors and actuators ---------- */
@@ -1296,7 +1383,7 @@ function iotSet(v){ iotV=+v; const on=iotV>28;
   $('#iotRead').textContent=iotV+'°C'; $('#iotPh1').textContent=iotV+'°C';
   $('#iotCtl').textContent=on?`${iotV}>28 ON`:`${iotV}<28 OFF`; $('#iotCtl').setAttribute('fill',on?'#FFD23F':'#3BE08F');
   $('#iotSvg').classList.toggle('on',on); $('#iotLed').setAttribute('fill',on?'#3BE08F':'#4B44A8');
-  $('#iotPh2').textContent=on?'冷氣：開':'冷氣：關'; $('#iotPhB').setAttribute('fill',on?'#1E7A4A':'#4B44A8');
+  $('#iotPh2').textContent=on?'● 冷氣開':'○ 冷氣關'; $('#iotPh2').setAttribute('fill',on?'#0A2A18':'#BDB7EC'); $('#iotPhB').setAttribute('fill',on?'#3BE08F':'#2A2660');
   $('#iotS').textContent=`量到室溫 ${iotV}°C`;
   $('#iotD').innerHTML=on?`${iotV}°C 高過 28°C → <b class="g">要開冷氣</b>`:`${iotV}°C 不高過 28°C → 不用開`;
   $('#iotE').innerHTML=on?'繼電器「咔」一聲接通，<b class="ok">冷氣開動</b>':'繼電器保持關，冷氣不開';
@@ -1306,17 +1393,17 @@ $('#iotT').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(b)
 
 /* ---------- P5 sensor bench ---------- */
 const SN={
- th:{n:'溫濕度傳感器',w:'量度空氣的<b class="g">溫度</b>和<b class="g">濕度</b>，變成數字交給控制器。',ex:['智能冷氣','抽濕機','溫室種菜','冰箱'],tip:'<b class="ok">生活用得着</b>：抽濕機的「濕度設定」，就是濕度高過你設定的數值（例如 60%）便自動開機。',
+ th:{n:'溫濕度傳感器',w:'量度空氣的<b class="g">溫度</b>和<b class="g">濕度</b>，變成數字交給控制器。',ex:['智能冷氣','抽濕機','溫室種菜','冰箱'],adv:'進階：常見的 DHT22 溫濕度傳感器，溫度誤差約 ±0.5°C，用一條數據線把數碼讀數傳給控制器。',tip:'<b class="ok">生活用得着</b>：抽濕機的「濕度設定」，就是濕度高過你設定的數值（例如 60%）便自動開機。',
    ctl:[['cold','冷氣房'],['room','課室'],['hot','炎夏']],val:{cold:'22°C · 濕度 55%',room:'27°C · 濕度 70%',hot:'33°C · 濕度 85%'}},
- light:{n:'光照傳感器',w:'量度環境有<b class="g">多光</b>（單位 lux）。',ex:['街燈天黑自動亮','自動窗簾','手機自動亮度'],tip:'<b class="ok">生活用得着</b>：手機的自動亮度也靠它（上一課學過）。用手指遮住它，螢幕就會變暗。',
+ light:{n:'光照傳感器',w:'量度環境有<b class="g">多光</b>（單位 lux）。',ex:['街燈天黑自動亮','自動窗簾','手機自動亮度'],adv:'進階：光敏電阻越光，電阻越小；控制器量度電壓的變化，就知道有多光。',tip:'<b class="ok">生活用得着</b>：手機的自動亮度也靠它（上一課學過）。用手指遮住它，螢幕就會變暗。',
    ctl:[['noon','中午'],['dusk','黃昏'],['night','夜晚']],val:{noon:'20000 lux',dusk:'300 lux',night:'5 lux'}},
- pir:{n:'紅外傳感器（人體感應）',w:'偵測有沒有<b class="g">人在移動</b>：人體會發出熱（紅外線），熱在移動就知道有人。',ex:['走廊燈','洗手間燈','防盜系統','自動門'],tip:'<b class="ok">生活用得着</b>：坐着不動太久，燈會自己熄？紅外傳感器只「看到」移動的熱，揮揮手燈就會再亮。',
+ pir:{n:'紅外傳感器（人體感應）',w:'偵測有沒有<b class="g">人在移動</b>：人體會發出熱（紅外線），熱在移動就知道有人。',ex:['走廊燈','洗手間燈','防盜系統','自動門'],adv:'進階：PIR 傳感器比較兩個感應區的紅外線變化，所以只偵測到「移動」，靜止的人偵測不到。',tip:'<b class="ok">生活用得着</b>：坐着不動太久，燈會自己熄？紅外傳感器只「看到」移動的熱，揮揮手燈就會再亮。',
    ctl:[['walk','有人行過'],['still','有人站着不動'],['none','沒有人']],val:{walk:'偵測到（1）',still:'偵測不到（0）',none:'偵測不到（0）'}},
  us:{n:'超聲波傳感器',w:'量度和前面物件的<b class="g">距離</b>：發出人耳聽不到的聲波，量度回聲要多久才回來。',ex:['泊車雷達','量度水位','自動垃圾桶','機械人避開障礙物'],adv:'進階：距離 = 聲速 × 時間 ÷ 2（聲速約 343 m/s）。來回兩程，所以要除 2。',tip:'<b class="ok">生活用得着</b>：和蝙蝠一樣靠回聲。上一課的 LiDAR 用光，超聲波用聲音。',
    ctl:[['far','牆在 100 cm'],['mid','牆在 50 cm'],['near','牆在 10 cm']],val:{far:'100 cm',mid:'50 cm',near:'10 cm'}},
- gas:{n:'氣體傳感器',w:'量度空氣中某種<b class="g">氣體的濃度</b>，例如煤氣、煙。濃度高過警報線，就發出訊號。',ex:['煤氣警報器','空氣質素監測','廚房抽氣扇'],tip:'<b class="ok">生活用得着</b>：家裏的煤氣警報器要定期按「測試」掣，確認它還會響。',
+ gas:{n:'氣體傳感器',w:'量度空氣中某種<b class="g">氣體的濃度</b>，例如煤氣、煙。濃度高過警報線，就發出訊號。',ex:['煤氣警報器','空氣質素監測','廚房抽氣扇'],adv:'進階：MQ 系列氣體傳感器內有加熱片，遇到煤氣時電阻會改變；所以開機要先預熱，讀數才準。',tip:'<b class="ok">生活用得着</b>：家裏的煤氣警報器要定期按「測試」掣，確認它還會響。',
    ctl:[['clean','空氣正常'],['cook','煮食油煙'],['leak','煤氣洩漏']],val:{clean:'低',cook:'中',leak:'很高！'}},
- cam:{n:'圖像／視頻傳感器（鏡頭）',w:'拍下<b class="g">影像</b>，再由電腦<b class="g">辨認</b>人臉、車牌或物件。',ex:['智能門鐘','停車場認車牌','自助收銀','課室點名'],tip:'<b class="ok">生活用得着</b>：鏡頭會拍到別人，要注意私隱：安裝智能門鐘時，不要對着鄰居的門口。',
+ cam:{n:'圖像／視頻傳感器（鏡頭）',w:'拍下<b class="g">影像</b>，再由電腦<b class="g">辨認</b>人臉、車牌或物件。',ex:['智能門鐘','停車場認車牌','自助收銀','課室點名'],adv:'進階：電腦比較影像中的特徵（例如眼、鼻的位置），得出「相似度」；例如 98% 就當是同一個人。',tip:'<b class="ok">生活用得着</b>：鏡頭會拍到別人，要注意私隱：安裝智能門鐘時，不要對着鄰居的門口。',
    ctl:[['face','有人按門鐘'],['car','車輛駛入停車場']],val:{face:'辨認到：人臉',car:'辨認到：車牌 AB-1234'}}
 };
 let snK='th', snS={};
@@ -1394,7 +1481,9 @@ function dgShow(k){ const o=DG[k]; $('#dgS').innerHTML=o.s; $('#dgD').innerHTML=
   $$('#dgBtns .btn').forEach(b=>b.classList.toggle('on',b.dataset.v===k)); $$('.dgflow .bx').forEach((b,i)=>setTimeout(()=>pulse(b,'flash'),i*250)); }
 $('#dgBtns').addEventListener('click',e=>{ const b=e.target.closest('.btn'); if(b) dgShow(b.dataset.v); });
 
+let UND_LATER=()=>{};   // student layer: list the stages still waiting for a self-check on the summary page
 const HOOKS={
+ sum:{enter:()=>UND_LATER()},
  iot:{enter:()=>iotSet(iotV)},
  sensors:{enter:()=>snShow(snK)},
  acts:{enter:actsReset, leave:()=>alSet(false)},
@@ -1459,7 +1548,7 @@ $('#jump').addEventListener('click',e=>{ if(e.target.id==='jump') closeJump(); }
 
 /* ---------- notes / adv / fullscreen ---------- */
 function toggleNotes(){ if(!TEACHER) return; $('#notes').hidden=!$('#notes').hidden; $('#bNotes').classList.toggle('on',!$('#notes').hidden); fit(); }
-function toggleAdv(){ ADV=!ADV; $('#stage').classList.toggle('adv-on',ADV); $('#hudMode').textContent=ADV?'進階':'基礎'; $('#bAdv').classList.toggle('on',ADV); const h=HOOKS[slides[cur].dataset.hook]; if(h&&h.enter) h.enter(); if(h&&h.step) h.step(Math.max(0,step-OFF(cur)),Math.max(0,step-OFF(cur))); toast(ADV?'進階模式：顯示公式和細節':'基礎模式'); }
+function toggleAdv(){ ADV=!ADV; $('#stage').classList.toggle('adv-on',ADV); $('#hudMode').textContent=ADV?'進階':'基礎'; $('#bAdv').classList.toggle('on',ADV); const h=HOOKS[slides[cur].dataset.hook]; if(h&&h.enter) h.enter(); if(h&&h.step) h.step(Math.max(0,step-OFF(cur)),Math.max(0,step-OFF(cur))); toast(ADV?($$('.adv',slides[cur]).length?'進階模式：顯示公式和細節':'進階模式已開（本頁沒有進階內容）'):'基礎模式'); }
 function full(){ try{ if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}); else document.exitFullscreen().catch(()=>{}); }catch(e){} }
 let KEYX=()=>false;
 let START=()=>{};
@@ -1487,7 +1576,40 @@ document.addEventListener('keydown',e=>{ const tg=e.target.tagName;
 $('#bPrev').onclick=prev; $('#bNext').onclick=next; $('#eL').onclick=prev; $('#eR').onclick=next; $('#bPgPrev').onclick=pgPrev; $('#bPgNext').onclick=pgNext; $('#pg').onclick=openJump;
 $('#bNotes').onclick=toggleNotes; $('#notesClose').onclick=toggleNotes; $('#bAdv').onclick=toggleAdv; $('#bPick').onclick=()=>pickStudent(); $('#bFull').onclick=full;
 if(!TEACHER){ ['#bPick','#bNotes','#bPgPrev','#bPgNext'].forEach(s=>$(s).hidden=true); }
-function fit(){ const nh=$('#notes').hidden?0:$('#notes').offsetHeight, H=Math.max(200,window.innerHeight-nh), k=Math.min(window.innerWidth/1280,H/720); SCALE=k; const st=$('#stage'); st.style.top=(H/2)+'px'; st.style.transform=`translate(-50%,-50%) scale(${k})`; }
+/* phone support: PHONE = small touch screen. In portrait we show #rotTip, or rotate the stage 90deg if chosen. */
+const PHONE=matchMedia('(pointer:coarse)').matches && Math.min(screen.width,screen.height)<600;
+function ssGet(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
+function ssSet(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
+const isField=a=>!!a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && !/^(range|checkbox|radio|button|submit)$/.test(a.type);
+let focusW=-1;
+document.addEventListener('focusin',e=>{ if(isField(e.target)) focusW=window.innerWidth; });
+document.addEventListener('focusout',()=>{ focusW=-1; if(PHONE) setTimeout(fit,350); });
+function fit(){ const vw=window.innerWidth, vh=window.innerHeight;
+  /* soft keyboard open: width unchanged while typing -> keep layout, don't shrink the stage */
+  if(PHONE && focusW===vw && isField(document.activeElement)) return;
+  if(isField(document.activeElement)) focusW=vw;
+  const portrait=PHONE && vh>vw, mode=ssGet('rotMode');
+  ROT=portrait && mode==='rot';
+  document.body.classList.toggle('rotTip', portrait && !mode);
+  const nh=$('#notes').hidden?0:$('#notes').offsetHeight, st=$('#stage');
+  if(ROT){ const k=Math.min(vh/1280,vw/720); SCALE=k; st.style.top=(vh/2)+'px'; st.style.transform=`translate(-50%,-50%) rotate(90deg) scale(${k})`; return; }
+  const H=Math.max(200,vh-nh), k=Math.min(vw/1280,H/720); SCALE=k; st.style.top=(H/2)+'px'; st.style.transform=`translate(-50%,-50%) scale(${k})`; }
+(function(){
+  const fsOK=!!(document.documentElement.requestFullscreen && screen.orientation && screen.orientation.lock);
+  $('#rtFull').hidden=!fsOK;
+  $('#rtFull').addEventListener('click',()=>{ document.documentElement.requestFullscreen().then(()=>screen.orientation.lock('landscape')).catch(()=>{}).then(()=>setTimeout(fit,300)); });
+  $('#rtRot').addEventListener('click',()=>{ ssSet('rotMode','rot'); fit(); });
+  $('#rtStay').addEventListener('click',()=>{ ssSet('rotMode','stay'); fit(); });
+  /* swipe left/right on the stage = next/prev (skipped on form fields, sliders, canvases, scrollers, dialogs) */
+  let sx=0, sy=0, sOn=false;
+  const skip=t=>{ if(!t.closest) return true; if(t.closest('input,textarea,select,canvas,[contenteditable],[role=dialog],#stuId')) return true;
+    for(let e=t; e && e.id!=='stage'; e=e.parentElement){ const o=getComputedStyle(e).overflowX; if((o==='auto'||o==='scroll') && e.scrollWidth>e.clientWidth+2) return true; } return false; };
+  $('#stage').addEventListener('touchstart',e=>{ sOn=e.touches.length===1 && !skip(e.target); if(sOn){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; } },{passive:true});
+  $('#stage').addEventListener('touchend',e=>{ if(!sOn) return; sOn=false; const t=e.changedTouches[0]; let dx=t.clientX-sx, dy=t.clientY-sy;
+    if(ROT){ const d=dx; dx=dy; dy=-d; }
+    if(Math.abs(dx)>60 && Math.abs(dx)>2*Math.abs(dy)){ if(dx<0) next(); else prev(); } },{passive:true});
+  window.addEventListener('orientationchange',()=>setTimeout(fit,250));
+})();
 window.addEventListener('resize',fit); fit(); hud();
 
 /* =====================================================================
@@ -1594,15 +1716,31 @@ if(!TEACHER){
   // self-check
   $$('.und').forEach(u=>u.addEventListener('click',e=>{ const b=e.target.closest('[data-u]'); if(!b||!ST.r) return; ST.r.und[u.dataset.sec]=+b.dataset.u; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',x===b)); toast(b.dataset.u==='1'?'收到：明白':'收到：老師會再講解'); touch(); }));
   // self-check popup: at the end of each stage's last page, ask once (students may answer later by coming back)
-  $('#stage').insertAdjacentHTML('beforeend','<div id="undM" hidden><div class="px gold" role="dialog" aria-labelledby="undT"><p class="k2">SELF CHECK</p><h3 id="undT"></h3><p class="small">誠實回答：老師會按全班的情況，決定要不要再講一次。</p><div class="row"><button class="btn ok" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div><button class="btn" id="undSkip">稍後再答</button></div></div>');
+  $('#stage').insertAdjacentHTML('beforeend','<div id="undM" hidden><div class="px gold" role="dialog" aria-labelledby="undT"><p class="k2">SELF CHECK</p><h3 id="undT"></h3><p class="small">誠實回答：老師會按全班的情況，決定要不要再講一次。</p><div class="row"><button class="btn ok" data-u="1">✔ 明白</button><button class="btn" data-u="0">？ 未明白</button></div><p id="undLeft" hidden></p><button class="btn" id="undBack" hidden>返回完成練習</button><p id="undTip"></p><button class="btn on" id="undGo">知道了，繼續</button><button class="btn" id="undSkip">稍後再答</button></div></div>');
+  const UND_TIP={1:'重溫：<b class="d">傳感器</b>負責「感覺」（輸入），<b class="g">控制器</b>按規則「決定」，<b class="a">執行器</b>負責「動手」（輸出），再用網絡連起來。可以返回 P2–P3 再看一次。',
+   2:'重溫：選傳感器先問「要量度甚麼」：溫度／濕度→溫濕度；光→光照；有人移動→紅外；距離→超聲波；煤氣→氣體；影像→鏡頭。可以返回 P5 逐個試。',
+   3:'重溫：開關大電器→繼電器；轉到指定角度→伺服馬達；用手機或時間表遙控→智能開關；提醒人→聲光報警。可以返回 P7 再試。',
+   4:'重溫：設計時依次寫：用甚麼傳感器量度 → 控制器的規則（例如高過 28°C）→ 用甚麼執行器做甚麼。可以按左邊三個例子再看一次。'};
+  const undLeftCh=sec=>{ const u=$(`.und[data-sec="${sec}"]`); const sl=u&&u.closest('.slide'); if(!sl||!ST.r) return []; const stg=sl.dataset.stage; return slides.filter(s=>s.dataset.stage===stg).flatMap(s=>$$('.ch',s)).filter(c=>!ST.r.prac[c.dataset.q]); };
   const undAsked=new Set(); let undSec=null;
   BEFORE_NEXT=()=>{ const u=slides[cur].querySelector('.und'); if(!u||!ST.r) return false; const sec=u.dataset.sec; if(ST.r.und[sec]!==undefined||undAsked.has(sec)) return false;
-    undSec=sec; $('#undT').textContent=(UND_SECS[sec]||'第 '+sec+' 關')+'：你明白嗎？'; $('#undM').hidden=false; setTimeout(()=>$('#undM .btn[data-u="1"]').focus(),30); return true; };
-  $$('#undM [data-u]').forEach(b=>b.addEventListener('click',()=>{ const sec=undSec; undAsked.add(sec); $('#undM').hidden=true; const ib=$(`.und[data-sec="${sec}"] [data-u="${b.dataset.u}"]`); if(ib) ib.click(); next(); }));
+    undSec=sec; $('#undT').textContent=(UND_SECS[sec]||'第 '+sec+' 關')+'：你明白嗎？'; $('#undM .px').classList.remove('tip');
+    const left=undLeftCh(sec); $('#undLeft').hidden=$('#undBack').hidden=!left.length; $('#undLeft').innerHTML=left.length?'⚠ 這一關還有 '+left.length+' 題練習未做':''; $('#undM').hidden=false; setTimeout(()=>$('#undM .btn[data-u="1"]').focus(),30); return true; };
+  $$('#undM [data-u]').forEach(b=>b.addEventListener('click',()=>{ const sec=undSec; undAsked.add(sec); const ib=$(`.und[data-sec="${sec}"] [data-u="${b.dataset.u}"]`); if(ib) ib.click();
+    if(b.dataset.u==='0'&&UND_TIP[sec]){ $('#undT').textContent=(UND_SECS[sec]||'第 '+sec+' 關')+'：重溫一下'; $('#undTip').innerHTML=UND_TIP[sec]+'<br><span class="small">（老師也會收到，會再講解。）</span>'; $('#undM .px').classList.add('tip'); setTimeout(()=>$('#undGo').focus(),30); return; }
+    $('#undM').hidden=true; next(); }));
+  $('#undGo').addEventListener('click',()=>{ $('#undM').hidden=true; $('#undM .px').classList.remove('tip'); next(); });
+  $('#undBack').addEventListener('click',()=>{ const c=undLeftCh(undSec)[0]; $('#undM').hidden=true; if(c){ const i=slides.indexOf(c.closest('.slide')); go(i,nsteps(i)); } });
+  UND_LATER=()=>{ const el=$('#undLater'); if(!el) return; const ks=ST.r?Object.keys(UND_SECS).filter(k=>ST.r.und[k]===undefined):[]; el.hidden=!ks.length; if(!ks.length) return;
+    el.innerHTML='<p class="small" style="margin:0"><b class="y">還未自評</b>：按一下告訴老師你明白嗎</p>'+ks.map(k=>`<div class="ulr"><span>${esc(UND_SECS[k])}</span><button class="btn" data-k="${k}" data-u="1">✔ 明白</button><button class="btn" data-k="${k}" data-u="0">？ 未明白</button></div>`).join(''); };
+  $('#undLater').addEventListener('click',e=>{ const b=e.target.closest('[data-k]'); if(!b||!ST.r) return; const ib=$(`.und[data-sec="${b.dataset.k}"] [data-u="${b.dataset.u}"]`); if(ib) ib.click(); else { ST.r.und[b.dataset.k]=+b.dataset.u; touch(); } UND_LATER(); });
   $('#undSkip').addEventListener('click',()=>{ undAsked.add(undSec); $('#undM').hidden=true; next(); });
   // short answer
   $$('.sa').forEach(s=>{ const ta=s.querySelector('textarea'), bt=s.querySelector('.btn');
-    bt.addEventListener('click',()=>{ const v=ta.value.trim(); if(!v){ toast('請先輸入答案'); return; } if(!ST.r) return; ST.r.sa[s.dataset.sa]=v; s.querySelector('.sent').textContent='已提交 ✔（可以修改後再提交）'; touch(); }); });
+    const cn=document.createElement('p'); cn.className='sacnt sonly'; ta.closest('.sarow').after(cn);
+    const cnt=()=>{ const n=[...ta.value].length, m=ta.maxLength>0?ta.maxLength:40; cn.textContent=n+' / '+m+' 字'+(n>=m?'（已到上限）':''); cn.classList.toggle('full',n>=m); ta.classList.remove('bad'); };
+    ta.addEventListener('input',cnt); cnt();
+    bt.addEventListener('click',()=>{ const v=ta.value.trim(); const sn=s.querySelector('.sent'); sn.classList.remove('bad'); if(!v){ ta.classList.add('bad'); sn.textContent='請先在上面的格輸入答案，再按提交'; sn.classList.add('bad'); ta.focus(); return; } if(!ST.r) return; ST.r.sa[s.dataset.sa]=v; s.querySelector('.sent').textContent='已提交 ✔（可以修改後再提交）'; touch(); }); });
 
   // ---------- task (堂課): only lessons with a task page ----------
   let lockUI=()=>{}, setUnl=()=>{}, restoreTask=()=>{}, subUI=()=>{}, doSubmit=()=>{};
@@ -1644,7 +1782,7 @@ if(!TEACHER){
   setInterval(pollCtl,8000);
 
   function restoreAll(){ restorePractice(); $$('.und').forEach(u=>{ const v=ST.r.und[u.dataset.sec]; $$('[data-u]',u).forEach(x=>x.classList.toggle('picked',v!==undefined&&+x.dataset.u===v)); });
-    $$('.sa').forEach(s=>{ const v=ST.r.sa[s.dataset.sa]; s.querySelector('textarea').value=v||''; s.querySelector('.sent').textContent=v?'已提交 ✔（可以修改後再提交）':''; }); restoreTask(); }
+    $$('.sa').forEach(s=>{ const v=ST.r.sa[s.dataset.sa]; const ta=s.querySelector('textarea'); ta.value=v||''; ta.dispatchEvent(new Event('input')); s.querySelector('.sent').textContent=v?'已提交 ✔（可以修改後再提交）':''; }); restoreTask(); UND_LATER(); }
   if(!FB_ON) liveDot('','○ 本機模式');
   document.body.classList.add('stu');
   START=()=>{ const w=LS.get(`u4.${LESSON}.who`); if(w&&w.cls&&w.no&&w.name) loadWho(w); setTimeout(openId,400); pollCtl(); };
